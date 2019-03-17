@@ -40,17 +40,5 @@ namespace sydtrucking_payroll_front.Properties {
                 return ((string)(this["Database"]));
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Valor {
-            get {
-                return ((string)(this["Valor"]));
-            }
-            set {
-                this["Valor"] = value;
-            }
-        }
     }
 }
