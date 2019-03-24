@@ -73,6 +73,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="business\Employee.cs" />
+    <Compile Include="enums\PaymentType.cs" />
+    <Compile Include="enums\TaxForm.cs" />
+    <Compile Include="view\Employees.xaml.cs">
+      <DependentUpon>Employees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\Payroll.xaml.cs">
+      <DependentUpon>Payroll.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,10 +95,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\Employees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Payroll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="model\Employees.cs" />
+    <Compile Include="model\Employee.cs" />
+    <Compile Include="model\Payroll.cs" />
+    <Compile Include="model\PayrollDetail.cs" />
     <Compile Include="model\Roles.cs" />
+    <Compile Include="model\Ticket.cs" />
     <Compile Include="model\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

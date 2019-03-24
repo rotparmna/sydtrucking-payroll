@@ -15,11 +15,19 @@
                 _database = client.GetDatabase(settings.Database);
         }
 
-        public IMongoCollection<Employees> Locations
+        public IMongoCollection<Employee> Employees
         {
             get
             {
-                return _database.GetCollection<Employees>("Employees");
+                return _database.GetCollection<Employee>("Employees");
+            }
+        }
+
+        public IMongoCollection<Payroll> Payrolls
+        {
+            get
+            {
+                return _database.GetCollection<Payroll>("Payrolls");
             }
         }
     }
