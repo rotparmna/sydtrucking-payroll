@@ -9,7 +9,7 @@
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int Id { get; set; }
+        public string Id { get; set; }
         public Int64 SocialSecurity { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -19,7 +19,7 @@
         public DateTime Birthdate { get; set; }
         public string TruckNumber { get; set; }
         public PaymentType PaymentMethod { get; set; }
-        public TaxForm TaxForm { get; set; }
+        public TaxType TaxForm { get; set; }
         public double Rate { get; set; }
         public DriverLicense License { get; set; }
         public Contract Contract { get; set; }

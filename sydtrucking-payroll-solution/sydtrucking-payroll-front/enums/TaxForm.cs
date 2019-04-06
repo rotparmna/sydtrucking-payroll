@@ -1,8 +1,8 @@
 ﻿namespace sydtrucking_payroll_front.enums
 {
-    public enum TaxForm
+    public enum TaxType
     {
-        W4 = 1,
-        W9 = 2
+        W4,
+        W9
     }
 }

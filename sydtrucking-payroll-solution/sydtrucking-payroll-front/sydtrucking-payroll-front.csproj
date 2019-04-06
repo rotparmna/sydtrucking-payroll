@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="business\Employee.cs" />
+    <Compile Include="enums\Enumextension.cs" />
     <Compile Include="enums\PaymentType.cs" />
     <Compile Include="enums\TaxForm.cs" />
     <Compile Include="view\Employees.xaml.cs">
