@@ -23,6 +23,10 @@
         public double Rate { get; set; }
         public DriverLicense License { get; set; }
         public Contract Contract { get; set; }
+        public string Fullname
+        {
+            get { return Name + " " + LastName; }
+        }
     }
 
     public class DriverLicense

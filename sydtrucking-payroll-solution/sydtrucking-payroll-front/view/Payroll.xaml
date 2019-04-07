@@ -5,9 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sydtrucking_payroll_front.view"
         mc:Ignorable="d"
-        Title="Payroll" Height="300" Width="765.441" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Payroll" Height="595.632" Width="839.912" Loaded="Window_Loaded">
     <Grid>
-        <ComboBox Name="Employees" HorizontalAlignment="Left" Margin="94,91,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="255*"/>
+            <RowDefinition Height="213*"/>
+            <RowDefinition Height="76*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" MinWidth="315"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Header="General" HorizontalAlignment="Left" Height="97" Margin="10,10,0,0" VerticalAlignment="Top" Width="476">
+            <Grid>
+                <ComboBox Grid.Row="0" Name="Employees" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Width="397"/>
+                <Label Grid.Row="0" Content="Driver" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+                <Label Grid.Row="0" Content="Truck" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="57,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"/>
+                <Label Grid.Row="0" Content="Rate" HorizontalAlignment="Left" Margin="280,34,0,0" VerticalAlignment="Top" Height="26" Width="46"/>
+                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="331,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="102" Margin="10,112,0,0" VerticalAlignment="Top" Width="476">
+            <Grid>
+                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="PaymentMethod" HorizontalAlignment="Left" Height="23" Margin="117,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                <Label Grid.Row="0" Content="Payment Method" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+                <Label Grid.Row="0" Content="From" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <DatePicker Grid.Row="0" Name="FromPayment" HorizontalAlignment="Left" Margin="53,41,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
+                <Label Grid.Row="0" Content="To" HorizontalAlignment="Left" Margin="226,40,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+                <DatePicker Grid.Row="0" x:Name="ToPayment" HorizontalAlignment="Left" Margin="264,42,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox HorizontalContentAlignment="Stretch"  Grid.Row="0" Header="Totals" Margin="10" Grid.Column="1" VerticalContentAlignment="Stretch">
+            <Grid>
+                <Label Grid.Column="1" Content="Total Hours" Grid.Row="0" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalHours" HorizontalAlignment="Left" Height="23" Margin="99,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                <Label Grid.Column="1" Content="Regular Hour" Grid.Row="0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="RegularHour" HorizontalAlignment="Left" Height="23" Margin="99,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                <Label Grid.Column="1" Content="Overtime Hour" Grid.Row="0" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="OvertimeHour" HorizontalAlignment="Left" Height="23" Margin="110,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
+                <Label Grid.Column="1" Content="Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Payment" HorizontalAlignment="Left" Height="23" Margin="74,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+                <Label Grid.Column="1" Content="Deductions" Grid.Row="0" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Deductions" HorizontalAlignment="Left" Height="23" Margin="87,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182"/>
+                <Label Grid.Column="1" Content="Reimbursements" Grid.Row="0" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Reimbursements" HorizontalAlignment="Left" Height="23" Margin="118,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
+                <Label Grid.Column="1" Content="Total Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalPayment" HorizontalAlignment="Left" Height="23" Margin="99,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanUserAddRows="True" CanUserDeleteRows="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ticket Date" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Company" Binding="{Binding SocialSecurity}"/>
+                <DataGridTextColumn Header="Ticket #" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Hours" Binding="{Binding LastName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2" Grid.Column="0" x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="59"/>
     </Grid>
 </Window>

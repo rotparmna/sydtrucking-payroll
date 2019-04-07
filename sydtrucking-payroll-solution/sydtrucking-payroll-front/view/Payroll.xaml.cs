@@ -17,6 +17,8 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Employees.SelectedValuePath = "Id";
+            Employees.DisplayMemberPath = "Fullname";
             Employees.DataContext = employeeBusiness.GetAll();
         }
     }
