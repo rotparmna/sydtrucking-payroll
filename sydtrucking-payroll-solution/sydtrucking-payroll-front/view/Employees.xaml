@@ -71,7 +71,21 @@
                 <DatePicker x:Name="TerminationDate" HorizontalAlignment="Left" Margin="117,39,0,0" VerticalAlignment="Top" Width="184" Height="24"/>
             </Grid>
         </GroupBox>
-        <DataGrid x:Name="ListEmployees" Grid.Row="0" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListEmployees_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False"/>
+        <DataGrid x:Name="ListEmployees" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListEmployees_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn Header="State" Binding="{Binding State}"/>
+                <DataGridTextColumn Header="Truck Number" Binding="{Binding TruckNumber}"/>
+                <DataGridTextColumn Header="Payment" Binding="{Binding PaymentMethod}"/>
+                <DataGridTextColumn Header="Tax Form" Binding="{Binding TaxForm}"/>
+                <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click"/>
     </Grid>
 </Window>

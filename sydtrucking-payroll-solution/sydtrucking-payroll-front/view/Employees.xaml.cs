@@ -26,6 +26,7 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Clear();
             LoadEmployees();
         }
 
@@ -97,6 +98,25 @@
             PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
             TaxForm.SelectedIndex = (int)employee.TaxForm;
             Rate.Text = employee.Rate.ToString("C");
+        }
+
+        private void Clear()
+        {
+            SocialSecurity.Text = string.Empty;
+            Name.Text = string.Empty;
+            LastName.Text = string.Empty;
+            Birthdate.SelectedDate = DateTime.Now;
+            TruckNumber.Text = string.Empty;
+            DriverLicense.Text = string.Empty;
+            ExpirationDate.SelectedDate = DateTime.Now;
+            HireDate.SelectedDate = DateTime.Now;
+            TerminationDate.SelectedDate = DateTime.Now;
+            Address.Text = string.Empty;
+            PhoneNumber.Text = string.Empty;
+            State.Text = string.Empty;
+            PaymentMethod.SelectedIndex = -1;
+            TaxForm.SelectedIndex = -1;
+            Rate.Text = string.Empty;
         }
     }
 }
