@@ -6,8 +6,6 @@
     using System.Linq;
     using sydtrucking_payroll_front.enums;
     using System;
-    using System.Windows.Controls;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
@@ -41,9 +39,12 @@
 
         private void Employees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            TruckNumber.Text = ((Employee)e.AddedItems[0]).TruckNumber;
-            Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
-            PaymentMethod.Text = ((Employee)e.AddedItems[0]).PaymentMethod.ToString();
+            if (e.AddedItems.Count > 0)
+            {
+                TruckNumber.Text = ((Employee)e.AddedItems[0]).TruckNumber;
+                Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
+                PaymentMethod.Text = ((Employee)e.AddedItems[0]).PaymentMethod.ToString();
+            }
         }
 
 
@@ -150,25 +151,75 @@
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            PaymentType paymentMethod = PaymentType.Check;
-            Enum.TryParse(PaymentMethod.Text, out paymentMethod);
+            string message = Validations();
 
-            payroll.PaymentType = paymentMethod;
-            payroll.TruckNumber = int.Parse(TruckNumber.Text);
-            payroll.Employee = (Employee)Employees.SelectedItem;
-            payroll.From = FromPayment.SelectedDate.Value;
-            payroll.To = ToPayment.SelectedDate.Value;
-            details.ToList().ForEach(x =>
+            if (message == string.Empty)
             {
-                payroll.Details.Add(new PayrollDetail()
-                {
-                    Company = x.Company,
-                    Hours = x.Hours,
-                    Ticket = new Ticket() { Date = x.TicketDate, Number = x.TicketNumber }
-                });
-            });
+                PaymentType paymentMethod = PaymentType.Check;
+                Enum.TryParse(PaymentMethod.Text, out paymentMethod);
 
-            payrollBusiness.Update(payroll);
+                payroll.PaymentType = paymentMethod;
+                payroll.TruckNumber = int.Parse(TruckNumber.Text);
+                payroll.Employee = (Employee)Employees.SelectedItem;
+                payroll.From = FromPayment.SelectedDate.Value;
+                payroll.To = ToPayment.SelectedDate.Value;
+                details.ToList().ForEach(x =>
+                {
+                    payroll.Details.Add(new PayrollDetail()
+                    {
+                        Company = x.Company,
+                        Hours = x.Hours,
+                        Ticket = new Ticket() { Date = x.TicketDate, Number = x.TicketNumber }
+                    });
+                });
+
+                try
+                {
+                    payrollBusiness.Update(payroll);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                MessageBox.Show("Saved information", "Payroll", MessageBoxButton.OK, MessageBoxImage.Information);
+                Clear();
+            }
+            else
+                MessageBox.Show(message, "Validations", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+        }
+
+        private void Clear()
+        {
+            payroll = new model.Payroll();
+            details = new ObservableCollection<PayrollDetailView>();
+
+            Employees.SelectedItem = null;
+            TruckNumber.Text = string.Empty;
+            Rate.Text = string.Empty;
+            PaymentMethod.Text = string.Empty;
+            FromPayment.SelectedDate = null;
+            ToPayment.SelectedDate = null;
+            TotalHours.Text = string.Empty;
+            RegularHour.Text = string.Empty;
+            OvertimeHour.Text = string.Empty;
+            Payment.Text = string.Empty;
+            Deductions.Text = string.Empty;
+            Reimbursements.Text = string.Empty;
+            TotalPayment.Text = string.Empty;
+            Details.ItemsSource = details;
+        }
+
+        private string Validations()
+        {
+            string message = string.Empty;
+
+            if (Employees.SelectedItem == null) message += "No employee selected.\n";
+            if (!FromPayment.SelectedDate.HasValue) message += "Date not selected.\n";
+            if (!ToPayment.SelectedDate.HasValue) message += "Date not selected.\n";
+            if (details.Count <= 0) message += "No detail records.\n";
+
+            return message;
         }
     }
 }
