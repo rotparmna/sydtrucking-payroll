@@ -40,5 +40,23 @@ namespace sydtrucking_payroll_front.Properties {
                 return ((string)(this["Database"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        public int RegularHour {
+            get {
+                return ((int)(this["RegularHour"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
+        public double FactorRateOvertimeHour {
+            get {
+                return ((double)(this["FactorRateOvertimeHour"]));
+            }
+        }
     }
 }

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:sydtrucking_payroll_front.view"
         mc:Ignorable="d"
         Title="S &amp; D TRUCKING LLC - Payroll" Height="595.632" Width="839.912" Loaded="Window_Loaded">
     <Grid>
@@ -18,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Row="0" Header="General" HorizontalAlignment="Left" Height="97" Margin="10,10,0,0" VerticalAlignment="Top" Width="476">
             <Grid>
-                <ComboBox Grid.Row="0" Name="Employees" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Width="397"/>
+                <ComboBox Grid.Row="0" Name="Employees" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Width="397" SelectionChanged="Employees_SelectionChanged"/>
                 <Label Grid.Row="0" Content="Driver" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
                 <Label Grid.Row="0" Content="Truck" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <TextBox Grid.Row="0" IsReadOnly="True" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="57,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"/>
@@ -39,29 +38,29 @@
         <GroupBox HorizontalContentAlignment="Stretch"  Grid.Row="0" Header="Totals" Margin="10" Grid.Column="1" VerticalContentAlignment="Stretch">
             <Grid>
                 <Label Grid.Column="1" Content="Total Hours" Grid.Row="0" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
-                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalHours" HorizontalAlignment="Left" Height="23" Margin="99,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalHours" HorizontalAlignment="Left" Height="23" Margin="99,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="170"/>
                 <Label Grid.Column="1" Content="Regular Hour" Grid.Row="0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
-                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="RegularHour" HorizontalAlignment="Left" Height="23" Margin="99,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="RegularHour" HorizontalAlignment="Left" Height="23" Margin="99,38,0,0" TextWrapping="Wrap" Text="40" VerticalAlignment="Top" Width="170"/>
                 <Label Grid.Column="1" Content="Overtime Hour" Grid.Row="0" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
                 <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="OvertimeHour" HorizontalAlignment="Left" Height="23" Margin="110,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
                 <Label Grid.Column="1" Content="Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
                 <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Payment" HorizontalAlignment="Left" Height="23" Margin="74,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
                 <Label Grid.Column="1" Content="Deductions" Grid.Row="0" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
-                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Deductions" HorizontalAlignment="Left" Height="23" Margin="87,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="Deductions" HorizontalAlignment="Left" Height="23" Margin="87,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182" LostFocus="Deductions_LostFocus"/>
                 <Label Grid.Column="1" Content="Reimbursements" Grid.Row="0" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
-                <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Reimbursements" HorizontalAlignment="Left" Height="23" Margin="118,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="Reimbursements" HorizontalAlignment="Left" Height="23" Margin="118,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" LostFocus="Reimbursements_LostFocus"/>
                 <Label Grid.Column="1" Content="Total Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
                 <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalPayment" HorizontalAlignment="Left" Height="23" Margin="99,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
             </Grid>
         </GroupBox>
-        <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanUserAddRows="True" CanUserDeleteRows="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded" CurrentCellChanged="Details_CurrentCellChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ticket Date" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Company" Binding="{Binding SocialSecurity}"/>
-                <DataGridTextColumn Header="Ticket #" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Hours" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Ticket Date (mm/dd/yyyy)" Binding="{Binding TicketDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
+                <DataGridTextColumn Header="Company" Binding="{Binding Company}"/>
+                <DataGridTextColumn Header="Ticket #" Binding="{Binding TicketNumber}"/>
+                <DataGridTextColumn Header="Hours" Binding="{Binding Hours}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Grid.Column="0" x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="59"/>
+        <Button Grid.Row="2" Grid.Column="0" x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="59" Click="Save_Click"/>
     </Grid>
 </Window>

@@ -74,10 +74,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="business\Constant.cs" />
     <Compile Include="business\Employee.cs" />
+    <Compile Include="business\Payroll.cs" />
     <Compile Include="enums\Enumextension.cs" />
     <Compile Include="enums\PaymentType.cs" />
     <Compile Include="enums\TaxForm.cs" />
+    <Compile Include="model\PayrollDetailView.cs" />
     <Compile Include="view\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
