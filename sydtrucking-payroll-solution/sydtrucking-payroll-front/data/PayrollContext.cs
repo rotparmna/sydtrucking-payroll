@@ -30,5 +30,13 @@
                 return _database.GetCollection<Payroll>("Payrolls");
             }
         }
+
+        public IMongoCollection<Role> Roles
+        {
+            get
+            {
+                return _database.GetCollection<Role>("Roles");
+            }
+        }
     }
 }

@@ -23,5 +23,11 @@
             view.Payroll payrolls = new view.Payroll();
             payrolls.Show();
         }
+
+        private void RoleButton_Click(object sender, RoutedEventArgs e)
+        {
+            view.Roles roles = new view.Roles();
+            roles.Show();
+        }
     }
 }

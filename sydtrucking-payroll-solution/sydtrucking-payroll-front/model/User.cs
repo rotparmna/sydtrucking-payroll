@@ -5,7 +5,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Users
+    public class User
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -15,6 +15,6 @@
         public string Email { get; set; }
         public DateTime LastLogin { get; set; }
         public bool IsActive { get; set; }
-        public List<Roles> Roles { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }
