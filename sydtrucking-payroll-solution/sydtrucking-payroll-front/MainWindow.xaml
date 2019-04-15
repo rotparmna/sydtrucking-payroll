@@ -11,5 +11,6 @@
         <Button x:Name="PayrollButton" Content="Payrolls" HorizontalAlignment="Left" Margin="90,26,0,0" VerticalAlignment="Top" Width="75" Click="PayrollButton_Click" Height="66" HorizontalContentAlignment="Center"/>
         <Button x:Name="RoleButton" Content="Roles" HorizontalAlignment="Left" Margin="170,26,0,0" VerticalAlignment="Top" Width="75" Click="RoleButton_Click" Height="66" HorizontalContentAlignment="Center"/>
         <Image Margin="404,0,0,-1" VerticalAlignment="Top" Source="resources/images/logo-sdt.JPG" HorizontalAlignment="Left" Width="161" Stretch="UniformToFill" Height="123"/>
+        <Button x:Name="UserButton" Content="Users" HorizontalAlignment="Left" Margin="250,26,0,0" VerticalAlignment="Top" Width="75" Click="UserButton_Click" Height="66" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>

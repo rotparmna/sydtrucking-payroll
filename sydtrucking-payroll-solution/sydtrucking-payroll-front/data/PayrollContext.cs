@@ -38,5 +38,13 @@
                 return _database.GetCollection<Role>("Roles");
             }
         }
+
+        public IMongoCollection<User> Users
+        {
+            get
+            {
+                return _database.GetCollection<User>("Users");
+            }
+        }
     }
 }

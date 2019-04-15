@@ -29,5 +29,11 @@
             view.Roles roles = new view.Roles();
             roles.Show();
         }
+
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            view.Users users = new view.Users();
+            users.Show();
+        }
     }
 }
