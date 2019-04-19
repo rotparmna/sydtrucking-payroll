@@ -58,5 +58,14 @@ namespace sydtrucking_payroll_front.Properties {
                 return ((double)(this["FactorRateOvertimeHour"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int DaysWeek {
+            get {
+                return ((int)(this["DaysWeek"]));
+            }
+        }
     }
 }

@@ -35,5 +35,11 @@
             view.Users users = new view.Users();
             users.Show();
         }
+
+        private void ReportPayroll_Click(object sender, RoutedEventArgs e)
+        {
+            view.ReportPayroll report = new view.ReportPayroll();
+            report.Show();
+        }
     }
 }

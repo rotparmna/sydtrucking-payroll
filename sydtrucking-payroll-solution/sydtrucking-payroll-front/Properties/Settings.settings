@@ -14,5 +14,8 @@
     <Setting Name="FactorRateOvertimeHour" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">1.5</Value>
     </Setting>
+    <Setting Name="DaysWeek" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

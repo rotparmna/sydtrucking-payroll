@@ -4,7 +4,6 @@
     using System.Collections.ObjectModel;
     using System.Windows;
     using System.Linq;
-    using sydtrucking_payroll_front.enums;
     using System;
 
     /// <summary>
@@ -258,7 +257,7 @@
         private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (FromPayment.SelectedDate.HasValue)
-                ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(7);
+                ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeek);
         }
     }
 }
