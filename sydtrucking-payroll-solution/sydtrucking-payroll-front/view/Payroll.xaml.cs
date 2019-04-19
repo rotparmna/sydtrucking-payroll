@@ -56,13 +56,45 @@
         private void SourceCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             CalculateHours();
-            ValidateTicketNumber();
+            ValidationsDetails(true);
+        }
+
+        private string ValidateTicketDateInRange(bool showMessage)
+        {
+            var isTicketDateNotRange = false;
+            var message = string.Empty;
+
+            details.ToList().ForEach(x =>
+            {
+                isTicketDateNotRange = !isTicketDateNotRange ?
+                                            details.Where(y => x.TicketDate < FromPayment.SelectedDate.Value || x.TicketDate > ToPayment.SelectedDate.Value).Count() > 1
+                                            : isTicketDateNotRange;
+            });
+
+            if (isTicketDateNotRange)
+                message = "The ticket date it is not within the range, review the information.";
+
+            if (isTicketDateNotRange && showMessage)
+                MessageBox.Show(message,
+                                    "Ticket Date",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+
+            return message;
         }
 
         private void Details_CurrentCellChanged(object sender, System.EventArgs e)
         {
             CalculateHours();
-            ValidateTicketNumber();
+            ValidationsDetails(true);
+        }
+
+        private string ValidationsDetails(bool showMessage)
+        {
+            var message = string.Empty;
+            message = ValidateTicketNumber(showMessage)+"\n";
+            message += ValidateTicketDateInRange(showMessage) + "\n";
+            return message;
         }
 
         private void CalculatePayment(int regularHours, int overtimeHour)
@@ -120,9 +152,10 @@
             CalculatePayment(regularHours, overtimeHours);
         }
 
-        private void ValidateTicketNumber()
+        private string ValidateTicketNumber(bool showMessage)
         {
             var isNameRepeat = false;
+            var message = string.Empty;
 
             details.ToList().ForEach(x =>
             {
@@ -132,10 +165,15 @@
             });
 
             if (isNameRepeat)
-                MessageBox.Show("The ticket number is already digitized, review the information",
+                message = "The ticket number is already digitized, review the information.";
+
+            if (isNameRepeat && showMessage) 
+                MessageBox.Show(message,
                                     "Ticket Number",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
+
+            return message;
         }
 
         private void Deductions_LostFocus(object sender, RoutedEventArgs e)
@@ -212,8 +250,15 @@
             if (!FromPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (!ToPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (details.Count <= 0) message += "No detail records.\n";
+            message += ValidationsDetails(false);
 
             return message;
+        }
+
+        private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (FromPayment.SelectedDate.HasValue)
+                ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(7);
         }
     }
 }
