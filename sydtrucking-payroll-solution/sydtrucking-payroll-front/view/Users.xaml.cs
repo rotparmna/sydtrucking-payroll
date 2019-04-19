@@ -4,9 +4,6 @@
     using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
-    using sydtrucking_payroll_front.enums;
-    using System.Windows.Controls;
-    using System;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
@@ -16,14 +13,14 @@
         private List<User> _usersModel;
         private business.User _userBusiness;
         private business.Role _roleBusiness;
-        private List<RoleDetailView> _roles;
+        private List<RoleDetailView> _rolesView;
         private string _idUserSelected;
 
         public Users()
         {
             InitializeComponent();
             _usersModel = new List<User>();
-            _roles = new List<RoleDetailView>();
+            _rolesView = new List<RoleDetailView>();
             _userBusiness = new business.User();
             _roleBusiness = new business.Role();
         }
@@ -58,7 +55,7 @@
                 Password = Passsword.Text
             };
 
-            _roles.Where(x => x.IsActive)
+            _rolesView.Where(x => x.IsActive)
                     .ToList()
                     .ForEach(x => user.Roles.Add(new Role()
                                 {
@@ -88,9 +85,12 @@
             IsActive.IsChecked = user.IsActive;
 
             List<Role> roles = _roleBusiness.GetAll();
+            _rolesView.Clear();
+            Roles.ItemsSource = null;
+
             roles.ForEach(x =>
             {
-                _roles.Add(new RoleDetailView()
+                _rolesView.Add(new RoleDetailView()
                 {
                     Id = x.Id,
                     Role = x.Name,
@@ -98,7 +98,7 @@
                 });
             });
 
-            Roles.ItemsSource = _roles;
+            Roles.ItemsSource = _rolesView;
         }
 
         private void Clear()
