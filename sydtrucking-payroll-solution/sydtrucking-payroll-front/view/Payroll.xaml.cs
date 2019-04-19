@@ -41,9 +41,8 @@
         {
             if (e.AddedItems.Count > 0)
             {
-                TruckNumber.Text = ((Employee)e.AddedItems[0]).TruckNumber;
+                TruckNumber.Text = ((Employee)e.AddedItems[0]).Truck.Number;
                 Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
-                PaymentMethod.Text = ((Employee)e.AddedItems[0]).PaymentMethod.ToString();
             }
         }
 
@@ -155,10 +154,6 @@
 
             if (message == string.Empty)
             {
-                PaymentType paymentMethod = PaymentType.Check;
-                Enum.TryParse(PaymentMethod.Text, out paymentMethod);
-
-                payroll.PaymentType = paymentMethod;
                 payroll.TruckNumber = int.Parse(TruckNumber.Text);
                 payroll.Employee = (Employee)Employees.SelectedItem;
                 payroll.From = FromPayment.SelectedDate.Value;
@@ -197,7 +192,6 @@
             Employees.SelectedItem = null;
             TruckNumber.Text = string.Empty;
             Rate.Text = string.Empty;
-            PaymentMethod.Text = string.Empty;
             FromPayment.SelectedDate = null;
             ToPayment.SelectedDate = null;
             TotalHours.Text = string.Empty;

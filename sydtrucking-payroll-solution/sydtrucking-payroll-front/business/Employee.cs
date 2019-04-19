@@ -35,10 +35,11 @@
                                                      .Set(u => u.PaymentMethod, employee.PaymentMethod)
                                                      .Set(u => u.PhoneNumber, employee.PhoneNumber)
                                                      .Set(u => u.Rate, employee.Rate)
-                                                     .Set(u => u.SocialSecurity, employee.SocialSecurity)
                                                      .Set(u => u.State, employee.State)
+                                                     .Set(u => u.City, employee.City)
+                                                     .Set(u => u.ZipCode, employee.ZipCode)
                                                      .Set(u => u.TaxForm, employee.TaxForm)
-                                                     .Set(u => u.TruckNumber, employee.TruckNumber);
+                                                     .Set(u => u.Truck, employee.Truck);
 
             context.Employees.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
         }

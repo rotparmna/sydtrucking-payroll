@@ -5,70 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sydtrucking_payroll_front.view"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Employees" Height="576.838" Width="1162.5" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Employees" Height="569.838" Width="1162.5" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="457*"/>
-            <RowDefinition Height="89*"/>
+            <RowDefinition Height="445*"/>
+            <RowDefinition Height="101*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="693*" />
             <ColumnDefinition Width="461*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="General" HorizontalAlignment="Left" Height="153" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+        <GroupBox Header="General" HorizontalAlignment="Left" Height="422" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
-                <Label Content="Social Security" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <TextBox Grid.Row="0" Name="SocialSecurity" HorizontalAlignment="Left" Height="23" Margin="105,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
-                <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
-                <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-                <Label Content="Last Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
-                <TextBox Grid.Row="0" x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="85,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216"/>
+                <Label Content="Social Security" Grid.Row="0" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" Name="SocialSecurity" HorizontalAlignment="Left" Height="23" Margin="105,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
+                <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+                <Label Content="Last Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
+                <TextBox Grid.Row="0" x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="85,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216"/>
                 <Label Content="Birthdate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <DatePicker Name="Birthdate" HorizontalAlignment="Left" Margin="72,97,0,0" VerticalAlignment="Top" Width="229" Height="24"/>
+                <TextBox Grid.Row="0" x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="73,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228"/>
+                <Label Content="Address" Grid.Row="0" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <TextBox x:Name="State" HorizontalAlignment="Left" Margin="57,187,0,0" VerticalAlignment="Top" Width="141" Height="22"/>
+                <Label Content="State" Grid.Row="0" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="City" HorizontalAlignment="Left" Margin="57,156,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
+                <Label Content="City" Grid.Row="0" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="232,187,0,0" VerticalAlignment="Top" Width="69" Height="22"/>
+                <Label Content="Zip" Grid.Row="0" HorizontalAlignment="Left" Margin="203,185,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <Label Content="Phone Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
+                <TextBox Grid.Row="0" x:Name="PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="116,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185"/>
+                <Label Content="Driver License" Grid.Row="0" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" x:Name="DriverLicense" HorizontalAlignment="Left" Height="23" Margin="101,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                <TextBox x:Name="StateDriverLicense" HorizontalAlignment="Left" Margin="57,275,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
+                <Label Content="State" Grid.Row="0" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <Label Content="Expiration Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+                <DatePicker x:Name="ExpirationDate" HorizontalAlignment="Left" Margin="119,302,0,0" VerticalAlignment="Top" Width="182" Height="24"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Location" HorizontalAlignment="Left" Height="153" Margin="338,10,0,0" VerticalAlignment="Top" Width="323">
+        <GroupBox Grid.Row="0" Header="Assigned Truck" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
-                <Label Content="Address" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-                <TextBox Grid.Row="0" x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="73,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228"/>
-                <Label Content="Phone Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
-                <TextBox Grid.Row="0" x:Name="PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="116,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185"/>
-                <TextBox Name="State" HorizontalAlignment="Left" Margin="57,66,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
-                <Label Content="State" Grid.Row="0" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <Label Content="Truck Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>
+                <Label Content="Year" Grid.Row="0" HorizontalAlignment="Left" Margin="199,14,0,0" VerticalAlignment="Top" Height="26" Width="31"/>
+                <TextBox Grid.Row="0" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="252,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
+                <Label Content="Vin" Grid.Row="0" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="29"/>
+                <TextBox Grid.Row="0" x:Name="Vin" HorizontalAlignment="Left" Height="23" Margin="44,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2"/>
+                <Label Content="Make" Grid.Row="0" HorizontalAlignment="Left" Margin="199,39,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
+                <TextBox Grid.Row="0" x:Name="Make" HorizontalAlignment="Left" Height="23" Margin="252,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
+                <Label Content="Plate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
+                <TextBox Grid.Row="0" x:Name="Plate" HorizontalAlignment="Left" Height="23" Margin="56,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
+                <Label Content="Registration" Grid.Row="0" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
+                <DatePicker x:Name="Registration" HorizontalAlignment="Left" Margin="84,98,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
+                <Label Content="Inspection" Grid.Row="0" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
+                <DatePicker x:Name="Inspection" HorizontalAlignment="Left" Margin="84,127,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Truck and License" HorizontalAlignment="Left" Height="125" Margin="10,168,0,0" VerticalAlignment="Top" Width="323">
+        <GroupBox Grid.Row="0" Header="Payment" HorizontalAlignment="Left" Height="125" Margin="338,205,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
-                <Label Content="Truck Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <TextBox Grid.Row="0" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="101,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-                <Label Content="Driver License" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <TextBox Grid.Row="0" x:Name="DriverLicense" HorizontalAlignment="Left" Height="23" Margin="101,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-                <Label Content="Expiration Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
-                <DatePicker x:Name="ExpirationDate" HorizontalAlignment="Left" Margin="119,69,0,0" VerticalAlignment="Top" Width="182" Height="24"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Grid.Row="0" Header="Payment" HorizontalAlignment="Left" Height="125" Margin="338,168,0,0" VerticalAlignment="Top" Width="323">
-            <Grid>
-                <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" Width="177" Height="22">
+                <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top" Width="193" Height="22">
                     <ComboBoxItem>Check</ComboBoxItem>
                     <ComboBoxItem>DD</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Payment Method" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
-                <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="73,37,0,0" VerticalAlignment="Top" Width="228" Height="22">
+                <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="74,37,0,0" VerticalAlignment="Top" Width="249" Height="22">
                     <ComboBoxItem Content="W4"/>
                     <ComboBoxItem Content="W9"/>
                 </ComboBox>
                 <Label Content="Tax Form" Grid.Row="0" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
-                <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244"/>
+                <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Contract" HorizontalAlignment="Left" Height="96" Margin="10,298,0,0" VerticalAlignment="Top" Width="323">
+        <GroupBox Grid.Row="0" Header="Contract" HorizontalAlignment="Left" Height="97" Margin="338,335,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Hire Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
-                <DatePicker x:Name="HireDate" HorizontalAlignment="Left" Margin="81,10,0,0" VerticalAlignment="Top" Width="220" Height="24"/>
+                <DatePicker x:Name="HireDate" HorizontalAlignment="Left" Margin="81,10,0,0" VerticalAlignment="Top" Width="242" Height="24"/>
                 <Label Content="Termination Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
-                <DatePicker x:Name="TerminationDate" HorizontalAlignment="Left" Margin="117,39,0,0" VerticalAlignment="Top" Width="184" Height="24"/>
+                <DatePicker x:Name="TerminationDate" HorizontalAlignment="Left" Margin="137,39,0,0" VerticalAlignment="Top" Width="186" Height="24"/>
+                <CheckBox Checked="Actually_Checked" Name="Actually" Content="" HorizontalAlignment="Left" Margin="112,45,0,0" VerticalAlignment="Top" Unchecked="Actually_Unchecked"/>
             </Grid>
         </GroupBox>
         <DataGrid x:Name="ListEmployees" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListEmployees_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
@@ -80,7 +95,6 @@
                 <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
                 <DataGridTextColumn Header="State" Binding="{Binding State}"/>
-                <DataGridTextColumn Header="Truck Number" Binding="{Binding TruckNumber}"/>
                 <DataGridTextColumn Header="Payment" Binding="{Binding PaymentMethod}"/>
                 <DataGridTextColumn Header="Tax Form" Binding="{Binding TaxForm}"/>
                 <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>

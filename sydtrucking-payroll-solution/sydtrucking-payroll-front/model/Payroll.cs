@@ -19,7 +19,6 @@
         public Employee Employee { get; set; }
         public int TruckNumber { get; set; }
         public double Rate { get; set; }
-        public PaymentType PaymentType { get; set; }
         public ICollection<PayrollDetail> Details { get; set; }
         public int TotalHours { get; set; }
         public int RegularHour { get; set; }

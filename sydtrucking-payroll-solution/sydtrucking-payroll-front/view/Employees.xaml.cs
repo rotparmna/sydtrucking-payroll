@@ -49,23 +49,43 @@
 
             TaxType taxForm = TaxType.W4;
             Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
-            
+
             Employee employee = new Employee()
             {
                 Address = Address.Text,
                 Birthdate = Birthdate.SelectedDate.Value,
-                Contract = new Contract() { HireDate = HireDate.SelectedDate.Value, TerminationDate = TerminationDate.SelectedDate.Value },
+                Contract = new Contract()
+                {
+                    HireDate = HireDate.SelectedDate.Value,
+                    TerminationDate = Actually.IsChecked.Value ? TerminationDate.SelectedDate : null
+                },
                 Id = id,
                 LastName = LastName.Text,
-                License = new DriverLicense() { Expiration = ExpirationDate.SelectedDate.Value, Number = DriverLicense.Text },
+                License = new DriverLicense()
+                {
+                    Expiration = ExpirationDate.SelectedDate.Value,
+                    Number = DriverLicense.Text,
+                    State = StateDriverLicense.Text
+                },
                 Name = Name.Text,
                 PaymentMethod = paymentMethod,
                 PhoneNumber = PhoneNumber.Text,
-                Rate = double.Parse(Rate.Text.Replace("$",string.Empty)),
+                Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
                 SocialSecurity = long.Parse(SocialSecurity.Text),
                 State = State.Text,
                 TaxForm = taxForm,
-                TruckNumber = TruckNumber.Text
+                Truck = new Truck()
+                {
+                    Inspection = Inspection.SelectedDate.Value,
+                    Make = Make.Text,
+                    Number = TruckNumber.Text,
+                    Plate = Plate.Text,
+                    Registration = Registration.SelectedDate.Value,
+                    Vin = Vin.Text,
+                    Year = int.Parse(Year.Text)
+                },
+                City = City.Text,
+                ZipCode = ZipCode.Text
             };
 
             _employeeBusiness.Update(employee);
@@ -87,14 +107,25 @@
             Name.Text = employee.Name;
             LastName.Text = employee.LastName;
             Birthdate.SelectedDate = employee.Birthdate;
-            TruckNumber.Text = employee.TruckNumber;
+            TruckNumber.Text = employee.Truck.Number;
+            Year.Text = employee.Truck.Year.ToString();
+            Vin.Text = employee.Truck.Vin;
+            Make.Text = employee.Truck.Make;
+            Plate.Text = employee.Truck.Plate;
+            Registration.SelectedDate = employee.Truck.Registration;
+            Inspection.SelectedDate = employee.Truck.Inspection;
             DriverLicense.Text = employee.License.Number;
+            StateDriverLicense.Text = employee.License.State;
             ExpirationDate.SelectedDate = employee.License.Expiration;
             HireDate.SelectedDate = employee.Contract.HireDate;
             TerminationDate.SelectedDate = employee.Contract.TerminationDate;
+            TerminationDate.IsEnabled = !employee.Contract.Actually;
+            Actually.IsChecked = !employee.Contract.Actually;
             Address.Text = employee.Address;
             PhoneNumber.Text = employee.PhoneNumber;
             State.Text = employee.State;
+            City.Text = employee.City;
+            ZipCode.Text = employee.ZipCode;
             PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
             TaxForm.SelectedIndex = (int)employee.TaxForm;
             Rate.Text = employee.Rate.ToString("C");
@@ -111,12 +142,38 @@
             ExpirationDate.SelectedDate = DateTime.Now;
             HireDate.SelectedDate = DateTime.Now;
             TerminationDate.SelectedDate = DateTime.Now;
+            Actually.IsChecked = false;
+            TerminationDate.IsEnabled = false;
             Address.Text = string.Empty;
             PhoneNumber.Text = string.Empty;
             State.Text = string.Empty;
             PaymentMethod.SelectedIndex = -1;
             TaxForm.SelectedIndex = -1;
             Rate.Text = string.Empty;
+            Year.Text = string.Empty;
+            Vin.Text = string.Empty;
+            Make.Text = string.Empty;
+            Plate.Text = string.Empty;
+            Registration.SelectedDate = DateTime.Now;
+            Inspection.SelectedDate = DateTime.Now;
+            StateDriverLicense.Text = string.Empty;
+            City.Text = string.Empty;
+            ZipCode.Text = string.Empty;
+        }
+
+        private void Actually_Checked(object sender, RoutedEventArgs e)
+        {
+            ChangeActuallyChecked();
+        }
+
+        private void Actually_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ChangeActuallyChecked();
+        }
+
+        private void ChangeActuallyChecked()
+        {
+            TerminationDate.IsEnabled = Actually.IsChecked.Value;
         }
     }
 }

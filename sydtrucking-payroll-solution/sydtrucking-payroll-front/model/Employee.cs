@@ -16,8 +16,10 @@
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string State { get; set; }
+        public string City { get; set; }
+        public string ZipCode { get; set; }
         public DateTime Birthdate { get; set; }
-        public string TruckNumber { get; set; }
+        public Truck Truck { get; set; }
         public PaymentType PaymentMethod { get; set; }
         public TaxType TaxForm { get; set; }
         public double Rate { get; set; }
@@ -32,12 +34,31 @@
     public class DriverLicense
     {
         public string Number { get; set; }
+        public string State { get; set; }
         public DateTime Expiration { get; set; }
     }
 
     public class Contract
     {
         public DateTime HireDate { get; set; }
-        public DateTime TerminationDate { get; set; }
+        public DateTime? TerminationDate { get; set; }
+        public bool Actually
+        {
+            get
+            {
+                return !TerminationDate.HasValue;
+            }
+        }
+    }
+
+    public class Truck
+    {
+        public string Number { get; set; }
+        public int Year { get; set; }
+        public string Vin { get; set; }
+        public string Make { get; set; }
+        public string Plate { get; set; }
+        public DateTime Registration { get; set; }
+        public DateTime Inspection { get; set; }
     }
 }

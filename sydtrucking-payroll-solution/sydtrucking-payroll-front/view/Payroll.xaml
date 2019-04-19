@@ -7,9 +7,9 @@
         Title="S &amp; D TRUCKING LLC - Payroll" Height="595.632" Width="839.912" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="255*"/>
-            <RowDefinition Height="213*"/>
-            <RowDefinition Height="76*"/>
+            <RowDefinition Height="258*"/>
+            <RowDefinition Height="228*"/>
+            <RowDefinition Height="79*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -25,14 +25,12 @@
                 <TextBox Grid.Row="0" IsReadOnly="True" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="331,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="102" Margin="10,112,0,0" VerticalAlignment="Top" Width="476">
+        <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="66" Margin="10,112,0,0" VerticalAlignment="Top" Width="476">
             <Grid>
-                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="PaymentMethod" HorizontalAlignment="Left" Height="23" Margin="117,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
-                <Label Grid.Row="0" Content="Payment Method" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
-                <Label Grid.Row="0" Content="From" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-                <DatePicker Grid.Row="0" Name="FromPayment" HorizontalAlignment="Left" Margin="53,41,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
-                <Label Grid.Row="0" Content="To" HorizontalAlignment="Left" Margin="226,40,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
-                <DatePicker Grid.Row="0" x:Name="ToPayment" HorizontalAlignment="Left" Margin="264,42,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
+                <Label Grid.Row="0" Content="From" HorizontalAlignment="Left" Margin="6,7,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <DatePicker Grid.Row="0" Name="FromPayment" HorizontalAlignment="Left" Margin="49,9,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
+                <Label Grid.Row="0" Content="To" HorizontalAlignment="Left" Margin="222,8,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+                <DatePicker Grid.Row="0" x:Name="ToPayment" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="168" Height="24"/>
             </Grid>
         </GroupBox>
         <GroupBox HorizontalContentAlignment="Stretch"  Grid.Row="0" Header="Totals" Margin="10" Grid.Column="1" VerticalContentAlignment="Stretch">
