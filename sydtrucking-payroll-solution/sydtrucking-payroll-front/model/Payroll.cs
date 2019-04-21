@@ -29,5 +29,7 @@
         public double TotalPayment { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
+        public DateTime PaymentDate { get;  set; }
+        public double PaymentOvertimeHour { get; set; }
     }
 }

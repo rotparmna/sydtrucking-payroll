@@ -8,6 +8,7 @@
 
     public class PrintPayrollView
     {
+        public string Id { get; set; }
         public string Driver { get; set; }
         public string Rate { get; set; }
         public string PaymentWeek { get; set; }

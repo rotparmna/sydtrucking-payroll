@@ -33,6 +33,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"  Visibility="Hidden"/>
                 <DataGridTextColumn Header="Driver" Binding="{Binding Driver}"/>
                 <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>
                 <DataGridTextColumn Header="Payment Week" Binding="{Binding PaymentWeek}"/>
@@ -41,6 +42,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Search_Click"/>
-        <Button x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
+        <Button Visibility="Hidden" x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
     </Grid>
 </Window>

@@ -61,10 +61,28 @@ namespace sydtrucking_payroll_front.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public int DaysWeek {
             get {
                 return ((int)(this["DaysWeek"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int DaysWeekPayment {
+            get {
+                return ((int)(this["DaysWeekPayment"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\\\reportpayroll\\\\")]
+        public string PathReportPayroll {
+            get {
+                return ((string)(this["PathReportPayroll"]));
             }
         }
     }

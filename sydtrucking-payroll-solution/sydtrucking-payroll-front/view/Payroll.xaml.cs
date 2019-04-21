@@ -71,7 +71,7 @@
             });
 
             if (isTicketDateNotRange)
-                message = "The ticket date it is not within the range, review the information.";
+                message = "The ticket date it is not within the range, review the information.\n";
 
             if (isTicketDateNotRange && showMessage)
                 MessageBox.Show(message,
@@ -91,8 +91,8 @@
         private string ValidationsDetails(bool showMessage)
         {
             var message = string.Empty;
-            message = ValidateTicketNumber(showMessage)+"\n";
-            message += ValidateTicketDateInRange(showMessage) + "\n";
+            message = ValidateTicketNumber(showMessage);
+            message += ValidateTicketDateInRange(showMessage);
             return message;
         }
 
@@ -101,11 +101,14 @@
             var rate = double.Parse(Rate.Text.Replace("$", string.Empty));
             var rateOvertime = rate * business.Constant.FactorRateOvertimeHour;
             var payment = 0.0;
+            var paymentOvertimeHour = 0.0;
 
-            payment = (rate * regularHours) + (rateOvertime * overtimeHour);
+            paymentOvertimeHour = rateOvertime * overtimeHour;
+            payment = (rate * regularHours) + paymentOvertimeHour;
 
             payroll.Rate = rate;
             payroll.Payment = payment;
+            payroll.PaymentOvertimeHour = paymentOvertimeHour;
             Payment.Text = payment.ToString("C");
 
             CalculateTotalPayment();
@@ -145,6 +148,7 @@
 
             payroll.TotalHours = totalHours;
             payroll.OvertimeHour = overtimeHours;
+            payroll.RegularHour = regularHours;
             TotalHours.Text = totalHours.ToString();
             OvertimeHour.Text = overtimeHours.ToString();
 
@@ -164,7 +168,7 @@
             });
 
             if (isNameRepeat)
-                message = "The ticket number is already digitized, review the information.";
+                message = "The ticket number is already digitized, review the information.\n";
 
             if (isNameRepeat && showMessage) 
                 MessageBox.Show(message,
@@ -195,6 +199,7 @@
                 payroll.Employee = (Employee)Employees.SelectedItem;
                 payroll.From = FromPayment.SelectedDate.Value;
                 payroll.To = ToPayment.SelectedDate.Value;
+                payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
                 details.ToList().ForEach(x =>
                 {
                     payroll.Details.Add(new PayrollDetail()

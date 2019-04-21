@@ -4,6 +4,7 @@
     using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
+    using sydtrucking_payroll_front.print;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
@@ -27,12 +28,17 @@
 
         private void PrintReport_Click(object sender, RoutedEventArgs e)
         {
+            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
+            var payroll = _payrollBusiness.Get(rowData.Id);
 
+            //TODO print
+            PrintPayroll p = new PrintPayroll(payroll);
+            p.Print();
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)

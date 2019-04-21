@@ -20,6 +20,14 @@
             return context.Payrolls.Find(FilterDefinition<model.Payroll>.Empty).ToList();
         }
 
+        public model.Payroll Get(string id)
+        {
+            var builder = Builders<model.Payroll>.Filter;
+            var filter = builder.Eq(x => x.Id, id);
+
+            return context.Payrolls.Find(filter).FirstOrDefault();
+        }
+
         private void Add(model.Payroll payroll)
         {
             context.Payrolls.InsertOne(payroll);
@@ -35,7 +43,7 @@
             var printPayrollsView = new List<model.PrintPayrollView>();
 
             var builder = Builders<model.Payroll>.Filter;
-            var filter = builder.Gte("Details.Ticket.Date", from) & 
+            var filter = builder.Gte("Details.Ticket.Date", from) &
                             builder.Lte("Details.Ticket.Date", to);
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
@@ -44,6 +52,7 @@
             {
                 printPayrollsView.Add(new model.PrintPayrollView()
                 {
+                    Id = x.Id,
                     Driver = x.Employee.Fullname,
                     PaymentWeek = x.Details.Min(y => y.Ticket.Date).Date.ToShortDateString() + "-" + x.Details.Max(y => y.Ticket.Date).Date.ToShortDateString(),
                     Rate = x.Rate.ToString("C"),

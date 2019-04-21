@@ -106,6 +106,8 @@
     <Compile Include="model\PayrollDetailView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
+    <Compile Include="print\PrintPayroll.cs" />
+    <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
     </Compile>
@@ -196,10 +198,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\logo-sdt.JPG" />
+    <Resource Include="resources\images\logo-sdt.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\print24.png" />
+    <Resource Include="resources\images\print24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
