@@ -230,21 +230,35 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\truck128.png" />
+    <Resource Include="resources\images\truck128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\employee128.png" />
+    <Resource Include="resources\images\employee128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\role128.png" />
-    <Resource Include="resources\images\user128.png" />
+    <Resource Include="resources\images\role128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\images\user128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\payroll128.png" />
-    <Resource Include="resources\images\payrollreport128.png" />
+    <Resource Include="resources\images\payroll128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\images\payrollreport128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\home100.png" />
+    <Resource Include="resources\images\home100.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
