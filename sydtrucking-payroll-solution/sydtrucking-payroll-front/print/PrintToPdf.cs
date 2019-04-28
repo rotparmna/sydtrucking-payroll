@@ -8,7 +8,6 @@
         private const string FONT = "Calibri";
         private PdfDocument _document;
         private PdfPage _page;
-        private XFont _font;
         private XGraphics _gfx;
 
         public string Filename { get; set; }

@@ -12,7 +12,7 @@
         <Image Margin="488,0,0,0" VerticalAlignment="Top" Source="resources/images/logo-sdt.JPG" HorizontalAlignment="Right" Width="161" Stretch="UniformToFill" Height="123"/>
         <Button x:Name="UserButton" Content="Users" HorizontalAlignment="Left" Margin="330,26,0,0" VerticalAlignment="Top" Width="75" Click="UserButton_Click" Height="66" HorizontalContentAlignment="Center"/>
         <Button x:Name="ReportPayroll" HorizontalAlignment="Left" Margin="170,26,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False">
-            <TextBlock Text="Report Payroll" TextWrapping="Wrap"/>
+            <TextBlock Text="Payroll Report" TextWrapping="Wrap"/>
         </Button>
     </Grid>
 </Window>

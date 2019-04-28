@@ -5,6 +5,7 @@
     using sydtrucking_payroll_front.enums;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Payroll
     {
@@ -31,5 +32,15 @@
         public DateTime To { get; set; }
         public DateTime PaymentDate { get;  set; }
         public double PaymentOvertimeHour { get; set; }
+        public double PaymentRegularHour
+        {
+            get
+            {
+                return Rate * RegularHour;
+            }
+        }
+
+        public string DeductionsDetail { get; set; }
+        public string ReimbursmentsDetail { get; set; }
     }
 }
