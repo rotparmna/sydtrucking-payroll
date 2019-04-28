@@ -41,5 +41,11 @@
             view.ReportPayroll report = new view.ReportPayroll();
             report.Show();
         }
+
+        private void TruckButton_Click(object sender, RoutedEventArgs e)
+        {
+            view.Trucks truck = new view.Trucks();
+            truck.Show();
+        }
     }
 }

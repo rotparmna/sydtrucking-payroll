@@ -46,5 +46,13 @@
                 return _database.GetCollection<User>("Users");
             }
         }
+
+        public IMongoCollection<Truck> Trucks
+        {
+            get
+            {
+                return _database.GetCollection<Truck>("Trucks");
+            }
+        }
     }
 }

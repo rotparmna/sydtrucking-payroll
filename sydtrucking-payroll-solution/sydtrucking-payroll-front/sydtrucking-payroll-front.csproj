@@ -99,6 +99,7 @@
     <Compile Include="business\Employee.cs" />
     <Compile Include="business\Payroll.cs" />
     <Compile Include="business\Role.cs" />
+    <Compile Include="business\Truck.cs" />
     <Compile Include="business\User.cs" />
     <Compile Include="enums\Enumextension.cs" />
     <Compile Include="enums\PaymentType.cs" />
@@ -106,10 +107,14 @@
     <Compile Include="model\PayrollDetailView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
+    <Compile Include="model\Truck.cs" />
     <Compile Include="print\PrintPayroll.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\Trucks.xaml.cs">
+      <DependentUpon>Trucks.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
@@ -137,6 +142,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="view\ReportPayroll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\Trucks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -50,15 +50,4 @@
             }
         }
     }
-
-    public class Truck
-    {
-        public string Number { get; set; }
-        public int Year { get; set; }
-        public string Vin { get; set; }
-        public string Make { get; set; }
-        public string Plate { get; set; }
-        public DateTime Registration { get; set; }
-        public DateTime Inspection { get; set; }
-    }
 }
