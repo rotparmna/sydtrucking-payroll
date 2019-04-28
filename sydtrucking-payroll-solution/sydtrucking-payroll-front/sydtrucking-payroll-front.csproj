@@ -216,5 +216,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\truck128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\employee128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\role128.png" />
+    <Resource Include="resources\images\user128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\payroll128.png" />
+    <Resource Include="resources\images\payrollreport128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
