@@ -14,20 +14,33 @@
     public partial class Employees : Window
     {
         private List<Employee> _employeesModel;
+        private List<Truck> _trucksModel;
         private business.Employee _employeeBusiness;
+        private business.Truck _truckBusiness;
         private string _idEmployeeSelected;
 
         public Employees()
         {
             InitializeComponent();
             _employeesModel = new List<Employee>();
+            _trucksModel = new List<Truck>();
             _employeeBusiness = new business.Employee();
+            _truckBusiness = new business.Truck();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Clear();
+            LoadTrucks();
             LoadEmployees();
+        }
+
+        private void LoadTrucks()
+        {
+            _trucksModel = _truckBusiness.GetAll();
+            Trucks.DisplayMemberPath = "Number";
+            Trucks.SelectedValuePath = "Id";
+            Trucks.ItemsSource = _trucksModel;
         }
 
         private void LoadEmployees()
@@ -76,9 +89,10 @@
                 TaxForm = taxForm,
                 Truck = new Truck()
                 {
+                    Id = (Trucks.SelectedItem as Truck).Id,
                     Inspection = Inspection.SelectedDate.Value,
                     Make = Make.Text,
-                    Number = TruckNumber.Text,
+                    Number = (Trucks.SelectedItem as Truck).Number,
                     Plate = Plate.Text,
                     Registration = Registration.SelectedDate.Value,
                     Vin = Vin.Text,
@@ -107,7 +121,7 @@
             Name.Text = employee.Name;
             LastName.Text = employee.LastName;
             Birthdate.SelectedDate = employee.Birthdate;
-            TruckNumber.Text = employee.Truck.Number;
+            Trucks.SelectedValue = employee.Truck.Id;
             Year.Text = employee.Truck.Year.ToString();
             Vin.Text = employee.Truck.Vin;
             Make.Text = employee.Truck.Make;
@@ -137,7 +151,7 @@
             Name.Text = string.Empty;
             LastName.Text = string.Empty;
             Birthdate.SelectedDate = DateTime.Now;
-            TruckNumber.Text = string.Empty;
+            Trucks.SelectedIndex = 0;
             DriverLicense.Text = string.Empty;
             ExpirationDate.SelectedDate = DateTime.Now;
             HireDate.SelectedDate = DateTime.Now;
@@ -159,6 +173,8 @@
             StateDriverLicense.Text = string.Empty;
             City.Text = string.Empty;
             ZipCode.Text = string.Empty;
+
+            LoadTrucks();
         }
 
         private void Actually_Checked(object sender, RoutedEventArgs e)

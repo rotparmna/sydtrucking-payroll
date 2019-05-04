@@ -46,19 +46,20 @@
         <GroupBox Grid.Row="0" Header="Assigned Truck" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Truck Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <TextBox Grid.Row="0" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>
-                <Label Content="Year" Grid.Row="0" HorizontalAlignment="Left" Margin="199,14,0,0" VerticalAlignment="Top" Height="26" Width="31"/>
-                <TextBox Grid.Row="0" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="252,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
+                <ComboBox Grid.Row="0" x:Name="Trucks" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" VerticalAlignment="Top" Width="93"/>
+                <!--<TextBox Grid.Row="0" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>-->
+                <Label Content="Year" Grid.Row="0" HorizontalAlignment="Left" Margin="199,14,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
+                <TextBox IsReadOnly="True" Grid.Row="0" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="252,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
                 <Label Content="Vin" Grid.Row="0" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="29"/>
-                <TextBox Grid.Row="0" x:Name="Vin" HorizontalAlignment="Left" Height="23" Margin="44,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2"/>
+                <TextBox IsReadOnly="True" Grid.Row="0" x:Name="Vin" HorizontalAlignment="Left" Height="23" Margin="44,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2"/>
                 <Label Content="Make" Grid.Row="0" HorizontalAlignment="Left" Margin="199,39,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
-                <TextBox Grid.Row="0" x:Name="Make" HorizontalAlignment="Left" Height="23" Margin="252,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
+                <TextBox IsReadOnly="True" Grid.Row="0" x:Name="Make" HorizontalAlignment="Left" Height="23" Margin="252,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
                 <Label Content="Plate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
-                <TextBox Grid.Row="0" x:Name="Plate" HorizontalAlignment="Left" Height="23" Margin="56,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
+                <TextBox IsReadOnly="True" Grid.Row="0" x:Name="Plate" HorizontalAlignment="Left" Height="23" Margin="56,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
                 <Label Content="Registration" Grid.Row="0" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
-                <DatePicker x:Name="Registration" HorizontalAlignment="Left" Margin="84,98,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
+                <DatePicker IsEnabled="False" x:Name="Registration" HorizontalAlignment="Left" Margin="84,98,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
                 <Label Content="Inspection" Grid.Row="0" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
-                <DatePicker x:Name="Inspection" HorizontalAlignment="Left" Margin="84,127,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
+                <DatePicker IsEnabled="False" x:Name="Inspection" HorizontalAlignment="Left" Margin="84,127,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="0" Header="Payment" HorizontalAlignment="Left" Height="125" Margin="338,205,0,0" VerticalAlignment="Top" Width="345">
