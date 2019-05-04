@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Report Payroll" Height="425.073" Width="877.5" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Payroll Report" Height="410.073" Width="877.5" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="299*"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="317*"/>
+            <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="359*" />
@@ -41,7 +41,9 @@
                 <DataGridTextColumn Header="Total Payment" Binding="{Binding TotalPayment}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Search_Click"/>
-        <Button Visibility="Hidden" x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
+        <Button x:Name="Search" ToolTip="Search" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Search_Click">
+            <Image ToolTip="Search" Source="/sydtrucking-payroll-front;component/resources/images/search128.png" Width="48px" />
+        </Button>
+        <Button Visibility="Hidden" x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,-2" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
     </Grid>
 </Window>

@@ -20,7 +20,7 @@
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (SocialSecurity.Text=="admin" && Password.Password == "admin")
+            if (Username.Text=="admin" && Password.Password == "admin")
             {
                 MainWindow main = new MainWindow();
                 main.Show();

@@ -260,5 +260,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\save128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\search128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
