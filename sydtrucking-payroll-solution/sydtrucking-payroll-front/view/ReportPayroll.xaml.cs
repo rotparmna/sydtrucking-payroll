@@ -35,7 +35,6 @@
             var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
             var payroll = _payrollBusiness.Get(rowData.Id);
 
-            //TODO print
             PrintPayroll p = new PrintPayroll(payroll);
             p.Print();
         }

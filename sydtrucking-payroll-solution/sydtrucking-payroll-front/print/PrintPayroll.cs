@@ -35,6 +35,17 @@
             PrintTotals();
 
             _toPdf.Print();
+
+            OpenPDF();
+        }
+
+        private void OpenPDF()
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            string path = AppDomain.CurrentDomain.BaseDirectory + @FileName;
+            Uri pdf = new Uri(path, UriKind.RelativeOrAbsolute);
+            process.StartInfo.FileName = pdf.LocalPath;
+            process.Start();
         }
 
         private void PrintHeader()
