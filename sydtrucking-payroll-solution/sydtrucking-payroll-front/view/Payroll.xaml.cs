@@ -11,27 +11,27 @@
     /// </summary>
     public partial class Payroll : Window
     {
-        business.Payroll payrollBusiness;
-        business.Employee employeeBusiness;
-        ObservableCollection<PayrollDetailView> details;
-        model.Payroll payroll;
+        business.Payroll _payrollBusiness;
+        business.Employee _employeeBusiness;
+        ObservableCollection<PayrollDetailView> _details;
+        model.Payroll _payroll;
 
         public Payroll()
         {
             InitializeComponent();
-            payrollBusiness = new business.Payroll();
-            employeeBusiness = new business.Employee();
-            details = new ObservableCollection<PayrollDetailView>();
-            payroll = new model.Payroll();
+            _payrollBusiness = new business.Payroll();
+            _employeeBusiness = new business.Employee();
+            _details = new ObservableCollection<PayrollDetailView>();
+            _payroll = new model.Payroll();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Employees.SelectedValuePath = "Id";
             Employees.DisplayMemberPath = "Fullname";
-            Employees.ItemsSource = employeeBusiness.GetAll();
+            Employees.ItemsSource = _employeeBusiness.GetAll();
 
-            Details.ItemsSource = details;
+            Details.ItemsSource = _details;
 
             RegularHour.Text = business.Constant.RegularHour.ToString();
         }
@@ -63,10 +63,10 @@
             var isTicketDateNotRange = false;
             var message = string.Empty;
 
-            details.ToList().ForEach(x =>
+            _details.ToList().ForEach(x =>
             {
                 isTicketDateNotRange = !isTicketDateNotRange ?
-                                            details.Where(y => x.TicketDate < FromPayment.SelectedDate.Value || x.TicketDate > ToPayment.SelectedDate.Value).Count() > 1
+                                            _details.Where(y => x.TicketDate < FromPayment.SelectedDate.Value || x.TicketDate > ToPayment.SelectedDate.Value).Count() > 1
                                             : isTicketDateNotRange;
             });
 
@@ -106,9 +106,9 @@
             paymentOvertimeHour = rateOvertime * overtimeHour;
             payment = (rate * regularHours) + paymentOvertimeHour;
 
-            payroll.Rate = rate;
-            payroll.Payment = payment;
-            payroll.PaymentOvertimeHour = paymentOvertimeHour;
+            _payroll.Rate = rate;
+            _payroll.Payment = payment;
+            _payroll.PaymentOvertimeHour = paymentOvertimeHour;
             Payment.Text = payment.ToString("C");
 
             CalculateTotalPayment();
@@ -127,7 +127,7 @@
 
             totalPayment = payment - (deductions + reimbursements);
 
-            payroll.TotalPayment = totalPayment;
+            _payroll.TotalPayment = totalPayment;
             TotalPayment.Text = totalPayment.ToString("C");
         }
 
@@ -137,7 +137,7 @@
             var regularHours = 0;
             var overtimeHours = 0;
 
-            details.ToList().ForEach(x => totalHours = totalHours + x.Hours);
+            _details.ToList().ForEach(x => totalHours = totalHours + x.Hours);
 
             regularHours = totalHours > business.Constant.RegularHour ?
                                 business.Constant.RegularHour
@@ -146,9 +146,9 @@
                                 totalHours - business.Constant.RegularHour
                                 : overtimeHours;
 
-            payroll.TotalHours = totalHours;
-            payroll.OvertimeHour = overtimeHours;
-            payroll.RegularHour = regularHours;
+            _payroll.TotalHours = totalHours;
+            _payroll.OvertimeHour = overtimeHours;
+            _payroll.RegularHour = regularHours;
             TotalHours.Text = totalHours.ToString();
             OvertimeHour.Text = overtimeHours.ToString();
 
@@ -160,10 +160,10 @@
             var isNameRepeat = false;
             var message = string.Empty;
 
-            details.ToList().ForEach(x =>
+            _details.ToList().ForEach(x =>
             {
                 isNameRepeat = !isNameRepeat ?
-                                    details.Where(y => x.TicketNumber == y.TicketNumber).Count() > 1
+                                    _details.Where(y => x.TicketNumber == y.TicketNumber).Count() > 1
                                     : isNameRepeat;
             });
 
@@ -195,14 +195,14 @@
 
             if (message == string.Empty)
             {
-                payroll.TruckNumber = int.Parse(TruckNumber.Text);
-                payroll.Employee = (Employee)Employees.SelectedItem;
-                payroll.From = FromPayment.SelectedDate.Value;
-                payroll.To = ToPayment.SelectedDate.Value;
-                payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
-                details.ToList().ForEach(x =>
+                _payroll.TruckNumber = int.Parse(TruckNumber.Text);
+                _payroll.Employee = (Employee)Employees.SelectedItem;
+                _payroll.From = FromPayment.SelectedDate.Value;
+                _payroll.To = ToPayment.SelectedDate.Value;
+                _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
+                _details.ToList().ForEach(x =>
                 {
-                    payroll.Details.Add(new PayrollDetail()
+                    _payroll.Details.Add(new PayrollDetail()
                     {
                         Company = x.Company,
                         Hours = x.Hours,
@@ -212,7 +212,7 @@
 
                 try
                 {
-                    payrollBusiness.Update(payroll);
+                    _payrollBusiness.Update(_payroll);
                 }
                 catch (Exception)
                 {
@@ -228,8 +228,8 @@
 
         private void Clear()
         {
-            payroll = new model.Payroll();
-            details = new ObservableCollection<PayrollDetailView>();
+            _payroll = new model.Payroll();
+            _details = new ObservableCollection<PayrollDetailView>();
 
             Employees.SelectedItem = null;
             TruckNumber.Text = string.Empty;
@@ -243,7 +243,7 @@
             Deductions.Text = string.Empty;
             Reimbursements.Text = string.Empty;
             TotalPayment.Text = string.Empty;
-            Details.ItemsSource = details;
+            Details.ItemsSource = _details;
         }
 
         private string Validations()
@@ -253,7 +253,7 @@
             if (Employees.SelectedItem == null) message += "No employee selected.\n";
             if (!FromPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (!ToPayment.SelectedDate.HasValue) message += "Date not selected.\n";
-            if (details.Count <= 0) message += "No detail records.\n";
+            if (_details.Count <= 0) message += "No detail records.\n";
             message += ValidationsDetails(false);
 
             return message;

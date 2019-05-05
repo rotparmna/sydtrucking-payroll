@@ -38,13 +38,14 @@
             Add(payroll);
         }
 
-        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to)
+        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Employee employee)
         {
             var printPayrollsView = new List<model.PrintPayrollView>();
 
             var builder = Builders<model.Payroll>.Filter;
             var filter = builder.Gte("Details.Ticket.Date", from) &
-                            builder.Lte("Details.Ticket.Date", to);
+                            builder.Lte("Details.Ticket.Date", to) &
+                            builder.Eq("Employee.SocialSecurity", employee.SocialSecurity);
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
 
