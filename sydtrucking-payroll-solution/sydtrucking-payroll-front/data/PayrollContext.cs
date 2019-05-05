@@ -1,18 +1,36 @@
 ﻿namespace sydtrucking_payroll_front.data
 {
+    using MongoDB.Bson;
     using MongoDB.Driver;
     using sydtrucking_payroll_front.model;
     using sydtrucking_payroll_front.Properties;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class PayrollContext
     {
         private readonly IMongoDatabase _database = null;
+        private readonly MongoClient _client = null;
 
         public PayrollContext(Settings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             if (client != null)
                 _database = client.GetDatabase(settings.Database);
+        }
+
+        public async Task<bool> ValidateConnectionAsync()
+        {
+            bool isOnline = true;
+            try
+            {
+                await _database.RunCommandAsync((Command<BsonDocument>)"{ping:1}");
+            }
+            catch
+            {
+                isOnline = false;
+            }
+            return isOnline;
         }
 
         public IMongoCollection<Employee> Employees

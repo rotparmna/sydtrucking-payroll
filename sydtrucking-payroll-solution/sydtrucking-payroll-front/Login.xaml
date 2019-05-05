@@ -8,7 +8,7 @@
         Title="S &amp; D TRUCKING LLC - Login" Height="500" Width="350" 
         ResizeMode="NoResize" 
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -40,8 +40,9 @@
                 <PasswordBox x:Name="Password" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
-        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="Button_Click"/>
+        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Name="LogIn" Click="Button_Click"/>
         <Image Source="/sydtrucking-payroll-front;component/resources/images/home100.png" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
+        <TextBlock Name="MessageConnection" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Hola mundo!"/>
         <!--<Image Source="resources/images/logo-sdt.JPG" HorizontalAlignment="Right" Width="272" Stretch="UniformToFill" Height="215"/>
         <Button x:Name="TruckButton" HorizontalAlignment="Left" Margin="343,56,0,0" VerticalAlignment="Top" Width="75" Click="TruckButton_Click" Height="66" HorizontalContentAlignment="Center">
             <Image ToolTip="Trucks" Source="/sydtrucking-payroll-front;component/resources/images/truck128.png" Width="48px" />

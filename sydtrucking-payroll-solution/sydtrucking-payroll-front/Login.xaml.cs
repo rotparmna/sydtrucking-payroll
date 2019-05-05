@@ -1,5 +1,6 @@
 ﻿namespace sydtrucking_payroll_front
 {
+    using System.Threading.Tasks;
     using System.Windows;
 
     /// <summary>
@@ -7,8 +8,11 @@
     /// </summary>
     public partial class Login : Window
     {
+        data.PayrollContext _context;
+
         public Login()
         {
+            _context = new data.PayrollContext(Properties.Settings.Default);
             InitializeComponent();
         }
 
@@ -27,6 +31,40 @@
 
                 Close();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ValidateConnectionDB();
+        }
+
+        private void ValidateConnectionDB()
+        {
+            Enable(false);
+            MessageConnection.Text = "Validating connection to database!";
+            _context.ValidateConnectionAsync().ContinueWith((x) =>
+            {
+                if (x.IsCompleted && !x.IsFaulted && !x.IsCanceled)
+                {
+                    UpdateMessageConnection(x.Result ? 
+                                                "Correct connection to database!" : 
+                                                "Incorrect connection to database!");
+                    Enable(x.Result);
+                }
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void UpdateMessageConnection(string text)
+        {
+            MessageConnection.Text = text;
+        }
+
+        private void Enable(bool isEnable)
+        {
+            Username.IsEnabled = isEnable;
+            Password.IsEnabled = isEnable;
+            LogIn.IsEnabled = isEnable;
         }
     }
 }
