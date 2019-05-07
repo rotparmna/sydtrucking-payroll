@@ -29,6 +29,7 @@
         {
             get { return Name + " " + LastName; }
         }
+        public string Email { get; set; }
     }
 
     public class DriverLicense

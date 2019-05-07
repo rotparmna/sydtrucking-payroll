@@ -41,6 +41,8 @@
                 <TextBox x:Name="StateDriverLicense" HorizontalAlignment="Left" Margin="57,275,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
                 <Label Content="Expiration Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
                 <DatePicker x:Name="ExpirationDate" HorizontalAlignment="Left" Margin="119,302,0,0" VerticalAlignment="Top" Width="182" Height="24"/>
+                <Label Content="Email" Grid.Row="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="57,331,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="0" Header="Assigned Truck" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">

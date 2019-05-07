@@ -99,7 +99,8 @@
                     Year = int.Parse(Year.Text)
                 },
                 City = City.Text,
-                ZipCode = ZipCode.Text
+                ZipCode = ZipCode.Text,
+                Email = Email.Text
             };
 
             _employeeBusiness.Update(employee);
@@ -143,6 +144,7 @@
             PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
             TaxForm.SelectedIndex = (int)employee.TaxForm;
             Rate.Text = employee.Rate.ToString("C");
+            Email.Text = employee.Email;
         }
 
         private void Clear()
@@ -173,6 +175,7 @@
             StateDriverLicense.Text = string.Empty;
             City.Text = string.Empty;
             ZipCode.Text = string.Empty;
+            Email.Text = string.Empty;
 
             LoadTrucks();
         }
