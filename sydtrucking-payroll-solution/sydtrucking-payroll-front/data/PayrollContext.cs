@@ -4,19 +4,47 @@
     using MongoDB.Driver;
     using sydtrucking_payroll_front.model;
     using sydtrucking_payroll_front.Properties;
-    using System.Linq;
     using System.Threading.Tasks;
+    using System.Linq;
 
     public class PayrollContext
     {
         private readonly IMongoDatabase _database = null;
-        private readonly MongoClient _client = null;
 
         public PayrollContext(Settings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             if (client != null)
+            {
                 _database = client.GetDatabase(settings.Database);
+                InitData();
+            }
+        }
+
+        private void InitData()
+        {
+            if (_database.ListCollections().ToList().Count() <= 0)
+            {
+                Roles.InsertOne(new Role()
+                {
+                    Name = "Administrador"
+                });
+
+                Roles.InsertOne(new Role()
+                {
+                    Name = "Basico"
+                });
+
+                User admin = new User()
+                {
+                    Username = "admin",
+                    Password = "admin",
+                    IsActive = true,
+                    Fullname = "admin",
+                };
+                admin.Roles.AddRange(Roles.Find(FilterDefinition<Role>.Empty).ToList());
+                Users.InsertOne(admin);
+            }
         }
 
         public async Task<bool> ValidateConnectionAsync()
