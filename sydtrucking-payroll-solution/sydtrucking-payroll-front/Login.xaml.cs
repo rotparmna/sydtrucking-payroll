@@ -1,5 +1,6 @@
 ﻿namespace sydtrucking_payroll_front
 {
+    using sydtrucking_payroll_front.business;
     using System.Threading.Tasks;
     using System.Windows;
 
@@ -9,10 +10,12 @@
     public partial class Login : Window
     {
         data.PayrollContext _context;
+        Authenticate _authenticate;
 
         public Login()
         {
             _context = new data.PayrollContext(Properties.Settings.Default);
+            _authenticate = new Authenticate();
             InitializeComponent();
         }
 
@@ -24,8 +27,11 @@
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Username.Text=="admin" && Password.Password == "admin")
+            _authenticate.Login(Username.Text, Password.Password);
+            if (_authenticate.IsAuthenticate)
             {
+                Ticket.Instance.Authenticate = _authenticate;
+
                 MainWindow main = new MainWindow();
                 main.Show();
 
