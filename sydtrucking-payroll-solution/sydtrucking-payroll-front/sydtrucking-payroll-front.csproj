@@ -104,6 +104,7 @@
     <Compile Include="business\Authenticate.cs" />
     <Compile Include="business\Constant.cs" />
     <Compile Include="business\Employee.cs" />
+    <Compile Include="business\InitializeData.cs" />
     <Compile Include="business\Payroll.cs" />
     <Compile Include="business\Ping.cs" />
     <Compile Include="business\Role.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="print\PrintPayroll.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="view\IUpdateMessage.cs" />
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
     </Compile>

@@ -1,21 +1,24 @@
 ﻿namespace sydtrucking_payroll_front
 {
     using sydtrucking_payroll_front.business;
-    using System.Threading.Tasks;
     using System.Windows;
+    using sydtrucking_payroll_front.view;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Lógica de interacción para Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Login : Window, IUpdateUI
     {
-        data.PayrollContext _context;
+        Ping _ping;
+        InitializeData _initializeData;
         Authenticate _authenticate;
 
         public Login()
         {
-            _context = new data.PayrollContext(Properties.Settings.Default);
+            _ping = new Ping(this);
             _authenticate = new Authenticate();
+            _initializeData = new InitializeData(this);
             InitializeComponent();
         }
 
@@ -37,36 +40,27 @@
 
                 Close();
             }
+            else
+                UpdateMessageConnection("Login failed!");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ValidateConnectionDB();
-        }
-
-        private void ValidateConnectionDB()
-        {
-            Enable(false);
-            MessageConnection.Text = "Validating connection to database!";
-            _context.ValidateConnectionAsync().ContinueWith((x) =>
+            _ping.SendAsync().ContinueWith(async (x) =>
             {
-                if (x.IsCompleted && !x.IsFaulted && !x.IsCanceled)
+                if (x.IsCompleted && !x.IsFaulted && !x.IsCanceled && x.Result)
                 {
-                    UpdateMessageConnection(x.Result ? 
-                                                "Correct connection to database!" : 
-                                                "Incorrect connection to database!");
-                    Enable(x.Result);
+                    await _initializeData.DoAsync();
                 }
-
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void UpdateMessageConnection(string text)
+        public void UpdateMessageConnection(string text)
         {
             MessageConnection.Text = text;
         }
 
-        private void Enable(bool isEnable)
+        public void Enable(bool isEnable)
         {
             Username.IsEnabled = isEnable;
             Password.IsEnabled = isEnable;

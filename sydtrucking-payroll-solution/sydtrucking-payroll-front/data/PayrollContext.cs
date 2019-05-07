@@ -11,13 +11,21 @@
     {
         private readonly IMongoDatabase _database = null;
 
+        public int CountCollections
+        {
+            get
+            {
+                return _database.ListCollections().ToList().Count();
+            }
+        }
+
         public PayrollContext(Settings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             if (client != null)
             {
                 _database = client.GetDatabase(settings.Database);
-                InitData();
+                //InitData();
             }
         }
 
