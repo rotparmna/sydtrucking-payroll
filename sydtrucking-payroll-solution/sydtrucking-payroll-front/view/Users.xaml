@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="General" HorizontalAlignment="Left" Height="220" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
-                <Label Content="Social Security" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <TextBox Grid.Row="0" Name="SocialSecurity" HorizontalAlignment="Left" Height="23" Margin="105,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
+                <Label Content="Username" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" Name="Username" HorizontalAlignment="Left" Height="23" Margin="105,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
                 <Label Content="Fullname" Grid.Row="0" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <TextBox Grid.Row="0" x:Name="Fullname" HorizontalAlignment="Left" Height="23" Margin="85,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216"/>
                 <Label Content="Email" Grid.Row="0" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
@@ -45,7 +45,7 @@
         <DataGrid x:Name="ListUsers" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListUsers_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
                 <DataGridTextColumn Header="Fullname" Binding="{Binding Fullname}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Last Login" Binding="{Binding LastLogin}"/>

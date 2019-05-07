@@ -40,7 +40,7 @@
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             var id = _userBusiness.GetAll()
-                          .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
+                          .Where(x => x.Username == Username.Text)
                           .DefaultIfEmpty(new User() { Id = string.Empty })
                           .FirstOrDefault()
                           .Id;
@@ -48,7 +48,7 @@
             User user = new User()
             {
                 Id = id,
-                SocialSecurity = long.Parse(SocialSecurity.Text),
+                Username = Username.Text,
                 Email = Email.Text,
                 Fullname = Fullname.Text,
                 IsActive = IsActive.IsChecked.Value,
@@ -78,7 +78,7 @@
         private void LoadUsers(User user)
         {
             _idUserSelected = user.Id;
-            SocialSecurity.Text = user.SocialSecurity.ToString();
+            Username.Text = user.Username;
             LastLogin.SelectedDate = user.LastLogin;
             Fullname.Text = user.Fullname;
             Email.Text = user.Email;
@@ -103,7 +103,7 @@
 
         private void Clear()
         {
-            SocialSecurity.Text = string.Empty;
+            Username.Text = string.Empty;
             Fullname.Text = string.Empty;
             Email.Text = string.Empty;
             LastLogin.SelectedDate = null;

@@ -38,7 +38,7 @@
 
         public void Update(model.User user)
         {
-            var isEdit = GetAll().Where(x => x.SocialSecurity == user.SocialSecurity)
+            var isEdit = GetAll().Where(x => x.Username == user.Username)
                                     .Count() > 0;
 
             if (isEdit)
