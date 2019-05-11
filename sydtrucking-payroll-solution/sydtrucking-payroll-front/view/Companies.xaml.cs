@@ -1,7 +1,6 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
     using System.Windows;
-    using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
 
@@ -10,60 +9,63 @@
     /// </summary>
     public partial class Companies : Window
     {
-        private List<Role> _rolesModel;
-        private business.Role _roleBusiness;
-        private string _idRoleSelected;
+        private List<Company> _companiesModel;
+        private business.IBusiness<Company> _companyBusiness;
+        private string _idCompanySelected;
 
         public Companies()
         {
             InitializeComponent();
-            _idRoleSelected = string.Empty;
-            _rolesModel = new List<Role>();
-            _roleBusiness = new business.Role();
+            _idCompanySelected = string.Empty;
+            _companiesModel = new List<Company>();
+            _companyBusiness = new business.Company();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Clear();
-            LoadRoles();
+            LoadCompanies();
         }
 
-        private void LoadRoles()
+        private void LoadCompanies()
         {
-            _rolesModel = _roleBusiness.GetAll();
-            ListRoles.ItemsSource = _rolesModel;
+            _companiesModel = _companyBusiness.GetAll();
+            ListCompanies.ItemsSource = _companiesModel;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Role role = new Role()
+            Company role = new Company()
             {
-                Id = _idRoleSelected,
-                Name = Name.Text
+                Id = _idCompanySelected,
+                Name = Name.Text,
+                Rate = double.Parse(Rate.Text.Replace("$", string.Empty))
             };
 
-            _roleBusiness.Update(role);
-            LoadRoles();
+            _companyBusiness.Update(role);
+            LoadCompanies();
         }
 
-        private void ListRoles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Role))
+            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Company))
             {
-                LoadEmployee((Role)e.AddedItems[0]);
+                LoadCompany((Company)e.AddedItems[0]);
             }
         }
 
-        private void LoadEmployee(Role role)
+        private void LoadCompany(Company company)
         {
-            _idRoleSelected = role.Id;
-            Name.Text = role.Name;
+            _idCompanySelected = company.Id;
+            Name.Text = company.Name;
+            Rate.Text = company.Rate.ToString("C");
         }
 
         private void Clear()
         {
-            _idRoleSelected = string.Empty;
+            _idCompanySelected = string.Empty;
             Name.Text = string.Empty;
+            Rate.Text = string.Empty;
         }
     }
 }

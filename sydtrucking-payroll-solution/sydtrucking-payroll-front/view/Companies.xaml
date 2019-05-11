@@ -4,26 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Companies" Height="238.338" Width="722.5" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Companies" Height="265.519" Width="722.5" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="33*"/>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="88*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*" />
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="General" HorizontalAlignment="Left" Height="69" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+        <GroupBox Header="General" HorizontalAlignment="Left" Height="101" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
                 <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+                <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="61,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
             </Grid>
         </GroupBox>
-        <DataGrid x:Name="ListRoles" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListRoles_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+        <DataGrid x:Name="ListCompanies" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListCompanies_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">

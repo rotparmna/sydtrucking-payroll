@@ -102,8 +102,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="business\Authenticate.cs" />
+    <Compile Include="business\BusinessBase.cs" />
+    <Compile Include="business\Company.cs" />
     <Compile Include="business\Constant.cs" />
     <Compile Include="business\Employee.cs" />
+    <Compile Include="business\IBusiness.cs" />
     <Compile Include="business\InitializeData.cs" />
     <Compile Include="business\Payroll.cs" />
     <Compile Include="business\Ping.cs" />
@@ -278,6 +281,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\search128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\company128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

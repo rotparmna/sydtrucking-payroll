@@ -47,5 +47,11 @@
             view.Trucks truck = new view.Trucks();
             truck.Show();
         }
+
+        private void Companies_Click(object sender, RoutedEventArgs e)
+        {
+            view.Companies company = new view.Companies();
+            company.Show();
+        }
     }
 }
