@@ -29,32 +29,6 @@
             }
         }
 
-        private void InitData()
-        {
-            if (_database.ListCollections().ToList().Count() <= 0)
-            {
-                Roles.InsertOne(new Role()
-                {
-                    Name = "Administrador"
-                });
-
-                Roles.InsertOne(new Role()
-                {
-                    Name = "Basico"
-                });
-
-                User admin = new User()
-                {
-                    Username = "admin",
-                    Password = "admin",
-                    IsActive = true,
-                    Fullname = "admin",
-                };
-                admin.Roles.AddRange(Roles.Find(FilterDefinition<Role>.Empty).ToList());
-                Users.InsertOne(admin);
-            }
-        }
-
         public async Task<bool> ValidateConnectionAsync()
         {
             bool isOnline = true;
@@ -106,6 +80,14 @@
             get
             {
                 return _database.GetCollection<Truck>("Trucks");
+            }
+        }
+
+        public IMongoCollection<Company> Companies
+        {
+            get
+            {
+                return _database.GetCollection<Company>("Companies");
             }
         }
     }
