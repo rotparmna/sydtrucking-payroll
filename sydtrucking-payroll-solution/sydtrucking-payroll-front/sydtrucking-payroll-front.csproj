@@ -277,13 +277,19 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\save128.png" />
+    <Resource Include="resources\images\save128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\search128.png" />
+    <Resource Include="resources\images\search128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\company128.png" />
+    <Resource Include="resources\images\company128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
