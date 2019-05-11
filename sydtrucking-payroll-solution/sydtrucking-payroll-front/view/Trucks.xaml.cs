@@ -11,7 +11,7 @@
     public partial class Trucks : Window
     {
         private List<Truck> _trucksModel;
-        private business.Truck _truckBusiness;
+        private business.IBusiness<Truck> _truckBusiness;
         private string _idTruckSelected;
 
         public Trucks()

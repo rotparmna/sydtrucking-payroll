@@ -15,7 +15,7 @@
     {
         private List<Employee> _employeesModel;
         private List<Truck> _trucksModel;
-        private business.Employee _employeeBusiness;
+        private business.IBusiness<Employee> _employeeBusiness;
         private business.Truck _truckBusiness;
         private string _idEmployeeSelected;
 

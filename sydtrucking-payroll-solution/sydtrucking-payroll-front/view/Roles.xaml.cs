@@ -11,7 +11,7 @@
     public partial class Roles : Window
     {
         private List<Role> _rolesModel;
-        private business.Role _roleBusiness;
+        private business.IBusiness<Role> _roleBusiness;
         private string _idRoleSelected;
 
         public Roles()

@@ -1,18 +1,12 @@
 ﻿namespace sydtrucking_payroll_front.business
 {
     using MongoDB.Driver;
-    using sydtrucking_payroll_front.data;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Truck
+    public class Truck : BusinessBase, IBusiness<model.Truck>
     {
-        private PayrollContext context;
-
-        public Truck()
-        {
-            context = new PayrollContext(Properties.Settings.Default);
-        }
+        public Truck() : base() { }
 
         public List<model.Truck> GetAll()
         {

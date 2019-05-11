@@ -11,8 +11,8 @@
     public partial class Users : Window
     {
         private List<User> _usersModel;
-        private business.User _userBusiness;
-        private business.Role _roleBusiness;
+        private business.IBusiness<User> _userBusiness;
+        private business.IBusiness<Role> _roleBusiness;
         private List<RoleDetailView> _rolesView;
         private string _idUserSelected;
 

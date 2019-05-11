@@ -11,8 +11,8 @@
     /// </summary>
     public partial class Payroll : Window
     {
-        business.Payroll _payrollBusiness;
-        business.Employee _employeeBusiness;
+        business.IBusiness<model.Payroll> _payrollBusiness;
+        business.IBusiness<Employee> _employeeBusiness;
         ObservableCollection<PayrollDetailView> _details;
         model.Payroll _payroll;
 
