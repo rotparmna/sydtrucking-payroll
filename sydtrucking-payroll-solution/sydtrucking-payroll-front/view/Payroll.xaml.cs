@@ -5,6 +5,7 @@
     using System.Windows;
     using System.Linq;
     using System;
+    using System.Windows.Data;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
@@ -13,6 +14,7 @@
     {
         business.IBusiness<model.Payroll> _payrollBusiness;
         business.IBusiness<Employee> _employeeBusiness;
+        business.IBusiness<Company> _companyBusiness;
         ObservableCollection<PayrollDetailView> _details;
         model.Payroll _payroll;
 
@@ -21,6 +23,7 @@
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
             _employeeBusiness = new business.Employee();
+            _companyBusiness = new business.Company();
             _details = new ObservableCollection<PayrollDetailView>();
             _payroll = new model.Payroll();
         }
@@ -30,6 +33,8 @@
             Employees.SelectedValuePath = "Id";
             Employees.DisplayMemberPath = "Fullname";
             Employees.ItemsSource = _employeeBusiness.GetAll();
+
+            ((CollectionViewSource)Details.FindResource("Companies")).Source = _companyBusiness.GetAll();
 
             Details.ItemsSource = _details;
 
@@ -44,8 +49,7 @@
                 Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
             }
         }
-
-
+        
         private void Details_Loaded(object sender, RoutedEventArgs e)
         {
             var sourceCollection = Details.ItemsSource as ObservableCollection<PayrollDetailView>;
@@ -82,7 +86,7 @@
             return message;
         }
 
-        private void Details_CurrentCellChanged(object sender, System.EventArgs e)
+        private void Details_CurrentCellChanged(object sender, EventArgs e)
         {
             CalculateHours();
             ValidationsDetails(true);

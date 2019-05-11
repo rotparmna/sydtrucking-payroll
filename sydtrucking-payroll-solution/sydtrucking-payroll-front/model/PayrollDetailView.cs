@@ -10,7 +10,7 @@
         }
 
         public DateTime TicketDate { get; set; }
-        public string Company { get; set; }
+        public Company Company { get; set; }
         public int TicketNumber { get; set; }
         public int Hours { get; set; }
     }
