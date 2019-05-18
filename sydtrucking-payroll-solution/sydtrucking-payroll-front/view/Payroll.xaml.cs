@@ -214,8 +214,8 @@
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
                 _payroll.Deductions = deductions;
                 _payroll.Reimbursements = reimbursements;
-                _payroll.DeductionsText = DeductionsText.Text;
-                _payroll.ReimbursementsText = ReimbursementsText.Text;
+                _payroll.DeductionsDetail = DeductionsText.Text;
+                _payroll.ReimbursmentsDetail = ReimbursementsText.Text;
                 _details.ToList().ForEach(x =>
                 {
                     _payroll.Details.Add(new PayrollDetail()

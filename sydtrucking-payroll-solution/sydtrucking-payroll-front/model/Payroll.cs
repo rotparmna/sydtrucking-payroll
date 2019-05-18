@@ -26,9 +26,7 @@
         public int OvertimeHour { get; set; }
         public double Payment { get; set; }
         public double Deductions { get; set; }
-        public string DeductionsText { get; set; }
         public double Reimbursements { get; set; }
-        public string ReimbursementsText { get; set; }
         public double TotalPayment { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
