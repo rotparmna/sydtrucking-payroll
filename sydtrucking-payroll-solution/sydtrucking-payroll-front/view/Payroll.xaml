@@ -46,11 +46,13 @@
                 <Label Grid.Column="1" Content="Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
                 <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="Payment" HorizontalAlignment="Left" Height="23" Margin="74,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
                 <Label Grid.Column="1" Content="Deductions" Grid.Row="0" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
-                <TextBox Grid.Column="1" Grid.Row="0" x:Name="Deductions" HorizontalAlignment="Left" Height="23" Margin="87,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182" LostFocus="Deductions_LostFocus"/>
+                <TextBox Grid.Row="0" x:Name="Deductions" HorizontalAlignment="Left" Height="23" Margin="87,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" LostFocus="Deductions_LostFocus"/>
                 <Label Grid.Column="1" Content="Reimbursements" Grid.Row="0" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
-                <TextBox Grid.Column="1" Grid.Row="0" x:Name="Reimbursements" HorizontalAlignment="Left" Height="23" Margin="118,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" LostFocus="Reimbursements_LostFocus"/>
+                <TextBox Grid.Row="0" x:Name="Reimbursements" HorizontalAlignment="Left" Height="23" Margin="118,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="63" LostFocus="Reimbursements_LostFocus"/>
                 <Label Grid.Column="1" Content="Total Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
                 <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" x:Name="TotalPayment" HorizontalAlignment="Left" Height="23" Margin="99,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                <TextBox Grid.Row="0" x:Name="DeductionsText" HorizontalAlignment="Left" Height="23" Margin="186,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" LostFocus="Deductions_LostFocus"/>
+                <TextBox Grid.Row="0" x:Name="ReimbursementsText" HorizontalAlignment="Left" Height="23" Margin="186,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" LostFocus="Deductions_LostFocus"/>
             </Grid>
         </GroupBox>
         <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded" CurrentCellChanged="Details_CurrentCellChanged">

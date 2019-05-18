@@ -70,7 +70,10 @@
             _details.ToList().ForEach(x =>
             {
                 isTicketDateNotRange = !isTicketDateNotRange ?
-                                            _details.Where(y => x.TicketDate < FromPayment.SelectedDate.Value || x.TicketDate > ToPayment.SelectedDate.Value).Count() > 1
+                                            _details
+                                            .Where(y => x.TicketDate < FromPayment.SelectedDate.Value || 
+                                                        x.TicketDate > ToPayment.SelectedDate.Value)
+                                            .Count() > 1
                                             : isTicketDateNotRange;
             });
 
@@ -199,11 +202,20 @@
 
             if (message == string.Empty)
             {
+                var deductions = 0.0;
+                var reimbursements = 0.0;
+                double.TryParse(Deductions.Text, out deductions);
+                double.TryParse(Reimbursements.Text, out reimbursements);
+
                 _payroll.TruckNumber = int.Parse(TruckNumber.Text);
                 _payroll.Employee = (Employee)Employees.SelectedItem;
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
+                _payroll.Deductions = deductions;
+                _payroll.Reimbursements = reimbursements;
+                _payroll.DeductionsText = DeductionsText.Text;
+                _payroll.ReimbursementsText = ReimbursementsText.Text;
                 _details.ToList().ForEach(x =>
                 {
                     _payroll.Details.Add(new PayrollDetail()
@@ -245,7 +257,9 @@
             OvertimeHour.Text = string.Empty;
             Payment.Text = string.Empty;
             Deductions.Text = string.Empty;
+            DeductionsText.Text = string.Empty;
             Reimbursements.Text = string.Empty;
+            ReimbursementsText.Text = string.Empty;
             TotalPayment.Text = string.Empty;
             Details.ItemsSource = _details;
         }
