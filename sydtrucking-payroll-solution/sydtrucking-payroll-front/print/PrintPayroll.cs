@@ -8,24 +8,24 @@
     {
         PrintToPdf _toPdf;
 
-        public string FileName { get; private set; }
+        public string Fullname { get; private set; }
+        public string Filename { get; private set; }
         public Payroll Payroll { get; set; }
 
         public PrintPayroll(Payroll payroll)
         {
             Payroll = payroll;
-            FileName = CreateFileName();
-            _toPdf = new PrintToPdf(FileName);
+            Fullname = CreateFullname();
+            _toPdf = new PrintToPdf(Fullname);
         }
 
-        private string CreateFileName()
+        private string CreateFullname()
         {
-            return business.Constant.PathReportPayroll + "\\" + 
-                    Payroll.Employee.SocialSecurity.ToString() + "-" + 
-                    DateTime.Now.Ticks.ToString() + ".pdf";
+            Filename = Payroll.Employee.SocialSecurity.ToString() + "-" + DateTime.Now.Ticks.ToString() + ".pdf";
+            return business.Constant.PathReportPayroll + "\\" + Filename;
         }
 
-        public void Print()
+        public void Print(bool isOpen)
         {
             _toPdf.AddPage(PdfSharp.PageSize.Letter);
 
@@ -36,13 +36,14 @@
 
             _toPdf.Print();
 
-            OpenPDF();
+            if (isOpen)
+                OpenPDF();
         }
 
         private void OpenPDF()
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FileName;
+            string path = AppDomain.CurrentDomain.BaseDirectory + Fullname;
             Uri pdf = new Uri(path, UriKind.RelativeOrAbsolute);
             process.StartInfo.FileName = pdf.LocalPath;
             process.Start();

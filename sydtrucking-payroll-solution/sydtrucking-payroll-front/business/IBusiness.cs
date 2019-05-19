@@ -7,5 +7,7 @@
         List<T> GetAll();
 
         void Update(T model);
+
+        T Get(string id);
     }
 }

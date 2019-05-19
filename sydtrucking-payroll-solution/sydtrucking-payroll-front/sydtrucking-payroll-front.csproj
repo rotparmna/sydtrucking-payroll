@@ -104,6 +104,7 @@
     <Compile Include="business\Authenticate.cs" />
     <Compile Include="business\BusinessBase.cs" />
     <Compile Include="business\Company.cs" />
+    <Compile Include="business\Configuration.cs" />
     <Compile Include="business\Constant.cs" />
     <Compile Include="business\Employee.cs" />
     <Compile Include="business\IBusiness.cs" />
@@ -120,10 +121,13 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Company.cs" />
+    <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
     <Compile Include="model\Truck.cs" />
+    <Compile Include="notification\Email.cs" />
+    <Compile Include="notification\INotification.cs" />
     <Compile Include="print\PrintPayroll.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="Ticket.cs" />
@@ -290,6 +294,12 @@
     <Resource Include="resources\images\company128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\email128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\email24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

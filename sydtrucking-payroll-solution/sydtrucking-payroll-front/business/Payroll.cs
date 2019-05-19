@@ -1,6 +1,7 @@
 ﻿namespace sydtrucking_payroll_front.business
 {
     using MongoDB.Driver;
+    using sydtrucking_payroll_front.notification;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -57,6 +58,12 @@
             });
 
             return printPayrollsView;
+        }
+
+        public void SendEmail(INotification notification, model.Payroll payroll)
+        {
+            notification.To = payroll.Employee.Email;
+            notification.Send("Pay Stub");
         }
     }
 }

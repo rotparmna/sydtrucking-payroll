@@ -43,6 +43,18 @@
                 admin.Roles.AddRange(_context.Roles.Find(FilterDefinition<model.Role>.Empty).ToList());
                 await _context.Users.InsertOneAsync(admin);
 
+                await _context.Configurations.InsertOneAsync(new model.Configuration()
+                {
+                    Smtp = new model.Smtp()
+                    {
+                        Email = "office@sdtruckingtx.com",
+                        EnableSsl = true,
+                        Password = "Office1980",
+                        Port = 587,
+                        Server = "smtp.gmail.com"
+                    }
+                });
+
                 _updateMessage.UpdateMessageConnection("Data started.");
             }
             else

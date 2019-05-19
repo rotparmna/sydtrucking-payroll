@@ -3,6 +3,7 @@
     using MongoDB.Driver;
     using System.Collections.Generic;
     using System.Linq;
+    using sydtrucking_payroll_front.model;
 
     public class Truck : BusinessBase, IBusiness<model.Truck>
     {
@@ -40,6 +41,11 @@
                 Edit(truck);
             else
                 Add(truck);
+        }
+
+        public model.Truck Get(string id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

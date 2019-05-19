@@ -3,6 +3,7 @@
     using MongoDB.Driver;
     using System.Collections.Generic;
     using System.Linq;
+    using sydtrucking_payroll_front.model;
 
     public class Role : BusinessBase, IBusiness<model.Role>
     {
@@ -34,6 +35,11 @@
                 Edit(role);
             else
                 Add(role);
+        }
+
+        public model.Role Get(string id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

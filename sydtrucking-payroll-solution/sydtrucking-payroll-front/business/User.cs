@@ -4,6 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using sydtrucking_payroll_front.model;
 
     public class User : BusinessBase, IBusiness<model.User>
     {
@@ -68,6 +69,11 @@
                             builder.Eq("IsActive", true);
 
             return context.Users.Find(filter).CountDocuments() == 1;
+        }
+
+        public model.User Get(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

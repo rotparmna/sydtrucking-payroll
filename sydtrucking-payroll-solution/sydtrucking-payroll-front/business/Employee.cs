@@ -3,6 +3,7 @@
     using MongoDB.Driver;
     using System.Collections.Generic;
     using System.Linq;
+    using sydtrucking_payroll_front.model;
 
     public class Employee : BusinessBase, IBusiness<model.Employee>
     {
@@ -34,7 +35,8 @@
                                                      .Set(u => u.City, employee.City)
                                                      .Set(u => u.ZipCode, employee.ZipCode)
                                                      .Set(u => u.TaxForm, employee.TaxForm)
-                                                     .Set(u => u.Truck, employee.Truck);
+                                                     .Set(u => u.Truck, employee.Truck)
+                                                     .Set(u => u.Email, employee.Email);
 
             context.Employees.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
         }
@@ -48,6 +50,11 @@
                 Edit(employee);
             else
                 Add(employee);
+        }
+
+        public model.Employee Get(string id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
