@@ -53,5 +53,11 @@
             view.OilCompanies company = new view.OilCompanies();
             company.Show();
         }
+
+        private void LeaseCompanies_Click(object sender, RoutedEventArgs e)
+        {
+            view.LeaseCompanies company = new view.LeaseCompanies();
+            company.Show();
+        }
     }
 }

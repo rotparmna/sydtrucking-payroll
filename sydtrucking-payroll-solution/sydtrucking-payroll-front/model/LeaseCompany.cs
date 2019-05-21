@@ -6,6 +6,11 @@
 
     public class LeaseCompany
     {
+        public LeaseCompany()
+        {
+            Trucks = new List<Truck>();
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

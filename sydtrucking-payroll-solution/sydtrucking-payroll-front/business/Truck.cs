@@ -45,7 +45,10 @@
 
         public model.Truck Get(string id)
         {
-            throw new System.NotImplementedException();
+            var builder = Builders<model.Truck>.Filter;
+            var filter = builder.Eq(x => x.Id, id);
+
+            return context.Trucks.Find(filter).FirstOrDefault();
         }
     }
 }

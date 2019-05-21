@@ -128,12 +128,17 @@
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
     <Compile Include="model\Truck.cs" />
+    <Compile Include="model\TruckDetailView.cs" />
     <Compile Include="notification\Email.cs" />
     <Compile Include="notification\INotification.cs" />
     <Compile Include="print\PrintPayroll.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="view\IUpdateMessage.cs" />
+    <Compile Include="view\IView.cs" />
+    <Compile Include="view\LeaseCompanies.xaml.cs">
+      <DependentUpon>LeaseCompanies.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
     </Compile>
@@ -172,6 +177,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\LeaseCompanies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="view\ReportPayroll.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -302,6 +311,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\email24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\leasecompany128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\new128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
