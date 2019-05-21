@@ -12,8 +12,8 @@
                 <Button ToolTip="Employees" x:Name="EmployeeButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="EmployeeButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Employees" Source="/sydtrucking-payroll-front;component/resources/images/employee128.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Companies" x:Name="Companies" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="Companies_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Companies" Source="/sydtrucking-payroll-front;component/resources/images/company128.png" Width="48px" />
+                <Button ToolTip="Oil Companies" x:Name="OilCompanies" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="OilCompanies_Click" Height="66" HorizontalContentAlignment="Center">
+                    <Image ToolTip="Oil Companies" Source="/sydtrucking-payroll-front;component/resources/images/company128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Trucks" x:Name="TruckButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="TruckButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Trucks" Source="/sydtrucking-payroll-front;component/resources/images/truck128.png" Width="48px" />

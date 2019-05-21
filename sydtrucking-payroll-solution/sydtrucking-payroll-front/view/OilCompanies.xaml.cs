@@ -7,18 +7,18 @@
     /// <summary>
     /// Lógica de interacción para Roles.xaml
     /// </summary>
-    public partial class Companies : Window
+    public partial class OilCompanies : Window
     {
-        private List<Company> _companiesModel;
-        private business.IBusiness<Company> _companyBusiness;
+        private List<OilCompany> _companiesModel;
+        private business.IBusiness<OilCompany> _companyBusiness;
         private string _idCompanySelected;
 
-        public Companies()
+        public OilCompanies()
         {
             InitializeComponent();
             _idCompanySelected = string.Empty;
-            _companiesModel = new List<Company>();
-            _companyBusiness = new business.Company();
+            _companiesModel = new List<OilCompany>();
+            _companyBusiness = new business.OilCompany();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,7 +35,7 @@
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Company role = new Company()
+            OilCompany role = new OilCompany()
             {
                 Id = _idCompanySelected,
                 Name = Name.Text,
@@ -48,13 +48,13 @@
 
         private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Company))
+            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(OilCompany))
             {
-                LoadCompany((Company)e.AddedItems[0]);
+                LoadCompany((OilCompany)e.AddedItems[0]);
             }
         }
 
-        private void LoadCompany(Company company)
+        private void LoadCompany(OilCompany company)
         {
             _idCompanySelected = company.Id;
             Name.Text = company.Name;

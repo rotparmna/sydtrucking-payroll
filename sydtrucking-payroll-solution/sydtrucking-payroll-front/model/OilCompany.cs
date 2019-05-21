@@ -3,7 +3,7 @@
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
 
-    public class Company
+    public class OilCompany
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

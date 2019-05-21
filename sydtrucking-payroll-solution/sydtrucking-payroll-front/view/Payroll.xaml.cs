@@ -14,7 +14,7 @@
     {
         business.IBusiness<model.Payroll> _payrollBusiness;
         business.IBusiness<Employee> _employeeBusiness;
-        business.IBusiness<Company> _companyBusiness;
+        business.IBusiness<OilCompany> _companyBusiness;
         ObservableCollection<PayrollDetailView> _details;
         model.Payroll _payroll;
 
@@ -23,7 +23,7 @@
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
             _employeeBusiness = new business.Employee();
-            _companyBusiness = new business.Company();
+            _companyBusiness = new business.OilCompany();
             _details = new ObservableCollection<PayrollDetailView>();
             _payroll = new model.Payroll();
         }
@@ -34,7 +34,7 @@
             Employees.DisplayMemberPath = "Fullname";
             Employees.ItemsSource = _employeeBusiness.GetAll();
 
-            ((CollectionViewSource)Details.FindResource("Companies")).Source = _companyBusiness.GetAll();
+            ((CollectionViewSource)Details.FindResource("OilCompanies")).Source = _companyBusiness.GetAll();
 
             Details.ItemsSource = _details;
 
@@ -220,7 +220,7 @@
                 {
                     _payroll.Details.Add(new PayrollDetail()
                     {
-                        Company = x.Company,
+                        OilCompany = x.OilCompany,
                         Hours = x.Hours,
                         Ticket = new Ticket() { Date = x.TicketDate, Number = x.TicketNumber }
                     });

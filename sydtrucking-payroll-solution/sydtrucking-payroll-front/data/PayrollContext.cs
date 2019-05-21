@@ -83,11 +83,11 @@
             }
         }
 
-        public IMongoCollection<Company> Companies
+        public IMongoCollection<OilCompany> OilCompanies
         {
             get
             {
-                return _database.GetCollection<Company>("Companies");
+                return _database.GetCollection<OilCompany>("OilCompanies");
             }
         }
 

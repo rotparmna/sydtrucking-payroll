@@ -104,7 +104,7 @@
             {
                 itemY += 15;
                 _toPdf.DrawString(item.Ticket.Date.Date.ToShortDateString(), FormatText.Regular, headerDateX, itemY, 50, 200, XStringFormats.Center);
-                _toPdf.DrawString(item.Company.Name, FormatText.Regular, headerCompanyX, itemY, 50, 200, XStringFormats.Center);
+                _toPdf.DrawString(item.OilCompany.Name, FormatText.Regular, headerCompanyX, itemY, 50, 200, XStringFormats.Center);
                 _toPdf.DrawString(item.Ticket.Number.ToString(), FormatText.Regular, headerTicketX, itemY, 50, 200, XStringFormats.Center);
                 _toPdf.DrawString(item.Hours.ToString(), FormatText.Regular, headerHoursX, itemY, 50, 200, XStringFormats.Center);
             }

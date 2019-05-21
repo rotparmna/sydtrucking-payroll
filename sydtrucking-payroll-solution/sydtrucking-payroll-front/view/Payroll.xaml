@@ -57,12 +57,12 @@
         </GroupBox>
         <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded" CurrentCellChanged="Details_CurrentCellChanged">
             <DataGrid.Resources>
-                <CollectionViewSource x:Key="Companies"/>
+                <CollectionViewSource x:Key="OilCompanies"/>
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ticket Date (mm/dd/yyyy)" Binding="{Binding TicketDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
                 <!--<DataGridTextColumn Header="Company" Binding="{Binding Company}"/>-->
-                <DataGridComboBoxColumn Header="Company" ItemsSource="{Binding Source={StaticResource Companies}}" SelectedItemBinding="{Binding Company}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                <DataGridComboBoxColumn Header="Company" ItemsSource="{Binding Source={StaticResource OilCompanies}}" SelectedItemBinding="{Binding OilCompany}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
                 <DataGridTextColumn Header="Ticket #" Binding="{Binding TicketNumber}"/>
                 <DataGridTextColumn Header="Hours" Binding="{Binding Hours}"/>
             </DataGrid.Columns>

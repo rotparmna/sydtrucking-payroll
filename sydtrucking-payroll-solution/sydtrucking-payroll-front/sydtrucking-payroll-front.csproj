@@ -103,7 +103,7 @@
     </ApplicationDefinition>
     <Compile Include="business\Authenticate.cs" />
     <Compile Include="business\BusinessBase.cs" />
-    <Compile Include="business\Company.cs" />
+    <Compile Include="business\OilCompany.cs" />
     <Compile Include="business\Configuration.cs" />
     <Compile Include="business\Constant.cs" />
     <Compile Include="business\Employee.cs" />
@@ -120,7 +120,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="model\Company.cs" />
+    <Compile Include="model\OilCompany.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
@@ -135,8 +135,8 @@
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Companies.xaml.cs">
-      <DependentUpon>Companies.xaml</DependentUpon>
+    <Compile Include="view\OilCompanies.xaml.cs">
+      <DependentUpon>OilCompanies.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Trucks.xaml.cs">
       <DependentUpon>Trucks.xaml</DependentUpon>
@@ -174,7 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\Companies.xaml">
+    <Page Include="view\OilCompanies.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

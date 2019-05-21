@@ -3,7 +3,7 @@
     public class PayrollDetail
     {
         public Ticket Ticket { get; set; }
-        public Company Company { get; set; }
+        public OilCompany OilCompany { get; set; }
         public int Hours { get; set; }
     }
 }

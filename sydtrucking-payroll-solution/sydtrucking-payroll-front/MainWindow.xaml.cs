@@ -48,9 +48,9 @@
             truck.Show();
         }
 
-        private void Companies_Click(object sender, RoutedEventArgs e)
+        private void OilCompanies_Click(object sender, RoutedEventArgs e)
         {
-            view.Companies company = new view.Companies();
+            view.OilCompanies company = new view.OilCompanies();
             company.Show();
         }
     }
