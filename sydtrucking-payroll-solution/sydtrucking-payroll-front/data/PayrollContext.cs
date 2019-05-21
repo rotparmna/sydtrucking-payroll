@@ -98,5 +98,13 @@
                 return _database.GetCollection<Configuration>("Configurations");
             }
         }
+
+        public IMongoCollection<LeaseCompany> LeaseCompanies
+        {
+            get
+            {
+                return _database.GetCollection<LeaseCompany>("LeaseCompanies");
+            }
+        }
     }
 }

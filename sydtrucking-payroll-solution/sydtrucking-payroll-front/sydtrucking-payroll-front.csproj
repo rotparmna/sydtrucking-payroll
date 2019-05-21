@@ -103,6 +103,7 @@
     </ApplicationDefinition>
     <Compile Include="business\Authenticate.cs" />
     <Compile Include="business\BusinessBase.cs" />
+    <Compile Include="business\LeaseCompany.cs" />
     <Compile Include="business\OilCompany.cs" />
     <Compile Include="business\Configuration.cs" />
     <Compile Include="business\Constant.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\LeaseCompany.cs" />
     <Compile Include="model\OilCompany.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
