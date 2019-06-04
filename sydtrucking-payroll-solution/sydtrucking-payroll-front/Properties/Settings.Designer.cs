@@ -85,5 +85,32 @@ namespace sydtrucking_payroll_front.Properties {
                 return ((string)(this["PathReportPayroll"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-21")]
+        public int LastThreeFridayPayrollLeaseCompany {
+            get {
+                return ((int)(this["LastThreeFridayPayrollLeaseCompany"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        public double PercentLeaseFeeValue {
+            get {
+                return ((double)(this["PercentLeaseFeeValue"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1599")]
+        public double PercentWorkerCompValue {
+            get {
+                return ((double)(this["PercentWorkerCompValue"]));
+            }
+        }
     }
 }

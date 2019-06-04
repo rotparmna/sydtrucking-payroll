@@ -111,6 +111,7 @@
     <Compile Include="business\IBusiness.cs" />
     <Compile Include="business\InitializeData.cs" />
     <Compile Include="business\Payroll.cs" />
+    <Compile Include="business\PayrollLeaseCompany.cs" />
     <Compile Include="business\Ping.cs" />
     <Compile Include="business\Role.cs" />
     <Compile Include="business\Truck.cs" />
@@ -121,10 +122,13 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\GenericCollection.cs" />
     <Compile Include="model\LeaseCompany.cs" />
     <Compile Include="model\OilCompany.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
+    <Compile Include="model\PayrollLeaseCompany.cs" />
+    <Compile Include="model\PayrollLeaseCompanyDetails.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
     <Compile Include="model\Truck.cs" />
@@ -134,10 +138,16 @@
     <Compile Include="print\PrintPayroll.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="util\CustomComboBox.cs" />
+    <Compile Include="util\CustomDateTime.cs" />
+    <Compile Include="util\CustomIEnumerable.cs" />
     <Compile Include="view\IUpdateMessage.cs" />
     <Compile Include="view\IView.cs" />
     <Compile Include="view\LeaseCompanies.xaml.cs">
       <DependentUpon>LeaseCompanies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\PayrollLeaseCompanies.xaml.cs">
+      <DependentUpon>PayrollLeaseCompanies.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ReportPayroll.xaml.cs">
       <DependentUpon>ReportPayroll.xaml</DependentUpon>
@@ -178,6 +188,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="view\LeaseCompanies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\PayrollLeaseCompanies.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

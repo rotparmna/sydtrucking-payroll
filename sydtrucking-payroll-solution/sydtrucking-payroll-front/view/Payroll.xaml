@@ -68,7 +68,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Row="2" Grid.Column="0" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="59" Click="Save_Click">
-            <Image ToolTip="Save" Source="/sydtrucking-payroll-front;component/resources/images/save128.png" Width="48px" />
+            <Image ToolTip="Save" Source="/resources/images/save128.png" Width="48px" />
         </Button>
     </Grid>
 </Window>

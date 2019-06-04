@@ -10,6 +10,16 @@
     {
         public Payroll() : base() { }
 
+        public List<model.Payroll> GetByDateAndTruck(DateTime date, model.Truck truck)
+        {
+            var builder = Builders<model.Payroll>.Filter;
+            var filter = builder.Gte(x => x.PaymentDate, date) & 
+                            builder.Lte(x=>x.PaymentDate, date) & 
+                            builder.Eq(x=>x.TruckNumber, int.Parse(truck.Number));
+
+            return context.Payrolls.Find(filter).ToList();
+        }
+
         public List<model.Payroll> GetAll()
         {
             return context.Payrolls.Find(FilterDefinition<model.Payroll>.Empty).ToList();

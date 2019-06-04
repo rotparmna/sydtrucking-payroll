@@ -10,13 +10,13 @@
         <GroupBox Header="Param" HorizontalAlignment="Left" Height="100" Margin="10,115,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
                 <Button ToolTip="Employees" x:Name="EmployeeButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="EmployeeButton_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Employees" Source="/sydtrucking-payroll-front;component/resources/images/employee128.png" Width="48px" />
+                    <Image ToolTip="Employees" Source="resources/images/employee128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Oil Companies" x:Name="OilCompanies" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="OilCompanies_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Oil Companies" Source="/sydtrucking-payroll-front;component/resources/images/company128.png" Width="48px" />
+                    <Image ToolTip="Oil Companies" Source="resources/images/company128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Trucks" x:Name="TruckButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="TruckButton_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Trucks" Source="/sydtrucking-payroll-front;component/resources/images/truck128.png" Width="48px" />
+                    <Image ToolTip="Trucks" Source="resources/images/truck128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Lease Companies" x:Name="LeaseCompanies" HorizontalAlignment="Left" Margin="244,8,0,0" VerticalAlignment="Top" Width="75" Click="LeaseCompanies_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Lease Companies" Source="resources/images/leasecompany128.png" Width="48px" />
@@ -26,20 +26,23 @@
         <GroupBox Header="Security" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
                 <Button ToolTip="Roles" x:Name="RoleButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="RoleButton_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Roles" Source="/sydtrucking-payroll-front;component/resources/images/role128.png" Width="48px" />
+                    <Image ToolTip="Roles" Source="resources/images/role128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Users" x:Name="UserButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="UserButton_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Users" Source="/sydtrucking-payroll-front;component/resources/images/user128.png" Width="48px" />
+                    <Image ToolTip="Users" Source="resources/images/user128.png" Width="48px" />
                 </Button>
             </Grid>
         </GroupBox>
         <GroupBox Header="Business" HorizontalAlignment="Left" Height="100" Margin="10,220,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
                 <Button ToolTip="Payroll" x:Name="PayrollButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="PayrollButton_Click" Height="66" HorizontalContentAlignment="Center">
-                    <Image ToolTip="Payroll" Source="/sydtrucking-payroll-front;component/resources/images/payroll128.png" Width="48px" />
+                    <Image ToolTip="Payroll" Source="resources/images/payroll128.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Payroll Report" x:Name="ReportPayroll" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False">
-                    <Image ToolTip="Payroll Report" Source="/sydtrucking-payroll-front;component/resources/images/payrollreport128.png" Width="48px" />
+                <Button ToolTip="Payroll Lease Companies" x:Name="PayrollLeaseCompany" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="PayrollLeaseCompany_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False">
+                    <Image ToolTip="Payroll Lease Companies" Source="resources/images/payrollreport128.png" Width="48px" />
+                </Button>
+                <Button ToolTip="Payroll Report" x:Name="ReportPayroll" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False">
+                    <Image ToolTip="Payroll Report" Source="resources/images/payrollreport128.png" Width="48px" />
                 </Button>
             </Grid>
         </GroupBox>

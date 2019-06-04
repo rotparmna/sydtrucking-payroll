@@ -59,5 +59,11 @@
             view.LeaseCompanies company = new view.LeaseCompanies();
             company.Show();
         }
+
+        private void PayrollLeaseCompany_Click(object sender, RoutedEventArgs e)
+        {
+            view.PayrollLeaseCompanies payrollLeaseCompanies = new view.PayrollLeaseCompanies();
+            payrollLeaseCompanies.Show();
+        }
     }
 }
