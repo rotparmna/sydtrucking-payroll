@@ -332,5 +332,10 @@
   <ItemGroup>
     <Resource Include="resources\images\new128.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\payrollleasecompany128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
