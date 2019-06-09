@@ -153,7 +153,7 @@
             Name.Text = string.Empty;
             LastName.Text = string.Empty;
             Birthdate.SelectedDate = DateTime.Now;
-            Trucks.SelectedIndex = 0;
+            Trucks.SelectedIndex = -1;
             DriverLicense.Text = string.Empty;
             ExpirationDate.SelectedDate = DateTime.Now;
             HireDate.SelectedDate = DateTime.Now;
@@ -193,6 +193,20 @@
         private void ChangeActuallyChecked()
         {
             TerminationDate.IsEnabled = Actually.IsChecked.Value;
+        }
+
+        private void Trucks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Trucks.SelectedIndex>=0 && e.AddedItems.Count>0 && e.AddedItems[0] is Truck)
+            {
+                var truck = e.AddedItems[0] as Truck;
+                Year.Text = truck.Year.ToString();
+                Vin.Text = truck.Vin;
+                Make.Text = truck.Make;
+                Plate.Text = truck.Plate;
+                Registration.SelectedDate = truck.Registration;
+                Inspection.SelectedDate = truck.Inspection;
+            }
         }
     }
 }

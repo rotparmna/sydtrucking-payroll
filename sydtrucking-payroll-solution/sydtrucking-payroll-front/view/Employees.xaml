@@ -48,7 +48,7 @@
         <GroupBox Grid.Row="0" Header="Assigned Truck" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Truck Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-                <ComboBox Grid.Row="0" x:Name="Trucks" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" VerticalAlignment="Top" Width="93"/>
+                <ComboBox Grid.Row="0" x:Name="Trucks" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" VerticalAlignment="Top" Width="93" SelectionChanged="Trucks_SelectionChanged"/>
                 <Label Content="Year" Grid.Row="0" HorizontalAlignment="Left" Margin="199,14,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
                 <TextBox IsReadOnly="True" Grid.Row="0" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="252,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="71"/>
                 <Label Content="Vin" Grid.Row="0" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="29"/>
