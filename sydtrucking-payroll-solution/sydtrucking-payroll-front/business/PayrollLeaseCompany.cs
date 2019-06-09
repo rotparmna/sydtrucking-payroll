@@ -1,5 +1,6 @@
 ﻿namespace sydtrucking_payroll_front.business
 {
+    using MongoDB.Driver;
     using System;
     using System.Collections.Generic;
 
@@ -12,12 +13,17 @@
 
         public List<model.PayrollLeaseCompany> GetAll()
         {
-            throw new NotImplementedException();
+            return context.PayrollLeaseCompanies.Find(FilterDefinition<model.PayrollLeaseCompany>.Empty).ToList();
         }
 
-        public void Update(model.PayrollLeaseCompany model)
+        public void Update(model.PayrollLeaseCompany payroll)
         {
-            throw new NotImplementedException();
+            Add(payroll);
+        }
+
+        private void Add(model.PayrollLeaseCompany payroll)
+        {
+            context.PayrollLeaseCompanies.InsertOne(payroll);
         }
     }
 }

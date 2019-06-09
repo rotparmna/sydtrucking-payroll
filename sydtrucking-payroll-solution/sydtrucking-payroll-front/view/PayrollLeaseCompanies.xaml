@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Payroll Lease Companies" Height="561.632" Width="779.912" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Payroll Lease Companies" Height="561.632" Width="458.912" Loaded="Window_Loaded">
     <Window.Resources>
     </Window.Resources>
     <Grid>
@@ -15,7 +15,6 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="Auto" MinWidth="330"/>
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Row="0" Header="General" HorizontalAlignment="Left" Height="97" Margin="10,10,0,0" VerticalAlignment="Top" Width="420">
             <Grid>
@@ -32,43 +31,42 @@
         <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="64" Margin="10,112,0,0" VerticalAlignment="Top" Width="420">
             <Grid>
                 <Label Grid.Row="0" Content="From" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-                <DatePicker IsEnabled="False" Grid.Row="0" Name="FromPayment" HorizontalAlignment="Left" Margin="49,9,0,0" VerticalAlignment="Top" Width="160" Height="24"/>
+                <DatePicker SelectedDateChanged="FromPayment_SelectedDateChanged" IsEnabled="True" Grid.Row="0" Name="FromPayment" HorizontalAlignment="Left" Margin="49,9,0,0" VerticalAlignment="Top" Width="160" Height="24"/>
                 <Label Grid.Row="0" Content="To" HorizontalAlignment="Left" Margin="214,7,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
-                <DatePicker IsEnabled="False" Grid.Row="0" x:Name="ToPayment" HorizontalAlignment="Left" Margin="252,9,0,0" VerticalAlignment="Top" Width="146" Height="24"/>
+                <DatePicker SelectedDateChanged="ToPayment_SelectedDateChanged" IsEnabled="True" Grid.Row="0" x:Name="ToPayment" HorizontalAlignment="Left" Margin="252,9,0,0" VerticalAlignment="Top" Width="146" Height="24"/>
             </Grid>
-        </GroupBox>
-        <GroupBox HorizontalContentAlignment="Stretch" Grid.Row="0" Header="Subtotal" Margin="0,10,0,56" Grid.Column="1" VerticalContentAlignment="Stretch">
-            <Grid>
-                <Label Grid.Column="1" Content="Companies" Grid.Row="0" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
-                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="Companies" HorizontalAlignment="Left" Height="23" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
-                <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
-                <TextBox Text="0" Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="55,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253" TextChanged="Rate_TextChanged"/>
-                <Label Content="Sub-Total" Grid.Row="0" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
-                <TextBox Text="0" Grid.Row="0" IsReadOnly="True" x:Name="Subtotal" HorizontalAlignment="Left" Height="23" Margin="78,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="Subtotal_TextChanged"/>
-                <Label Content="Hours Companies" Grid.Row="0" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="26" Width="109"/>
-                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="HoursCompanies" HorizontalAlignment="Left" Height="23" Margin="124,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TextChanged="HoursCompanies_TextChanged"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox HorizontalContentAlignment="Stretch" Grid.Row="1" Header="Items" Margin="0,10,0,0" Grid.Column="0" VerticalContentAlignment="Stretch">
-            <DataGrid CanUserAddRows="False" Grid.Column="0" x:Name="Details" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Item" Binding="{Binding Item}" IsReadOnly="{Binding IsReadOnly}"/>
-                    <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}" IsReadOnly="{Binding IsReadOnly}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
-        <GroupBox HorizontalContentAlignment="Stretch" Grid.Row="1" Header="Deductions" Margin="0,10,0,0" Grid.Column="1" VerticalContentAlignment="Stretch">
-            <DataGrid Grid.Column="0" x:Name="Deductions" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Deductions_Loaded">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Item" Binding="{Binding Item}"/>
-                    <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}"/>
-                </DataGrid.Columns>
-            </DataGrid>
         </GroupBox>
         <Button Grid.Row="2" Grid.Column="0" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="59" Click="Save_Click">
             <Image ToolTip="Save" Source="/resources/images/save128.png" Width="48px" />
         </Button>
         <Label Content="Total" Grid.Row="0" HorizontalAlignment="Left" Margin="12,190,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
         <TextBox Grid.Row="0" IsReadOnly="True" x:Name="Total" HorizontalAlignment="Left" Height="23" Margin="61,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369"/>
+        <TabControl VerticalContentAlignment="Stretch" Margin="0,10,0,0" HorizontalContentAlignment="Stretch" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <TabItem Header="Rates">
+                <DataGrid IsReadOnly="True" CanUserAddRows="False" Grid.Column="0" x:Name="Rates" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Rates_Loaded">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Companies" Binding="{Binding Companies}"/>
+                        <DataGridTextColumn Header="Hours" Binding="{Binding Hours}"/>
+                        <DataGridTextColumn Header="Rate" Binding="{Binding Rate, StringFormat=\{0:C\}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Details">
+                <DataGrid CanUserAddRows="False" Grid.Column="0" x:Name="Details" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" IsReadOnly="{Binding IsReadOnly}"/>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}" IsReadOnly="{Binding IsReadOnly}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Deductions">
+                <DataGrid Grid.Column="0" x:Name="Deductions" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Deductions_Loaded">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}"/>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

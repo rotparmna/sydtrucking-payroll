@@ -16,6 +16,7 @@
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        public Truck Truck { get; set; }
         public LeaseCompany LeaseCompany { get; set; }
         public DateTime Date { get; set; }
         public DateTime To { get; set; }
@@ -23,38 +24,24 @@
         public ICollection<Payroll> Payrolls { get; set; }
         public ICollection<GenericCollection> Details { get; set; }
         public ICollection<GenericCollection> Deductions { get; set; }
-        public string Companies
+        public ICollection<RateDetail> Rates
         {
             get
             {
-                string companies = string.Empty;
+                ICollection<RateDetail> rates = new List<RateDetail>();
                 if (Payrolls.Count > 0)
                 {
-                    Payrolls.ToList().ForEach(x =>
-                    {
-                        x.Details.ToList().ForEach(y =>
+                    rates = Payrolls.GroupBy(x => x.Rate)
+                        .Select(y => new RateDetail()
                         {
-                            companies += y.OilCompany.Name + ",";
-                        });
-                    });
-                    companies = companies.TrimEnd(',');
+                            Rate = y.Key,
+                            Hours = y.Sum(h => h.Details.Sum(r => r.Hours)),
+                            Companies = y.Select(p => String.Join(",", p.Details.Select(c => c.OilCompany.Name).ToArray())).FirstOrDefault()
+                        })
+                        .ToList();
+                    
                 }
-                return companies;
-            }
-        }
-        public int Hours
-        {
-            get
-            {
-                int hours = 0;
-                if (Payrolls.Count > 0)
-                {
-                    Payrolls.ToList().ForEach(x =>
-                    {
-                        hours = x.Details.ToList().Sum(y => y.Hours);
-                    });
-                }
-                return hours;
+                return rates;
             }
         }
         public double DriverPaycheck
@@ -64,7 +51,6 @@
                 return Payrolls.Sum(x => x.TotalPayment);
             }
         }
-        public double Subtotal { get; set; }
         public double Total { get; set; }
         public double TotalDetails
         {
@@ -80,5 +66,12 @@
                 return Deductions.Sum(x => x.Value);
             }
         }
+    }
+
+    public class RateDetail
+    {
+        public string Companies { get; set; }
+        public int Hours { get; set; }
+        public double Rate { get; set; }
     }
 }

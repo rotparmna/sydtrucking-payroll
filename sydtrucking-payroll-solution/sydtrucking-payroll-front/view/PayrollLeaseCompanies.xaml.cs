@@ -6,6 +6,7 @@
     using System.Windows;
     using System.Linq;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
@@ -17,6 +18,7 @@
         business.IBusiness<LeaseCompany> _leaseCompanyBusiness;
         ObservableCollection<PayrollLeaseCompanyDetails> _details;
         ObservableCollection<GenericCollection> _deductions;
+        ObservableCollection<RateDetail> _rates;
         PayrollLeaseCompany _payrollLeaseCompany;
 
         public PayrollLeaseCompanies()
@@ -27,6 +29,7 @@
             _payrollLeaseCompany = new PayrollLeaseCompany();
             _details = new ObservableCollection<PayrollLeaseCompanyDetails>();
             _deductions = new ObservableCollection<GenericCollection>();
+            _rates = new ObservableCollection<RateDetail>();
 
             InitializeComponent();
         }
@@ -41,6 +44,7 @@
 
             Details.ItemsSource = _details;
             Deductions.ItemsSource = _deductions;
+            Rates.ItemsSource = _rates;
 
             DateTime nextFriday = DateTime.Now.NextFriday();
             DateTime toPayment = nextFriday.AddDays(business.Constant.LastThreeFridayPayrollLeaseCompany);
@@ -101,15 +105,16 @@
 
         private void SourceCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
+            CalculateLeaseFeeAndWorkerComp();
             CalculateTotal();
         }
 
         private void CalculateTotal()
         {
-            var subttotal = double.Parse(Subtotal.Text);
-            var totalDetails = _details.ToList().Sum(x => x.Value); ;
-            var totalDeductions = _deductions.ToList().Sum(x => x.Value); ;
-            var total = subttotal - totalDetails - totalDeductions;
+            var totalRates = _rates.ToList().Sum(x => x.Rate * x.Hours);
+            var totalDetails = _details.ToList().Sum(x => x.Value);
+            var totalDeductions = _deductions.ToList().Sum(x => x.Value);
+            var total = totalRates - totalDetails - totalDeductions;
 
             Total.Text = total.ToString("C");
         }
@@ -118,14 +123,12 @@
         {
             if (_details.Count > 0)
             {
-                var subtotal = 0.0;
+                var totalRates = _rates.ToList().Sum(x => x.Rate * x.Hours);
                 var leaseFee = 0.0;
                 var workerComp = 0.0;
 
-                double.TryParse(Subtotal.Text.Replace("$", string.Empty), out subtotal);
-
-                leaseFee = subtotal * business.Constant.PercentLeaseFeeValue;
-                workerComp = subtotal * business.Constant.PercentWorkerCompValue;
+                leaseFee = totalRates * business.Constant.PercentLeaseFeeValue;
+                workerComp = totalRates * business.Constant.PercentWorkerCompValue;
 
                 _details.Where(x => x.Item.Contains("Lease Fee")).FirstOrDefault().Value = leaseFee;
                 _details.Where(x => x.Item.Contains("Worker's Comp")).FirstOrDefault().Value = workerComp;
@@ -138,12 +141,14 @@
 
             if (message == string.Empty)
             {
-                //_payroll.TruckNumber = int.Parse(TruckNumber.Text);
-                //_payroll.Employee = (Employee)Employees.SelectedItem;
                 _payrollLeaseCompany.From = FromPayment.SelectedDate.Value;
                 _payrollLeaseCompany.To = ToPayment.SelectedDate.Value;
-                
-                
+                _payrollLeaseCompany.Date = Date.SelectedDate.Value;
+                _payrollLeaseCompany.Deductions = _deductions;
+                _payrollLeaseCompany.Details = _details.ToList<GenericCollection>();
+                _payrollLeaseCompany.LeaseCompany = (LeaseCompanies.SelectedItem as LeaseCompany);
+                _payrollLeaseCompany.Total = double.Parse(Total.Text.Replace("$", string.Empty));
+                _payrollLeaseCompany.Truck = (Trucks.SelectedItem as Truck);
 
                 try
                 {
@@ -154,7 +159,7 @@
                     throw;
                 }
 
-                MessageBox.Show("Saved information", "Payroll", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Saved information", "Payroll Lease Company", MessageBoxButton.OK, MessageBoxImage.Information);
                 Clear();
             }
             else
@@ -163,55 +168,70 @@
 
         private void Clear()
         {
-            _payrollLeaseCompany = new model.PayrollLeaseCompany();
+            _payrollLeaseCompany = new PayrollLeaseCompany();
             _details = new ObservableCollection<PayrollLeaseCompanyDetails>();
             _deductions = new ObservableCollection<GenericCollection>();
+            _rates = new ObservableCollection<RateDetail>();
             LoadDetails();
 
-            Companies.Text = string.Empty;
-            HoursCompanies.Text = string.Empty;
-            Rate.Text = "0";
-            Subtotal.Text = "0";
+            LeaseCompanies.SelectedItem = null;
             Trucks.SelectedItem = null;
+            Total.Text = "$ 0";
             Details.ItemsSource = _details;
             Deductions.ItemsSource = _deductions;
+            Rates.ItemsSource = _rates;
         }
 
         private void Trucks_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Truck))
             {
-                _payrollLeaseCompany.Payrolls = ((business.Payroll)_payrollBusiness).GetByDateAndTruck(Date.SelectedDate.Value, (Truck)e.AddedItems[0]);
-                Companies.Text = _payrollLeaseCompany.Companies;
-                HoursCompanies.Text = _payrollLeaseCompany.Hours.ToString();
-                _details.Where(x => x.Item.Contains("Driver Paycheck")).FirstOrDefault().Value = _payrollLeaseCompany.DriverPaycheck;
+                LoadDetails((Truck)e.AddedItems[0]);
+                CalculateLeaseFeeAndWorkerComp();
+                CalculateTotal();
             }
         }
 
-        private void Rate_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void LoadDetails(Truck truck)
         {
-            CalculateSubTotal(_payrollLeaseCompany.Hours, double.Parse(Rate.Text));
+            List<model.Payroll> payrolls = new List<model.Payroll>();
+
+            if (truck != null)
+            {
+                payrolls = ((business.Payroll)_payrollBusiness).GetByDateAndTruck(ToPayment.SelectedDate.Value, FromPayment.SelectedDate.Value, truck);
+            }
+
+            _payrollLeaseCompany.Payrolls = payrolls;
+            _details.Where(x => x.Item.Contains("Driver Paycheck")).FirstOrDefault().Value = _payrollLeaseCompany.DriverPaycheck;
+            _rates = _payrollLeaseCompany.Rates.ToObservableCollection();
+            Rates.ItemsSource = _rates;
+            Details.ItemsSource = _details;
         }
 
-        private void HoursCompanies_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            CalculateSubTotal(_payrollLeaseCompany.Hours, double.Parse(Rate.Text));
-        }
-
-        private void CalculateSubTotal(int hours, double rate)
-        {
-            //Subtotal.Text = (hours * rate).ToString("C");
-        }
-        
         private void Deductions_Loaded(object sender, RoutedEventArgs e)
         {
             var sourceCollectionDeductions = Deductions.ItemsSource as ObservableCollection<GenericCollection>;
             sourceCollectionDeductions.CollectionChanged += SourceCollection_CollectionChanged;
         }
 
-        private void Subtotal_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void Rates_Loaded(object sender, RoutedEventArgs e)
         {
+            var sourceCollectionRates = Rates.ItemsSource as ObservableCollection<RateDetail>;
+            sourceCollectionRates.CollectionChanged += SourceCollection_CollectionChanged;
+        }
+
+        private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            LoadDetails(Trucks.SelectedItem as Truck);
             CalculateLeaseFeeAndWorkerComp();
+            CalculateTotal();
+        }
+
+        private void ToPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            LoadDetails(Trucks.SelectedItem as Truck);
+            CalculateLeaseFeeAndWorkerComp();
+            CalculateTotal();
         }
     }
 }
