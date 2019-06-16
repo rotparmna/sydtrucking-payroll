@@ -35,11 +35,11 @@
 
         private void PrintReport_Click(object sender, RoutedEventArgs e)
         {
-            //var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
-            //var payroll = _payrollLeaseCompanyBusiness.Get(rowData.Id);
+            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollLeaseCompanyView;
+            var payroll = _payrollLeaseCompanyBusiness.Get(rowData.Id);
 
-            //PrintPayroll print = new PrintPayroll(payroll);
-            //print.Print(true);
+            PrintPayrollLeaseCompany print = new PrintPayrollLeaseCompany(payroll);
+            print.Print(true);
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)

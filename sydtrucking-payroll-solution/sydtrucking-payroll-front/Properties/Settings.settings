@@ -32,5 +32,8 @@
     <Setting Name="PercentWorkerCompValue" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">0.1599</Value>
     </Setting>
+    <Setting Name="PathReportPayrollLeaseCompany" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files\\reportpayrollleasecompany\\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

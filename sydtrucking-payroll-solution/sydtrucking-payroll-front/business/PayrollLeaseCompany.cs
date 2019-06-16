@@ -34,7 +34,10 @@
 
         public model.PayrollLeaseCompany Get(string id)
         {
-            throw new NotImplementedException();
+            var builder = Builders<model.PayrollLeaseCompany>.Filter;
+            var filter = builder.Eq(x => x.Id, id);
+
+            return context.PayrollLeaseCompanies.Find(filter).FirstOrDefault();
         }
 
         public List<model.PayrollLeaseCompany> GetAll()

@@ -2,11 +2,13 @@
 {
     using PdfSharp.Drawing;
     using sydtrucking_payroll_front.model;
+    using sydtrucking_payroll_front.util;
     using System;
 
     public class PrintPayroll
     {
         PrintToPdf _toPdf;
+        IFile _pdfFile;
 
         public string Fullname { get; private set; }
         public string Filename { get; private set; }
@@ -17,6 +19,7 @@
             Payroll = payroll;
             Fullname = CreateFullname();
             _toPdf = new PrintToPdf(Fullname);
+            _pdfFile = new Pdf(Fullname);
         }
 
         private string CreateFullname()
@@ -37,16 +40,7 @@
             _toPdf.Print();
 
             if (isOpen)
-                OpenPDF();
-        }
-
-        private void OpenPDF()
-        {
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            string path = AppDomain.CurrentDomain.BaseDirectory + Fullname;
-            Uri pdf = new Uri(path, UriKind.RelativeOrAbsolute);
-            process.StartInfo.FileName = pdf.LocalPath;
-            process.Start();
+                _pdfFile.Open();
         }
 
         private void PrintHeader()

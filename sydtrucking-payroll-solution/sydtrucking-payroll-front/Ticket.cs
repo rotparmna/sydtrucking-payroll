@@ -1,12 +1,7 @@
-﻿using sydtrucking_payroll_front.business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace sydtrucking_payroll_front
+﻿namespace sydtrucking_payroll_front
 {
+    using sydtrucking_payroll_front.business;
+
     public sealed class Ticket
     {
         public Authenticate Authenticate { get; set; }

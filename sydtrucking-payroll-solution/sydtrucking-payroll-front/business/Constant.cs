@@ -12,6 +12,7 @@
         private static readonly int daysWeek = Properties.Settings.Default.DaysWeek;
         private static readonly int daysWeekPayment = Properties.Settings.Default.DaysWeekPayment;
         private static readonly string pathReportPayroll = Properties.Settings.Default.PathReportPayroll;
+        private static readonly string pathReportPayrollLeaseCompany = Properties.Settings.Default.PathReportPayrollLeaseCompany;
         private static readonly Smtp smtp = new Configuration().GetAll().Select(x => x.Smtp).FirstOrDefault();
         private static readonly int lastThreeFridayPayrollLeaseCompany = Properties.Settings.Default.LastThreeFridayPayrollLeaseCompany;
 
@@ -22,6 +23,7 @@
         public static int DaysWeek => daysWeek;
         public static int DaysWeekPayment => daysWeekPayment;
         public static string PathReportPayroll => pathReportPayroll;
+        public static string PathReportPayrollLeaseCompany => pathReportPayrollLeaseCompany;
         public static Smtp Smtp => smtp;
         public static int LastThreeFridayPayrollLeaseCompany => lastThreeFridayPayrollLeaseCompany;
     }
