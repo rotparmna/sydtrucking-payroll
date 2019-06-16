@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\professional\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="15.0">
  <Targets>
-  <Target Name="C:\Users\rotpa\Source\Repos\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
+  <Target Name="D:\dev\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
    <Modules>
     <Module Name="sydtrucking-payroll-front.exe">
      <Namespaces>
@@ -10,7 +10,7 @@
        <Types>
         <Type Name="Email" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-09 04:10:09Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-16 23:07:49Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'Email' porque crea miembros de los tipos IDisposable siguientes: 'SmtpClient'. Si ya se había distribuido 'Email', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
@@ -21,7 +21,7 @@
        <Types>
         <Type Name="PrintToPdf" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-09 04:10:09Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-16 23:07:49Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'PrintToPdf' porque crea miembros de los tipos IDisposable siguientes: 'PdfDocument'. Si ya se había distribuido 'PrintToPdf', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
