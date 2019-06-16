@@ -38,7 +38,7 @@
                 <DataGridTemplateColumn CanUserResize="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="EmailReport" Click="EmailReport_Click">
+                            <Button Visibility="Hidden" Name="EmailReport" Click="EmailReport_Click">
                                 <Image Source="/sydtrucking-payroll-front;component/resources/images/email24.png" Width="24px" />
                             </Button>
                         </DataTemplate>
@@ -55,7 +55,7 @@
             <Image ToolTip="Search" Source="/sydtrucking-payroll-front;component/resources/images/search128.png" Width="48px" />
         </Button>
         <Button Visibility="Hidden" x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,-2" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
-        <Button x:Name="Send" ToolTip="Send" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Send_Click">
+        <Button x:Name="Send" Visibility="Hidden" ToolTip="Send" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Send_Click">
             <Image ToolTip="Send" Source="/sydtrucking-payroll-front;component/resources/images/email128.png" Width="48px" />
         </Button>
     </Grid>

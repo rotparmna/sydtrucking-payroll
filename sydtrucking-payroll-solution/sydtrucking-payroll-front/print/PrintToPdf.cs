@@ -37,6 +37,12 @@
                 case FormatText.Bold:
                     font = new XFont(FONT, 11, XFontStyle.Bold);
                     break;
+                case FormatText.Italic:
+                    font = new XFont(FONT, 11, XFontStyle.Italic);
+                    break;
+                case FormatText.BoldItalic:
+                    font = new XFont(FONT, 11, XFontStyle.BoldItalic);
+                    break;
                 case FormatText.Regular:
                 default:
                     font = new XFont(FONT, 11, XFontStyle.Regular);
@@ -63,6 +69,8 @@
     {
         Title = 1,
         Regular = 2,
-        Bold = 3
+        Bold = 3,
+        Italic = 4,
+        BoldItalic = 5
     }
 }

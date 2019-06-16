@@ -73,5 +73,12 @@
         public string Companies { get; set; }
         public int Hours { get; set; }
         public double Rate { get; set; }
+        public double Subtotal
+        {
+            get
+            {
+                return Hours * Rate;
+            }
+        }
     }
 }
