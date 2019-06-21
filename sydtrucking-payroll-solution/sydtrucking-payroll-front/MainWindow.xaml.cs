@@ -71,5 +71,10 @@
             view.ReportPayrollLeaseCompanies reportPayrollLeaseCompanies = new view.ReportPayrollLeaseCompanies();
             reportPayrollLeaseCompanies.Show();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Welcome.Content = "Welcome, " + Ticket.Instance.Authenticate.Fullname;
+        }
     }
 }
