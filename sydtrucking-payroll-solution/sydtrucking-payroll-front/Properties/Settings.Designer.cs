@@ -43,73 +43,10 @@ namespace sydtrucking_payroll_front.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
-        public int RegularHour {
-            get {
-                return ((int)(this["RegularHour"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
-        public double FactorRateOvertimeHour {
-            get {
-                return ((double)(this["FactorRateOvertimeHour"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6")]
-        public int DaysWeek {
-            get {
-                return ((int)(this["DaysWeek"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
-        public int DaysWeekPayment {
-            get {
-                return ((int)(this["DaysWeekPayment"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("files\\\\reportpayroll\\\\")]
         public string PathReportPayroll {
             get {
                 return ((string)(this["PathReportPayroll"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-21")]
-        public int LastThreeFridayPayrollLeaseCompany {
-            get {
-                return ((int)(this["LastThreeFridayPayrollLeaseCompany"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
-        public double PercentLeaseFeeValue {
-            get {
-                return ((double)(this["PercentLeaseFeeValue"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1599")]
-        public double PercentWorkerCompValue {
-            get {
-                return ((double)(this["PercentWorkerCompValue"]));
             }
         }
         
