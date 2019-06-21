@@ -8,7 +8,7 @@
     /// <summary>
     /// Lógica de interacción para LeaseCompanies.xaml
     /// </summary>
-    public partial class LeaseCompanies : Window, IView
+    public partial class LeaseCompanies : Window, IView<LeaseCompany>
     {
         private List<LeaseCompany> _companiesModel;
         private List<TruckDetailView> _trucksView;
@@ -29,45 +29,20 @@
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ClearView();
-            FillView();
+            FillGrid();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             SaveView();
-            ClearView();
-            FillView();
         }
 
         private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(LeaseCompany))
             {
-                LoadCompany((LeaseCompany)e.AddedItems[0]);
-                CreateView();
+                LoadDataBySelectedRow((LeaseCompany)e.AddedItems[0]);
             }
-        }
-
-        private void LoadCompany(LeaseCompany company)
-        {
-            _idCompanySelected = company.Id;
-            Name.Text = company.Name;
-
-            List<Truck> trucks = _truckBusiness.GetAll();
-            _trucksView.Clear();
-            Trucks.ItemsSource = null;
-
-            trucks.ForEach(x =>
-            {
-                _trucksView.Add(new TruckDetailView()
-                {
-                    Id = x.Id,
-                    IsActive = company.Trucks.Where(y => y.Id == x.Id).Count() > 0,
-                    Truck = x.Number
-                });
-            });
-
-            Trucks.ItemsSource = _trucksView;
         }
 
         public void ClearView()
@@ -88,6 +63,8 @@
 
         public void SaveView()
         {
+            ChangeControlsEnabled(false);
+
             LeaseCompany company = new LeaseCompany()
             {
                 Id = _idCompanySelected,
@@ -99,9 +76,13 @@
                    .ForEach(x => company.Trucks.Add(_truckBusiness.Get(x.Id)));
 
             _companyBusiness.Update(company);
+            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ClearView();
+            FillGrid();
         }
 
-        public void FillView()
+        public void FillGrid()
         {
             _companiesModel = _companyBusiness.GetAll();
             ListCompanies.ItemsSource = _companiesModel;
@@ -127,7 +108,47 @@
         {
             ClearView();
             CreateView();
-            FillView();
+            FillGrid();
+        }
+
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void ChangeControlsEnabled(bool isEnable)
+        {
+            General.IsEnabled = isEnable;
+            TrucksGroup.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable;
+            New.IsEnabled = !isEnable;
+        }
+
+        public void LoadDataBySelectedRow(LeaseCompany company)
+        {
+            _idCompanySelected = company.Id;
+            Name.Text = company.Name;
+
+            List<Truck> trucks = _truckBusiness.GetAll();
+            _trucksView.Clear();
+            Trucks.ItemsSource = null;
+
+            trucks.ForEach(x =>
+            {
+                _trucksView.Add(new TruckDetailView()
+                {
+                    Id = x.Id,
+                    IsActive = company.Trucks.Where(y => y.Id == x.Id).Count() > 0,
+                    Truck = x.Number
+                });
+            });
+
+            Trucks.ItemsSource = _trucksView;
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditView();
         }
     }
 }

@@ -1,17 +1,17 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
-    using System.Windows;
-    using System.Linq;
-    using sydtrucking_payroll_front.model;
-    using System.Collections.Generic;
     using sydtrucking_payroll_front.enums;
-    using System.Windows.Controls;
+    using sydtrucking_payroll_front.model;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Employees : Window
+    public partial class Employees : Window, IView<Employee>
     {
         private List<Employee> _employeesModel;
         private List<Truck> _trucksModel;
@@ -30,9 +30,9 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Clear();
+            ClearView();
             LoadTrucks();
-            LoadEmployees();
+            FillGrid();
         }
 
         private void LoadTrucks()
@@ -42,15 +42,97 @@
             Trucks.SelectedValuePath = "Id";
             Trucks.ItemsSource = _trucksModel;
         }
-
-        private void LoadEmployees()
-        {
-            _employeesModel = _employeeBusiness.GetAll();
-            ListEmployees.ItemsSource = _employeesModel;
-        }
-
+        
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            SaveView();
+        }
+
+        private void ListEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Employee))
+            {
+                LoadDataBySelectedRow((Employee)e.AddedItems[0]);
+            }
+        }
+        
+        private void Actually_Checked(object sender, RoutedEventArgs e)
+        {
+            ChangeActuallyChecked();
+        }
+
+        private void Actually_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ChangeActuallyChecked();
+        }
+
+        private void ChangeActuallyChecked()
+        {
+            TerminationDate.IsEnabled = Actually.IsChecked.Value;
+        }
+
+        private void Trucks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Trucks.SelectedIndex>=0 && e.AddedItems.Count>0 && e.AddedItems[0] is Truck)
+            {
+                var truck = e.AddedItems[0] as Truck;
+                Year.Text = truck.Year.ToString();
+                Vin.Text = truck.Vin;
+                Make.Text = truck.Make;
+                Plate.Text = truck.Plate;
+                Registration.SelectedDate = truck.Registration;
+                Inspection.SelectedDate = truck.Inspection;
+            }
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            CreateView();
+        }
+
+        public void ClearView()
+        {
+            SocialSecurity.Text = string.Empty;
+            Name.Text = string.Empty;
+            LastName.Text = string.Empty;
+            Birthdate.SelectedDate = DateTime.Now;
+            Trucks.SelectedIndex = -1;
+            DriverLicense.Text = string.Empty;
+            ExpirationDate.SelectedDate = DateTime.Now;
+            HireDate.SelectedDate = DateTime.Now;
+            TerminationDate.SelectedDate = DateTime.Now;
+            Actually.IsChecked = false;
+            TerminationDate.IsEnabled = false;
+            Address.Text = string.Empty;
+            PhoneNumber.Text = string.Empty;
+            State.Text = string.Empty;
+            PaymentMethod.SelectedIndex = -1;
+            TaxForm.SelectedIndex = -1;
+            Rate.Text = string.Empty;
+            Year.Text = string.Empty;
+            Vin.Text = string.Empty;
+            Make.Text = string.Empty;
+            Plate.Text = string.Empty;
+            Registration.SelectedDate = DateTime.Now;
+            Inspection.SelectedDate = DateTime.Now;
+            StateDriverLicense.Text = string.Empty;
+            City.Text = string.Empty;
+            ZipCode.Text = string.Empty;
+            Email.Text = string.Empty;
+
+            LoadTrucks();
+        }
+
+        public void CreateView()
+        {
+            ChangeControlsEnabled(true);
+            ClearView();
+        }
+
+        public void SaveView()
+        {
+            ChangeControlsEnabled(false);
+
             var id = _employeeBusiness.GetAll()
                           .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
                           .DefaultIfEmpty(new Employee() { Id = string.Empty })
@@ -104,18 +186,24 @@
             };
 
             _employeeBusiness.Update(employee);
-            LoadEmployees();
+            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ClearView();
+            FillGrid();
         }
 
-        private void ListEmployees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void FillGrid()
         {
-            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Employee))
-            {
-                LoadEmployee((Employee)e.AddedItems[0]);
-            }
+            _employeesModel = _employeeBusiness.GetAll();
+            ListEmployees.ItemsSource = _employeesModel;
         }
 
-        private void LoadEmployee(Employee employee)
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void LoadDataBySelectedRow(Employee employee)
         {
             _idEmployeeSelected = employee.Id;
             SocialSecurity.Text = employee.SocialSecurity.ToString();
@@ -147,66 +235,19 @@
             Email.Text = employee.Email;
         }
 
-        private void Clear()
+        public void ChangeControlsEnabled(bool isEnable)
         {
-            SocialSecurity.Text = string.Empty;
-            Name.Text = string.Empty;
-            LastName.Text = string.Empty;
-            Birthdate.SelectedDate = DateTime.Now;
-            Trucks.SelectedIndex = -1;
-            DriverLicense.Text = string.Empty;
-            ExpirationDate.SelectedDate = DateTime.Now;
-            HireDate.SelectedDate = DateTime.Now;
-            TerminationDate.SelectedDate = DateTime.Now;
-            Actually.IsChecked = false;
-            TerminationDate.IsEnabled = false;
-            Address.Text = string.Empty;
-            PhoneNumber.Text = string.Empty;
-            State.Text = string.Empty;
-            PaymentMethod.SelectedIndex = -1;
-            TaxForm.SelectedIndex = -1;
-            Rate.Text = string.Empty;
-            Year.Text = string.Empty;
-            Vin.Text = string.Empty;
-            Make.Text = string.Empty;
-            Plate.Text = string.Empty;
-            Registration.SelectedDate = DateTime.Now;
-            Inspection.SelectedDate = DateTime.Now;
-            StateDriverLicense.Text = string.Empty;
-            City.Text = string.Empty;
-            ZipCode.Text = string.Empty;
-            Email.Text = string.Empty;
-
-            LoadTrucks();
+            General.IsEnabled = isEnable;
+            AssignedTruck.IsEnabled = isEnable;
+            Payment.IsEnabled = isEnable;
+            Contract.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable; 
+            New.IsEnabled = !isEnable;
         }
 
-        private void Actually_Checked(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            ChangeActuallyChecked();
-        }
-
-        private void Actually_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ChangeActuallyChecked();
-        }
-
-        private void ChangeActuallyChecked()
-        {
-            TerminationDate.IsEnabled = Actually.IsChecked.Value;
-        }
-
-        private void Trucks_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (Trucks.SelectedIndex>=0 && e.AddedItems.Count>0 && e.AddedItems[0] is Truck)
-            {
-                var truck = e.AddedItems[0] as Truck;
-                Year.Text = truck.Year.ToString();
-                Vin.Text = truck.Vin;
-                Make.Text = truck.Make;
-                Plate.Text = truck.Plate;
-                Registration.SelectedDate = truck.Registration;
-                Inspection.SelectedDate = truck.Inspection;
-            }
+            EditView();
         }
     }
 }

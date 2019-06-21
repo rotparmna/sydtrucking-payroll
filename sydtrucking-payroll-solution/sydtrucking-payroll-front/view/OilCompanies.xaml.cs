@@ -7,7 +7,7 @@
     /// <summary>
     /// Lógica de interacción para Roles.xaml
     /// </summary>
-    public partial class OilCompanies : Window
+    public partial class OilCompanies : Window, IView<OilCompany>
     {
         private List<OilCompany> _companiesModel;
         private business.IBusiness<OilCompany> _companyBusiness;
@@ -23,17 +23,47 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Clear();
-            LoadCompanies();
+            ClearView();
+            FillGrid();
         }
-
-        private void LoadCompanies()
-        {
-            _companiesModel = _companyBusiness.GetAll();
-            ListCompanies.ItemsSource = _companiesModel;
-        }
-
+        
         private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveView();
+        }
+
+        private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(OilCompany))
+            {
+                LoadDataBySelectedRow((OilCompany)e.AddedItems[0]);
+            }
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            CreateView();
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditView();
+        }
+
+        public void ClearView()
+        {
+            _idCompanySelected = string.Empty;
+            Name.Text = string.Empty;
+            Rate.Text = string.Empty;
+        }
+
+        public void CreateView()
+        {
+            ChangeControlsEnabled(true);
+            ClearView();
+        }
+
+        public void SaveView()
         {
             OilCompany role = new OilCompany()
             {
@@ -43,29 +73,35 @@
             };
 
             _companyBusiness.Update(role);
-            LoadCompanies();
+            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ClearView();
+            FillGrid();
         }
 
-        private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void FillGrid()
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(OilCompany))
-            {
-                LoadCompany((OilCompany)e.AddedItems[0]);
-            }
+            _companiesModel = _companyBusiness.GetAll();
+            ListCompanies.ItemsSource = _companiesModel;
         }
 
-        private void LoadCompany(OilCompany company)
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void LoadDataBySelectedRow(OilCompany company)
         {
             _idCompanySelected = company.Id;
             Name.Text = company.Name;
             Rate.Text = company.Rate.ToString("C");
         }
 
-        private void Clear()
+        public void ChangeControlsEnabled(bool isEnable)
         {
-            _idCompanySelected = string.Empty;
-            Name.Text = string.Empty;
-            Rate.Text = string.Empty;
+            General.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable;
+            New.IsEnabled = !isEnable;
         }
     }
 }

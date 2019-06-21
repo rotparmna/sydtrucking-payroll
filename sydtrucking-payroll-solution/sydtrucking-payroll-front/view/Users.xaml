@@ -15,7 +15,7 @@
             <ColumnDefinition Width="359*" />
             <ColumnDefinition Width="511*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="General" HorizontalAlignment="Left" Height="220" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+        <GroupBox Header="General" Name="General" IsEnabled="False" HorizontalAlignment="Left" Height="220" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
                 <Label Content="Username" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
                 <TextBox Grid.Row="0" Name="Username" HorizontalAlignment="Left" Height="23" Margin="105,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
@@ -31,7 +31,7 @@
                 <TextBox Grid.Row="0" x:Name="Passsword" HorizontalAlignment="Left" Height="23" Margin="85,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Roles" HorizontalAlignment="Left" Height="104" Margin="10,235,0,0" VerticalAlignment="Top" Width="323">
+        <GroupBox Grid.Row="0" Header="Roles" Name="RolesGroup" IsEnabled="False" HorizontalAlignment="Left" Height="104" Margin="10,235,0,0" VerticalAlignment="Top" Width="323">
             <Grid>
                 <ListBox Name="Roles" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" >
                     <ListBox.ItemTemplate>
@@ -44,6 +44,15 @@
         </GroupBox>
         <DataGrid x:Name="ListUsers" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListUsers_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTemplateColumn CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Edit" Click="Edit_Click">
+                                <Image Source="/sydtrucking-payroll-front;component/resources/images/edit24.png" Width="24px" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
                 <DataGridTextColumn Header="Fullname" Binding="{Binding Fullname}"/>
@@ -52,8 +61,11 @@
                 <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">
+        <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">
             <Image ToolTip="Save" Source="/sydtrucking-payroll-front;component/resources/images/save128.png" Width="48px" />
+        </Button>
+        <Button x:Name="New" ToolTip="New" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="New_Click">
+            <Image ToolTip="New" Source="/sydtrucking-payroll-front;component/resources/images/new128.png" Width="48px" />
         </Button>
     </Grid>
 </Window>

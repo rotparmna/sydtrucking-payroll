@@ -32,7 +32,7 @@
 
         public void Update(model.LeaseCompany model)
         {
-            var isEdit = GetAll().Where(x => x.Name == model.Name)
+            var isEdit = GetAll().Where(x => x.Id == model.Id)
                                     .Count() > 0;
 
             if (isEdit)

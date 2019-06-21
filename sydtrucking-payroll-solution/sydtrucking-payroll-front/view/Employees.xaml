@@ -15,7 +15,7 @@
             <ColumnDefinition Width="693*" />
             <ColumnDefinition Width="461*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="General" HorizontalAlignment="Left" Height="422" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+        <GroupBox Header="General" IsEnabled="False" Name="General" HorizontalAlignment="Left" Height="422" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
                 <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
@@ -45,7 +45,7 @@
                 <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="57,331,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Assigned Truck" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
+        <GroupBox Grid.Row="0" Header="Assigned Truck" Name="AssignedTruck" IsEnabled="False" HorizontalAlignment="Left" Height="190" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Truck Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
                 <ComboBox Grid.Row="0" x:Name="Trucks" HorizontalAlignment="Left" Height="23" Margin="101,14,0,0" VerticalAlignment="Top" Width="93" SelectionChanged="Trucks_SelectionChanged"/>
@@ -63,7 +63,7 @@
                 <DatePicker IsEnabled="False" x:Name="Inspection" HorizontalAlignment="Left" Margin="84,127,0,0" VerticalAlignment="Top" Width="239" Height="24"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Payment" HorizontalAlignment="Left" Height="125" Margin="338,205,0,0" VerticalAlignment="Top" Width="345">
+        <GroupBox Grid.Row="0" Header="Payment" Name="Payment" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,205,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Payment Method" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
                 <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top" Width="193" Height="22">
@@ -79,7 +79,7 @@
                 <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Contract" HorizontalAlignment="Left" Height="97" Margin="338,335,0,0" VerticalAlignment="Top" Width="345">
+        <GroupBox Grid.Row="0" Header="Contract" Name="Contract" IsEnabled="False" HorizontalAlignment="Left" Height="97" Margin="338,335,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Hire Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
                 <DatePicker x:Name="HireDate" HorizontalAlignment="Left" Margin="81,10,0,0" VerticalAlignment="Top" Width="242" Height="24"/>
@@ -90,6 +90,15 @@
         </GroupBox>
         <DataGrid x:Name="ListEmployees" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListEmployees_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTemplateColumn CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Edit" Click="Edit_Click">
+                                <Image Source="/sydtrucking-payroll-front;component/resources/images/edit24.png" Width="24px" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -102,8 +111,11 @@
                 <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">
+        <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">
             <Image ToolTip="Save" Source="/sydtrucking-payroll-front;component/resources/images/save128.png" Width="48px" />
+        </Button>
+        <Button x:Name="New" ToolTip="New" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="New_Click">
+            <Image ToolTip="New" Source="/sydtrucking-payroll-front;component/resources/images/new128.png" Width="48px" />
         </Button>
     </Grid>
 </Window>

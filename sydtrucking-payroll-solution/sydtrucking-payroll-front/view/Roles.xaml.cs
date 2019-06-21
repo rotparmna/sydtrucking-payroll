@@ -1,14 +1,13 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
-    using System.Windows;
-    using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
+    using System.Windows;
 
     /// <summary>
     /// Lógica de interacción para Roles.xaml
     /// </summary>
-    public partial class Roles : Window
+    public partial class Roles : Window, IView<Role>
     {
         private List<Role> _rolesModel;
         private business.IBusiness<Role> _roleBusiness;
@@ -24,18 +23,49 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Clear();
-            LoadRoles();
+            ClearView();
+            FillGrid();
         }
-
-        private void LoadRoles()
-        {
-            _rolesModel = _roleBusiness.GetAll();
-            ListRoles.ItemsSource = _rolesModel;
-        }
-
+        
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            SaveView();
+        }
+
+        private void ListRoles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Role))
+            {
+                LoadDataBySelectedRow((Role)e.AddedItems[0]);
+            }
+        }
+                
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            CreateView();
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditView();
+        }
+
+        public void ClearView()
+        {
+            _idRoleSelected = string.Empty;
+            Name.Text = string.Empty;
+        }
+
+        public void CreateView()
+        {
+            ChangeControlsEnabled(true);
+            ClearView();
+        }
+
+        public void SaveView()
+        {
+            ChangeControlsEnabled(false);
+
             Role role = new Role()
             {
                 Id = _idRoleSelected,
@@ -43,27 +73,34 @@
             };
 
             _roleBusiness.Update(role);
-            LoadRoles();
+            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ClearView();
+            FillGrid();
         }
 
-        private void ListRoles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void FillGrid()
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Role))
-            {
-                LoadEmployee((Role)e.AddedItems[0]);
-            }
+            _rolesModel = _roleBusiness.GetAll();
+            ListRoles.ItemsSource = _rolesModel;
         }
 
-        private void LoadEmployee(Role role)
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void LoadDataBySelectedRow(Role role)
         {
             _idRoleSelected = role.Id;
             Name.Text = role.Name;
         }
 
-        private void Clear()
+        public void ChangeControlsEnabled(bool isEnable)
         {
-            _idRoleSelected = string.Empty;
-            Name.Text = string.Empty;
+            General.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable;
+            New.IsEnabled = !isEnable;
         }
     }
 }

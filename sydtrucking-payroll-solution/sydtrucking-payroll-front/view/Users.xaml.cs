@@ -1,14 +1,14 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
-    using System.Windows;
-    using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Users : Window
+    public partial class Users : Window, IView<User>
     {
         private List<User> _usersModel;
         private business.IBusiness<User> _userBusiness;
@@ -27,18 +27,55 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Clear();
-            LoadUsers();
+            ClearView();
+            FillGrid();
         }
-
-        private void LoadUsers()
-        {
-            _usersModel = _userBusiness.GetAll();
-            ListUsers.ItemsSource = _usersModel;
-        }
-
+        
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            SaveView();
+        }
+
+        private void ListUsers_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(User))
+            {
+                LoadDataBySelectedRow((User)e.AddedItems[0]);
+            }
+        }
+
+        
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditView();
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            CreateView();
+        }
+
+        public void ClearView()
+        {
+            Username.Text = string.Empty;
+            Fullname.Text = string.Empty;
+            Email.Text = string.Empty;
+            LastLogin.SelectedDate = null;
+            IsActive.IsChecked = false;
+            Passsword.Text = string.Empty;
+            Roles.ItemsSource = null;
+        }
+
+        public void CreateView()
+        {
+            ChangeControlsEnabled(true);
+            ClearView();
+        }
+
+        public void SaveView()
+        {
+            ChangeControlsEnabled(false);
+
             var id = _userBusiness.GetAll()
                           .Where(x => x.Username == Username.Text)
                           .DefaultIfEmpty(new User() { Id = string.Empty })
@@ -58,24 +95,30 @@
             _rolesView.Where(x => x.IsActive)
                     .ToList()
                     .ForEach(x => user.Roles.Add(new Role()
-                                {
-                                    Id = x.Id,
-                                    Name = x.Role
-                                }));
+                    {
+                        Id = x.Id,
+                        Name = x.Role
+                    }));
 
             _userBusiness.Update(user);
-            LoadUsers();
+            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ClearView();
+            FillGrid();
         }
 
-        private void ListUsers_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void FillGrid()
         {
-            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(User))
-            {
-                LoadUsers((User)e.AddedItems[0]);
-            }
+            _usersModel = _userBusiness.GetAll();
+            ListUsers.ItemsSource = _usersModel;
         }
 
-        private void LoadUsers(User user)
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void LoadDataBySelectedRow(User user)
         {
             _idUserSelected = user.Id;
             Username.Text = user.Username;
@@ -101,14 +144,12 @@
             Roles.ItemsSource = _rolesView;
         }
 
-        private void Clear()
+        public void ChangeControlsEnabled(bool isEnable)
         {
-            Username.Text = string.Empty;
-            Fullname.Text = string.Empty;
-            Email.Text = string.Empty;
-            LastLogin.SelectedDate = null;
-            IsActive.IsChecked = false;
-            Roles.ItemsSource = null;
+            General.IsEnabled = isEnable;
+            RolesGroup.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable;
+            New.IsEnabled = !isEnable;
         }
     }
 }
