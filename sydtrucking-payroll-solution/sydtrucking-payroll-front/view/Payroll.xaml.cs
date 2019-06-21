@@ -38,7 +38,7 @@
 
             Details.ItemsSource = _details;
 
-            RegularHour.Text = business.Constant.RegularHour.ToString();
+            RegularHour.Text = business.Constant.Payroll.RegularHour.ToString();
         }
 
         private void Employees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -106,7 +106,7 @@
         private void CalculatePayment(int regularHours, int overtimeHour)
         {
             var rate = double.Parse(Rate.Text.Replace("$", string.Empty));
-            var rateOvertime = rate * business.Constant.FactorRateOvertimeHour;
+            var rateOvertime = rate * business.Constant.Payroll.FactorRateOvertimeHour;
             var payment = 0.0;
             var paymentOvertimeHour = 0.0;
 
@@ -146,11 +146,11 @@
 
             _details.ToList().ForEach(x => totalHours = totalHours + x.Hours);
 
-            regularHours = totalHours > business.Constant.RegularHour ?
-                                business.Constant.RegularHour
+            regularHours = totalHours > business.Constant.Payroll.RegularHour ?
+                                business.Constant.Payroll.RegularHour
                                 : totalHours;
-            overtimeHours = totalHours > business.Constant.RegularHour ?
-                                totalHours - business.Constant.RegularHour
+            overtimeHours = totalHours > business.Constant.Payroll.RegularHour ?
+                                totalHours - business.Constant.Payroll.RegularHour
                                 : overtimeHours;
 
             _payroll.TotalHours = totalHours;
@@ -211,7 +211,7 @@
                 _payroll.Employee = (Employee)Employees.SelectedItem;
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
-                _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeekPayment);
+                _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeekPayment);
                 _payroll.Deductions = deductions;
                 _payroll.Reimbursements = reimbursements;
                 _payroll.DeductionsDetail = DeductionsText.Text;
@@ -280,7 +280,7 @@
         private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (FromPayment.SelectedDate.HasValue)
-                ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.DaysWeek);
+                ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeek);
         }
     }
 }

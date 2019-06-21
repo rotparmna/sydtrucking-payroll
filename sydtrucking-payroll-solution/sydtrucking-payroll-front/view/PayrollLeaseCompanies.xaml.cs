@@ -47,8 +47,8 @@
             Rates.ItemsSource = _rates;
 
             DateTime nextFriday = DateTime.Now.NextFriday();
-            DateTime toPayment = nextFriday.AddDays(business.Constant.LastThreeFridayPayrollLeaseCompany);
-            DateTime fromPayment = toPayment.AddDays(business.Constant.DaysWeek * -1);
+            DateTime toPayment = nextFriday.AddDays(business.Constant.PayrollLeaseCompany.LastThreeFridayPayrollLeaseCompany);
+            DateTime fromPayment = toPayment.AddDays(business.Constant.Payroll.DaysWeek * -1);
 
             Date.SelectedDate = nextFriday;
             ToPayment.SelectedDate = toPayment;
@@ -67,7 +67,7 @@
             _details.Add(new PayrollLeaseCompanyDetails()
             {
                 IsReadOnly = true,
-                Item = "Lease Fee " + (business.Constant.PercentLeaseFeeValue * 100) + "%",
+                Item = "Lease Fee " + (business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue * 100) + "%",
                 Value = 0,
             });
 
@@ -81,7 +81,7 @@
             _details.Add(new PayrollLeaseCompanyDetails()
             {
                 IsReadOnly = true,
-                Item = "Worker's Comp " + (business.Constant.PercentWorkerCompValue * 100) + "%",
+                Item = "Worker's Comp " + (business.Constant.PayrollLeaseCompany.PercentWorkerCompValue * 100) + "%",
                 Value = 0,
             });
         }
@@ -127,8 +127,8 @@
                 var leaseFee = 0.0;
                 var workerComp = 0.0;
 
-                leaseFee = totalRates * business.Constant.PercentLeaseFeeValue;
-                workerComp = totalRates * business.Constant.PercentWorkerCompValue;
+                leaseFee = totalRates * business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
+                workerComp = totalRates * business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
 
                 _details.Where(x => x.Item.Contains("Lease Fee")).FirstOrDefault().Value = leaseFee;
                 _details.Where(x => x.Item.Contains("Worker's Comp")).FirstOrDefault().Value = workerComp;
