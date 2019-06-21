@@ -52,6 +52,19 @@
                         Password = "Office1980",
                         Port = 587,
                         Server = "smtp.gmail.com"
+                    },
+                    Payroll = new model.PayrollConfiguration()
+                    {
+                        DaysWeek = 6,
+                        DaysWeekPayment = 7,
+                        FactorRateOvertimeHour = 1.5,
+                        RegularHour = 40
+                    },
+                    PayrollLeaseCompany = new model.PayrollLeaseCompanyConfiguration()
+                    {
+                        LastThreeFridayPayrollLeaseCompany = -21,
+                        PercentLeaseFeeValue = 0.2,
+                        PercentWorkerCompValue = 0.1599
                     }
                 });
 
