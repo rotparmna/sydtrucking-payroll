@@ -4,7 +4,7 @@
     using MongoDB.Bson.Serialization.Attributes;
     using System.Collections.Generic;
 
-    public class LeaseCompany
+    public class LeaseCompany : ModelBase
     {
         public LeaseCompany()
         {

@@ -5,7 +5,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class User
+    public class User : ModelBase
     {
         public User()
         {

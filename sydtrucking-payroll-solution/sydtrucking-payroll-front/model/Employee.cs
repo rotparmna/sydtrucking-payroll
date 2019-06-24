@@ -5,7 +5,7 @@
     using sydtrucking_payroll_front.enums;
     using System;
 
-    public class Employee
+    public class Employee : ModelBase
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

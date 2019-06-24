@@ -4,7 +4,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using sydtrucking_payroll_front.model;
 
     public class User : BusinessBase, IBusiness<model.User>
     {
@@ -31,16 +30,33 @@
             context.Users.InsertOne(user);
         }
 
+        private void Delete(model.User user)
+        {
+            context.Users.DeleteOne(f => f.Id == user.Id);
+
+            Trash trashBusiness = new Trash();
+            model.Trash trash = new model.Trash();
+            trash.User = user;
+            trashBusiness.Update(trash);
+        }
+
         private void Edit(model.User user)
         {
-            var userOld = Get(user);
-            var upd = Builders<model.User>.Update.Set(u => u.Email, user.Email)
-                                                    .Set(u => u.Fullname, user.Fullname)
-                                                    .Set(u => u.IsActive, user.IsActive)
-                                                    .Set(u => u.Password, string.IsNullOrEmpty(user.Password) ? userOld.Password : user.Password)
-                                                    .Set(u => u.Roles, user.Roles);
+            if (user.IsDetele)
+            {
+                Delete(user);
+            }
+            else
+            {
+                var userOld = Get(user);
+                var upd = Builders<model.User>.Update.Set(u => u.Email, user.Email)
+                                                        .Set(u => u.Fullname, user.Fullname)
+                                                        .Set(u => u.IsActive, user.IsActive)
+                                                        .Set(u => u.Password, string.IsNullOrEmpty(user.Password) ? userOld.Password : user.Password)
+                                                        .Set(u => u.Roles, user.Roles);
 
-            context.Users.UpdateOne(f => f.Id == user.Id, upd, new UpdateOptions() { IsUpsert = false });
+                context.Users.UpdateOne(f => f.Id == user.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
         }
 
         public void Update(model.User user)
@@ -73,7 +89,10 @@
 
         public model.User Get(string id)
         {
-            throw new NotImplementedException();
+            var builder = Builders<model.User>.Filter;
+            var filter = builder.Eq(x => x.Id, id);
+
+            return context.Users.Find(filter).FirstOrDefault();
         }
     }
 }

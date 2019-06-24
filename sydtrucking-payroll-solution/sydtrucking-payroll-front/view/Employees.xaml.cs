@@ -273,5 +273,23 @@
 
             return string.IsNullOrEmpty(ValidationMessage);
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var employee = _employeeBusiness.Get(id);
+            DeleteView(employee);
+        }
+
+        public void DeleteView(Employee employee)
+        {
+            if (MessageBox.Show("Are you sure delete employee?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                employee.IsDetele = true;
+                _employeeBusiness.Update(employee);
+
+                FillGrid();
+            }
+        }
     }
 }

@@ -102,5 +102,10 @@
             Save.IsEnabled = isEnable;
             New.IsEnabled = !isEnable;
         }
+
+        public void DeleteView(Role data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

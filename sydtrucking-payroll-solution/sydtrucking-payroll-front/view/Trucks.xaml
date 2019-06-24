@@ -43,6 +43,15 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Delete" Click="Delete_Click" Tag="{Binding Id}">
+                                <Image Source="/sydtrucking-payroll-front;component/resources/images/delete24.png" Width="24px" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number}"/>
                 <DataGridTextColumn Header="Plate" Binding="{Binding Plate}"/>

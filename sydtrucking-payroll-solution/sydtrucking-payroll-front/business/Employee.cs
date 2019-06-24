@@ -22,23 +22,40 @@
 
         private void Edit(model.Employee employee)
         {
-            var upd = Builders<model.Employee>.Update.Set(u => u.Address, employee.Address)
-                                                     .Set(u => u.Birthdate, employee.Birthdate)
-                                                     .Set(u => u.Contract, employee.Contract)
-                                                     .Set(u => u.LastName, employee.LastName)
-                                                     .Set(u => u.License, employee.License)
-                                                     .Set(u => u.Name, employee.Name)
-                                                     .Set(u => u.PaymentMethod, employee.PaymentMethod)
-                                                     .Set(u => u.PhoneNumber, employee.PhoneNumber)
-                                                     .Set(u => u.Rate, employee.Rate)
-                                                     .Set(u => u.State, employee.State)
-                                                     .Set(u => u.City, employee.City)
-                                                     .Set(u => u.ZipCode, employee.ZipCode)
-                                                     .Set(u => u.TaxForm, employee.TaxForm)
-                                                     .Set(u => u.Truck, employee.Truck)
-                                                     .Set(u => u.Email, employee.Email);
+            if (employee.IsDetele)
+            {
+                Delete(employee);
+            }
+            else
+            {
+                var upd = Builders<model.Employee>.Update.Set(u => u.Address, employee.Address)
+                                                         .Set(u => u.Birthdate, employee.Birthdate)
+                                                         .Set(u => u.Contract, employee.Contract)
+                                                         .Set(u => u.LastName, employee.LastName)
+                                                         .Set(u => u.License, employee.License)
+                                                         .Set(u => u.Name, employee.Name)
+                                                         .Set(u => u.PaymentMethod, employee.PaymentMethod)
+                                                         .Set(u => u.PhoneNumber, employee.PhoneNumber)
+                                                         .Set(u => u.Rate, employee.Rate)
+                                                         .Set(u => u.State, employee.State)
+                                                         .Set(u => u.City, employee.City)
+                                                         .Set(u => u.ZipCode, employee.ZipCode)
+                                                         .Set(u => u.TaxForm, employee.TaxForm)
+                                                         .Set(u => u.Truck, employee.Truck)
+                                                         .Set(u => u.Email, employee.Email);
 
-            context.Employees.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
+                context.Employees.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
+        }
+
+        private void Delete(model.Employee employee)
+        {
+            context.Employees.DeleteOne(f => f.Id == employee.Id);
+
+            Trash trashBusiness = new Trash();
+            model.Trash trash = new model.Trash();
+            trash.Employee = employee;
+            trashBusiness.Update(trash);
         }
 
         public void Update(model.Employee employee)
@@ -54,7 +71,10 @@
 
         public model.Employee Get(string id)
         {
-            throw new System.NotImplementedException();
+            var builder = Builders<model.Employee>.Filter;
+            var filter = builder.Eq(x => x.Id, id);
+
+            return context.Employees.Find(filter).FirstOrDefault();
         }
     }
 }

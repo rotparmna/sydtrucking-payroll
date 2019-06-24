@@ -114,5 +114,13 @@
                 return _database.GetCollection<PayrollLeaseCompany>("PayrollLeaseCompanies");
             }
         }
+
+        public IMongoCollection<Trash> Trash
+        {
+            get
+            {
+                return _database.GetCollection<Trash>("Trash");
+            }
+        }
     }
 }

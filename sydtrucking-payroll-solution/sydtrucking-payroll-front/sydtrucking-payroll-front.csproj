@@ -114,6 +114,7 @@
     <Compile Include="business\PayrollLeaseCompany.cs" />
     <Compile Include="business\Ping.cs" />
     <Compile Include="business\Role.cs" />
+    <Compile Include="business\Trash.cs" />
     <Compile Include="business\Truck.cs" />
     <Compile Include="business\User.cs" />
     <Compile Include="enums\Enumextension.cs" />
@@ -124,6 +125,7 @@
     </Compile>
     <Compile Include="model\GenericCollection.cs" />
     <Compile Include="model\LeaseCompany.cs" />
+    <Compile Include="model\ModelBase.cs" />
     <Compile Include="model\OilCompany.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
@@ -132,6 +134,7 @@
     <Compile Include="model\PrintPayrollLeaseCompanyView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
+    <Compile Include="model\Trash.cs" />
     <Compile Include="model\Truck.cs" />
     <Compile Include="model\TruckDetailView.cs" />
     <Compile Include="notification\Email.cs" />
@@ -357,6 +360,9 @@
   <ItemGroup>
     <Resource Include="resources\images\edit128.png" />
     <Resource Include="resources\images\edit24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\delete24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

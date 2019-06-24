@@ -14,6 +14,16 @@
             return context.Trucks.Find(FilterDefinition<model.Truck>.Empty).ToList();
         }
 
+        private void Delete(model.Truck truck)
+        {
+            context.Trucks.DeleteOne(f => f.Id == truck.Id);
+
+            Trash trashBusiness = new Trash();
+            model.Trash trash = new model.Trash();
+            trash.Truck = truck;
+            trashBusiness.Update(trash);
+        }
+
         private void Add(model.Truck truck)
         {
             context.Trucks.InsertOne(truck);
@@ -21,7 +31,13 @@
 
         private void Edit(model.Truck truck)
         {
-            var upd = Builders<model.Truck>.Update.Set(u => u.Inspection, truck.Inspection)
+            if (truck.IsDetele)
+            {
+                Delete(truck);
+            }
+            else
+            {
+                var upd = Builders<model.Truck>.Update.Set(u => u.Inspection, truck.Inspection)
                                                     .Set(u => u.Make, truck.Make)
                                                     .Set(u => u.Number, truck.Number)
                                                     .Set(u => u.Plate, truck.Plate)
@@ -29,7 +45,8 @@
                                                     .Set(u => u.Vin, truck.Vin)
                                                     .Set(u => u.Year, truck.Year);
 
-            context.Trucks.UpdateOne(f => f.Id == truck.Id, upd, new UpdateOptions() { IsUpsert = false });
+                context.Trucks.UpdateOne(f => f.Id == truck.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
         }
 
         public void Update(model.Truck truck)

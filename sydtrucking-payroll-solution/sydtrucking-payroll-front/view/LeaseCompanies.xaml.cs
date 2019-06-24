@@ -4,6 +4,7 @@
     using System.Linq;
     using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para LeaseCompanies.xaml
@@ -168,6 +169,24 @@
             if (_trucksView.Where(x => x.IsActive).Count()<=0) ValidationMessage += "At least one truck must be selected. \n";
 
             return string.IsNullOrEmpty(ValidationMessage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var company = _companyBusiness.Get(id);
+            DeleteView(company);
+        }
+
+        public void DeleteView(LeaseCompany data)
+        {
+            if (MessageBox.Show("Are you sure delete lease company?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                data.IsDetele = true;
+                _companyBusiness.Update(data);
+
+                FillGrid();
+            }
         }
     }
 }

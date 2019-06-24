@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
@@ -171,6 +172,24 @@
             if (string.IsNullOrEmpty(Passsword.Text)) ValidationMessage += "The Password field is required. \n";
 
             return string.IsNullOrEmpty(ValidationMessage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var user = _userBusiness.Get(id);
+            DeleteView(user);
+        }
+
+        public void DeleteView(User data)
+        {
+            if (MessageBox.Show("Are you sure delete user?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                data.IsDetele = true;
+                _userBusiness.Update(data);
+
+                FillGrid();
+            }
         }
     }
 }

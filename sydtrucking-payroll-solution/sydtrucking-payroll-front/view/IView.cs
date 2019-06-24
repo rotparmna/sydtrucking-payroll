@@ -7,6 +7,7 @@
         void SaveView();
         void FillGrid();
         void EditView();
+        void DeleteView(T data);
         void LoadDataBySelectedRow(T data);
         void ChangeControlsEnabled(bool isEnable);
     }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
@@ -143,6 +144,24 @@
             if (string.IsNullOrEmpty(Vin.Text)) ValidationMessage += "The Vin field is required. \n";
 
             return string.IsNullOrEmpty(ValidationMessage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var truck = _truckBusiness.Get(id);
+            DeleteView(truck);
+        }
+
+        public void DeleteView(Truck data)
+        {
+            if (MessageBox.Show("Are you sure delete truck?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                data.IsDetele = true;
+                _truckBusiness.Update(data);
+
+                FillGrid();
+            }
         }
     }
 }

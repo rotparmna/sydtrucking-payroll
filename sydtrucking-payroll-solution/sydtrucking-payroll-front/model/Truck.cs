@@ -4,7 +4,7 @@
     using MongoDB.Bson.Serialization.Attributes;
     using System;
 
-    public class Truck
+    public class Truck : ModelBase
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
