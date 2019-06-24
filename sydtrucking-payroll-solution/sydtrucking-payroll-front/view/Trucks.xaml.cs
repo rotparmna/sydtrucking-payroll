@@ -137,13 +137,12 @@
 
         public bool IsViewValid()
         {
-            bool isValid = false;
             ValidationMessage = string.Empty;
 
             if (string.IsNullOrEmpty(Number.Text)) ValidationMessage += "The Number field is required. \n";
             if (string.IsNullOrEmpty(Vin.Text)) ValidationMessage += "The Vin field is required. \n";
 
-            return isValid;
+            return string.IsNullOrEmpty(ValidationMessage);
         }
     }
 }

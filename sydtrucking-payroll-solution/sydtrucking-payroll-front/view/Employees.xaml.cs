@@ -261,7 +261,6 @@
 
         public bool IsViewValid()
         {
-            bool isValid = false;
             ValidationMessage = string.Empty;
 
             if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
@@ -272,7 +271,7 @@
             if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += "The Expiration Date field is required. \n";
             if (Trucks.SelectedIndex == -1) ValidationMessage += "The Truck Number is required. \n";
 
-            return isValid;
+            return string.IsNullOrEmpty(ValidationMessage);
         }
     }
 }

@@ -76,7 +76,7 @@
                     <ComboBoxItem Content="W9"/>
                 </ComboBox>
                 <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
-                <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
+                <TextBox Grid.Row="0" x:Name="Rate" Text="$0" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="0" Header="Contract" Name="Contract" IsEnabled="False" HorizontalAlignment="Left" Height="97" Margin="338,335,0,0" VerticalAlignment="Top" Width="345">

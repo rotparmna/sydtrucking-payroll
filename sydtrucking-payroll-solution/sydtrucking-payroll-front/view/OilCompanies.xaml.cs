@@ -117,13 +117,12 @@
 
         public bool IsViewValid()
         {
-            bool isValid = false;
             ValidationMessage = string.Empty;
 
             if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
             if (string.IsNullOrEmpty(Rate.Text)) ValidationMessage += "The Rate field is required. \n";
 
-            return isValid;
+            return string.IsNullOrEmpty(ValidationMessage);
         }
     }
 }

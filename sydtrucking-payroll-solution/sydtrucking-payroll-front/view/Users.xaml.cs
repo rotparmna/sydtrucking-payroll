@@ -163,7 +163,6 @@
 
         public bool IsViewValid()
         {
-            bool isValid = false;
             ValidationMessage = string.Empty;
 
             if (string.IsNullOrEmpty(Username.Text)) ValidationMessage += "The Username field is required. \n";
@@ -171,7 +170,7 @@
             if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += "The Email field is required. \n";
             if (string.IsNullOrEmpty(Passsword.Text)) ValidationMessage += "The Password field is required. \n";
 
-            return isValid;
+            return string.IsNullOrEmpty(ValidationMessage);
         }
     }
 }
