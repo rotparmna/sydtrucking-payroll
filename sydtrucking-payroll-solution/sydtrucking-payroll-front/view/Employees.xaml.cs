@@ -11,13 +11,15 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Employees : Window, IView<Employee>
+    public partial class Employees : Window, IView<Employee>, IValidation
     {
         private List<Employee> _employeesModel;
         private List<Truck> _trucksModel;
         private business.IBusiness<Employee> _employeeBusiness;
         private business.Truck _truckBusiness;
         private string _idEmployeeSelected;
+
+        public string ValidationMessage { get; set; }
 
         public Employees()
         {
@@ -131,65 +133,72 @@
 
         public void SaveView()
         {
-            ChangeControlsEnabled(false);
-
-            var id = _employeeBusiness.GetAll()
-                          .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
-                          .DefaultIfEmpty(new Employee() { Id = string.Empty })
-                          .FirstOrDefault()
-                          .Id;
-
-            PaymentType paymentMethod = PaymentType.Check;
-            Enum.TryParse(((ComboBoxItem)PaymentMethod.SelectedItem).Content.ToString(), out paymentMethod);
-
-            TaxType taxForm = TaxType.W4;
-            Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
-
-            Employee employee = new Employee()
+            if (IsViewValid())
             {
-                Address = Address.Text,
-                Birthdate = Birthdate.SelectedDate.Value,
-                Contract = new Contract()
-                {
-                    HireDate = HireDate.SelectedDate.Value,
-                    TerminationDate = Actually.IsChecked.Value ? TerminationDate.SelectedDate : null
-                },
-                Id = id,
-                LastName = LastName.Text,
-                License = new DriverLicense()
-                {
-                    Expiration = ExpirationDate.SelectedDate.Value,
-                    Number = DriverLicense.Text,
-                    State = StateDriverLicense.Text
-                },
-                Name = Name.Text,
-                PaymentMethod = paymentMethod,
-                PhoneNumber = PhoneNumber.Text,
-                Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
-                SocialSecurity = long.Parse(SocialSecurity.Text),
-                State = State.Text,
-                TaxForm = taxForm,
-                Truck = new Truck()
-                {
-                    Id = (Trucks.SelectedItem as Truck).Id,
-                    Inspection = Inspection.SelectedDate.Value,
-                    Make = Make.Text,
-                    Number = (Trucks.SelectedItem as Truck).Number,
-                    Plate = Plate.Text,
-                    Registration = Registration.SelectedDate.Value,
-                    Vin = Vin.Text,
-                    Year = int.Parse(Year.Text)
-                },
-                City = City.Text,
-                ZipCode = ZipCode.Text,
-                Email = Email.Text
-            };
+                ChangeControlsEnabled(false);
 
-            _employeeBusiness.Update(employee);
-            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+                var id = _employeeBusiness.GetAll()
+                              .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
+                              .DefaultIfEmpty(new Employee() { Id = string.Empty })
+                              .FirstOrDefault()
+                              .Id;
 
-            ClearView();
-            FillGrid();
+                PaymentType paymentMethod = PaymentType.Check;
+                Enum.TryParse(((ComboBoxItem)PaymentMethod.SelectedItem).Content.ToString(), out paymentMethod);
+
+                TaxType taxForm = TaxType.W4;
+                Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
+
+                Employee employee = new Employee()
+                {
+                    Address = Address.Text,
+                    Birthdate = Birthdate.SelectedDate.Value,
+                    Contract = new Contract()
+                    {
+                        HireDate = HireDate.SelectedDate.Value,
+                        TerminationDate = Actually.IsChecked.Value ? TerminationDate.SelectedDate : null
+                    },
+                    Id = id,
+                    LastName = LastName.Text,
+                    License = new DriverLicense()
+                    {
+                        Expiration = ExpirationDate.SelectedDate.Value,
+                        Number = DriverLicense.Text,
+                        State = StateDriverLicense.Text
+                    },
+                    Name = Name.Text,
+                    PaymentMethod = paymentMethod,
+                    PhoneNumber = PhoneNumber.Text,
+                    Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
+                    SocialSecurity = long.Parse(SocialSecurity.Text),
+                    State = State.Text,
+                    TaxForm = taxForm,
+                    Truck = new Truck()
+                    {
+                        Id = (Trucks.SelectedItem as Truck).Id,
+                        Inspection = Inspection.SelectedDate.Value,
+                        Make = Make.Text,
+                        Number = (Trucks.SelectedItem as Truck).Number,
+                        Plate = Plate.Text,
+                        Registration = Registration.SelectedDate.Value,
+                        Vin = Vin.Text,
+                        Year = int.Parse(Year.Text)
+                    },
+                    City = City.Text,
+                    ZipCode = ZipCode.Text,
+                    Email = Email.Text
+                };
+
+                _employeeBusiness.Update(employee);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void FillGrid()
@@ -248,6 +257,22 @@
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             EditView();
+        }
+
+        public bool IsViewValid()
+        {
+            bool isValid = false;
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
+            if (string.IsNullOrEmpty(LastName.Text)) ValidationMessage += "The Last Name field is required. \n";
+            if (string.IsNullOrEmpty(SocialSecurity.Text)) ValidationMessage += "The Social Security field is required. \n";
+            if (string.IsNullOrEmpty(DriverLicense.Text)) ValidationMessage += "The Driver License field is required. \n";
+            if (string.IsNullOrEmpty(StateDriverLicense.Text)) ValidationMessage += "The State field is required. \n";
+            if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += "The Expiration Date field is required. \n";
+            if (Trucks.SelectedIndex == -1) ValidationMessage += "The Truck Number is required. \n";
+
+            return isValid;
         }
     }
 }

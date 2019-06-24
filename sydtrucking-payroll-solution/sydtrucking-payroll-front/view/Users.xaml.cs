@@ -8,13 +8,15 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Users : Window, IView<User>
+    public partial class Users : Window, IView<User>, IValidation
     {
         private List<User> _usersModel;
         private business.IBusiness<User> _userBusiness;
         private business.IBusiness<Role> _roleBusiness;
         private List<RoleDetailView> _rolesView;
         private string _idUserSelected;
+
+        public string ValidationMessage { get; set; }
 
         public Users()
         {
@@ -74,37 +76,44 @@
 
         public void SaveView()
         {
-            ChangeControlsEnabled(false);
-
-            var id = _userBusiness.GetAll()
-                          .Where(x => x.Username == Username.Text)
-                          .DefaultIfEmpty(new User() { Id = string.Empty })
-                          .FirstOrDefault()
-                          .Id;
-
-            User user = new User()
+            if (IsViewValid())
             {
-                Id = id,
-                Username = Username.Text,
-                Email = Email.Text,
-                Fullname = Fullname.Text,
-                IsActive = IsActive.IsChecked.Value,
-                Password = Passsword.Text
-            };
+                ChangeControlsEnabled(false);
 
-            _rolesView.Where(x => x.IsActive)
-                    .ToList()
-                    .ForEach(x => user.Roles.Add(new Role()
-                    {
-                        Id = x.Id,
-                        Name = x.Role
-                    }));
+                var id = _userBusiness.GetAll()
+                              .Where(x => x.Username == Username.Text)
+                              .DefaultIfEmpty(new User() { Id = string.Empty })
+                              .FirstOrDefault()
+                              .Id;
 
-            _userBusiness.Update(user);
-            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+                User user = new User()
+                {
+                    Id = id,
+                    Username = Username.Text,
+                    Email = Email.Text,
+                    Fullname = Fullname.Text,
+                    IsActive = IsActive.IsChecked.Value,
+                    Password = Passsword.Text
+                };
 
-            ClearView();
-            FillGrid();
+                _rolesView.Where(x => x.IsActive)
+                        .ToList()
+                        .ForEach(x => user.Roles.Add(new Role()
+                        {
+                            Id = x.Id,
+                            Name = x.Role
+                        }));
+
+                _userBusiness.Update(user);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void FillGrid()
@@ -150,6 +159,19 @@
             RolesGroup.IsEnabled = isEnable;
             Save.IsEnabled = isEnable;
             New.IsEnabled = !isEnable;
+        }
+
+        public bool IsViewValid()
+        {
+            bool isValid = false;
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Username.Text)) ValidationMessage += "The Username field is required. \n";
+            if (string.IsNullOrEmpty(Fullname.Text)) ValidationMessage += "The Fullname field is required. \n";
+            if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += "The Email field is required. \n";
+            if (string.IsNullOrEmpty(Passsword.Text)) ValidationMessage += "The Password field is required. \n";
+
+            return isValid;
         }
     }
 }

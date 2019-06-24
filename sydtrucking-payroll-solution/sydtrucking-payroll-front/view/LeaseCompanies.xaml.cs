@@ -8,13 +8,15 @@
     /// <summary>
     /// Lógica de interacción para LeaseCompanies.xaml
     /// </summary>
-    public partial class LeaseCompanies : Window, IView<LeaseCompany>
+    public partial class LeaseCompanies : Window, IView<LeaseCompany>, IValidation
     {
         private List<LeaseCompany> _companiesModel;
         private List<TruckDetailView> _trucksView;
         private business.IBusiness<LeaseCompany> _companyBusiness;
         private business.IBusiness<Truck> _truckBusiness;
         private string _idCompanySelected;
+
+        public string ValidationMessage { get; set; }
 
         public LeaseCompanies()
         {
@@ -63,23 +65,30 @@
 
         public void SaveView()
         {
-            ChangeControlsEnabled(false);
-
-            LeaseCompany company = new LeaseCompany()
+            if (IsViewValid())
             {
-                Id = _idCompanySelected,
-                Name = Name.Text
-            };
+                ChangeControlsEnabled(false);
 
-            _trucksView.Where(x => x.IsActive)
-                   .ToList()
-                   .ForEach(x => company.Trucks.Add(_truckBusiness.Get(x.Id)));
+                LeaseCompany company = new LeaseCompany()
+                {
+                    Id = _idCompanySelected,
+                    Name = Name.Text
+                };
 
-            _companyBusiness.Update(company);
-            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+                _trucksView.Where(x => x.IsActive)
+                       .ToList()
+                       .ForEach(x => company.Trucks.Add(_truckBusiness.Get(x.Id)));
 
-            ClearView();
-            FillGrid();
+                _companyBusiness.Update(company);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void FillGrid()
@@ -149,6 +158,17 @@
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             EditView();
+        }
+
+        public bool IsViewValid()
+        {
+            bool isValid = false;
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
+            if (_trucksView.Where(x => x.IsActive).Count()<=0) ValidationMessage += "At least one truck must be selected. \n";
+
+            return isValid;
         }
     }
 }

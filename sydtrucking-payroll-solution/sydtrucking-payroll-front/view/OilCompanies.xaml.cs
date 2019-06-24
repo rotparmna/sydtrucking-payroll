@@ -7,11 +7,13 @@
     /// <summary>
     /// Lógica de interacción para Roles.xaml
     /// </summary>
-    public partial class OilCompanies : Window, IView<OilCompany>
+    public partial class OilCompanies : Window, IView<OilCompany>, IValidation
     {
         private List<OilCompany> _companiesModel;
         private business.IBusiness<OilCompany> _companyBusiness;
         private string _idCompanySelected;
+
+        public string ValidationMessage { get; set; }
 
         public OilCompanies()
         {
@@ -65,18 +67,27 @@
 
         public void SaveView()
         {
-            OilCompany role = new OilCompany()
+            if (IsViewValid())
             {
-                Id = _idCompanySelected,
-                Name = Name.Text,
-                Rate = double.Parse(Rate.Text.Replace("$", string.Empty))
-            };
+                ChangeControlsEnabled(false);
 
-            _companyBusiness.Update(role);
-            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+                OilCompany role = new OilCompany()
+                {
+                    Id = _idCompanySelected,
+                    Name = Name.Text,
+                    Rate = double.Parse(Rate.Text.Replace("$", string.Empty))
+                };
 
-            ClearView();
-            FillGrid();
+                _companyBusiness.Update(role);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void FillGrid()
@@ -102,6 +113,17 @@
             General.IsEnabled = isEnable;
             Save.IsEnabled = isEnable;
             New.IsEnabled = !isEnable;
+        }
+
+        public bool IsViewValid()
+        {
+            bool isValid = false;
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
+            if (string.IsNullOrEmpty(Rate.Text)) ValidationMessage += "The Rate field is required. \n";
+
+            return isValid;
         }
     }
 }

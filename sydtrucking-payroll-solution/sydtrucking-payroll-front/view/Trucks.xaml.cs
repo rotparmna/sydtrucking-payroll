@@ -8,11 +8,13 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Trucks : Window, IView<Truck>
+    public partial class Trucks : Window, IView<Truck>, IValidation
     {
         private List<Truck> _trucksModel;
         private business.IBusiness<Truck> _truckBusiness;
         private string _idTruckSelected;
+
+        public string ValidationMessage { get; set; }
 
         public Trucks()
         {
@@ -69,31 +71,38 @@
 
         public void SaveView()
         {
-            ChangeControlsEnabled(false);
-
-            var id = _truckBusiness.GetAll()
-                          .Where(x => x.Number == Number.Text)
-                          .DefaultIfEmpty(new Truck() { Id = string.Empty })
-                          .FirstOrDefault()
-                          .Id;
-
-            Truck truck = new Truck()
+            if (IsViewValid())
             {
-                Id = id,
-                Inspection = Inspection.SelectedDate.Value,
-                Make = Make.Text,
-                Number = Number.Text,
-                Plate = Plate.Text,
-                Registration = Registration.SelectedDate.Value,
-                Vin = Vin.Text,
-                Year = int.Parse(Year.Text)
-            };
+                ChangeControlsEnabled(false);
 
-            _truckBusiness.Update(truck);
-            MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+                var id = _truckBusiness.GetAll()
+                              .Where(x => x.Number == Number.Text)
+                              .DefaultIfEmpty(new Truck() { Id = string.Empty })
+                              .FirstOrDefault()
+                              .Id;
 
-            ClearView();
-            FillGrid();
+                Truck truck = new Truck()
+                {
+                    Id = id,
+                    Inspection = Inspection.SelectedDate.Value,
+                    Make = Make.Text,
+                    Number = Number.Text,
+                    Plate = Plate.Text,
+                    Registration = Registration.SelectedDate.Value,
+                    Vin = Vin.Text,
+                    Year = int.Parse(Year.Text)
+                };
+
+                _truckBusiness.Update(truck);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void FillGrid()
@@ -124,6 +133,17 @@
             General.IsEnabled = isEnable;
             Save.IsEnabled = isEnable;
             New.IsEnabled = !isEnable;
+        }
+
+        public bool IsViewValid()
+        {
+            bool isValid = false;
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Number.Text)) ValidationMessage += "The Number field is required. \n";
+            if (string.IsNullOrEmpty(Vin.Text)) ValidationMessage += "The Vin field is required. \n";
+
+            return isValid;
         }
     }
 }
