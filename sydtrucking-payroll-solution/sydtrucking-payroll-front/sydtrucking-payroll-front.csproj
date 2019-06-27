@@ -119,6 +119,7 @@
     <Compile Include="business\User.cs" />
     <Compile Include="enums\Enumextension.cs" />
     <Compile Include="enums\PaymentType.cs" />
+    <Compile Include="enums\Role.cs" />
     <Compile Include="enums\TaxForm.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

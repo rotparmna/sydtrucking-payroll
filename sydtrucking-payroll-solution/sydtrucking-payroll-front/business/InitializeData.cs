@@ -25,12 +25,17 @@
             {
                 await _context.Roles.InsertOneAsync(new model.Role()
                 {
-                    Name = "Administrador"
+                    Name = "Administrator"
                 });
 
                 await _context.Roles.InsertOneAsync(new model.Role()
                 {
-                    Name = "Basico"
+                    Name = "Basic1"
+                });
+
+                await _context.Roles.InsertOneAsync(new model.Role()
+                {
+                    Name = "Basic2"
                 });
 
                 model.User admin = new model.User()

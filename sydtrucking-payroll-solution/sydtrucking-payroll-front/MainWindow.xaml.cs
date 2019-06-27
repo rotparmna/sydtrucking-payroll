@@ -75,6 +75,12 @@
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Welcome.Content = "Welcome, " + Ticket.Instance.Authenticate.Fullname;
+
+            Security.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
+            Param.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic1) ||
+                               Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
+            Business.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic2) ||
+                                    Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
         }
     }
 }

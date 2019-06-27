@@ -1,6 +1,7 @@
 ﻿namespace sydtrucking_payroll_front.business
 {
     using System;
+    using System.Linq;
 
     public class Authenticate
     {
@@ -39,6 +40,12 @@
                 _userBusiness.UpdateLastLogin(_user);
                 IsAuthenticate = true;
             }
+        }
+
+        public bool IsInRole(enums.Role role)
+        {
+            return _user.Roles.Where(x => x.Name == role.ToString()).Count() > 0 || 
+                       _user.Username == "admin";
         }
     }
 }
