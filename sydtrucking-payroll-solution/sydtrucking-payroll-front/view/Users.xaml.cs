@@ -169,7 +169,6 @@
             if (string.IsNullOrEmpty(Username.Text)) ValidationMessage += "The Username field is required. \n";
             if (string.IsNullOrEmpty(Fullname.Text)) ValidationMessage += "The Fullname field is required. \n";
             if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += "The Email field is required. \n";
-            if (string.IsNullOrEmpty(Passsword.Text)) ValidationMessage += "The Password field is required. \n";
 
             return string.IsNullOrEmpty(ValidationMessage);
         }
