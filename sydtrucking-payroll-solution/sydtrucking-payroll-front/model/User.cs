@@ -3,6 +3,7 @@
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
 
     public class User : ModelBase
@@ -23,5 +24,12 @@
         public DateTime LastLogin { get; set; }
         public bool IsActive { get; set; }
         public List<Role> Roles { get; set; }
+        public string RolesToText
+        {
+            get
+            {
+                return String.Join(", ", Roles.Select(x => x.Name).ToArray());
+            }
+        }
     }
 }

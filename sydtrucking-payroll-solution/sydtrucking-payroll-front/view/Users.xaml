@@ -65,9 +65,10 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
                 <DataGridTextColumn Header="Fullname" Binding="{Binding Fullname}"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Last Login" Binding="{Binding LastLogin}"/>
                 <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}"/>
+                <DataGridTextColumn Header="Roles" Binding="{Binding RolesToText}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">

@@ -109,15 +109,20 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}"/>
+                <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
-                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
-                <DataGridTextColumn Header="State" Binding="{Binding State}"/>
-                <DataGridTextColumn Header="Payment" Binding="{Binding PaymentMethod}"/>
-                <DataGridTextColumn Header="Tax Form" Binding="{Binding TaxForm}"/>
-                <DataGridTextColumn Header="Rate" Binding="{Binding Rate}"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="State" Binding="{Binding State}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Payment" Binding="{Binding PaymentMethod}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Tax Form" Binding="{Binding TaxForm}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Rate" Binding="{Binding Rate}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Driver License" Binding="{Binding License.Number}"/>
+                <DataGridTextColumn Header="State" Binding="{Binding License.State}"/>
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding License.Expiration}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Truck Number" Binding="{Binding Truck.Number}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">

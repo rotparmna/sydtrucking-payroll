@@ -53,6 +53,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Trucks" Binding="{Binding TrucksToText}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="New" ToolTip="New" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="New_Click">

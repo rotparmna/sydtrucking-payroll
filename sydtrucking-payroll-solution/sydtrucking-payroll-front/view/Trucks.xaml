@@ -54,8 +54,10 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number}"/>
-                <DataGridTextColumn Header="Plate" Binding="{Binding Plate}"/>
+                <DataGridTextColumn Header="Plate" Binding="{Binding Plate}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Vin" Binding="{Binding Vin}"/>
+                <DataGridTextColumn Header="Registration" Binding="{Binding Registration}"/>
+                <DataGridTextColumn Header="Inspection" Binding="{Binding Inspection}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">

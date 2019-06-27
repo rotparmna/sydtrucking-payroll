@@ -25,10 +25,10 @@
         </GroupBox>
         <GroupBox Header="Security" Name="Security" IsEnabled="False" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
-                <Button ToolTip="Roles" x:Name="RoleButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="RoleButton_Click" Height="66" HorizontalContentAlignment="Center">
+                <Button Visibility="Hidden" ToolTip="Roles" x:Name="RoleButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="RoleButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Roles" Source="resources/images/role128.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Users" x:Name="UserButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="UserButton_Click" Height="66" HorizontalContentAlignment="Center">
+                <Button ToolTip="Users" x:Name="UserButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="UserButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Users" Source="resources/images/user128.png" Width="48px" />
                 </Button>
             </Grid>
