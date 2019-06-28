@@ -11,7 +11,7 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Employees : Window, IView<Driver>, IValidation
+    public partial class Drivers : Window, IView<Driver>, IValidation
     {
         private List<Driver> _employeesModel;
         private List<Truck> _trucksModel;
@@ -21,7 +21,7 @@
 
         public string ValidationMessage { get; set; }
 
-        public Employees()
+        public Drivers()
         {
             InitializeComponent();
             _employeesModel = new List<Driver>();

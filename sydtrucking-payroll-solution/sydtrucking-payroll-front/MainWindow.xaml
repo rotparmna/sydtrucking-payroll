@@ -4,15 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Payroll" Height="362.124" Width="645.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Payroll" Height="437.124" Width="645.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Image Source="resources/images/logo-sdt.JPG" HorizontalAlignment="Right" Width="272" Stretch="UniformToFill" Height="215"/>
-        <GroupBox Header="Param" Name="Param" IsEnabled="False" HorizontalAlignment="Left" Height="100" Margin="10,115,0,0" VerticalAlignment="Top" Width="357">
+        <GroupBox Header="Param" Name="Param" IsEnabled="False" HorizontalAlignment="Left" Height="174" Margin="10,115,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
                 <Button ToolTip="Employees" x:Name="EmployeeButton" HorizontalAlignment="Left" Margin="84,8,0,0" VerticalAlignment="Top" Width="75" Click="EmployeeButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Employees" Source="resources/images/employee128.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Oil Companies" x:Name="OilCompanies" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="OilCompanies_Click" Height="66" HorizontalContentAlignment="Center">
+                <Button ToolTip="Drivers" x:Name="DriverButton" HorizontalAlignment="Left" Margin="164,8,0,0" VerticalAlignment="Top" Width="75" Click="DriverButton_Click" Height="66" HorizontalContentAlignment="Center">
+                    <Image ToolTip="Drivers" Source="resources/images/driver128.png" Width="48px" />
+                </Button>
+                <Button ToolTip="Oil Companies" x:Name="OilCompanies" HorizontalAlignment="Left" Margin="4,79,0,0" VerticalAlignment="Top" Width="75" Click="OilCompanies_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Oil Companies" Source="resources/images/company128.png" Width="48px" />
                 </Button>
                 <Button ToolTip="Trucks" x:Name="TruckButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="TruckButton_Click" Height="66" HorizontalContentAlignment="Center">
@@ -33,7 +36,7 @@
                 </Button>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Business" Name="Business" IsEnabled="False" HorizontalAlignment="Left" Height="100" Margin="10,220,0,0" VerticalAlignment="Top" Width="357">
+        <GroupBox Header="Business" Name="Business" IsEnabled="False" HorizontalAlignment="Left" Height="100" Margin="10,294,0,0" VerticalAlignment="Top" Width="357">
             <Grid>
                 <Button ToolTip="Payroll" x:Name="PayrollButton" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="PayrollButton_Click" Height="66" HorizontalContentAlignment="Center">
                     <Image ToolTip="Payroll" Source="resources/images/payroll128.png" Width="48px" />

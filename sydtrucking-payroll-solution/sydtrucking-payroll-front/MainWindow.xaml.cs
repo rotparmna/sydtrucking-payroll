@@ -14,8 +14,7 @@
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            view.Employees employees = new view.Employees();
-            employees.Show();
+            
         }
 
         private void PayrollButton_Click(object sender, RoutedEventArgs e)
@@ -81,6 +80,12 @@
                                Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
             Business.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic2) ||
                                     Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
+        }
+
+        private void DriverButton_Click(object sender, RoutedEventArgs e)
+        {
+            view.Drivers drivers = new view.Drivers();
+            drivers.Show();
         }
     }
 }

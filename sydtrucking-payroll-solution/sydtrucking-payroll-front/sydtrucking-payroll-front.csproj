@@ -178,8 +178,8 @@
     <Compile Include="view\Roles.xaml.cs">
       <DependentUpon>Roles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Employees.xaml.cs">
-      <DependentUpon>Employees.xaml</DependentUpon>
+    <Compile Include="view\Drivers.xaml.cs">
+      <DependentUpon>Drivers.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Payroll.xaml.cs">
       <DependentUpon>Payroll.xaml</DependentUpon>
@@ -233,7 +233,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\Employees.xaml">
+    <Page Include="view\Drivers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -366,6 +366,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\delete24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\driver128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
