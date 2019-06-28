@@ -17,7 +17,7 @@
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public Employee Employee { get; set; }
+        public Driver Employee { get; set; }
         public int TruckNumber { get; set; }
         public double Rate { get; set; }
         public ICollection<PayrollDetail> Details { get; set; }

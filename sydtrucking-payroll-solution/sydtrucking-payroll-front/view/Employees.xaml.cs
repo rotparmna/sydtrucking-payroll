@@ -11,11 +11,11 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class Employees : Window, IView<Employee>, IValidation
+    public partial class Employees : Window, IView<Driver>, IValidation
     {
-        private List<Employee> _employeesModel;
+        private List<Driver> _employeesModel;
         private List<Truck> _trucksModel;
-        private business.IBusiness<Employee> _employeeBusiness;
+        private business.IBusiness<Driver> _employeeBusiness;
         private business.Truck _truckBusiness;
         private string _idEmployeeSelected;
 
@@ -24,7 +24,7 @@
         public Employees()
         {
             InitializeComponent();
-            _employeesModel = new List<Employee>();
+            _employeesModel = new List<Driver>();
             _trucksModel = new List<Truck>();
             _employeeBusiness = new business.Employee();
             _truckBusiness = new business.Truck();
@@ -52,9 +52,9 @@
 
         private void ListEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Employee))
+            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Driver))
             {
-                LoadDataBySelectedRow((Employee)e.AddedItems[0]);
+                LoadDataBySelectedRow((Driver)e.AddedItems[0]);
             }
         }
         
@@ -110,7 +110,7 @@
             State.Text = string.Empty;
             PaymentMethod.SelectedIndex = -1;
             TaxForm.SelectedIndex = -1;
-            Rate.Text = string.Empty;
+            Rate.Text = 0.0.ToString("C");
             Year.Text = string.Empty;
             Vin.Text = string.Empty;
             Make.Text = string.Empty;
@@ -139,17 +139,17 @@
 
                 var id = _employeeBusiness.GetAll()
                               .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
-                              .DefaultIfEmpty(new Employee() { Id = string.Empty })
+                              .DefaultIfEmpty(new Driver() { Id = string.Empty })
                               .FirstOrDefault()
                               .Id;
 
-                PaymentType paymentMethod = PaymentType.Check;
+                PaymentType paymentMethod = PaymentType.NA;
                 Enum.TryParse(((ComboBoxItem)PaymentMethod.SelectedItem).Content.ToString(), out paymentMethod);
 
-                TaxType taxForm = TaxType.W4;
+                TaxType taxForm = TaxType.NA;
                 Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
 
-                Employee employee = new Employee()
+                Driver employee = new Driver()
                 {
                     Address = Address.Text,
                     Birthdate = Birthdate.SelectedDate.Value,
@@ -212,7 +212,7 @@
             ChangeControlsEnabled(true);
         }
 
-        public void LoadDataBySelectedRow(Employee employee)
+        public void LoadDataBySelectedRow(Driver employee)
         {
             _idEmployeeSelected = employee.Id;
             SocialSecurity.Text = employee.SocialSecurity.ToString();
@@ -269,7 +269,9 @@
             if (string.IsNullOrEmpty(DriverLicense.Text)) ValidationMessage += "The Driver License field is required. \n";
             if (string.IsNullOrEmpty(StateDriverLicense.Text)) ValidationMessage += "The State field is required. \n";
             if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += "The Expiration Date field is required. \n";
-            if (Trucks.SelectedIndex == -1) ValidationMessage += "The Truck Number is required. \n";
+            if (Trucks.SelectedIndex == -1) ValidationMessage += "The Truck Number field is required. \n";
+            if (PaymentMethod.SelectedIndex == -1) ValidationMessage += "The Payment Method field is required. \n";
+            if (TaxForm.SelectedIndex == -1) ValidationMessage += "The Tax Form field is required. \n";
 
             return string.IsNullOrEmpty(ValidationMessage);
         }
@@ -281,7 +283,7 @@
             DeleteView(employee);
         }
 
-        public void DeleteView(Employee employee)
+        public void DeleteView(Driver employee)
         {
             if (MessageBox.Show("Are you sure delete employee?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {

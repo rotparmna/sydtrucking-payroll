@@ -43,7 +43,7 @@
             Add(payroll);
         }
 
-        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Employee employee)
+        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Driver employee)
         {
             var printPayrollsView = new List<model.PrintPayrollView>();
 

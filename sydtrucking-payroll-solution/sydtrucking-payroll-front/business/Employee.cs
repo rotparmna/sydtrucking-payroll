@@ -5,22 +5,22 @@
     using System.Linq;
     using sydtrucking_payroll_front.model;
 
-    public class Employee : BusinessBase, IBusiness<model.Employee>
+    public class Employee : BusinessBase, IBusiness<model.Driver>
     {
 
         public Employee() : base() { }
 
-        public List<model.Employee> GetAll()
+        public List<model.Driver> GetAll()
         {
-            return context.Employees.Find(FilterDefinition<model.Employee>.Empty).ToList();
+            return context.Drivers.Find(FilterDefinition<model.Driver>.Empty).ToList();
         }
 
-        private void Add(model.Employee employee)
+        private void Add(model.Driver employee)
         {
-            context.Employees.InsertOne(employee);
+            context.Drivers.InsertOne(employee);
         }
 
-        private void Edit(model.Employee employee)
+        private void Edit(model.Driver employee)
         {
             if (employee.IsDetele)
             {
@@ -28,7 +28,7 @@
             }
             else
             {
-                var upd = Builders<model.Employee>.Update.Set(u => u.Address, employee.Address)
+                var upd = Builders<model.Driver>.Update.Set(u => u.Address, employee.Address)
                                                          .Set(u => u.Birthdate, employee.Birthdate)
                                                          .Set(u => u.Contract, employee.Contract)
                                                          .Set(u => u.LastName, employee.LastName)
@@ -44,21 +44,21 @@
                                                          .Set(u => u.Truck, employee.Truck)
                                                          .Set(u => u.Email, employee.Email);
 
-                context.Employees.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
+                context.Drivers.UpdateOne(f => f.Id == employee.Id, upd, new UpdateOptions() { IsUpsert = false });
             }
         }
 
-        private void Delete(model.Employee employee)
+        private void Delete(model.Driver employee)
         {
-            context.Employees.DeleteOne(f => f.Id == employee.Id);
+            context.Drivers.DeleteOne(f => f.Id == employee.Id);
 
             Trash trashBusiness = new Trash();
             model.Trash trash = new model.Trash();
-            trash.Employee = employee;
+            trash.Driver = employee;
             trashBusiness.Update(trash);
         }
 
-        public void Update(model.Employee employee)
+        public void Update(model.Driver employee)
         {
             var isEdit = GetAll().Where(x => x.SocialSecurity == employee.SocialSecurity)
                                     .Count() > 0;
@@ -69,12 +69,12 @@
                 Add(employee);
         }
 
-        public model.Employee Get(string id)
+        public model.Driver Get(string id)
         {
-            var builder = Builders<model.Employee>.Filter;
+            var builder = Builders<model.Driver>.Filter;
             var filter = builder.Eq(x => x.Id, id);
 
-            return context.Employees.Find(filter).FirstOrDefault();
+            return context.Drivers.Find(filter).FirstOrDefault();
         }
     }
 }

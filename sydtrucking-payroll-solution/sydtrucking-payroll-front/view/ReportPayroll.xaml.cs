@@ -15,7 +15,7 @@
     public partial class ReportPayroll : Window
     {
         private IBusiness<model.Payroll> _payrollBusiness;
-        private IBusiness<model.Employee> _employeeBusiness;
+        private IBusiness<model.Driver> _employeeBusiness;
         private List<PrintPayrollView> _printView;
 
         public ReportPayroll()
@@ -49,7 +49,7 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((business.Payroll)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Employee);
+            _printView = ((business.Payroll)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Driver);
             Details.ItemsSource = _printView;
             if ( _printView.Count == 0)
             {

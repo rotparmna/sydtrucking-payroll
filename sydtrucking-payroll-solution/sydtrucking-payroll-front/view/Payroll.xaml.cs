@@ -13,7 +13,7 @@
     public partial class Payroll : Window
     {
         business.IBusiness<model.Payroll> _payrollBusiness;
-        business.IBusiness<Employee> _employeeBusiness;
+        business.IBusiness<Driver> _employeeBusiness;
         business.IBusiness<OilCompany> _companyBusiness;
         ObservableCollection<PayrollDetailView> _details;
         model.Payroll _payroll;
@@ -45,8 +45,8 @@
         {
             if (e.AddedItems.Count > 0)
             {
-                TruckNumber.Text = ((Employee)e.AddedItems[0]).Truck.Number;
-                Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
+                TruckNumber.Text = ((Driver)e.AddedItems[0]).Truck.Number;
+                Rate.Text = ((Driver)e.AddedItems[0]).Rate.ToString("C");
             }
         }
         
@@ -208,7 +208,7 @@
                 double.TryParse(Reimbursements.Text, out reimbursements);
 
                 _payroll.TruckNumber = int.Parse(TruckNumber.Text);
-                _payroll.Employee = (Employee)Employees.SelectedItem;
+                _payroll.Employee = (Driver)Employees.SelectedItem;
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeekPayment);

@@ -1,7 +1,5 @@
 ﻿namespace sydtrucking_payroll_front.model
 {
-    using System.Collections.Generic;
-
     public class Trash
     {
         public Trash()
@@ -9,6 +7,7 @@
             
         }
 
+        public Driver Driver { get; set; }
         public Employee Employee { get; set; }
         public OilCompany OilCompany { get; set; }
         public LeaseCompany LeaseCompany { get; set; }

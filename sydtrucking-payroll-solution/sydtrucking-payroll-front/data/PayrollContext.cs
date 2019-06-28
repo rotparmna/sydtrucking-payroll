@@ -43,6 +43,14 @@
             return isOnline;
         }
 
+        public IMongoCollection<Driver> Drivers
+        {
+            get
+            {
+                return _database.GetCollection<Driver>("Drivers");
+            }
+        }
+
         public IMongoCollection<Employee> Employees
         {
             get

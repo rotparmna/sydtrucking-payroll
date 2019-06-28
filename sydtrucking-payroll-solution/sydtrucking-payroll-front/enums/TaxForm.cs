@@ -2,6 +2,7 @@
 {
     public enum TaxType
     {
+        NA,
         W4,
         W9
     }

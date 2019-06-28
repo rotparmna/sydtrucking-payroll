@@ -2,6 +2,7 @@
 {
     public enum PaymentType
     {
+        NA,
         Check,
         DD
     }
