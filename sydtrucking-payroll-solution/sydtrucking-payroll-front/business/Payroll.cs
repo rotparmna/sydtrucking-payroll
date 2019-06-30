@@ -6,7 +6,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Payroll : BusinessBase, IBusiness<model.Payroll>
+    public class Payroll : BusinessBase, 
+        IBusiness<model.Payroll>,
+        IEmail<model.Payroll>
     {
         public Payroll() : base() { }
 

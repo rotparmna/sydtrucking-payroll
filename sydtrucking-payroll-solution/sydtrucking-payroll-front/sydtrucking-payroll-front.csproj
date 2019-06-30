@@ -104,6 +104,8 @@
     <Compile Include="business\Authenticate.cs" />
     <Compile Include="business\BusinessBase.cs" />
     <Compile Include="business\Employee.cs" />
+    <Compile Include="business\IEmail.cs" />
+    <Compile Include="business\IPayroll.cs" />
     <Compile Include="business\LeaseCompany.cs" />
     <Compile Include="business\OilCompany.cs" />
     <Compile Include="business\Configuration.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="model\PayrollLeaseCompanyDetails.cs" />
     <Compile Include="model\Person.cs" />
     <Compile Include="model\PrintPayrollLeaseCompanyView.cs" />
+    <Compile Include="model\PrintPayrollEmployeeView.cs" />
     <Compile Include="model\PrintPayrollView.cs" />
     <Compile Include="model\RoleDetailView.cs" />
     <Compile Include="model\Trash.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="notification\Email.cs" />
     <Compile Include="notification\INotification.cs" />
     <Compile Include="print\PrintPayroll.cs" />
+    <Compile Include="print\PrintPayrollEmployee.cs" />
     <Compile Include="print\PrintPayrollLeaseCompany.cs" />
     <Compile Include="print\PrintToPdf.cs" />
     <Compile Include="Ticket.cs" />
@@ -168,6 +172,9 @@
     </Compile>
     <Compile Include="view\PayrollLeaseCompanies.xaml.cs">
       <DependentUpon>PayrollLeaseCompanies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPayrollEmployee.xaml.cs">
+      <DependentUpon>ReportPayrollEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ReportPayrollLeaseCompanies.xaml.cs">
       <DependentUpon>ReportPayrollLeaseCompanies.xaml</DependentUpon>
@@ -223,6 +230,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\PayrollLeaseCompanies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\ReportPayrollEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -389,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\payrollemployee64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\payrollemployeereport80.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

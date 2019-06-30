@@ -12,18 +12,18 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class ReportPayroll : Window
+    public partial class ReportPayrollEmployee : Window
     {
-        private IBusiness<model.Payroll> _payrollBusiness;
-        private IBusiness<model.Driver> _employeeBusiness;
-        private List<PrintPayrollView> _printView;
+        private IBusiness<model.PayrollEmployee> _payrollBusiness;
+        private IBusiness<model.Employee> _employeeBusiness;
+        private List<PrintPayrollEmployeeView> _printView;
 
-        public ReportPayroll()
+        public ReportPayrollEmployee()
         {
             InitializeComponent();
-            _payrollBusiness = new business.Payroll();
-            _printView = new List<PrintPayrollView>();
-            _employeeBusiness = new business.Driver();
+            _payrollBusiness = new business.PayrollEmployee();
+            _printView = new List<PrintPayrollEmployeeView>();
+            _employeeBusiness = new business.Employee();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,10 +35,10 @@
 
         private void PrintReport_Click(object sender, RoutedEventArgs e)
         {
-            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
+            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollEmployeeView;
             var payroll = _payrollBusiness.Get(rowData.Id);
 
-            PrintPayroll print = new PrintPayroll(payroll);
+            PrintPayrollEmployee print = new PrintPayrollEmployee(payroll);
             print.Print(true);
         }
 
@@ -49,7 +49,7 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((business.Payroll)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Driver);
+            _printView = ((IPayroll<PrintPayrollEmployeeView, model.Employee>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Employee);
             Details.ItemsSource = _printView;
             if ( _printView.Count == 0)
             {
@@ -74,15 +74,15 @@
             SendEmail(payroll);
         }
 
-        private void SendEmail(model.Payroll payroll)
+        private void SendEmail(model.PayrollEmployee payroll)
         {
-            PrintPayroll print = new PrintPayroll(payroll);
+            PrintPayrollEmployee print = new PrintPayrollEmployee(payroll);
             print.Print(false);
 
             INotification email = new Email("Pay Stub");
             ((Email)email).File = new Attachment(File.Open(print.Fullname, FileMode.Open), print.Filename);
 
-            ((IEmail<model.Payroll>)_payrollBusiness).SendEmail(email, payroll);
+            ((IEmail<model.PayrollEmployee>)_payrollBusiness).SendEmail(email, payroll);
 
             MessageBox.Show("Email sent!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
         }

@@ -96,5 +96,11 @@
             view.PayrollEmployee payrollEmployee = new view.PayrollEmployee();
             payrollEmployee.Show();
         }
+
+        private void ReportPayrollEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            view.ReportPayrollEmployee payrollEmployee = new view.ReportPayrollEmployee();
+            payrollEmployee.Show();
+        }
     }
 }

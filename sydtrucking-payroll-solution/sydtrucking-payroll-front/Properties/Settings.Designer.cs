@@ -58,5 +58,14 @@ namespace sydtrucking_payroll_front.Properties {
                 return ((string)(this["PathReportPayrollLeaseCompany"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\\\reportpayrollemployee\\\\")]
+        public string PathReportPayrollEmployee {
+            get {
+                return ((string)(this["PathReportPayrollEmployee"]));
+            }
+        }
     }
 }

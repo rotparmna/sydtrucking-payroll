@@ -14,5 +14,8 @@
     <Setting Name="PathReportPayrollLeaseCompany" Type="System.String" Scope="Application">
       <Value Profile="(Default)">files\\reportpayrollleasecompany\\</Value>
     </Setting>
+    <Setting Name="PathReportPayrollEmployee" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files\\reportpayrollemployee\\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

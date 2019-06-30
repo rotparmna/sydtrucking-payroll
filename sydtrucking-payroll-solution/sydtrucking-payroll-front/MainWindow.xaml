@@ -62,8 +62,11 @@
                 <Button ToolTip="Payroll Report" x:Name="ReportPayroll" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.ColumnSpan="2">
                     <Image ToolTip="Payroll Report" Source="resources/images/payrollreport128.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Payroll Lease Company Report" x:Name="ReportLeaseCompanyPayroll" HorizontalAlignment="Left" Margin="45,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportLeaseCompanyPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
+                <Button ToolTip="Payroll Lease Company Report" x:Name="ReportLeaseCompanyPayroll" HorizontalAlignment="Left" Margin="125,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportLeaseCompanyPayroll_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
                     <Image ToolTip="Payroll Lease Company Report" Source="resources/images/payrollleasecompanyreport128.png" Width="48px" />
+                </Button>
+                <Button ToolTip="Payroll Employee Report" x:Name="ReportPayrollEmployee" HorizontalAlignment="Left" Margin="45,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayrollEmployee_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
+                    <Image ToolTip="Payroll Employee Report" Source="resources/images/payrollemployeereport80.png" Width="48px" />
                 </Button>
             </Grid>
         </GroupBox>
