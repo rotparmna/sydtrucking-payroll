@@ -49,7 +49,7 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((business.PayrollLeaseCompany)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, LeaseCompanies.SelectedItem as model.LeaseCompany);
+            _printView = ((IPayroll<PrintPayrollLeaseCompanyView, model.LeaseCompany>)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, LeaseCompanies.SelectedItem as model.LeaseCompany);
             Details.ItemsSource = _printView;
             if ( _printView.Count == 0)
             {

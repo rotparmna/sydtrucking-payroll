@@ -15,7 +15,7 @@
     public partial class ReportPayroll : Window
     {
         private IBusiness<model.Payroll> _payrollBusiness;
-        private IBusiness<model.Driver> _employeeBusiness;
+        private IBusiness<model.Driver> _driverBusiness;
         private List<PrintPayrollView> _printView;
 
         public ReportPayroll()
@@ -23,14 +23,14 @@
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
             _printView = new List<PrintPayrollView>();
-            _employeeBusiness = new business.Driver();
+            _driverBusiness = new business.Driver();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Employees.SelectedValuePath = "Id";
-            Employees.DisplayMemberPath = "Fullname";
-            Employees.ItemsSource = _employeeBusiness.GetAll();
+            Drivers.SelectedValuePath = "Id";
+            Drivers.DisplayMemberPath = "Fullname";
+            Drivers.ItemsSource = _driverBusiness.GetAll();
         }
 
         private void PrintReport_Click(object sender, RoutedEventArgs e)
@@ -49,7 +49,7 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((business.Payroll)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Driver);
+            _printView = ((IPayroll<PrintPayrollView,model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Drivers.SelectedItem as model.Driver);
             Details.ItemsSource = _printView;
             if ( _printView.Count == 0)
             {

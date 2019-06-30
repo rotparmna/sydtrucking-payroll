@@ -13,7 +13,7 @@
     public partial class Payroll : Window
     {
         business.IBusiness<model.Payroll> _payrollBusiness;
-        business.IBusiness<Driver> _employeeBusiness;
+        business.IBusiness<Driver> _driverBusiness;
         business.IBusiness<OilCompany> _companyBusiness;
         ObservableCollection<PayrollDetailView> _details;
         model.Payroll _payroll;
@@ -22,7 +22,7 @@
         {
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
-            _employeeBusiness = new business.Driver();
+            _driverBusiness = new business.Driver();
             _companyBusiness = new business.OilCompany();
             _details = new ObservableCollection<PayrollDetailView>();
             _payroll = new model.Payroll();
@@ -30,9 +30,9 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Employees.SelectedValuePath = "Id";
-            Employees.DisplayMemberPath = "Fullname";
-            Employees.ItemsSource = _employeeBusiness.GetAll();
+            Drivers.SelectedValuePath = "Id";
+            Drivers.DisplayMemberPath = "Fullname";
+            Drivers.ItemsSource = _driverBusiness.GetAll();
 
             ((CollectionViewSource)Details.FindResource("OilCompanies")).Source = _companyBusiness.GetAll();
 
@@ -41,7 +41,7 @@
             RegularHour.Text = business.Constant.Payroll.RegularHour.ToString();
         }
 
-        private void Employees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void Drivers_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
             {
@@ -208,7 +208,7 @@
                 double.TryParse(Reimbursements.Text, out reimbursements);
 
                 _payroll.TruckNumber = int.Parse(TruckNumber.Text);
-                _payroll.Driver = (Driver)Employees.SelectedItem;
+                _payroll.Driver = (Driver)Drivers.SelectedItem;
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeekPayment);
@@ -247,7 +247,7 @@
             _payroll = new model.Payroll();
             _details = new ObservableCollection<PayrollDetailView>();
 
-            Employees.SelectedItem = null;
+            Drivers.SelectedItem = null;
             TruckNumber.Text = string.Empty;
             Rate.Text = string.Empty;
             FromPayment.SelectedDate = null;
@@ -268,7 +268,7 @@
         {
             string message = string.Empty;
 
-            if (Employees.SelectedItem == null) message += "No employee selected.\n";
+            if (Drivers.SelectedItem == null) message += "No driver selected.\n";
             if (!FromPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (!ToPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (_details.Count <= 0) message += "No detail records.\n";

@@ -4,7 +4,9 @@
     using System;
     using System.Collections.Generic;
 
-    public class PayrollLeaseCompany : BusinessBase, IBusiness<model.PayrollLeaseCompany>
+    public class PayrollLeaseCompany : BusinessBase,
+        IBusiness<model.PayrollLeaseCompany>,
+        IPayroll<model.PrintPayrollLeaseCompanyView, model.LeaseCompany>
     {
         public List<model.PrintPayrollLeaseCompanyView> GetListPayroll(DateTime from, DateTime to, model.LeaseCompany leaseCompany)
         {

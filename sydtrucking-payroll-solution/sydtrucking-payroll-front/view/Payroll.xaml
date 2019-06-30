@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Row="0" Header="General" HorizontalAlignment="Left" Height="97" Margin="10,10,0,0" VerticalAlignment="Top" Width="476">
             <Grid>
-                <ComboBox Grid.Row="0" Name="Employees" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Width="397" SelectionChanged="Employees_SelectionChanged"/>
+                <ComboBox Grid.Row="0" Name="Drivers" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Width="397" SelectionChanged="Drivers_SelectionChanged"/>
                 <Label Grid.Row="0" Content="Driver" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
                 <Label Grid.Row="0" Content="Truck" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <TextBox Grid.Row="0" IsReadOnly="True" x:Name="TruckNumber" HorizontalAlignment="Left" Height="23" Margin="57,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"/>

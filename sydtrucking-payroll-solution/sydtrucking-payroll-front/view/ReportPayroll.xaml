@@ -20,7 +20,7 @@
                 <Label Content="To" Grid.Row="0" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
                 <DatePicker Name="From" HorizontalAlignment="Left" Margin="65,8,0,0" VerticalAlignment="Top" Width="236" Height="24"/>
                 <DatePicker x:Name="To" HorizontalAlignment="Left" Margin="65,37,0,0" VerticalAlignment="Top" Width="236" Height="24"/>
-                <ComboBox Grid.Row="0" x:Name="Employees" HorizontalAlignment="Left" Margin="65,66,0,0" VerticalAlignment="Top" Width="236"/>
+                <ComboBox Grid.Row="0" x:Name="Drivers" HorizontalAlignment="Left" Margin="65,66,0,0" VerticalAlignment="Top" Width="236"/>
                 <Label Grid.Row="0" Content="Driver" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>

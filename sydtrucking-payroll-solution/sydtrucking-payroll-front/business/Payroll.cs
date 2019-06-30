@@ -45,14 +45,14 @@
             Add(payroll);
         }
 
-        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Driver employee)
+        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Driver driver)
         {
             var printPayrollsView = new List<model.PrintPayrollView>();
 
             var builder = Builders<model.Payroll>.Filter;
             var filter = builder.Gte("Details.Ticket.Date", from) &
                             builder.Lte("Details.Ticket.Date", to) &
-                            builder.Eq("Driver.SocialSecurity", employee.SocialSecurity);
+                            builder.Eq("Driver.SocialSecurity", driver.SocialSecurity);
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
 
