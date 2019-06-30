@@ -88,5 +88,10 @@
             view.Drivers drivers = new view.Drivers();
             drivers.Show();
         }
+
+        private void PayrollEmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

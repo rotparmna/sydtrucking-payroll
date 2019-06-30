@@ -24,7 +24,7 @@
 
         private string CreateFullname()
         {
-            Filename = Payroll.Employee.SocialSecurity.ToString() + "-" + DateTime.Now.Ticks.ToString() + ".pdf";
+            Filename = Payroll.Driver.SocialSecurity.ToString() + "-" + DateTime.Now.Ticks.ToString() + ".pdf";
             return business.Constant.PathReportPayroll + "\\" + Filename;
         }
 
@@ -65,10 +65,10 @@
             double text1X = 120;
 
             double payToY = 200;
-            _toPdf.DrawString("Pay To: " + Payroll.Employee.Fullname, FormatText.Bold, text1X, payToY, 50, 200, XStringFormats.TopLeft);
+            _toPdf.DrawString("Pay To: " + Payroll.Driver.Fullname, FormatText.Bold, text1X, payToY, 50, 200, XStringFormats.TopLeft);
 
             double truckY = 215;
-            _toPdf.DrawString("TRUCK No. " + Payroll.Employee.Truck.Number, FormatText.Bold, text1X, truckY, 50, 200, XStringFormats.TopLeft);
+            _toPdf.DrawString("TRUCK No. " + Payroll.Driver.Truck.Number, FormatText.Bold, text1X, truckY, 50, 200, XStringFormats.TopLeft);
 
             double paymentWeekY = 230;
             _toPdf.DrawString("Payment Week From: " + Payroll.From.Date.ToShortDateString() + " - " + Payroll.To.Date.ToShortDateString(), FormatText.Bold, text1X, paymentWeekY, 50, 200, XStringFormats.TopLeft);

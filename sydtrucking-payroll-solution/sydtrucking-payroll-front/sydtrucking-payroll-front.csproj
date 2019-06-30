@@ -112,6 +112,7 @@
     <Compile Include="business\IBusiness.cs" />
     <Compile Include="business\InitializeData.cs" />
     <Compile Include="business\Payroll.cs" />
+    <Compile Include="business\PayrollEmployee.cs" />
     <Compile Include="business\PayrollLeaseCompany.cs" />
     <Compile Include="business\Ping.cs" />
     <Compile Include="business\Role.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="model\OilCompany.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\PayrollDetailView.cs" />
+    <Compile Include="model\PayrollEmployee.cs" />
     <Compile Include="model\PayrollLeaseCompany.cs" />
     <Compile Include="model\PayrollLeaseCompanyDetails.cs" />
     <Compile Include="model\Person.cs" />
@@ -377,6 +379,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\driver128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\images\payrollemployee64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

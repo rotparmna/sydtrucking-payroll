@@ -208,7 +208,7 @@
                 double.TryParse(Reimbursements.Text, out reimbursements);
 
                 _payroll.TruckNumber = int.Parse(TruckNumber.Text);
-                _payroll.Employee = (Driver)Employees.SelectedItem;
+                _payroll.Driver = (Driver)Employees.SelectedItem;
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeekPayment);
