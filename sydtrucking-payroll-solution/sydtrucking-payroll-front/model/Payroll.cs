@@ -2,10 +2,8 @@
 {
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
-    using sydtrucking_payroll_front.enums;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class Payroll
     {
@@ -17,7 +15,7 @@
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public Driver Employee { get; set; }
+        public Driver Driver { get; set; }
         public int TruckNumber { get; set; }
         public double Rate { get; set; }
         public ICollection<PayrollDetail> Details { get; set; }
