@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\professional\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="15.0">
  <Targets>
-  <Target Name="C:\Users\rotpa\Source\Repos\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
+  <Target Name="D:\dev\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
    <Modules>
     <Module Name="sydtrucking-payroll-front.exe">
      <Namespaces>
@@ -10,7 +10,7 @@
        <Types>
         <Type Name="Email" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-27 04:56:16Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-30 22:37:21Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'Email' porque crea miembros de los tipos IDisposable siguientes: 'SmtpClient'. Si ya se había distribuido 'Email', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
@@ -19,9 +19,31 @@
       </Namespace>
       <Namespace Name="sydtrucking_payroll_front.print">
        <Types>
+        <Type Name="PrintPayroll" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(sydtrucking_payroll_front.model.Payroll)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2019-06-30 22:37:21Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\dev\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayroll.cs" Line="12">'PrintPayroll.PrintPayroll(Payroll)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayroll..ctor(Payroll)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PrintPayrollEmployee" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(sydtrucking_payroll_front.model.PayrollEmployee)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2019-06-30 22:37:21Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\dev\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayrollEmployee.cs" Line="12">'PrintPayrollEmployee.PrintPayrollEmployee(PayrollEmployee)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayrollEmployee..ctor(PayrollEmployee)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
         <Type Name="PrintToPdf" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-27 04:56:16Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-06-30 22:37:21Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'PrintToPdf' porque crea miembros de los tipos IDisposable siguientes: 'PdfDocument'. Si ya se había distribuido 'PrintToPdf', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
@@ -34,6 +56,16 @@
   </Target>
  </Targets>
  <Rules>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>No llamar a métodos reemplazables en constructores</Name>
+   <Description>No debe llamar desde los constructores a los métodos virtuales definidos en la clase. Si una clase derivada invalidó el método, se llamará a la versión de la clase derivada (antes de llamar al constructor de la clase derivada).</Description>
+   <Resolution Name="Default">{0} contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
    <Name>Los tipos que poseen campos descartables deben ser descartables</Name>
    <Description>Los tipos que declaran miembros descartables también deben implementar IDisposable. Si el tipo no posee ningún recurso no administrado, no implementar un finalizador.</Description>
