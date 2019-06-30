@@ -22,7 +22,7 @@
         {
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
-            _employeeBusiness = new business.Employee();
+            _employeeBusiness = new business.Driver();
             _companyBusiness = new business.OilCompany();
             _details = new ObservableCollection<PayrollDetailView>();
             _payroll = new model.Payroll();

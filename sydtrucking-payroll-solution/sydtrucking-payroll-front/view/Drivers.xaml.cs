@@ -9,24 +9,24 @@
     using System.Windows.Controls;
 
     /// <summary>
-    /// Lógica de interacción para Employees.xaml
+    /// Lógica de interacción para Drivers.xaml
     /// </summary>
     public partial class Drivers : Window, IView<Driver>, IValidation
     {
-        private List<Driver> _employeesModel;
+        private List<Driver> _driversModel;
         private List<Truck> _trucksModel;
-        private business.IBusiness<Driver> _employeeBusiness;
+        private business.IBusiness<Driver> _driverBusiness;
         private business.Truck _truckBusiness;
-        private string _idEmployeeSelected;
+        private string _idDriverSelected;
 
         public string ValidationMessage { get; set; }
 
         public Drivers()
         {
             InitializeComponent();
-            _employeesModel = new List<Driver>();
+            _driversModel = new List<Driver>();
             _trucksModel = new List<Truck>();
-            _employeeBusiness = new business.Employee();
+            _driverBusiness = new business.Driver();
             _truckBusiness = new business.Truck();
         }
 
@@ -50,7 +50,7 @@
             SaveView();
         }
 
-        private void ListEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Driver))
             {
@@ -137,7 +137,7 @@
             {
                 ChangeControlsEnabled(false);
 
-                var id = _employeeBusiness.GetAll()
+                var id = _driverBusiness.GetAll()
                               .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
                               .DefaultIfEmpty(new Driver() { Id = string.Empty })
                               .FirstOrDefault()
@@ -149,7 +149,7 @@
                 TaxType taxForm = TaxType.NA;
                 Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
 
-                Driver employee = new Driver()
+                Driver driver = new Driver()
                 {
                     Address = Address.Text,
                     Birthdate = Birthdate.SelectedDate.Value,
@@ -189,7 +189,7 @@
                     Email = Email.Text
                 };
 
-                _employeeBusiness.Update(employee);
+                _driverBusiness.Update(driver);
                 MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ClearView();
@@ -203,8 +203,8 @@
 
         public void FillGrid()
         {
-            _employeesModel = _employeeBusiness.GetAll();
-            ListEmployees.ItemsSource = _employeesModel;
+            _driversModel = _driverBusiness.GetAll();
+            ListDrivers.ItemsSource = _driversModel;
         }
 
         public void EditView()
@@ -212,36 +212,36 @@
             ChangeControlsEnabled(true);
         }
 
-        public void LoadDataBySelectedRow(Driver employee)
+        public void LoadDataBySelectedRow(Driver driver)
         {
-            _idEmployeeSelected = employee.Id;
-            SocialSecurity.Text = employee.SocialSecurity.ToString();
-            Name.Text = employee.Name;
-            LastName.Text = employee.LastName;
-            Birthdate.SelectedDate = employee.Birthdate;
-            Trucks.SelectedValue = employee.Truck.Id;
-            Year.Text = employee.Truck.Year.ToString();
-            Vin.Text = employee.Truck.Vin;
-            Make.Text = employee.Truck.Make;
-            Plate.Text = employee.Truck.Plate;
-            Registration.SelectedDate = employee.Truck.Registration;
-            Inspection.SelectedDate = employee.Truck.Inspection;
-            DriverLicense.Text = employee.License.Number;
-            StateDriverLicense.Text = employee.License.State;
-            ExpirationDate.SelectedDate = employee.License.Expiration;
-            HireDate.SelectedDate = employee.Contract.HireDate;
-            TerminationDate.SelectedDate = employee.Contract.TerminationDate;
-            TerminationDate.IsEnabled = !employee.Contract.Actually;
-            Actually.IsChecked = !employee.Contract.Actually;
-            Address.Text = employee.Address;
-            PhoneNumber.Text = employee.PhoneNumber;
-            State.Text = employee.State;
-            City.Text = employee.City;
-            ZipCode.Text = employee.ZipCode;
-            PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
-            TaxForm.SelectedIndex = (int)employee.TaxForm;
-            Rate.Text = employee.Rate.ToString("C");
-            Email.Text = employee.Email;
+            _idDriverSelected = driver.Id;
+            SocialSecurity.Text = driver.SocialSecurity.ToString();
+            Name.Text = driver.Name;
+            LastName.Text = driver.LastName;
+            Birthdate.SelectedDate = driver.Birthdate;
+            Trucks.SelectedValue = driver.Truck.Id;
+            Year.Text = driver.Truck.Year.ToString();
+            Vin.Text = driver.Truck.Vin;
+            Make.Text = driver.Truck.Make;
+            Plate.Text = driver.Truck.Plate;
+            Registration.SelectedDate = driver.Truck.Registration;
+            Inspection.SelectedDate = driver.Truck.Inspection;
+            DriverLicense.Text = driver.License.Number;
+            StateDriverLicense.Text = driver.License.State;
+            ExpirationDate.SelectedDate = driver.License.Expiration;
+            HireDate.SelectedDate = driver.Contract.HireDate;
+            TerminationDate.SelectedDate = driver.Contract.TerminationDate;
+            TerminationDate.IsEnabled = !driver.Contract.Actually;
+            Actually.IsChecked = !driver.Contract.Actually;
+            Address.Text = driver.Address;
+            PhoneNumber.Text = driver.PhoneNumber;
+            State.Text = driver.State;
+            City.Text = driver.City;
+            ZipCode.Text = driver.ZipCode;
+            PaymentMethod.SelectedIndex = (int)driver.PaymentMethod;
+            TaxForm.SelectedIndex = (int)driver.TaxForm;
+            Rate.Text = driver.Rate.ToString("C");
+            Email.Text = driver.Email;
         }
 
         public void ChangeControlsEnabled(bool isEnable)
@@ -279,16 +279,16 @@
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             var id = ((Button)sender).Tag.ToString();
-            var employee = _employeeBusiness.Get(id);
-            DeleteView(employee);
+            var driver = _driverBusiness.Get(id);
+            DeleteView(driver);
         }
 
-        public void DeleteView(Driver employee)
+        public void DeleteView(Driver driver)
         {
-            if (MessageBox.Show("Are you sure delete employee?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure delete driver?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                employee.IsDetele = true;
-                _employeeBusiness.Update(employee);
+                driver.IsDetele = true;
+                _driverBusiness.Update(driver);
 
                 FillGrid();
             }

@@ -23,7 +23,7 @@
             InitializeComponent();
             _payrollBusiness = new business.Payroll();
             _printView = new List<PrintPayrollView>();
-            _employeeBusiness = new business.Employee();
+            _employeeBusiness = new business.Driver();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
