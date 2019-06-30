@@ -1,0 +1,113 @@
+﻿<Window x:Class="sydtrucking_payroll_front.view.Employees"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sydtrucking_payroll_front.view"
+        mc:Ignorable="d"
+        Title="S &amp; D TRUCKING LLC - Employees" Height="569.838" Width="1162.5" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="445*"/>
+            <RowDefinition Height="101*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="693*" />
+            <ColumnDefinition Width="461*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="General" IsEnabled="False" Name="General" HorizontalAlignment="Left" Height="422" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+            <Grid>
+                <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+                <Label Content="Last Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
+                <TextBox Grid.Row="0" x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="85,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216"/>
+                <Label Content="Social Security" Grid.Row="0" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" Name="SocialSecurity" HorizontalAlignment="Left" Height="23" Margin="105,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
+                <Label Content="Birthdate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <DatePicker Name="Birthdate" HorizontalAlignment="Left" Margin="72,97,0,0" VerticalAlignment="Top" Width="229" Height="24"/>
+                <Label Content="Address" Grid.Row="0" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <TextBox Grid.Row="0" x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="73,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228"/>
+                <Label Content="City" Grid.Row="0" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="City" HorizontalAlignment="Left" Margin="57,156,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
+                <Label Content="State" Grid.Row="0" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="State" HorizontalAlignment="Left" Margin="57,187,0,0" VerticalAlignment="Top" Width="141" Height="22"/>
+                <Label Content="Zip" Grid.Row="0" HorizontalAlignment="Left" Margin="203,185,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="232,187,0,0" VerticalAlignment="Top" Width="69" Height="22"/>
+                <Label Content="Phone Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
+                <TextBox Grid.Row="0" x:Name="PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="116,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185"/>
+                <Label Content="Driver License" Grid.Row="0" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+                <TextBox Grid.Row="0" x:Name="DriverLicense" HorizontalAlignment="Left" Height="23" Margin="101,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                <Label Content="State" Grid.Row="0" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="StateDriverLicense" HorizontalAlignment="Left" Margin="57,275,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
+                <Label Content="Expiration Date" Grid.Row="0" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+                <DatePicker x:Name="ExpirationDate" HorizontalAlignment="Left" Margin="119,302,0,0" VerticalAlignment="Top" Width="182" Height="24"/>
+                <Label Content="Email" Grid.Row="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="57,331,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Header="Payment" Name="Payment" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
+            <Grid>
+                <Label Content="Payment Method" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+                <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top" Width="193" Height="22">
+                    <ComboBoxItem>Check</ComboBoxItem>
+                    <ComboBoxItem>DD</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Tax Form" Grid.Row="0" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+                <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="74,37,0,0" VerticalAlignment="Top" Width="249" Height="22">
+                    <ComboBoxItem Content="W4"/>
+                    <ComboBoxItem Content="W9"/>
+                </ComboBox>
+                <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+                <TextBox Grid.Row="0" x:Name="Rate" Text="$0" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Header="Job" Name="Job" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,140,0,0" VerticalAlignment="Top" Width="345">
+            <Grid>
+                <Label Content="Description" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="26" Width="83"/>
+                <TextBox TextWrapping="Wrap" x:Name="JobDescription" HorizontalAlignment="Left" Margin="83,0,0,0" VerticalAlignment="Top" Width="240" Height="93"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="ListEmployees" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="ListEmployees_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Edit" Click="Edit_Click">
+                                <Image Source="/sydtrucking-payroll-front;component/resources/images/edit24.png" Width="24px" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Delete" Click="Delete_Click" Tag="{Binding Id}">
+                                <Image Source="/sydtrucking-payroll-front;component/resources/images/delete24.png" Width="24px" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Social Security" Binding="{Binding SocialSecurity}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="State" Binding="{Binding State}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Payment" Binding="{Binding PaymentMethod}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Tax Form" Binding="{Binding TaxForm}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Rate" Binding="{Binding Rate}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Driver License" Binding="{Binding License.Number}"/>
+                <DataGridTextColumn Header="State" Binding="{Binding License.State}"/>
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding License.Expiration}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button IsEnabled="False" x:Name="Save" ToolTip="Save" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Save_Click">
+            <Image ToolTip="Save" Source="/sydtrucking-payroll-front;component/resources/images/save128.png" Width="48px" />
+        </Button>
+        <Button x:Name="New" ToolTip="New" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="New_Click">
+            <Image ToolTip="New" Source="/sydtrucking-payroll-front;component/resources/images/new128.png" Width="48px" />
+        </Button>
+    </Grid>
+</Window>

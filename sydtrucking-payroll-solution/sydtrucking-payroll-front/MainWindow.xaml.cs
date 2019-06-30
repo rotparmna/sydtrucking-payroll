@@ -14,7 +14,8 @@
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            view.Employees employees = new view.Employees();
+            employees.Show();
         }
 
         private void PayrollButton_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,216 @@
+﻿namespace sydtrucking_payroll_front.view
+{
+    using sydtrucking_payroll_front.enums;
+    using sydtrucking_payroll_front.model;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+
+    /// <summary>
+    /// Lógica de interacción para Employees.xaml
+    /// </summary>
+    public partial class Employees : Window, IView<Employee>, IValidation
+    {
+        private List<Employee> _employeesModel;
+        private business.IBusiness<Employee> _employeeBusiness;
+        private string _idEmployeeSelected;
+
+        public string ValidationMessage { get; set; }
+
+        public Employees()
+        {
+            InitializeComponent();
+            _employeesModel = new List<Employee>();
+            _employeeBusiness = new business.Employee();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ClearView();
+            FillGrid();
+        }
+        
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveView();
+        }
+
+        private void ListEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count>0 && e.AddedItems[0].GetType() == typeof(Employee))
+            {
+                LoadDataBySelectedRow((Employee)e.AddedItems[0]);
+            }
+        }
+                
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            CreateView();
+        }
+
+        public void ClearView()
+        {
+            SocialSecurity.Text = string.Empty;
+            Name.Text = string.Empty;
+            LastName.Text = string.Empty;
+            Birthdate.SelectedDate = DateTime.Now;
+            DriverLicense.Text = string.Empty;
+            ExpirationDate.SelectedDate = DateTime.Now;
+            Address.Text = string.Empty;
+            PhoneNumber.Text = string.Empty;
+            State.Text = string.Empty;
+            PaymentMethod.SelectedIndex = -1;
+            TaxForm.SelectedIndex = -1;
+            Rate.Text = 0.0.ToString("C");
+            StateDriverLicense.Text = string.Empty;
+            City.Text = string.Empty;
+            ZipCode.Text = string.Empty;
+            Email.Text = string.Empty;
+            JobDescription.Text = string.Empty;
+        }
+
+        public void CreateView()
+        {
+            ChangeControlsEnabled(true);
+            ClearView();
+        }
+
+        public void SaveView()
+        {
+            if (IsViewValid())
+            {
+                ChangeControlsEnabled(false);
+
+                var id = _employeeBusiness.GetAll()
+                              .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
+                              .DefaultIfEmpty(new Employee() { Id = string.Empty })
+                              .FirstOrDefault()
+                              .Id;
+
+                PaymentType paymentMethod = PaymentType.NA;
+                Enum.TryParse(((ComboBoxItem)PaymentMethod.SelectedItem).Content.ToString(), out paymentMethod);
+
+                TaxType taxForm = TaxType.NA;
+                Enum.TryParse(((ComboBoxItem)TaxForm.SelectedItem).Content.ToString(), out taxForm);
+
+                Employee employee = new Employee()
+                {
+                    Address = Address.Text,
+                    Birthdate = Birthdate.SelectedDate.Value,
+                    Id = id,
+                    LastName = LastName.Text,
+                    License = new DriverLicense()
+                    {
+                        Expiration = ExpirationDate.SelectedDate.Value,
+                        Number = DriverLicense.Text,
+                        State = StateDriverLicense.Text
+                    },
+                    Name = Name.Text,
+                    PaymentMethod = paymentMethod,
+                    PhoneNumber = PhoneNumber.Text,
+                    Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
+                    SocialSecurity = long.Parse(SocialSecurity.Text),
+                    State = State.Text,
+                    TaxForm = taxForm,                    
+                    City = City.Text,
+                    ZipCode = ZipCode.Text,
+                    Email = Email.Text,
+                    Job = JobDescription.Text
+                };
+
+                _employeeBusiness.Update(employee);
+                MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ClearView();
+                FillGrid();
+            }
+            else
+            {
+                MessageBox.Show(ValidationMessage, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void FillGrid()
+        {
+            _employeesModel = _employeeBusiness.GetAll();
+            ListEmployees.ItemsSource = _employeesModel;
+        }
+
+        public void EditView()
+        {
+            ChangeControlsEnabled(true);
+        }
+
+        public void LoadDataBySelectedRow(Employee employee)
+        {
+            _idEmployeeSelected = employee.Id;
+            SocialSecurity.Text = employee.SocialSecurity.ToString();
+            Name.Text = employee.Name;
+            LastName.Text = employee.LastName;
+            Birthdate.SelectedDate = employee.Birthdate;
+            DriverLicense.Text = employee.License.Number;
+            StateDriverLicense.Text = employee.License.State;
+            ExpirationDate.SelectedDate = employee.License.Expiration;
+            Address.Text = employee.Address;
+            PhoneNumber.Text = employee.PhoneNumber;
+            State.Text = employee.State;
+            City.Text = employee.City;
+            ZipCode.Text = employee.ZipCode;
+            PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
+            TaxForm.SelectedIndex = (int)employee.TaxForm;
+            Rate.Text = employee.Rate.ToString("C");
+            Email.Text = employee.Email;
+            JobDescription.Text = employee.Job;
+        }
+
+        public void ChangeControlsEnabled(bool isEnable)
+        {
+            General.IsEnabled = isEnable;
+            Payment.IsEnabled = isEnable;
+            Job.IsEnabled = isEnable;
+            Save.IsEnabled = isEnable; 
+            New.IsEnabled = !isEnable;
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditView();
+        }
+
+        public bool IsViewValid()
+        {
+            ValidationMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
+            if (string.IsNullOrEmpty(LastName.Text)) ValidationMessage += "The Last Name field is required. \n";
+            if (string.IsNullOrEmpty(SocialSecurity.Text)) ValidationMessage += "The Social Security field is required. \n";
+            if (string.IsNullOrEmpty(DriverLicense.Text)) ValidationMessage += "The Driver License field is required. \n";
+            if (string.IsNullOrEmpty(StateDriverLicense.Text)) ValidationMessage += "The State field is required. \n";
+            if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += "The Expiration Date field is required. \n";
+            if (PaymentMethod.SelectedIndex == -1) ValidationMessage += "The Payment Method field is required. \n";
+            if (TaxForm.SelectedIndex == -1) ValidationMessage += "The Tax Form field is required. \n";
+
+            return string.IsNullOrEmpty(ValidationMessage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var employee = _employeeBusiness.Get(id);
+            DeleteView(employee);
+        }
+
+        public void DeleteView(Employee employee)
+        {
+            if (MessageBox.Show("Are you sure delete employee?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                employee.IsDetele = true;
+                _employeeBusiness.Update(employee);
+
+                FillGrid();
+            }
+        }
+    }
+}
