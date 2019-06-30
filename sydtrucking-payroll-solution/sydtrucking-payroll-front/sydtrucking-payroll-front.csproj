@@ -163,6 +163,9 @@
     <Compile Include="view\LeaseCompanies.xaml.cs">
       <DependentUpon>LeaseCompanies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\PayrollEmployee.xaml.cs">
+      <DependentUpon>PayrollEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\PayrollLeaseCompanies.xaml.cs">
       <DependentUpon>PayrollLeaseCompanies.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\LeaseCompanies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\PayrollEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

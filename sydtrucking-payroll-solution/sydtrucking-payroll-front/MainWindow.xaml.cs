@@ -81,6 +81,8 @@
                                Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
             Business.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic2) ||
                                     Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
+            Reports.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic2) ||
+                                    Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
         }
 
         private void DriverButton_Click(object sender, RoutedEventArgs e)
@@ -91,7 +93,8 @@
 
         private void PayrollEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            view.PayrollEmployee payrollEmployee = new view.PayrollEmployee();
+            payrollEmployee.Show();
         }
     }
 }
