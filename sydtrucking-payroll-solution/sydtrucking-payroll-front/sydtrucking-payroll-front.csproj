@@ -149,6 +149,7 @@
     <Compile Include="notification\Email.cs" />
     <Compile Include="notification\INotification.cs" />
     <Compile Include="print\PrintPayroll.cs" />
+    <Compile Include="print\PrintPayrollBase.cs" />
     <Compile Include="print\PrintPayrollEmployee.cs" />
     <Compile Include="print\PrintPayrollLeaseCompany.cs" />
     <Compile Include="print\PrintToPdf.cs" />

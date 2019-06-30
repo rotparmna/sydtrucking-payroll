@@ -52,7 +52,7 @@
             var builder = Builders<model.Payroll>.Filter;
             var filter = builder.Gte("Details.Ticket.Date", from) &
                             builder.Lte("Details.Ticket.Date", to) &
-                            builder.Eq("Employee.SocialSecurity", employee.SocialSecurity);
+                            builder.Eq("Driver.SocialSecurity", employee.SocialSecurity);
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
 
