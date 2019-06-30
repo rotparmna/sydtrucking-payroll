@@ -123,6 +123,14 @@
             }
         }
 
+        public IMongoCollection<PayrollEmployee> PayrollEmployees
+        {
+            get
+            {
+                return _database.GetCollection<PayrollEmployee>("PayrollEmployees");
+            }
+        }
+
         public IMongoCollection<Trash> Trash
         {
             get

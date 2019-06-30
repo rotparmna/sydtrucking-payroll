@@ -59,7 +59,7 @@
                 printPayrollsView.Add(new model.PrintPayrollView()
                 {
                     Id = x.Id,
-                    Driver = x.Employee.Fullname,
+                    Driver = x.Driver.Fullname,
                     PaymentWeek = x.Details.Min(y => y.Ticket.Date).Date.ToShortDateString() + "-" + x.Details.Max(y => y.Ticket.Date).Date.ToShortDateString(),
                     Rate = x.Rate.ToString("C"),
                     TotalHours = x.TotalHours.ToString(),
@@ -72,7 +72,7 @@
 
         public void SendEmail(INotification notification, model.Payroll payroll)
         {
-            notification.To = payroll.Employee.Email;
+            notification.To = payroll.Driver.Email;
             notification.Send("Pay Stub");
         }
     }
