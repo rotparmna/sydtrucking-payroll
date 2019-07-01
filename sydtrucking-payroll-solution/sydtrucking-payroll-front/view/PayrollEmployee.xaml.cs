@@ -40,17 +40,20 @@
             if (e.AddedItems.Count > 0)
             {
                 var employee = ((Employee)e.AddedItems[0]);
+                _value = employee.Rate;
                 if (employee.IsWeeklyPayment)
                 {
                     Rate.Text = 0.ToString("C");
                     WeeklyPayment.Text = employee.Rate.ToString("C");
+                    TotalHours.Text = "1";
+                    TotalHours.IsReadOnly = true;
+                    CalculatePayment();
                 }
                 else
                 {
                     Rate.Text = employee.Rate.ToString("C");
                     WeeklyPayment.Text = 0.ToString("C");
                 }
-                _value = employee.Rate;
             }
         }
 
@@ -146,6 +149,7 @@
             Reimbursements.Text = 0.ToString("C");
             ReimbursementsText.Text = string.Empty;
             TotalPayment.Text = 0.ToString("C");
+            TotalHours.IsReadOnly = false;
         }
 
         private string Validations()
