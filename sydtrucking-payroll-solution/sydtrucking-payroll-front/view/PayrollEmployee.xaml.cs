@@ -15,6 +15,7 @@
         business.IBusiness<model.PayrollEmployee> _payrollBusiness;
         business.IBusiness<Employee> _employeeBusiness;
         model.PayrollEmployee _payroll;
+        double _value;
 
         public PayrollEmployee()
         {
@@ -22,6 +23,7 @@
             _payrollBusiness = new business.PayrollEmployee();
             _employeeBusiness = new business.Employee();
             _payroll = new model.PayrollEmployee();
+            _value = 0.0;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -37,16 +39,26 @@
         {
             if (e.AddedItems.Count > 0)
             {
-                Rate.Text = ((Employee)e.AddedItems[0]).Rate.ToString("C");
+                var employee = ((Employee)e.AddedItems[0]);
+                if (employee.IsWeeklyPayment)
+                {
+                    Rate.Text = 0.ToString("C");
+                    WeeklyPayment.Text = employee.Rate.ToString("C");
+                }
+                else
+                {
+                    Rate.Text = employee.Rate.ToString("C");
+                    WeeklyPayment.Text = 0.ToString("C");
+                }
+                _value = employee.Rate;
             }
         }
 
         private void CalculatePayment()
         {
-            var rate = double.Parse(Rate.Text.Replace("$", string.Empty));
             var hours = int.Parse(TotalHours.Text);
            
-            _payroll.Rate = rate;
+            _payroll.Rate = _value;
             _payroll.TotalHours = hours;
 
             Payment.Text = _payroll.PaymentTotalHours.ToString("C");
@@ -62,8 +74,8 @@
             var reimbursements = 0.0;
 
             double.TryParse(Payment.Text.Replace("$", string.Empty), out payment);
-            double.TryParse(Deductions.Text, out deductions);
-            double.TryParse(Reimbursements.Text, out reimbursements);
+            double.TryParse(Deductions.Text.Replace("$", string.Empty), out deductions);
+            double.TryParse(Reimbursements.Text.Replace("$", string.Empty), out reimbursements);
 
             totalPayment = payment - (deductions + reimbursements);
 
@@ -123,7 +135,8 @@
             _payroll = new model.PayrollEmployee();
 
             Employees.SelectedItem = null;
-            Rate.Text = string.Empty;
+            Rate.Text = 0.ToString("C");
+            WeeklyPayment.Text = 0.ToString("C");
             FromPayment.SelectedDate = null;
             ToPayment.SelectedDate = null;
             TotalHours.Text = "0";

@@ -22,6 +22,8 @@
                 <Label Grid.Row="0" Content="Employee" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
                 <Label Grid.Row="0" Content="Rate" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="46"/>
                 <TextBox Grid.Row="0" IsReadOnly="True" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="77,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123"/>
+                <TextBox Grid.Row="0" IsReadOnly="True" x:Name="WeeklyPayment" HorizontalAlignment="Left" Height="23" Margin="312,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="142"/>
+                <Label Grid.Row="0" Content="Weekly Payment" HorizontalAlignment="Left" Margin="205,37,0,0" VerticalAlignment="Top" Height="26" Width="107"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="66" Margin="10,112,0,0" VerticalAlignment="Top" Width="476">
