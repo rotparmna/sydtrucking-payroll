@@ -67,11 +67,13 @@
             <Grid>
                 <Label Content="Payment Method" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
                 <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top" Width="193" Height="22">
+                    <ComboBoxItem Visibility="Hidden">NA</ComboBoxItem>
                     <ComboBoxItem>Check</ComboBoxItem>
                     <ComboBoxItem>DD</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Tax Form" Grid.Row="0" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="74,37,0,0" VerticalAlignment="Top" Width="249" Height="22">
+                    <ComboBoxItem Visibility="Hidden">NA</ComboBoxItem>
                     <ComboBoxItem Content="W4"/>
                     <ComboBoxItem Content="W9"/>
                 </ComboBox>

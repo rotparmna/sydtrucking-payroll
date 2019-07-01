@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sydtrucking_payroll_front.view"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Employees" Height="569.838" Width="1162.5" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Admin Employees" Height="569.838" Width="1162.5" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="445*"/>
@@ -24,7 +24,7 @@
                 <Label Content="Social Security" Grid.Row="0" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
                 <TextBox Grid.Row="0" Name="SocialSecurity" HorizontalAlignment="Left" Height="23" Margin="105,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
                 <Label Content="Birthdate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-                <DatePicker Name="Birthdate" HorizontalAlignment="Left" Margin="72,97,0,0" VerticalAlignment="Top" Width="229" Height="24"/>
+                <DatePicker Name="Birthdate" HorizontalAlignment="Left" Margin="73,97,0,0" VerticalAlignment="Top" Width="228" Height="24"/>
                 <Label Content="Address" Grid.Row="0" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <TextBox Grid.Row="0" x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="73,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228"/>
                 <Label Content="City" Grid.Row="0" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
@@ -45,23 +45,29 @@
                 <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="57,331,0,0" VerticalAlignment="Top" Width="244" Height="22"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Payment" Name="Payment" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
+        <GroupBox Grid.Row="0" Header="Payment" Name="Payment" IsEnabled="False" HorizontalAlignment="Left" Height="144" Margin="338,10,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Payment Method" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
                 <ComboBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top" Width="193" Height="22">
+                    <ComboBoxItem Visibility="Hidden">NA</ComboBoxItem>
                     <ComboBoxItem>Check</ComboBoxItem>
                     <ComboBoxItem>DD</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Tax Form" Grid.Row="0" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="74,37,0,0" VerticalAlignment="Top" Width="249" Height="22">
+                    <ComboBoxItem Visibility="Hidden">NA</ComboBoxItem>
                     <ComboBoxItem Content="W4"/>
                     <ComboBoxItem Content="W9"/>
                 </ComboBox>
                 <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
-                <TextBox Grid.Row="0" x:Name="Rate" Text="$0" HorizontalAlignment="Left" Height="23" Margin="57,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+                <TextBox Grid.Row="0" x:Name="Rate" Text="$0" HorizontalAlignment="Left" Height="23" Margin="74,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249"/>
+                <Label Content="Weekly Payment" Grid.Row="0" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+                <TextBox Grid.Row="0" x:Name="WeeklyPayment" Text="$0" HorizontalAlignment="Left" Height="23" Margin="130,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
+                <CheckBox Content="" Name="CheckRate" HorizontalAlignment="Left" Margin="56,68,0,0" VerticalAlignment="Top" Checked="CheckRate_CheckChange" Unchecked="CheckRate_CheckChange"/>
+                <CheckBox Content="" Name="CheckWeeklyPayment" HorizontalAlignment="Left" Margin="113,96,0,0" VerticalAlignment="Top" Checked="CheckWeeklyPayment_CheckChange" Unchecked="CheckWeeklyPayment_CheckChange"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="0" Header="Job" Name="Job" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,140,0,0" VerticalAlignment="Top" Width="345">
+        <GroupBox Grid.Row="0" Header="Job" Name="Job" IsEnabled="False" HorizontalAlignment="Left" Height="125" Margin="338,159,0,0" VerticalAlignment="Top" Width="345">
             <Grid>
                 <Label Content="Description" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="26" Width="83"/>
                 <TextBox TextWrapping="Wrap" x:Name="JobDescription" HorizontalAlignment="Left" Margin="83,0,0,0" VerticalAlignment="Top" Width="240" Height="93"/>

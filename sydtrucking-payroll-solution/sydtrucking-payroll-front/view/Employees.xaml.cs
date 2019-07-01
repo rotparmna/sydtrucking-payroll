@@ -64,11 +64,16 @@
             PaymentMethod.SelectedIndex = -1;
             TaxForm.SelectedIndex = -1;
             Rate.Text = 0.0.ToString("C");
+            WeeklyPayment.Text = 0.0.ToString("C");
             StateDriverLicense.Text = string.Empty;
             City.Text = string.Empty;
             ZipCode.Text = string.Empty;
             Email.Text = string.Empty;
             JobDescription.Text = string.Empty;
+            CheckRate.IsChecked = false;
+            CheckWeeklyPayment.IsChecked = false;
+            Rate.IsEnabled = false;
+            WeeklyPayment.IsEnabled = false;
         }
 
         public void CreateView()
@@ -110,15 +115,24 @@
                     Name = Name.Text,
                     PaymentMethod = paymentMethod,
                     PhoneNumber = PhoneNumber.Text,
-                    Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
+                    Rate = 0.0,
                     SocialSecurity = long.Parse(SocialSecurity.Text),
                     State = State.Text,
                     TaxForm = taxForm,                    
                     City = City.Text,
                     ZipCode = ZipCode.Text,
                     Email = Email.Text,
-                    Job = JobDescription.Text
+                    Job = JobDescription.Text,
+                    IsWeeklyPayment = CheckWeeklyPayment.IsChecked.Value
                 };
+                if (CheckRate.IsChecked.Value)
+                {
+                    employee.Rate = double.Parse(Rate.Text.Replace("$", string.Empty));
+                }
+                else if (CheckWeeklyPayment.IsChecked.Value)
+                {
+                    employee.Rate = double.Parse(WeeklyPayment.Text.Replace("$", string.Empty));
+                }
 
                 _employeeBusiness.Update(employee);
                 MessageBox.Show("The information was correctly saved!", "Save", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -160,9 +174,20 @@
             ZipCode.Text = employee.ZipCode;
             PaymentMethod.SelectedIndex = (int)employee.PaymentMethod;
             TaxForm.SelectedIndex = (int)employee.TaxForm;
-            Rate.Text = employee.Rate.ToString("C");
+            CheckRate.IsChecked = !employee.IsWeeklyPayment;
+            CheckWeeklyPayment.IsChecked = employee.IsWeeklyPayment;
             Email.Text = employee.Email;
             JobDescription.Text = employee.Job;
+            WeeklyPayment.Text = 0.ToString("C");
+            Rate.Text = 0.ToString("C");
+            if (employee.IsWeeklyPayment)
+            {
+                WeeklyPayment.Text = employee.Rate.ToString("C");
+            }
+            else
+            {
+                Rate.Text = employee.Rate.ToString("C");
+            }
         }
 
         public void ChangeControlsEnabled(bool isEnable)
@@ -211,6 +236,18 @@
 
                 FillGrid();
             }
+        }
+
+        private void CheckRate_CheckChange(object sender, RoutedEventArgs e)
+        {
+            Rate.IsEnabled = CheckRate.IsChecked.Value;
+            CheckWeeklyPayment.IsChecked = !CheckRate.IsChecked.Value;
+        }
+
+        private void CheckWeeklyPayment_CheckChange(object sender, RoutedEventArgs e)
+        {
+            WeeklyPayment.IsEnabled = CheckWeeklyPayment.IsChecked.Value;
+            CheckRate.IsChecked = !CheckWeeklyPayment.IsChecked.Value;
         }
     }
 }

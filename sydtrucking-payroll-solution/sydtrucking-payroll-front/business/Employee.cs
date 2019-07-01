@@ -56,7 +56,8 @@
                                                          .Set(u => u.ZipCode, model.ZipCode)
                                                          .Set(u => u.TaxForm, model.TaxForm)
                                                          .Set(u => u.Email, model.Email)
-                                                         .Set(u => u.Job, model.Job);
+                                                         .Set(u => u.Job, model.Job)
+                                                         .Set(u => u.IsWeeklyPayment, model.IsWeeklyPayment);
 
                 context.Employees.UpdateOne(f => f.Id == model.Id, upd, new UpdateOptions() { IsUpsert = false });
             }
