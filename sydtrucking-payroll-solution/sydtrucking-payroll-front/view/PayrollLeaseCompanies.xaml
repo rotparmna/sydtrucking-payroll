@@ -25,7 +25,7 @@
                 <Label Grid.Row="0" Content="Lease Company" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
                 <Label Grid.Row="0" Content="Truck" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <Label Grid.Row="0" Content="Date" HorizontalAlignment="Left" Margin="222,37,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-                <DatePicker IsEnabled="False" Grid.Row="0" x:Name="Date" HorizontalAlignment="Left" Margin="266,37,0,0" VerticalAlignment="Top" Width="137" Height="24"/>
+                <DatePicker IsEnabled="True" Grid.Row="0" x:Name="Date" HorizontalAlignment="Left" Margin="266,37,0,0" VerticalAlignment="Top" Width="137" Height="24"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="0" Header="Payment Week" HorizontalAlignment="Left" Height="64" Margin="10,112,0,0" VerticalAlignment="Top" Width="420">
