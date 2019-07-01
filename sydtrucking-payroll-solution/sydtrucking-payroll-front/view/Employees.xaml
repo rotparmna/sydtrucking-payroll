@@ -52,6 +52,7 @@
                     <ComboBoxItem Visibility="Hidden">NA</ComboBoxItem>
                     <ComboBoxItem>Check</ComboBoxItem>
                     <ComboBoxItem>DD</ComboBoxItem>
+                    <ComboBoxItem>TR</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Tax Form" Grid.Row="0" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
                 <ComboBox x:Name="TaxForm" HorizontalAlignment="Left" Margin="74,37,0,0" VerticalAlignment="Top" Width="249" Height="22">

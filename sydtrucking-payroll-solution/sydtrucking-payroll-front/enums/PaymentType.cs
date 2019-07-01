@@ -4,6 +4,7 @@
     {
         NA,
         Check,
-        DD
+        DD,
+        TR
     }
 }
