@@ -40,5 +40,6 @@
 
         public string DeductionsDetail { get; set; }
         public string ReimbursmentsDetail { get; set; }
+        public bool PrintRegularHoursApartOvertime { get; set; }
     }
 }

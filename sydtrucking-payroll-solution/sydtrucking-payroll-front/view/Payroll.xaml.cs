@@ -216,6 +216,8 @@
                 _payroll.Reimbursements = reimbursements;
                 _payroll.DeductionsDetail = DeductionsText.Text;
                 _payroll.ReimbursmentsDetail = ReimbursementsText.Text;
+                _payroll.PrintRegularHoursApartOvertime = CheckPrint.IsChecked.Value;
+
                 _details.ToList().ForEach(x =>
                 {
                     _payroll.Details.Add(new PayrollDetail()
