@@ -38,8 +38,16 @@
             var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
             var payroll = _payrollBusiness.Get(rowData.Id);
 
-            PrintPayroll print = new PrintPayroll(payroll);
-            print.Print(true);
+            ICollection<model.Payroll> prints = new List<model.Payroll>();
+            if (payroll.PrintRegularHoursApartOvertime)
+                prints = payroll.Prints;
+            else
+                prints.Add(payroll);
+            foreach (var item in prints)
+            {
+                PrintPayroll print = new PrintPayroll(item);
+                print.Print(true);
+            }
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)

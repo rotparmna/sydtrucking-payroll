@@ -10,6 +10,7 @@
         public Payroll()
         {
             Details = new List<PayrollDetail>();
+            Prints = new List<Payroll>();
         }
 
         [BsonId]
@@ -41,5 +42,6 @@
         public string DeductionsDetail { get; set; }
         public string ReimbursmentsDetail { get; set; }
         public bool PrintRegularHoursApartOvertime { get; set; }
+        public ICollection<Payroll> Prints { get; set; }
     }
 }
