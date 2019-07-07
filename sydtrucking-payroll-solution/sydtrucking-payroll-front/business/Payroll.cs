@@ -42,67 +42,74 @@
             {
                 List<Payroll> payrolls = new List<Payroll>();
 
-                if (payroll.TotalHours > Constant.Payroll.RegularHour)
+                if (payroll.TotalHours > Constant.Payroll.TotalHoursPaying)
                 {
                     var regularPayroll = new model.Payroll()
-                    {
-                        //Deductions = payroll.Deductions,
-                        Driver = payroll.Driver,
-                        //DeductionsDetail = payroll.DeductionsDetail,
-                        From = payroll.From,
-                        //OvertimeHour = payroll.OvertimeHour,
-                        Payment = payroll.Rate * payroll.RegularHour,
-                        PaymentDate = payroll.PaymentDate,
-                        //PaymentOvertimeHour = payroll.PaymentOvertimeHour,
-                        //PrintRegularHoursApartOvertime = payroll.PrintRegularHoursApartOvertime,
-                        Rate = payroll.Rate,
-                        RegularHour = payroll.RegularHour,
-                        //Reimbursements = payroll.Reimbursements,
-                        //ReimbursmentsDetail = payroll.ReimbursmentsDetail,
-                        To = payroll.To,
-                        TotalHours = payroll.RegularHour,
-                        TotalPayment = payroll.Rate * payroll.RegularHour,
-                        TruckNumber = payroll.TruckNumber
-                    };
-                    var overtimeRegular = new model.Payroll()
                     {
                         Deductions = payroll.Deductions,
                         Driver = payroll.Driver,
                         DeductionsDetail = payroll.DeductionsDetail,
                         From = payroll.From,
-                        OvertimeHour = payroll.OvertimeHour,
-                        Payment = payroll.PaymentOvertimeHour,
+                        OvertimeHour = Constant.Payroll.TotalHoursPaying - payroll.RegularHour,
                         PaymentDate = payroll.PaymentDate,
-                        PaymentOvertimeHour = payroll.PaymentOvertimeHour,
-                        //PrintRegularHoursApartOvertime = payroll.PrintRegularHoursApartOvertime,
+                        PrintRegularHoursApartOvertime = payroll.PrintRegularHoursApartOvertime,
                         Rate = payroll.Rate,
-                        //RegularHour = payroll.RegularHour,
+                        RegularHour = payroll.RegularHour,
+                        To = payroll.To,
+                        TotalHours = Constant.Payroll.TotalHoursPaying,
+                        TruckNumber = payroll.TruckNumber
+                    };
+                    regularPayroll.CalculatePayment();
+
+                    var overtimeRegular = new model.Payroll()
+                    {
+                        Driver = payroll.Driver,
+                        From = payroll.From,
+                        OvertimeHour = payroll.TotalHours - Constant.Payroll.TotalHoursPaying,
+                        PaymentDate = payroll.PaymentDate,
+                        PrintRegularHoursApartOvertime = payroll.PrintRegularHoursApartOvertime,
+                        Rate = payroll.Rate,
+                        RegularHour = 0,
                         Reimbursements = payroll.Reimbursements,
                         ReimbursmentsDetail = payroll.ReimbursmentsDetail,
                         To = payroll.To,
-                        TotalHours = payroll.OvertimeHour,
-                        TotalPayment = payroll.PaymentOvertimeHour,
+                        TotalHours = payroll.TotalHours - Constant.Payroll.TotalHoursPaying,
                         TruckNumber = payroll.TruckNumber
                     };
-                    var hours = 0;
+                    overtimeRegular.CalculatePayment();
+
                     payroll.Details.ToList().ForEach(x =>
                     {
-                        hours += x.Hours;
-                        if (hours <= Constant.Payroll.RegularHour)
-                        {
-                            regularPayroll.Details.Add(x);
-                        }
-                        else
-                        {
-                            overtimeRegular.Details.Add(x);
-                        }
+                        regularPayroll.Details.Add(x);
+                        overtimeRegular.Details.Add(x);
                     });
                     payroll.Prints.Add(regularPayroll);
                     payroll.Prints.Add(overtimeRegular);
                 }
                 else
                 {
-                    payroll.Prints.Add(payroll);
+                    var p = new model.Payroll()
+                    {
+                        Deductions = payroll.Deductions,
+                        DeductionsDetail = payroll.DeductionsDetail,
+                        Details = payroll.Details,
+                        TotalHours = payroll.TotalHours,
+                        Driver = payroll.Driver,
+                        From = payroll.From,
+                        OvertimeHour = payroll.OvertimeHour,
+                        Payment = payroll.Payment,
+                        PaymentDate = payroll.PaymentDate,
+                        PaymentOvertimeHour = payroll.PaymentOvertimeHour,
+                        PrintRegularHoursApartOvertime = payroll.PrintRegularHoursApartOvertime,
+                        Rate = payroll.Rate,
+                        RegularHour = payroll.RegularHour,
+                        Reimbursements = payroll.Reimbursements,
+                        ReimbursmentsDetail = payroll.ReimbursmentsDetail,
+                        To = payroll.To,
+                        TotalPayment = payroll.TotalPayment,
+                        TruckNumber = payroll.TruckNumber
+                    };
+                    payroll.Prints.Add(p);
                 }
             }
             context.Payrolls.InsertOne(payroll);

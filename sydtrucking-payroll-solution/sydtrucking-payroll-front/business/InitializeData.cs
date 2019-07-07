@@ -63,7 +63,8 @@
                         DaysWeek = 6,
                         DaysWeekPayment = 7,
                         FactorRateOvertimeHour = 1.5,
-                        RegularHour = 120
+                        RegularHour = 40,
+                        TotalHoursPaying = 120
                     },
                     PayrollLeaseCompany = new model.PayrollLeaseCompanyConfiguration()
                     {

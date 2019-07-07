@@ -105,37 +105,28 @@
 
         private void CalculatePayment(int regularHours, int overtimeHour)
         {
-            var rate = double.Parse(Rate.Text.Replace("$", string.Empty));
-            var rateOvertime = rate * business.Constant.Payroll.FactorRateOvertimeHour;
-            var payment = 0.0;
-            var paymentOvertimeHour = 0.0;
+            _payroll.Rate = double.Parse(Rate.Text.Replace("$", string.Empty));
+            _payroll.CalculatePayment();
 
-            paymentOvertimeHour = rateOvertime * overtimeHour;
-            payment = (rate * regularHours) + paymentOvertimeHour;
-
-            _payroll.Rate = rate;
-            _payroll.Payment = payment;
-            _payroll.PaymentOvertimeHour = paymentOvertimeHour;
-            Payment.Text = payment.ToString("C");
+            Payment.Text = _payroll.Payment.ToString("C");
 
             CalculateTotalPayment();
         }
 
         private void CalculateTotalPayment()
         {
-            var totalPayment = 0.0;
-            var payment = 0.0;
             var deductions = 0.0;
             var reimbursements = 0.0;
 
-            double.TryParse(Payment.Text.Replace("$", string.Empty), out payment);
             double.TryParse(Deductions.Text, out deductions);
             double.TryParse(Reimbursements.Text, out reimbursements);
 
-            totalPayment = payment - (deductions + reimbursements);
+            _payroll.Deductions = deductions;
+            _payroll.Reimbursements = reimbursements;
 
-            _payroll.TotalPayment = totalPayment;
-            TotalPayment.Text = totalPayment.ToString("C");
+            _payroll.CalculateTotalPayment();
+
+            TotalPayment.Text = _payroll.TotalPayment.ToString("C");
         }
 
         private void CalculateHours()
@@ -212,8 +203,6 @@
                 _payroll.From = FromPayment.SelectedDate.Value;
                 _payroll.To = ToPayment.SelectedDate.Value;
                 _payroll.PaymentDate = ToPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeekPayment);
-                _payroll.Deductions = deductions;
-                _payroll.Reimbursements = reimbursements;
                 _payroll.DeductionsDetail = DeductionsText.Text;
                 _payroll.ReimbursmentsDetail = ReimbursementsText.Text;
                 _payroll.PrintRegularHoursApartOvertime = CheckPrint.IsChecked.Value;

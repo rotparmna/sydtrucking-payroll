@@ -43,5 +43,25 @@
         public string ReimbursmentsDetail { get; set; }
         public bool PrintRegularHoursApartOvertime { get; set; }
         public ICollection<Payroll> Prints { get; set; }
+
+        public void CalculatePayment()
+        {
+            var rateOvertime = Rate * business.Constant.Payroll.FactorRateOvertimeHour;
+            var payment = 0.0;
+            var paymentOvertimeHour = 0.0;
+
+            paymentOvertimeHour = rateOvertime * OvertimeHour;
+            payment = (Rate * RegularHour) + paymentOvertimeHour;
+
+            Payment = payment;
+            PaymentOvertimeHour = paymentOvertimeHour;
+            
+            CalculateTotalPayment();
+        }
+
+        public void CalculateTotalPayment()
+        {
+            TotalPayment = Payment - (Deductions + Reimbursements);
+        }
     }
 }

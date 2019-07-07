@@ -25,6 +25,7 @@
     public class PayrollConfiguration
     {
         public int RegularHour { get; set; }
+        public int TotalHoursPaying { get; set; }
         public double FactorRateOvertimeHour { get; set; }
         public int DaysWeek { get; set; }
         public int DaysWeekPayment { get; set; }
