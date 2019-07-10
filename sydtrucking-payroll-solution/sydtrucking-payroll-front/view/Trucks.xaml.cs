@@ -1,6 +1,7 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
     using sydtrucking_payroll_front.model;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -85,11 +86,11 @@
                 Truck truck = new Truck()
                 {
                     Id = id,
-                    Inspection = Inspection.SelectedDate.Value,
+                    Inspection = Inspection.SelectedDate.HasValue? Inspection.SelectedDate.Value : DateTime.MinValue,
                     Make = Make.Text,
                     Number = Number.Text,
                     Plate = Plate.Text,
-                    Registration = Registration.SelectedDate.Value,
+                    Registration = Registration.SelectedDate.HasValue? Registration.SelectedDate.Value : DateTime.MinValue,
                     Vin = Vin.Text,
                     Year = int.Parse(Year.Text)
                 };
