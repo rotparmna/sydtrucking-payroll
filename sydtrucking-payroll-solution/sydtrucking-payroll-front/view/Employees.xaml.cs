@@ -103,7 +103,7 @@
                 Employee employee = new Employee()
                 {
                     Address = Address.Text,
-                    Birthdate = Birthdate.SelectedDate.HasValue?Birthdate.SelectedDate.Value:DateTime.MinValue,
+                    Birthdate = Birthdate.SelectedDate.Value,
                     Id = id,
                     LastName = LastName.Text,
                     License = new DriverLicense()

@@ -152,10 +152,10 @@
                 Driver driver = new Driver()
                 {
                     Address = Address.Text,
-                    Birthdate = Birthdate.SelectedDate.HasValue? Birthdate.SelectedDate.Value:DateTime.MinValue,
+                    Birthdate = Birthdate.SelectedDate.Value,
                     Contract = new Contract()
                     {
-                        HireDate = HireDate.SelectedDate.HasValue?HireDate.SelectedDate.Value:DateTime.MinValue,
+                        HireDate = HireDate.SelectedDate.Value,
                         TerminationDate = Actually.IsChecked.Value ? TerminationDate.SelectedDate : null
                     },
                     Id = id,
