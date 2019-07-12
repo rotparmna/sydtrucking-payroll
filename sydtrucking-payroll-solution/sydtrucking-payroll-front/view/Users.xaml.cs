@@ -166,9 +166,9 @@
         {
             ValidationMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(Username.Text)) ValidationMessage += "The Username field is required. \n";
-            if (string.IsNullOrEmpty(Fullname.Text)) ValidationMessage += "The Fullname field is required. \n";
-            if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += "The Email field is required. \n";
+            if (string.IsNullOrEmpty(Username.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Username");
+            if (string.IsNullOrEmpty(Fullname.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Fullname");
+            if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Email");
 
             return string.IsNullOrEmpty(ValidationMessage);
         }

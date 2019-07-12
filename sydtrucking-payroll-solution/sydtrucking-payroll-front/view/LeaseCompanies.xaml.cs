@@ -165,8 +165,8 @@
         {
             ValidationMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
-            if (_trucksView.Where(x => x.IsActive).Count()<=0) ValidationMessage += "At least one truck must be selected. \n";
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Name");
+            if (_trucksView.Where(x => x.IsActive).Count() <= 0) ValidationMessage += business.Constant.Message.AtLeastOneTruckMustBeSelected;
 
             return string.IsNullOrEmpty(ValidationMessage);
         }

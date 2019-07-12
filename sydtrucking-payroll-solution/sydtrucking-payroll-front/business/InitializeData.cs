@@ -71,7 +71,12 @@
                         LastThreeFridayPayrollLeaseCompany = -21,
                         PercentLeaseFeeValue = 0.2,
                         PercentWorkerCompValue = 0.1599
-                    }
+                    },
+                    Message = new model.MessageConfiguration()
+                    {
+                        ValidationRequiredFieldMessage = "The {0} is required.",
+                        AtLeastOneTruckMustBeSelected = "At least one truck must be selected."
+            }
                 });
 
                 _updateMessage.UpdateMessageConnection("Data started.");

@@ -11,6 +11,7 @@
         public Smtp Smtp { get; set; }
         public PayrollConfiguration Payroll { get; set; }
         public PayrollLeaseCompanyConfiguration PayrollLeaseCompany { get; set; }
+        public MessageConfiguration Message { get; set; }
     }
 
     public class Smtp
@@ -36,5 +37,32 @@
         public int LastThreeFridayPayrollLeaseCompany { get; set; }
         public double PercentLeaseFeeValue { get; set; }
         public double PercentWorkerCompValue { get; set; }
+    }
+
+    public class MessageConfiguration
+    {
+        string _validationRequiredFieldMessage;
+        public string ValidationRequiredFieldMessage {
+            get
+            {
+                return _validationRequiredFieldMessage + "\n";
+            }
+            set
+            {
+                _validationRequiredFieldMessage = value;
+            }
+        }
+        string _atLeastOneTruckMustBeSelected;
+        public string AtLeastOneTruckMustBeSelected
+        {
+            get
+            {
+                return _atLeastOneTruckMustBeSelected + "\n";
+            }
+            set
+            {
+                _atLeastOneTruckMustBeSelected = value;
+            }
+        }
     }
 }

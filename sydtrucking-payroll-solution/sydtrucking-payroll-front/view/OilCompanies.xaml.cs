@@ -120,8 +120,8 @@
         {
             ValidationMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
-            if (string.IsNullOrEmpty(Rate.Text)) ValidationMessage += "The Rate field is required. \n";
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Name");
+            if (string.IsNullOrEmpty(Rate.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Rate");
 
             return string.IsNullOrEmpty(ValidationMessage);
         }

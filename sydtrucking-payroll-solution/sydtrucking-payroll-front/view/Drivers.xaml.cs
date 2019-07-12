@@ -152,10 +152,10 @@
                 Driver driver = new Driver()
                 {
                     Address = Address.Text,
-                    Birthdate = Birthdate.SelectedDate.Value,
+                    Birthdate = Birthdate.SelectedDate.HasValue? Birthdate.SelectedDate.Value:DateTime.MinValue,
                     Contract = new Contract()
                     {
-                        HireDate = HireDate.SelectedDate.Value,
+                        HireDate = HireDate.SelectedDate.HasValue?HireDate.SelectedDate.Value:DateTime.MinValue,
                         TerminationDate = Actually.IsChecked.Value ? TerminationDate.SelectedDate : null
                     },
                     Id = id,
@@ -263,15 +263,15 @@
         {
             ValidationMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += "The Name field is required. \n";
-            if (string.IsNullOrEmpty(LastName.Text)) ValidationMessage += "The Last Name field is required. \n";
-            if (string.IsNullOrEmpty(SocialSecurity.Text)) ValidationMessage += "The Social Security field is required. \n";
-            if (string.IsNullOrEmpty(DriverLicense.Text)) ValidationMessage += "The Driver License field is required. \n";
-            if (string.IsNullOrEmpty(StateDriverLicense.Text)) ValidationMessage += "The State field is required. \n";
-            if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += "The Expiration Date field is required. \n";
-            if (Trucks.SelectedIndex == -1) ValidationMessage += "The Truck Number field is required. \n";
-            if (PaymentMethod.SelectedIndex == -1) ValidationMessage += "The Payment Method field is required. \n";
-            if (TaxForm.SelectedIndex == -1) ValidationMessage += "The Tax Form field is required. \n";
+            if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Name");
+            if (string.IsNullOrEmpty(LastName.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Last Name");
+            if (string.IsNullOrEmpty(SocialSecurity.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Social Security");
+            if (string.IsNullOrEmpty(DriverLicense.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Driver License");
+            if (string.IsNullOrEmpty(StateDriverLicense.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "State");
+            if (!ExpirationDate.SelectedDate.HasValue) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Expiration Date");
+            if (Trucks.SelectedIndex == -1) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Truck Number");
+            if (PaymentMethod.SelectedIndex == -1) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Payment Method");
+            if (TaxForm.SelectedIndex == -1) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Tax Form");
 
             return string.IsNullOrEmpty(ValidationMessage);
         }
