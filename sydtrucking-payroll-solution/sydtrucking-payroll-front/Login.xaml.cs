@@ -4,6 +4,7 @@
     using System.Windows;
     using sydtrucking_payroll_front.view;
     using System.Threading.Tasks;
+    using System;
 
     /// <summary>
     /// Lógica de interacción para Login.xaml
@@ -33,6 +34,8 @@
             _authenticate.Login(Username.Text, Password.Password);
             if (_authenticate.IsAuthenticate)
             {
+                App.Log.Info("User was authenticated in the application. Username: " + Username.Text + ". Datetime: " + DateTime.Now);
+                
                 Ticket.Instance.Authenticate = _authenticate;
 
                 MainWindow main = new MainWindow();
