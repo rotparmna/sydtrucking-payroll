@@ -102,5 +102,11 @@
             view.ReportPayrollEmployee payrollEmployee = new view.ReportPayrollEmployee();
             payrollEmployee.Show();
         }
+
+        private void ReportsIcon_Click(object sender, RoutedEventArgs e)
+        {
+            view.Reports reports = new view.Reports();
+            reports.Show();
+        }
     }
 }
