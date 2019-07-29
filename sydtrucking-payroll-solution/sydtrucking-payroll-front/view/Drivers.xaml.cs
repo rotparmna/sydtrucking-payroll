@@ -138,7 +138,7 @@
                 ChangeControlsEnabled(false);
 
                 var id = _driverBusiness.GetAll()
-                              .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
+                              .Where(x => x.SocialSecurity == SocialSecurity.Text.ToSocialSecurity())
                               .DefaultIfEmpty(new Driver() { Id = string.Empty })
                               .FirstOrDefault()
                               .Id;
@@ -170,7 +170,7 @@
                     PaymentMethod = paymentMethod,
                     PhoneNumber = PhoneNumber.Text,
                     Rate = double.Parse(Rate.Text.Replace("$", string.Empty)),
-                    SocialSecurity = long.Parse(SocialSecurity.Text),
+                    SocialSecurity = SocialSecurity.Text.ToSocialSecurity(),
                     State = State.Text,
                     TaxForm = taxForm,
                     Truck = new Truck()
@@ -215,7 +215,7 @@
         public void LoadDataBySelectedRow(Driver driver)
         {
             _idDriverSelected = driver.Id;
-            SocialSecurity.Text = driver.SocialSecurity.ToString();
+            SocialSecurity.Text = driver.SocialSecurity.ToSocialSecurityHyphen();
             Name.Text = driver.Name;
             LastName.Text = driver.LastName;
             Birthdate.SelectedDate = driver.Birthdate;

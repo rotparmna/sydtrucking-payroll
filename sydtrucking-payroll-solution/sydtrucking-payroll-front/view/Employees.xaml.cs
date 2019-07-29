@@ -89,7 +89,7 @@
                 ChangeControlsEnabled(false);
 
                 var id = _employeeBusiness.GetAll()
-                              .Where(x => x.SocialSecurity == long.Parse(SocialSecurity.Text))
+                              .Where(x => x.SocialSecurity == SocialSecurity.Text.ToSocialSecurity())
                               .DefaultIfEmpty(new Employee() { Id = string.Empty })
                               .FirstOrDefault()
                               .Id;
@@ -116,7 +116,7 @@
                     PaymentMethod = paymentMethod,
                     PhoneNumber = PhoneNumber.Text,
                     Rate = 0.0,
-                    SocialSecurity = long.Parse(SocialSecurity.Text),
+                    SocialSecurity = SocialSecurity.Text.ToSocialSecurity(),
                     State = State.Text,
                     TaxForm = taxForm,                    
                     City = City.Text,
@@ -160,7 +160,7 @@
         public void LoadDataBySelectedRow(Employee employee)
         {
             _idEmployeeSelected = employee.Id;
-            SocialSecurity.Text = employee.SocialSecurity.ToString();
+            SocialSecurity.Text = employee.SocialSecurityHyphen;
             Name.Text = employee.Name;
             LastName.Text = employee.LastName;
             Birthdate.SelectedDate = employee.Birthdate;
