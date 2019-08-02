@@ -68,7 +68,7 @@
 
         private void EmailReport_Click(object sender, RoutedEventArgs e)
         {
-            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
+            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollEmployeeView;
             var payroll = _payrollBusiness.Get(rowData.Id);
 
             SendEmail(payroll);
