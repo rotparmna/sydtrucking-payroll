@@ -1,6 +1,7 @@
 ﻿namespace sydtrucking_payroll_front.notification
 {
     using sydtrucking_payroll_front.business;
+    using System;
     using System.Net;
     using System.Net.Mail;
 
@@ -24,11 +25,29 @@
         {
             _stmp.Credentials = new NetworkCredential(Constant.Smtp.Email, Constant.Smtp.Password);
             _stmp.EnableSsl = Constant.Smtp.EnableSsl;
+            MailMessage message = null;
 
-            MailMessage message = new MailMessage(_from, To, Subject, body);
+            try
+            {
+                message = new MailMessage(_from, To, Subject, body);
+            }
+            catch (ArgumentException ex)
+            {
+                App.Log.Error("Fatal error!. Datetime: " + DateTime.Now + ". Exception: " + ex);
+                throw;
+            }
+            
             message.Attachments.Add(File);
 
-            _stmp.Send(message);
+            try
+            {
+                _stmp.Send(message);
+            }
+            catch (SmtpException ex)
+            {
+                App.Log.Error("Fatal error!. Datetime: " + DateTime.Now + ". Exception: " + ex);
+                throw;
+            }
         }
     }
 }

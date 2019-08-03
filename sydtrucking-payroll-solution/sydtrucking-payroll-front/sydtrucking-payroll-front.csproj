@@ -177,6 +177,7 @@
     <Compile Include="view\PayrollLeaseCompanies.xaml.cs">
       <DependentUpon>PayrollLeaseCompanies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\PayrollSendMail.cs" />
     <Compile Include="view\Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>

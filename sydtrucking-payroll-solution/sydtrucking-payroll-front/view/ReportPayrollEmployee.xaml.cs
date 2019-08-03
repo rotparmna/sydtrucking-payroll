@@ -4,6 +4,7 @@
     using sydtrucking_payroll_front.model;
     using sydtrucking_payroll_front.notification;
     using sydtrucking_payroll_front.print;
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Mail;
@@ -76,15 +77,7 @@
 
         private void SendEmail(model.PayrollEmployee payroll)
         {
-            PrintPayrollEmployee print = new PrintPayrollEmployee(payroll);
-            print.Print(false);
-
-            INotification email = new Email("Pay Stub");
-            ((Email)email).File = new Attachment(File.Open(print.Fullname, FileMode.Open), print.Filename);
-
-            ((IEmail<model.PayrollEmployee>)_payrollBusiness).SendEmail(email, payroll);
-
-            MessageBox.Show("Email sent!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+            PayrollMail.Send(new PrintPayrollEmployee(payroll), (IEmail<model.PayrollEmployee>)_payrollBusiness, payroll);
         }
     }
 }

@@ -91,15 +91,7 @@
 
         private void SendEmail(model.Payroll payroll)
         {
-            PrintPayroll print = new PrintPayroll(payroll);
-            print.Print(false);
-
-            INotification email = new Email("Pay Stub");
-            ((Email)email).File = new Attachment(File.Open(print.Fullname, FileMode.Open), print.Filename);
-
-            ((IEmail<model.Payroll>)_payrollBusiness).SendEmail(email, payroll);
-
-            MessageBox.Show("Email sent!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+            PayrollMail.Send(new PrintPayroll(payroll), (IEmail<model.Payroll>)_payrollBusiness, payroll);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
