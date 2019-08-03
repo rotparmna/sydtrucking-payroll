@@ -13,5 +13,6 @@
         public LeaseCompany LeaseCompany { get; set; }
         public Truck Truck { get; set; }
         public User User { get; set; }
+        public Payroll Payroll { get; set; }
     }
 }

@@ -6,8 +6,10 @@
     using sydtrucking_payroll_front.print;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Net.Mail;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
@@ -57,9 +59,14 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((IPayroll<PrintPayrollView,model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Drivers.SelectedItem as model.Driver);
+            SearchPayrolls();
+        }
+
+        private void SearchPayrolls()
+        {
+            _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Drivers.SelectedItem as model.Driver);
             Details.ItemsSource = _printView;
-            if ( _printView.Count == 0)
+            if (_printView.Count == 0)
             {
                 MessageBox.Show("There is no information", "No data", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
@@ -93,6 +100,20 @@
             ((IEmail<model.Payroll>)_payrollBusiness).SendEmail(email, payroll);
 
             MessageBox.Show("Email sent!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure delete payroll?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var id = ((Button)sender).Tag.ToString();
+                var payroll = _payrollBusiness.Get(id);
+
+                payroll.IsDetele = true;
+                _payrollBusiness.Update(payroll);
+
+                SearchPayrolls();
+            }
         }
     }
 }

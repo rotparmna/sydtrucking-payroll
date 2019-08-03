@@ -68,7 +68,7 @@
                 <Button ToolTip="Payroll Employee Report" x:Name="ReportPayrollEmployee" HorizontalAlignment="Left" Margin="45,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportPayrollEmployee_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
                     <Image ToolTip="Payroll Employee Report" Source="resources/images/payrollemployeereport80.png" Width="48px" />
                 </Button>
-                <Button ToolTip="Reports" x:Name="ReportsIcon" HorizontalAlignment="Left" Margin="205,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportsIcon_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
+                <Button Visibility="Hidden" ToolTip="Reports" x:Name="ReportsIcon" HorizontalAlignment="Left" Margin="205,8,0,0" VerticalAlignment="Top" Width="75" Click="ReportsIcon_Click" Height="66" HorizontalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1">
                     <Image ToolTip="Reports" Source="resources/images/reports128.png" Width="48px" />
                 </Button>
             </Grid>

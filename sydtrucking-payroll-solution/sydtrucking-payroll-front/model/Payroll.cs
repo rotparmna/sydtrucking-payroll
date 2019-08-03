@@ -5,7 +5,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Payroll
+    public class Payroll : ModelBase
     {
         public Payroll()
         {

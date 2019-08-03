@@ -117,7 +117,20 @@
 
         public void Update(model.Payroll payroll)
         {
-            Add(payroll);
+            if (payroll.IsDetele)
+                Delete(payroll);
+            else
+                Add(payroll);
+        }
+
+        private void Delete(model.Payroll payroll)
+        {
+            context.Payrolls.DeleteOne(f => f.Id == payroll.Id);
+
+            Trash trashBusiness = new Trash();
+            model.Trash trash = new model.Trash();
+            trash.Payroll = payroll;
+            trashBusiness.Update(trash);
         }
 
         public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Driver driver)
