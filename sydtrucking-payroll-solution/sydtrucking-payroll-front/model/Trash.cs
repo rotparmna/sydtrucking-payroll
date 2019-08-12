@@ -14,5 +14,7 @@
         public Truck Truck { get; set; }
         public User User { get; set; }
         public Payroll Payroll { get; set; }
+        public PayrollEmployee PayrollEmployee { get; set; }
+        public PayrollLeaseCompany PayrollLeaseCompany { get; set; }
     }
 }

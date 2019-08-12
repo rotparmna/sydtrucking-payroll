@@ -2,19 +2,15 @@
 {
     using sydtrucking_payroll_front.business;
     using sydtrucking_payroll_front.model;
-    using sydtrucking_payroll_front.notification;
     using sydtrucking_payroll_front.print;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Net.Mail;
     using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class ReportPayroll : Window
+    public partial class ReportPayroll : Window, IPayrollView
     {
         private IBusiness<model.Payroll> _payrollBusiness;
         private IBusiness<model.Driver> _driverBusiness;
@@ -62,7 +58,7 @@
             SearchPayrolls();
         }
 
-        private void SearchPayrolls()
+        public void SearchPayrolls()
         {
             _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Drivers.SelectedItem as model.Driver);
             Details.ItemsSource = _printView;
@@ -96,16 +92,12 @@
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure delete payroll?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                var id = ((Button)sender).Tag.ToString();
-                var payroll = _payrollBusiness.Get(id);
+            DeletePayroll(((Button)sender).Tag.ToString());
+        }
 
-                payroll.IsDetele = true;
-                _payrollBusiness.Update(payroll);
-
-                SearchPayrolls();
-            }
+        public void DeletePayroll(string id)
+        {
+            PayrollDelete.Delete(_payrollBusiness, id, this);
         }
     }
 }

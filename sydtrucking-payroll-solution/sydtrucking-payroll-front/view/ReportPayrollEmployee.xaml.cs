@@ -2,18 +2,15 @@
 {
     using sydtrucking_payroll_front.business;
     using sydtrucking_payroll_front.model;
-    using sydtrucking_payroll_front.notification;
     using sydtrucking_payroll_front.print;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Net.Mail;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class ReportPayrollEmployee : Window
+    public partial class ReportPayrollEmployee : Window, IPayrollView
     {
         private IBusiness<model.PayrollEmployee> _payrollBusiness;
         private IBusiness<model.Employee> _employeeBusiness;
@@ -50,9 +47,14 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            SearchPayrolls();
+        }
+
+        public void SearchPayrolls()
+        {
             _printView = ((IPayroll<PrintPayrollEmployeeView, model.Employee>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Employee);
             Details.ItemsSource = _printView;
-            if ( _printView.Count == 0)
+            if (_printView.Count == 0)
             {
                 MessageBox.Show("There is no information", "No data", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
@@ -78,6 +80,16 @@
         private void SendEmail(model.PayrollEmployee payroll)
         {
             PayrollMail.Send(new PrintPayrollEmployee(payroll), (IEmail<model.PayrollEmployee>)_payrollBusiness, payroll);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeletePayroll(((Button)sender).Tag.ToString());
+        }
+
+        public void DeletePayroll(string id)
+        {
+            PayrollDelete.Delete(_payrollBusiness, id, this);
         }
     }
 }

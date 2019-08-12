@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Collections.Generic;
 
-    public class PayrollLeaseCompany
+    public class PayrollLeaseCompany : ModelBase
     {
         public PayrollLeaseCompany()
         {

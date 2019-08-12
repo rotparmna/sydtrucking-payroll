@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    interface IBusiness<T>
+    public interface IBusiness<T>
     {
         List<T> GetAll();
 

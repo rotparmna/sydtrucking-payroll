@@ -2,17 +2,15 @@
 {
     using sydtrucking_payroll_front.business;
     using sydtrucking_payroll_front.model;
-    using sydtrucking_payroll_front.notification;
     using sydtrucking_payroll_front.print;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Net.Mail;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class ReportPayrollLeaseCompanies : Window
+    public partial class ReportPayrollLeaseCompanies : Window, IPayrollView
     {
         private IBusiness<model.PayrollLeaseCompany> _payrollLeaseCompanyBusiness;
         private IBusiness<model.LeaseCompany> _leaseCompanyBusiness;
@@ -49,12 +47,7 @@
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _printView = ((IPayroll<PrintPayrollLeaseCompanyView, model.LeaseCompany>)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, LeaseCompanies.SelectedItem as model.LeaseCompany);
-            Details.ItemsSource = _printView;
-            if ( _printView.Count == 0)
-            {
-                MessageBox.Show("There is no information", "No data", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
+            SearchPayrolls();
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
@@ -77,6 +70,26 @@
         private void SendEmail(model.Payroll payroll)
         {
             //PayrollMail.Send(new PrintPayroll(payroll), (IEmail<model.Payroll>)_payrollBusiness, payroll);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeletePayroll(((Button)sender).Tag.ToString());
+        }
+
+        public void SearchPayrolls()
+        {
+            _printView = ((IPayroll<PrintPayrollLeaseCompanyView, model.LeaseCompany>)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, LeaseCompanies.SelectedItem as model.LeaseCompany);
+            Details.ItemsSource = _printView;
+            if (_printView.Count == 0)
+            {
+                MessageBox.Show("There is no information", "No data", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        public void DeletePayroll(string id)
+        {
+            PayrollDelete.Delete(_payrollLeaseCompanyBusiness, id, this);
         }
     }
 }

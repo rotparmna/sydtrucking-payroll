@@ -4,7 +4,7 @@
     using MongoDB.Bson.Serialization.Attributes;
     using System;
 
-    public class PayrollEmployee
+    public class PayrollEmployee : ModelBase
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

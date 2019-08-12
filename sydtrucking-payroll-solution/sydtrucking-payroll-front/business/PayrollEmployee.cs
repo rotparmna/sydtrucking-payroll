@@ -60,7 +60,20 @@
 
         public void Update(model.PayrollEmployee model)
         {
-            Add(model);
+            if (model.IsDetele)
+                Delete(model);
+            else
+                Add(model);
+        }
+
+        private void Delete(model.PayrollEmployee model)
+        {
+            context.PayrollEmployees.DeleteOne(f => f.Id == model.Id);
+
+            Trash trashBusiness = new Trash();
+            model.Trash trash = new model.Trash();
+            trash.PayrollEmployee = model;
+            trashBusiness.Update(trash);
         }
 
         private void Add(model.PayrollEmployee model)
