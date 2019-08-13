@@ -6,11 +6,12 @@
     using System.Linq;
     using System;
     using System.Windows.Data;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
     /// </summary>
-    public partial class Payroll : Window
+    public partial class Payroll : Window, IPayrollView
     {
         business.IBusiness<model.Payroll> _payrollBusiness;
         business.IBusiness<Driver> _driverBusiness;
@@ -207,6 +208,7 @@
                 _payroll.ReimbursmentsDetail = ReimbursementsText.Text;
                 _payroll.PrintRegularHoursApartOvertime = CheckPrint.IsChecked.Value;
 
+                _payroll.Details.Clear();
                 _details.ToList().ForEach(x =>
                 {
                     _payroll.Details.Add(new PayrollDetail()
@@ -272,6 +274,38 @@
         {
             if (FromPayment.SelectedDate.HasValue)
                 ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeek);
+        }
+
+        public void LoadPayroll(string id)
+        {
+            _payroll = _payrollBusiness.Get(id);
+
+            Drivers.SelectedValue = _payroll.Driver.Id;
+            TruckNumber.Text = _payroll.TruckNumber.ToString();
+            Rate.Text = _payroll.Rate.ToString("C");
+            CheckPrint.IsChecked = _payroll.PrintRegularHoursApartOvertime;
+            FromPayment.SelectedDate = _payroll.From;
+            ToPayment.SelectedDate = _payroll.To;
+            TotalHours.Text = _payroll.TotalHours.ToString();
+            RegularHour.Text = _payroll.RegularHour.ToString();
+            OvertimeHour.Text = _payroll.OvertimeHour.ToString();
+            Payment.Text = _payroll.Payment.ToString("C");
+            Deductions.Text = _payroll.Deductions.ToString("C");
+            DeductionsText.Text = _payroll.DeductionsDetail;
+            Reimbursements.Text = _payroll.Reimbursements.ToString("C");
+            ReimbursementsText.Text = _payroll.ReimbursmentsDetail;
+            TotalPayment.Text = _payroll.TotalPayment.ToString("C");
+
+            foreach (var item in _payroll.Details)
+            {
+                _details.Add(new PayrollDetailView()
+                {
+                    Hours = item.Hours,
+                    OilCompany = item.OilCompany,
+                    TicketDate = item.Ticket.Date,
+                    TicketNumber = item.Ticket.Number
+                });
+            }
         }
     }
 }

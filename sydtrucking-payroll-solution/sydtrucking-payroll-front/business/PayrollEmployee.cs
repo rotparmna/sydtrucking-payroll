@@ -60,10 +60,38 @@
 
         public void Update(model.PayrollEmployee model)
         {
-            if (model.IsDetele)
-                Delete(model);
+            var isEdit = GetAll().Where(x => x.Id == model.Id)
+                                    .Count() > 0;
+
+            if (isEdit)
+                Edit(model);
             else
                 Add(model);
+        }
+
+        private void Edit(model.PayrollEmployee model)
+        {
+            if (model.IsDetele)
+            {
+                Delete(model);
+            }
+            else
+            {
+                var upd = Builders<model.PayrollEmployee>.Update.Set(u => u.Deductions, model.Deductions)
+                                                         .Set(u => u.DeductionsDetail, model.DeductionsDetail)
+                                                         .Set(u => u.Employee, model.Employee)
+                                                         .Set(u => u.From, model.From)
+                                                         .Set(u => u.PaymentDate, model.PaymentDate)
+                                                         .Set(u => u.PaymentTotalHours, model.PaymentTotalHours)
+                                                         .Set(u => u.Rate, model.Rate)
+                                                         .Set(u => u.Reimbursements, model.Reimbursements)
+                                                         .Set(u => u.ReimbursmentsDetail, model.ReimbursmentsDetail)
+                                                         .Set(u => u.To, model.To)
+                                                         .Set(u => u.TotalHours, model.TotalHours)
+                                                         .Set(u => u.TotalPayment, model.TotalPayment);
+
+                context.PayrollEmployees.UpdateOne(f => f.Id == model.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
         }
 
         private void Delete(model.PayrollEmployee model)

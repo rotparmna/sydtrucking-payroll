@@ -6,7 +6,7 @@
 
     public static class PayrollDelete
     {
-        public static void Delete<B>(IBusiness<B> business, string id, IPayrollView viewPayroll) where B : ModelBase
+        public static void Delete<B>(IBusiness<B> business, string id, IReportPayrollView viewReportPayroll) where B : ModelBase
         {
             if (MessageBox.Show("Are you sure delete payroll?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -15,7 +15,7 @@
                 payroll.IsDetele = true;
                 business.Update((B)payroll);
 
-                viewPayroll.SearchPayrolls();
+                viewReportPayroll.SearchPayrolls();
             }
         }
     }

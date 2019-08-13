@@ -11,6 +11,7 @@
         public PayrollLeaseCompany()
         {
             Payrolls = new List<Payroll>();
+            Details = new List<GenericCollection>();
         }
 
         [BsonId]

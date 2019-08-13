@@ -166,6 +166,7 @@
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\IPayrollView.cs" />
+    <Compile Include="view\IReportPayrollView.cs" />
     <Compile Include="view\IUpdateMessage.cs" />
     <Compile Include="view\IValidation.cs" />
     <Compile Include="view\IView.cs" />

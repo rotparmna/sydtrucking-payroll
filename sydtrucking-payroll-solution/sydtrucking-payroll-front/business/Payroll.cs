@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using sydtrucking_payroll_front.model;
 
     public class Payroll : BusinessBase, 
         IBusiness<model.Payroll>,
@@ -117,10 +118,45 @@
 
         public void Update(model.Payroll payroll)
         {
-            if (payroll.IsDetele)
-                Delete(payroll);
+            var isEdit = GetAll().Where(x => x.Id == payroll.Id)
+                                    .Count() > 0;
+
+            if (isEdit)
+                Edit(payroll);
             else
                 Add(payroll);
+        }
+
+        private void Edit(model.Payroll payroll)
+        {
+            if (payroll.IsDetele)
+            {
+                Delete(payroll);
+            }
+            else
+            {
+                var upd = Builders<model.Payroll>.Update.Set(u => u.Deductions, payroll.Deductions)
+                                                         .Set(u => u.DeductionsDetail, payroll.DeductionsDetail)
+                                                         .Set(u => u.Details, payroll.Details)
+                                                         .Set(u => u.Driver, payroll.Driver)
+                                                         .Set(u => u.From, payroll.From)
+                                                         .Set(u => u.OvertimeHour, payroll.OvertimeHour)
+                                                         .Set(u => u.Payment, payroll.Payment)
+                                                         .Set(u => u.PaymentDate, payroll.PaymentDate)
+                                                         .Set(u => u.PaymentOvertimeHour, payroll.PaymentOvertimeHour)
+                                                         .Set(u => u.PrintRegularHoursApartOvertime, payroll.PrintRegularHoursApartOvertime)
+                                                         .Set(u => u.Prints, payroll.Prints)
+                                                         .Set(u => u.Rate, payroll.Rate)
+                                                         .Set(u => u.RegularHour, payroll.RegularHour)
+                                                         .Set(u => u.Reimbursements, payroll.Reimbursements)
+                                                         .Set(u => u.ReimbursmentsDetail, payroll.ReimbursmentsDetail)
+                                                         .Set(u => u.To, payroll.To)
+                                                         .Set(u => u.TotalHours, payroll.TotalHours)
+                                                         .Set(u => u.TotalPayment, payroll.TotalPayment)
+                                                         .Set(u => u.TruckNumber, payroll.TruckNumber);
+
+                context.Payrolls.UpdateOne(f => f.Id == payroll.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
         }
 
         private void Delete(model.Payroll payroll)

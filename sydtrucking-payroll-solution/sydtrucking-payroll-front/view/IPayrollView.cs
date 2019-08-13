@@ -2,7 +2,6 @@
 {
     public interface IPayrollView
     {
-        void SearchPayrolls();
-        void DeletePayroll(string id);
+        void LoadPayroll(string id);
     }
 }

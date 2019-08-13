@@ -11,7 +11,7 @@
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
     /// </summary>
-    public partial class PayrollLeaseCompanies : Window
+    public partial class PayrollLeaseCompanies : Window, IPayrollView
     {
         business.IBusiness<PayrollLeaseCompany> _payrollLeaseCompanyBusiness;
         business.IBusiness<model.Payroll> _payrollBusiness;
@@ -130,8 +130,8 @@
                 leaseFee = totalRates * business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
                 workerComp = totalRates * business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
 
-                _details.Where(x => x.Item.Contains("Lease Fee")).FirstOrDefault().Value = leaseFee;
-                _details.Where(x => x.Item.Contains("Worker's Comp")).FirstOrDefault().Value = workerComp;
+                _details.Where(x => x.Item.Contains("Lease Fee")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = leaseFee;
+                _details.Where(x => x.Item.Contains("Worker's Comp")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = workerComp;
             }
         }
 
@@ -145,10 +145,19 @@
                 _payrollLeaseCompany.To = ToPayment.SelectedDate.Value;
                 _payrollLeaseCompany.Date = Date.SelectedDate.Value;
                 _payrollLeaseCompany.Deductions = _deductions;
-                _payrollLeaseCompany.Details = _details.ToList<GenericCollection>();
                 _payrollLeaseCompany.LeaseCompany = (LeaseCompanies.SelectedItem as LeaseCompany);
                 _payrollLeaseCompany.Total = double.Parse(Total.Text.Replace("$", string.Empty));
                 _payrollLeaseCompany.Truck = (Trucks.SelectedItem as Truck);
+
+                _payrollLeaseCompany.Details.Clear();
+                _details.ToList().ForEach(x =>
+                {
+                    _payrollLeaseCompany.Details.Add(new GenericCollection()
+                    {
+                        Item = x.Item,
+                        Value = x.Value
+                    });
+                });
 
                 try
                 {
@@ -232,6 +241,48 @@
             LoadDetails(Trucks.SelectedItem as Truck);
             CalculateLeaseFeeAndWorkerComp();
             CalculateTotal();
+        }
+
+        public void LoadPayroll(string id)
+        {
+            _payrollLeaseCompany = _payrollLeaseCompanyBusiness.Get(id);
+
+            LeaseCompanies.SelectedValue = _payrollLeaseCompany.LeaseCompany.Id;
+            Trucks.SelectedValue = _payrollLeaseCompany.Truck.Id;
+            Date.SelectedDate = _payrollLeaseCompany.Date;
+            FromPayment.SelectedDate = _payrollLeaseCompany.From;
+            ToPayment.SelectedDate = _payrollLeaseCompany.To;
+            Total.Text = _payrollLeaseCompany.Total.ToString("C");
+
+            foreach (var rate in _payrollLeaseCompany.Rates)
+            {
+                _rates.Add(new RateDetail()
+                {
+                    Companies = rate.Companies,
+                    Hours = rate.Hours,
+                    Rate = rate.Rate
+                });
+            }
+
+            _details.Clear();
+            foreach (var detail in _payrollLeaseCompany.Details)
+            {
+                _details.Add(new PayrollLeaseCompanyDetails()
+                {
+                    IsReadOnly = !detail.Item.Contains("Diesel"),
+                    Item = detail.Item,
+                    Value = detail.Value
+                });
+            }
+
+            foreach (var deduction in _payrollLeaseCompany.Deductions)
+            {
+                _deductions.Add(new GenericCollection()
+                {
+                    Item = deduction.Item,
+                    Value = deduction.Value
+                });
+            }
         }
     }
 }

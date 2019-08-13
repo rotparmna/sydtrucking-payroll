@@ -63,7 +63,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ticket Date (mm/dd/yyyy)" Binding="{Binding TicketDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
                 <!--<DataGridTextColumn Header="Company" Binding="{Binding Company}"/>-->
-                <DataGridComboBoxColumn Header="Company" ItemsSource="{Binding Source={StaticResource OilCompanies}}" SelectedItemBinding="{Binding OilCompany}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                <DataGridComboBoxColumn Header="Company" ItemsSource="{Binding Source={StaticResource OilCompanies}}" SelectedItemBinding="{Binding OilCompany}" SelectedValueBinding="{Binding Path=OilCompany.Id}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
                 <DataGridTextColumn Header="Ticket #" Binding="{Binding TicketNumber}"/>
                 <DataGridTextColumn Header="Hours" Binding="{Binding Hours}"/>
             </DataGrid.Columns>

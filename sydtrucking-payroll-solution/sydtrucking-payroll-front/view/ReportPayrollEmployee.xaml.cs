@@ -10,7 +10,7 @@
     /// <summary>
     /// Lógica de interacción para Employees.xaml
     /// </summary>
-    public partial class ReportPayrollEmployee : Window, IPayrollView
+    public partial class ReportPayrollEmployee : Window, IReportPayrollView
     {
         private IBusiness<model.PayrollEmployee> _payrollBusiness;
         private IBusiness<model.Employee> _employeeBusiness;
@@ -90,6 +90,17 @@
         public void DeletePayroll(string id)
         {
             PayrollDelete.Delete(_payrollBusiness, id, this);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+
+            PayrollEmployee payroll = new PayrollEmployee();
+            payroll.Show();
+            payroll.LoadPayroll(id);
+
+            Close();
         }
     }
 }

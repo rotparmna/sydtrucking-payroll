@@ -2,7 +2,9 @@
 {
     using MongoDB.Driver;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
+    using sydtrucking_payroll_front.model;
 
     public class PayrollLeaseCompany : BusinessBase,
         IBusiness<model.PayrollLeaseCompany>,
@@ -49,10 +51,39 @@
 
         public void Update(model.PayrollLeaseCompany payroll)
         {
-            if (payroll.IsDetele)
-                Delete(payroll);
+            var isEdit = GetAll().Where(x => x.Id == payroll.Id)
+                                     .Count() > 0;
+
+            if (isEdit)
+                Edit(payroll);
             else
                 Add(payroll);
+        }
+
+        private void Edit(model.PayrollLeaseCompany payroll)
+        {
+            if (payroll.IsDetele)
+            {
+                Delete(payroll);
+            }
+            else
+            {
+                var upd = Builders<model.PayrollLeaseCompany>.Update.Set(u => u.Deductions, payroll.Deductions)
+                                                         .Set(u => u.Date, payroll.Date)
+                                                         .Set(u => u.Details, payroll.Details)
+                                                         .Set(u => u.DriverPaycheck, payroll.DriverPaycheck)
+                                                         .Set(u => u.From, payroll.From)
+                                                         .Set(u => u.LeaseCompany, payroll.LeaseCompany)
+                                                         .Set(u => u.Payrolls, payroll.Payrolls)
+                                                         .Set(u => u.Rates, payroll.Rates)
+                                                         .Set(u => u.To, payroll.To)
+                                                         .Set(u => u.Total, payroll.Total)
+                                                         .Set(u => u.TotalDeductions, payroll.TotalDeductions)
+                                                         .Set(u => u.TotalDetails, payroll.TotalDetails)
+                                                         .Set(u => u.Truck, payroll.Truck);
+
+                context.PayrollLeaseCompanies.UpdateOne(f => f.Id == payroll.Id, upd, new UpdateOptions() { IsUpsert = false });
+            }
         }
 
         private void Delete(model.PayrollLeaseCompany payroll)

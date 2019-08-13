@@ -10,7 +10,7 @@
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
     /// </summary>
-    public partial class PayrollEmployee : Window
+    public partial class PayrollEmployee : Window, IPayrollView
     {
         business.IBusiness<model.PayrollEmployee> _payrollBusiness;
         business.IBusiness<Employee> _employeeBusiness;
@@ -172,6 +172,23 @@
         private void TotalHours_LostFocus(object sender, RoutedEventArgs e)
         {
             CalculatePayment();
+        }
+
+        public void LoadPayroll(string id)
+        {
+            _payroll = _payrollBusiness.Get(id);
+
+            Employees.SelectedValue = _payroll.Employee.Id;
+
+            FromPayment.SelectedDate = _payroll.From;
+            ToPayment.SelectedDate = _payroll.To;
+            TotalHours.Text = _payroll.TotalHours.ToString();
+            Payment.Text = _payroll.PaymentTotalHours.ToString("C");
+            Deductions.Text = _payroll.Deductions.ToString("C");
+            DeductionsText.Text = _payroll.DeductionsDetail;
+            Reimbursements.Text = _payroll.Reimbursements.ToString("C");
+            ReimbursementsText.Text = _payroll.ReimbursmentsDetail;
+            TotalPayment.Text = _payroll.TotalPayment.ToString("C");
         }
     }
 }
