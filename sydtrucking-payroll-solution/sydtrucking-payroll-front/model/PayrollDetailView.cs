@@ -6,7 +6,7 @@
     {
         public PayrollDetailView()
         {
-            TicketDate = DateTime.Now;
+
         }
 
         public DateTime TicketDate { get; set; }

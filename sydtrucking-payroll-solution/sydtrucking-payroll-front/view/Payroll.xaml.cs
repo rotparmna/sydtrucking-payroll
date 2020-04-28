@@ -7,6 +7,7 @@
     using System;
     using System.Windows.Data;
     using System.Windows.Controls;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
@@ -59,8 +60,16 @@
 
         private void SourceCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            CalculateHours();
-            ValidationsDetails(true);
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                foreach (PayrollDetailView di in e.NewItems)
+                {
+                    if (di.TicketDate == DateTime.MinValue)
+                    {
+                        di.TicketDate = NewDetail().TicketDate;
+                    }
+                }
+            }
         }
 
         private string ValidateTicketDateInRange(bool showMessage)
@@ -79,7 +88,7 @@
             });
 
             if (isTicketDateNotRange)
-                message = "The ticket date it is not within the range, review the information.\n";
+                 message = "The ticket date it is not within the range, review the information.\n";
 
             if (isTicketDateNotRange && showMessage)
                 MessageBox.Show(message,
@@ -88,12 +97,6 @@
                                     MessageBoxImage.Error);
 
             return message;
-        }
-
-        private void Details_CurrentCellChanged(object sender, EventArgs e)
-        {
-            CalculateHours();
-            ValidationsDetails(true);
         }
 
         private string ValidationsDetails(bool showMessage)
@@ -306,6 +309,35 @@
                     TicketNumber = item.Ticket.Number
                 });
             }
+        }
+
+        private void Details_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            //Get the newly selected cells
+            IList<DataGridCellInfo> selectedcells = e.AddedCells;
+
+            //Get the value of each newly selected cell
+            foreach (DataGridCellInfo di in selectedcells)
+            {
+                if (di.Item is PayrollDetailView)
+                {
+                    if (((PayrollDetailView)di.Item).TicketDate == DateTime.MinValue)
+                    {
+                        ((PayrollDetailView)di.Item).TicketDate = NewDetail().TicketDate;
+                    }
+                }
+            }
+
+            CalculateHours();
+            ValidationsDetails(true);
+        }
+
+        private PayrollDetailView NewDetail()
+        {
+            return new PayrollDetailView()
+            {
+                TicketDate = FromPayment.SelectedDate.Value
+            };
         }
     }
 }
