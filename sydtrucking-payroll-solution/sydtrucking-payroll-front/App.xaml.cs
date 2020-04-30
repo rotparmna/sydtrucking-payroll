@@ -15,6 +15,23 @@
         public App()
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            CreateDirectoriesToSaveReports();
+        }
+
+        private static void CreateDirectoriesToSaveReports()
+        {
+            CreateDirectory(business.Constant.PathReportPayroll);
+            CreateDirectory(business.Constant.PathReportPayrollEmployee);
+            CreateDirectory(business.Constant.PathReportPayrollLeaseCompany);
+        }
+
+        private static void CreateDirectory(string path)
+        {
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
