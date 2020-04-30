@@ -313,23 +313,26 @@
 
         private void Details_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //Get the newly selected cells
-            IList<DataGridCellInfo> selectedcells = e.AddedCells;
-
-            //Get the value of each newly selected cell
-            foreach (DataGridCellInfo di in selectedcells)
+            if (e.AddedCells.Count != 0)
             {
-                if (di.Item is PayrollDetailView)
+                //Get the newly selected cells
+                IList<DataGridCellInfo> selectedcells = e.AddedCells;
+
+                //Get the value of each newly selected cell
+                foreach (DataGridCellInfo di in selectedcells)
                 {
-                    if (((PayrollDetailView)di.Item).TicketDate == DateTime.MinValue)
+                    if (di.Item is PayrollDetailView)
                     {
-                        ((PayrollDetailView)di.Item).TicketDate = NewDetail().TicketDate;
+                        if (((PayrollDetailView)di.Item).TicketDate == DateTime.MinValue)
+                        {
+                            ((PayrollDetailView)di.Item).TicketDate = NewDetail().TicketDate;
+                        }
                     }
                 }
-            }
 
-            CalculateHours();
-            ValidationsDetails(true);
+                CalculateHours();
+                ValidationsDetails(true);
+            }
         }
 
         private PayrollDetailView NewDetail()

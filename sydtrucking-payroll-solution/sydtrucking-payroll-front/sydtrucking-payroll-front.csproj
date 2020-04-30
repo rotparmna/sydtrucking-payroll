@@ -327,101 +327,123 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\logo-sdt.JPG">
+    <Content Include="resources\images\logo-sdt.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\print24.png">
+    <Content Include="resources\images\print24.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\truck128.png">
+    <Content Include="resources\images\truck128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\employee128.png">
+    <Content Include="resources\images\employee128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\role128.png">
+    <Content Include="resources\images\role128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="resources\images\user128.png">
+    </Content>
+    <Content Include="resources\images\user128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\payroll128.png">
+    <Content Include="resources\images\payroll128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="resources\images\payrollreport128.png">
+    </Content>
+    <Content Include="resources\images\payrollreport128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\home100.png">
+    <Content Include="resources\images\home100.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\save128.png">
+    <Content Include="resources\images\save128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\search128.png">
+    <Content Include="resources\images\search128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\company128.png">
+    <Content Include="resources\images\company128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\email128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\email24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\leasecompany128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\new128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\payrollleasecompany128.png">
+    <Content Include="resources\images\email128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\payrollleasecompanyreport128.png">
+    <Content Include="resources\images\email24.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\edit128.png" />
-    <Resource Include="resources\images\edit24.png" />
+    <Content Include="resources\images\leasecompany128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\delete24.png" />
+    <Content Include="resources\images\new128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\driver128.png" />
+    <Content Include="resources\images\payrollleasecompany128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\payrollemployee64.png" />
+    <Content Include="resources\images\payrollleasecompanyreport128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\payrollemployeereport80.png" />
+    <Content Include="resources\images\edit128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\edit24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\reports128.png" />
+    <Content Include="resources\images\delete24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\images\driver128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\images\payrollemployee64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\images\payrollemployeereport80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\images\reports128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
