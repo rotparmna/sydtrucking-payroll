@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\professional\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
-<FxCopReport Version="15.0">
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2019\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="16.0">
  <Targets>
-  <Target Name="C:\Users\rotpa\Source\Repos\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
+  <Target Name="D:\Code\Personal\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\bin\Debug\sydtrucking-payroll-front.exe">
    <Modules>
     <Module Name="sydtrucking-payroll-front.exe">
      <Namespaces>
@@ -10,7 +10,7 @@
        <Types>
         <Type Name="Email" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-08-13 03:10:51Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2020-04-30 21:35:01Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'Email' porque crea miembros de los tipos IDisposable siguientes: 'SmtpClient'. Si ya se había distribuido 'Email', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
@@ -23,8 +23,8 @@
          <Members>
           <Member Name="#.ctor(sydtrucking_payroll_front.model.Payroll)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2019-08-13 03:10:51Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\rotpa\Source\Repos\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayroll.cs" Line="12">'PrintPayroll.PrintPayroll(Payroll)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayroll..ctor(Payroll)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2020-04-30 21:35:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\Code\Personal\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayroll.cs" Line="12">'PrintPayroll.PrintPayroll(Payroll)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayroll..ctor(Payroll)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
             </Message>
            </Messages>
           </Member>
@@ -34,8 +34,8 @@
          <Members>
           <Member Name="#.ctor(sydtrucking_payroll_front.model.PayrollEmployee)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2019-08-13 03:10:51Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\rotpa\Source\Repos\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayrollEmployee.cs" Line="12">'PrintPayrollEmployee.PrintPayrollEmployee(PayrollEmployee)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayrollEmployee..ctor(PayrollEmployee)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2020-04-30 21:35:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\Code\Personal\sydtrucking-payroll\sydtrucking-payroll-solution\sydtrucking-payroll-front\print" File="PrintPayrollEmployee.cs" Line="12">'PrintPayrollEmployee.PrintPayrollEmployee(PayrollEmployee)' contiene una cadena de llamada que da como resultado un llamada a un método virtual definido por la clase. Revise la siguiente pila de llamadas para comprobar las consecuencias no intencionadas: &#xD;&#xA;&#xD;&#xA;PrintPayrollEmployee..ctor(PayrollEmployee)&#xD;&#xA;PrintPayrollBase.CreateFullname():String</Issue>
             </Message>
            </Messages>
           </Member>
@@ -43,7 +43,7 @@
         </Type>
         <Type Name="PrintToPdf" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2019-08-13 03:10:51Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2020-04-30 21:35:01Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implemente IDisposable en 'PrintToPdf' porque crea miembros de los tipos IDisposable siguientes: 'PdfDocument'. Si ya se había distribuido 'PrintToPdf', agregar nuevos miembros que implementen IDisposable en este tipo se considera un cambio rotundo para los consumidores existentes.</Issue>
           </Message>
          </Messages>
@@ -64,7 +64,7 @@
    <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
-   <File Name="usagerules.dll" Version="15.0.0.0" />
+   <File Name="usagerules.dll" Version="16.0.0.0" />
   </Rule>
   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
    <Name>Los tipos que poseen campos descartables deben ser descartables</Name>
@@ -74,7 +74,7 @@
    <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">CriticalError</MessageLevel>
-   <File Name="designrules.dll" Version="15.0.0.0" />
+   <File Name="designrules.dll" Version="16.0.0.0" />
   </Rule>
  </Rules>
  <Localized>
