@@ -284,5 +284,10 @@
                 });
             }
         }
+
+        private void Details_SelectedCellsChanged(object sender, System.Windows.Controls.SelectedCellsChangedEventArgs e)
+        {
+            CalculateTotal();
+        }
     }
 }
