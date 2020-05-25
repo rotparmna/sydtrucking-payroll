@@ -2,6 +2,6 @@
 {
     public class PayrollLeaseCompanyDetails : GenericCollection
     {
-        public bool IsReadOnly { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }

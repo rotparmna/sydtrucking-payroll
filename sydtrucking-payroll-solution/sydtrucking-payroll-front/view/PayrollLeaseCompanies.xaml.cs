@@ -59,28 +59,28 @@
         {
             _details.Add(new PayrollLeaseCompanyDetails()
             {
-                IsReadOnly = false,
+                IsEnabled = true,
                 Item = "Diesel",
                 Value = 0,
             });
 
             _details.Add(new PayrollLeaseCompanyDetails()
             {
-                IsReadOnly = true,
+                IsEnabled = false,
                 Item = "Lease Fee " + (business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue * 100) + "%",
                 Value = 0,
             });
 
             _details.Add(new PayrollLeaseCompanyDetails()
             {
-                IsReadOnly = true,
+                IsEnabled = false,
                 Item = "Driver Paycheck",
                 Value = 0,
             });
 
             _details.Add(new PayrollLeaseCompanyDetails()
             {
-                IsReadOnly = true,
+                IsEnabled = false,
                 Item = "Worker's Comp " + (business.Constant.PayrollLeaseCompany.PercentWorkerCompValue * 100) + "%",
                 Value = 0,
             });
@@ -269,7 +269,7 @@
             {
                 _details.Add(new PayrollLeaseCompanyDetails()
                 {
-                    IsReadOnly = !detail.Item.Contains("Diesel"),
+                    IsEnabled = !detail.Item.Contains("Diesel"),
                     Item = detail.Item,
                     Value = detail.Value
                 });

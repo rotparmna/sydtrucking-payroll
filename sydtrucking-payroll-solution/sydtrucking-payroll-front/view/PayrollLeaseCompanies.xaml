@@ -54,8 +54,20 @@
             <TabItem Header="Details">
                 <DataGrid CanUserAddRows="False" Grid.Column="0" x:Name="Details" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" IsReadOnly="{Binding IsReadOnly}"/>
-                        <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}" IsReadOnly="{Binding IsReadOnly}"/>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="UIElement.IsEnabled" Value="{Binding IsReadOnly}" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="UIElement.IsEnabled" Value="{Binding IsEnabled}" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
