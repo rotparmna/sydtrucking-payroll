@@ -11,7 +11,7 @@
         public string Id { get; set; }
         public Employee Employee { get; set; }
         public double Rate { get; set; }
-        public int TotalHours { get; set; }
+        public double TotalHours { get; set; }
         public double TotalPayment { get; set; }
         public double Deductions { get; set; }
         public double Reimbursements { get; set; }

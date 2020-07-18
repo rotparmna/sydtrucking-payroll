@@ -12,6 +12,6 @@
         public DateTime TicketDate { get; set; }
         public OilCompany OilCompany { get; set; }
         public int TicketNumber { get; set; }
-        public int Hours { get; set; }
+        public double Hours { get; set; }
     }
 }

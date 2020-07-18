@@ -20,9 +20,9 @@
         public int TruckNumber { get; set; }
         public double Rate { get; set; }
         public ICollection<PayrollDetail> Details { get; set; }
-        public int TotalHours { get; set; }
-        public int RegularHour { get; set; }
-        public int OvertimeHour { get; set; }
+        public double TotalHours { get; set; }
+        public double RegularHour { get; set; }
+        public double OvertimeHour { get; set; }
         public double Payment { get; set; }
         public double Deductions { get; set; }
         public double Reimbursements { get; set; }
@@ -47,11 +47,8 @@
         public void CalculatePayment()
         {
             var rateOvertime = Rate * business.Constant.Payroll.FactorRateOvertimeHour;
-            var payment = 0.0;
-            var paymentOvertimeHour = 0.0;
-
-            paymentOvertimeHour = rateOvertime * OvertimeHour;
-            payment = (Rate * RegularHour) + paymentOvertimeHour;
+            double paymentOvertimeHour = rateOvertime * OvertimeHour;
+            double payment = Rate * RegularHour + paymentOvertimeHour;
 
             Payment = payment;
             PaymentOvertimeHour = paymentOvertimeHour;

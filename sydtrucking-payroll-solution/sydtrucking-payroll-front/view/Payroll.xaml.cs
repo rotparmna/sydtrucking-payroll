@@ -107,7 +107,7 @@
             return message;
         }
 
-        private void CalculatePayment(int regularHours, int overtimeHour)
+        private void CalculatePayment()
         {
             _payroll.Rate = double.Parse(Rate.Text.Replace("$", string.Empty));
             _payroll.CalculatePayment();
@@ -135,9 +135,9 @@
 
         private void CalculateHours()
         {
-            var totalHours = 0;
-            var regularHours = 0;
-            var overtimeHours = 0;
+            var totalHours = 0.0;
+            var regularHours = 0.0;
+            var overtimeHours = 0.0;
 
             _details.ToList().ForEach(x => totalHours = totalHours + x.Hours);
 
@@ -154,7 +154,7 @@
             TotalHours.Text = totalHours.ToString();
             OvertimeHour.Text = overtimeHours.ToString();
 
-            CalculatePayment(regularHours, overtimeHours);
+            CalculatePayment();
         }
 
         private string ValidateTicketNumber(bool showMessage)

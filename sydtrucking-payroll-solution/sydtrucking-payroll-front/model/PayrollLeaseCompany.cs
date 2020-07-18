@@ -72,7 +72,7 @@
     public class RateDetail
     {
         public string Companies { get; set; }
-        public int Hours { get; set; }
+        public double Hours { get; set; }
         public double Rate { get; set; }
         public double Subtotal
         {
