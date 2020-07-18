@@ -35,14 +35,23 @@
         {
             var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollLeaseCompanyView;
             var payroll = _payrollLeaseCompanyBusiness.Get(rowData.Id);
+            
+            PrintReport(payroll);
+        }
 
+        private static void PrintReport(model.PayrollLeaseCompany payroll)
+        {
             PrintPayrollLeaseCompany print = new PrintPayrollLeaseCompany(payroll);
             print.Print(true);
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            
+            _printView.ForEach(x =>
+            {
+                var payroll = _payrollLeaseCompanyBusiness.Get(x.Id);
+                PrintReport(payroll);
+            });
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -67,9 +76,9 @@
             //SendEmail(payroll);
         }
 
-        private void SendEmail(model.Payroll payroll)
+        private void SendEmail(model.PayrollLeaseCompany payroll)
         {
-            //PayrollMail.Send(new PrintPayroll(payroll), (IEmail<model.Payroll>)_payrollBusiness, payroll);
+            //PayrollMail.Send(new PrintPayrollLeaseCompany(payroll), (IEmail<model.PayrollLeaseCompany>)_payrollLeaseCompanyBusiness, payroll);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

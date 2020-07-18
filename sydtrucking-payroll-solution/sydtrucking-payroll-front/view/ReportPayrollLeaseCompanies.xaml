@@ -72,8 +72,10 @@
         <Button x:Name="Search" ToolTip="Search" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Search_Click">
             <Image ToolTip="Search" Source="/sydtrucking-payroll-front;component/resources/images/search128.png" Width="48px" />
         </Button>
-        <Button Visibility="Hidden" x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="90,10,0,-2" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="69" Click="Print_Click"/>
-        <Button x:Name="Send" Visibility="Hidden" ToolTip="Send" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Send_Click">
+        <Button x:Name="Print" HorizontalAlignment="Left" Margin="170,10,0,-5" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Print_Click">
+            <Image ToolTip="Send" Source="/sydtrucking-payroll-front;component/resources/images/print128.png" Width="48px" />
+        </Button>
+        <Button x:Name="Send" ToolTip="Send" HorizontalAlignment="Left" Margin="90,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="59" Click="Send_Click">
             <Image ToolTip="Send" Source="/sydtrucking-payroll-front;component/resources/images/email128.png" Width="48px" />
         </Button>
     </Grid>

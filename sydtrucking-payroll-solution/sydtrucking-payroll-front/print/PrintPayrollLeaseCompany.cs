@@ -5,13 +5,12 @@
     using sydtrucking_payroll_front.util;
     using System;
 
-    public class PrintPayrollLeaseCompany
+    public class PrintPayrollLeaseCompany : PrintPayrollBase
     {
         PrintToPdf _toPdf;
         IFile _pdfFile;
+        double _initialYTotals;
 
-        public string Fullname { get; private set; }
-        public string Filename { get; private set; }
         public PayrollLeaseCompany Payroll { get; set; }
 
         public PrintPayrollLeaseCompany(PayrollLeaseCompany payroll)
@@ -22,13 +21,13 @@
             _pdfFile = new Pdf(Fullname);
         }
 
-        private string CreateFullname()
+        protected override string CreateFullname()
         {
             Filename = Payroll.LeaseCompany.Name.Trim() + "-" + Payroll.Truck.Number.ToString() + "-" + DateTime.Now.Ticks.ToString() + ".pdf";
             return business.Constant.PathReportPayrollLeaseCompany + "\\" + Filename;
         }
 
-        public void Print(bool isOpen)
+        public new void Print(bool isOpen)
         {
             _toPdf.AddPage(PdfSharp.PageSize.Letter);
 
@@ -37,7 +36,8 @@
             double lastItemY = PrintPayrolls();
             lastItemY = PrintDetails(lastItemY);
             lastItemY = PrintDeductions(lastItemY);
-            PrintTotals(lastItemY);
+            _initialYTotals = lastItemY;
+            PrintTotals();
 
             _toPdf.Print();
 
@@ -45,7 +45,7 @@
                 _pdfFile.Open();
         }
 
-        private void PrintHeader()
+        protected override void PrintHeader()
         {
             double logoX = 40;
             double logoY = 70;
@@ -64,7 +64,7 @@
             _toPdf.DrawString("Odessa, Tx 79766", FormatText.Regular, textX, dir2Y, 50, 200, XStringFormats.Center);
         }
 
-        private void PrintInfo()
+        protected override void PrintInfo()
         {
             double text1X = 100;
             double y = 150;
@@ -139,14 +139,18 @@
             return y;
         }
 
-        private void PrintTotals(double initialY)
+        protected override void PrintTotals()
         {
             double text1X = 100;
             double text2X = 290;
-            double y = initialY + 50;
+            double y = _initialYTotals + 50;
 
             _toPdf.DrawString("Total Payment", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
             _toPdf.DrawString(Payroll.Total.ToString("C"), FormatText.Bold, text2X, y, 50, 200, XStringFormats.TopRight);
+        }
+
+        protected override void PrintDetails()
+        {
         }
     }
 }

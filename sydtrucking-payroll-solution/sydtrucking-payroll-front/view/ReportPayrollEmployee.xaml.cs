@@ -35,14 +35,23 @@
         {
             var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollEmployeeView;
             var payroll = _payrollBusiness.Get(rowData.Id);
+            
+            PrintReport(payroll);
+        }
 
+        private static void PrintReport(model.PayrollEmployee payroll)
+        {
             PrintPayrollEmployee print = new PrintPayrollEmployee(payroll);
             print.Print(true);
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            
+            _printView.ForEach(x =>
+            {
+                var payroll = _payrollBusiness.Get(x.Id);
+                PrintReport(payroll);
+            });
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)

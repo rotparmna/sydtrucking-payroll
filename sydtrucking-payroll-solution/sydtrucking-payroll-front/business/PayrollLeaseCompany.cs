@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Collections.Generic;
     using sydtrucking_payroll_front.model;
+    using sydtrucking_payroll_front.notification;
 
     public class PayrollLeaseCompany : BusinessBase,
         IBusiness<model.PayrollLeaseCompany>,
