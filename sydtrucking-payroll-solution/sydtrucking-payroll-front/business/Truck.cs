@@ -11,7 +11,10 @@
 
         public List<model.Truck> GetAll()
         {
-            return context.Trucks.Find(FilterDefinition<model.Truck>.Empty).ToList();
+            return context.Trucks.Find(FilterDefinition<model.Truck>.Empty)
+                .ToList()
+                .OrderBy(x => x.Number)
+                .ToList(); ;
         }
 
         private void Delete(model.Truck truck)

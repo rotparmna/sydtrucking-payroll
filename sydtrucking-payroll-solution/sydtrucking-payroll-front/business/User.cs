@@ -14,7 +14,10 @@
             var builder = Builders<model.User>.Filter;
             var filter = builder.Not(builder.Eq("Username", "admin"));
 
-            return context.Users.Find(filter).ToList();
+            return context.Users.Find(filter)
+                .ToList()
+                .OrderBy(x => x.Fullname)
+                .ToList(); ;
         }
 
         public model.User Get(model.User user)

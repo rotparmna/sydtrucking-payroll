@@ -11,7 +11,10 @@
 
         public List<model.OilCompany> GetAll()
         {
-            return context.OilCompanies.Find(FilterDefinition<model.OilCompany>.Empty).ToList();
+            return context.OilCompanies.Find(FilterDefinition<model.OilCompany>.Empty)
+                .ToList()
+                .OrderBy(x => x.Name)
+                .ToList(); ;
         }
 
         private void Delete(model.OilCompany company)

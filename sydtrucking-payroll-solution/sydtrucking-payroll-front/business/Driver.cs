@@ -12,7 +12,11 @@
 
         public List<model.Driver> GetAll()
         {
-            return context.Drivers.Find(FilterDefinition<model.Driver>.Empty).ToList();
+            return context.Drivers
+                .Find(FilterDefinition<model.Driver>.Empty)
+                .ToList()
+                .OrderBy(x => x.Name)
+                .ToList();
         }
 
         private void Add(model.Driver driver)

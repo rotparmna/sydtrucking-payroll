@@ -17,7 +17,10 @@
 
         public List<model.LeaseCompany> GetAll()
         {
-            return context.LeaseCompanies.Find(FilterDefinition<model.LeaseCompany>.Empty).ToList();
+            return context.LeaseCompanies.Find(FilterDefinition<model.LeaseCompany>.Empty)
+                .ToList()
+                .OrderBy(x => x.Name)
+                .ToList(); ;
         }
 
         private void Delete(model.LeaseCompany commpany)

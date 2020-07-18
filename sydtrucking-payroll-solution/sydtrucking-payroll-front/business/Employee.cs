@@ -16,7 +16,10 @@
 
         public List<model.Employee> GetAll()
         {
-            return context.Employees.Find(FilterDefinition<model.Employee>.Empty).ToList();
+            return context.Employees.Find(FilterDefinition<model.Employee>.Empty)
+                .ToList()
+                .OrderBy(x => x.Name)
+                .ToList(); ;
         }
 
         public void Update(model.Employee model)
