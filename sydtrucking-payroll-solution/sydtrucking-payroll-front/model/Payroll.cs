@@ -58,7 +58,7 @@
 
         public void CalculateTotalPayment()
         {
-            TotalPayment = Payment - (Deductions + Reimbursements);
+            TotalPayment = Payment - Deductions + Reimbursements;
         }
     }
 }
