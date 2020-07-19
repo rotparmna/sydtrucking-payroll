@@ -34,7 +34,7 @@
         {
             Drivers.SelectedValuePath = "Id";
             Drivers.DisplayMemberPath = "Fullname";
-            Drivers.ItemsSource = _driverBusiness.GetAll();
+            Drivers.ItemsSource = ((business.Driver)_driverBusiness).GetActives();
 
             ((CollectionViewSource)Details.FindResource("OilCompanies")).Source = _companyBusiness.GetAll();
 

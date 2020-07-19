@@ -19,6 +19,13 @@
                 .ToList();
         }
 
+        public List<model.Driver> GetActives()
+        {
+            return GetAll()
+                .Where(x => x.Contract.IsActive)
+                .ToList();
+        }
+
         private void Add(model.Driver driver)
         {
             context.Drivers.InsertOne(driver);

@@ -11,6 +11,7 @@
         public string Id { get; set; }
         public Truck Truck { get; set; }
         public Contract Contract { get; set; }
+        
     }
 
     public class DriverLicense
@@ -29,6 +30,16 @@
             get
             {
                 return !TerminationDate.HasValue;
+            }
+        }
+        public bool IsActive
+        {
+            get
+            {
+                if (TerminationDate.HasValue)
+                    return TerminationDate.Value.Date >= DateTime.Now.Date;
+
+                return true;
             }
         }
     }
