@@ -60,12 +60,21 @@
             double totalTextX = 180;
             double totalValueX = 380;
 
-            double totalWeekHoursY = 350;
-            ToPdf.DrawString("Total Week Hours " + Payroll.TotalHours.ToString(), FormatText.Bold, totalTextX, totalWeekHoursY, 50, 200, XStringFormats.TopRight);
+            if (Payroll.Employee.IsWeeklyPayment)
+            {
+                double totalRegularHourY = 365;
+                ToPdf.DrawString("Total Week ", FormatText.Regular, totalTextX, totalRegularHourY, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(Payroll.PaymentTotalHours.ToString("C"), FormatText.Regular, totalValueX, totalRegularHourY, 50, 200, XStringFormats.TopCenter);
+            }
+            else
+            {
+                double totalWeekHoursY = 350;
+                ToPdf.DrawString("Total Week Hours " + Payroll.TotalHours.ToString(), FormatText.Bold, totalTextX, totalWeekHoursY, 50, 200, XStringFormats.TopRight);
 
-            double totalRegularHourY = 365;
-            ToPdf.DrawString("Hours " + Payroll.TotalHours.ToString(), FormatText.Regular, totalTextX, totalRegularHourY, 50, 200, XStringFormats.TopRight);
-            ToPdf.DrawString(Payroll.PaymentTotalHours.ToString("C"), FormatText.Regular, totalValueX, totalRegularHourY, 50, 200, XStringFormats.TopCenter);
+                double totalRegularHourY = 365;
+                ToPdf.DrawString("Hours " + Payroll.TotalHours.ToString(), FormatText.Regular, totalTextX, totalRegularHourY, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(Payroll.PaymentTotalHours.ToString("C"), FormatText.Regular, totalValueX, totalRegularHourY, 50, 200, XStringFormats.TopCenter);
+            }
 
             double totalDeductionsY = 380;
             ToPdf.DrawString("Deductions " + Payroll.DeductionsDetail, FormatText.Regular, totalTextX, totalDeductionsY, 50, 200, XStringFormats.TopRight);
