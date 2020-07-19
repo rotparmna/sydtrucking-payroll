@@ -41,9 +41,12 @@
 
         public static string ToSocialSecurityHyphen(this Int64 socialSecurity)
         {
+            if (socialSecurity.ToString().Length != 9)
+                return socialSecurity.ToString();
+
             return socialSecurity.ToString().Substring(0, 3) +
-                        "-" + socialSecurity.ToString().Substring(3, 2) +
-                        "-" + socialSecurity.ToString().Substring(5, 4);
+                            "-" + socialSecurity.ToString().Substring(3, 2) +
+                            "-" + socialSecurity.ToString().Substring(5, 4);
         }
     }
 }
