@@ -101,8 +101,7 @@
 
         private string ValidationsDetails(bool showMessage)
         {
-            var message = string.Empty;
-            message = ValidateTicketNumber(showMessage);
+            string message = ValidateTicketNumber(showMessage);
             message += ValidateTicketDateInRange(showMessage);
             return message;
         }
@@ -159,20 +158,25 @@
 
         private string ValidateTicketNumber(bool showMessage)
         {
-            var isNameRepeat = false;
+            var isTicketRepeat = false;
             var message = string.Empty;
 
             _details.ToList().ForEach(x =>
             {
-                isNameRepeat = !isNameRepeat ?
+                isTicketRepeat = !isTicketRepeat ?
                                     _details.Where(y => x.TicketNumber == y.TicketNumber).Count() > 1
-                                    : isNameRepeat;
+                                    : isTicketRepeat;
+
+                if (!isTicketRepeat)
+                    isTicketRepeat = ((business.Payroll)_payrollBusiness).ValidateTicketExists(x.TicketNumber);
             });
 
-            if (isNameRepeat)
+            
+
+            if (isTicketRepeat)
                 message = "The ticket number is already digitized, review the information.\n";
 
-            if (isNameRepeat && showMessage) 
+            if (isTicketRepeat && showMessage) 
                 MessageBox.Show(message,
                                     "Ticket Number",
                                     MessageBoxButton.OK,

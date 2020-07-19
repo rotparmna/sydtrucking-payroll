@@ -201,5 +201,13 @@
             notification.To = payroll.Driver.Email;
             notification.Send("Pay Stub");
         }
+
+        public bool ValidateTicketExists(int ticket)
+        {
+            var builder = Builders<model.Payroll>.Filter;
+            var filter = builder.Eq("Details.Ticket.Number", ticket);
+
+            return context.Payrolls.Find(filter).CountDocuments() > 0;
+        }
     }
 }
