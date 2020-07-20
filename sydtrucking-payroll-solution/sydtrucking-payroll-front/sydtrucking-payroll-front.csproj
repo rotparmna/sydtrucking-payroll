@@ -332,7 +332,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\print128.png" />
+    <Content Include="resources\images\print128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\print24.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
