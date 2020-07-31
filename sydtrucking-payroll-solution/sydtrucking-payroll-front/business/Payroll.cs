@@ -202,10 +202,11 @@
             notification.Send("Pay Stub");
         }
 
-        public bool ValidateTicketExists(int ticket)
+        public bool ValidateTicketExists(int ticket, string id)
         {
             var builder = Builders<model.Payroll>.Filter;
-            var filter = builder.Eq("Details.Ticket.Number", ticket);
+            var filter = builder.Eq("Details.Ticket.Number", ticket) &
+                            !builder.Eq(x => x.Id, id);
 
             return context.Payrolls.Find(filter).CountDocuments() > 0;
         }

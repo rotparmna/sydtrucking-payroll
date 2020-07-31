@@ -168,7 +168,7 @@
                                     : isTicketRepeat;
 
                 if (!isTicketRepeat)
-                    isTicketRepeat = ((business.Payroll)_payrollBusiness).ValidateTicketExists(x.TicketNumber);
+                    isTicketRepeat = ((business.Payroll)_payrollBusiness).ValidateTicketExists(x.TicketNumber, _payroll.Id);
             });
 
             
