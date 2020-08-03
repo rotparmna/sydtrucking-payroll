@@ -61,7 +61,7 @@
         protected override void PrintDetails()
         {
             double headerDateX = 10;
-            double headerY = 350;
+            double headerY = 250;
             ToPdf.DrawString("DATE OF TICKET", FormatText.Bold, headerDateX, headerY, 50, 200, XStringFormats.Center);
 
             double headerCompanyX = 150;
@@ -88,27 +88,28 @@
         {
             double totalTextX = 180;
             double totalValueX = 380;
+            double totalInitY = 600;
 
-            double totalWeekHoursY = 530;
+            double totalWeekHoursY = totalInitY;
             ToPdf.DrawString("Total Week Hours " + Payroll.TotalHours.ToString(), FormatText.Bold, totalTextX, totalWeekHoursY, 50, 200, XStringFormats.TopRight);
 
-            double totalRegularHourY = 545;
+            double totalRegularHourY = totalInitY + 15;
             ToPdf.DrawString("Regular Hours " + Payroll.RegularHour.ToString(), FormatText.Regular, totalTextX, totalRegularHourY, 50, 200, XStringFormats.TopRight);
             ToPdf.DrawString(Payroll.PaymentRegularHour.ToString("C"), FormatText.Regular, totalValueX, totalRegularHourY, 50, 200, XStringFormats.TopCenter);
 
-            double totalOvertimeHourY = 560;
+            double totalOvertimeHourY = totalInitY + 30;
             ToPdf.DrawString("Overtime Hours " + Payroll.OvertimeHour.ToString(), FormatText.Regular, totalTextX, totalOvertimeHourY, 50, 200, XStringFormats.TopRight);
             ToPdf.DrawString(Payroll.PaymentOvertimeHour.ToString("C"), FormatText.Regular, totalValueX, totalOvertimeHourY, 50, 200, XStringFormats.TopCenter);
 
-            double totalDeductionsY = 575;
+            double totalDeductionsY = totalInitY + 45;
             ToPdf.DrawString("Deductions " + Payroll.DeductionsDetail, FormatText.Regular, totalTextX, totalDeductionsY, 50, 200, XStringFormats.TopRight);
             ToPdf.DrawString(Payroll.Deductions.ToString("C"), FormatText.Regular, totalValueX, totalDeductionsY, 50, 200, XStringFormats.TopCenter);
 
-            double totalReimbursmentsY = 590;
+            double totalReimbursmentsY = totalInitY + 60;
             ToPdf.DrawString("Reimbursments " + Payroll.ReimbursmentsDetail, FormatText.Regular, totalTextX, totalReimbursmentsY, 50, 200, XStringFormats.TopRight);
             ToPdf.DrawString(Payroll.Reimbursements.ToString("C"), FormatText.Regular, totalValueX, totalReimbursmentsY, 50, 200, XStringFormats.TopCenter);
 
-            double totalY = 620;
+            double totalY = totalInitY + 90;
             ToPdf.DrawString("TOTAL", FormatText.Bold, totalTextX, totalY, 50, 200, XStringFormats.TopRight);
             ToPdf.DrawString(Payroll.TotalPayment.ToString("C"), FormatText.Bold, totalValueX, totalY, 50, 200, XStringFormats.TopCenter);
         }
