@@ -174,9 +174,18 @@
             var printPayrollsView = new List<model.PrintPayrollView>();
 
             var builder = Builders<model.Payroll>.Filter;
-            var filter = builder.Gte("Details.Ticket.Date", from) &
-                            builder.Lte("Details.Ticket.Date", to) &
-                            builder.Eq("Driver.SocialSecurity", driver.SocialSecurity);
+            FilterDefinition<model.Payroll> filter;
+            if (driver is null)
+            {
+                filter = builder.Gte("Details.Ticket.Date", from) &
+                            builder.Lte("Details.Ticket.Date", to);
+            }
+            else
+            {
+                filter = builder.Gte("Details.Ticket.Date", from) &
+                                builder.Lte("Details.Ticket.Date", to) &
+                                builder.Eq("Driver.SocialSecurity", driver.SocialSecurity);
+            }
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
 
