@@ -116,8 +116,6 @@
             Payroll payroll = new Payroll();
             payroll.Show();
             payroll.LoadPayroll(id);
-
-            Close();
         }
     }
 }
