@@ -279,7 +279,9 @@
 
         private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (FromPayment.SelectedDate.HasValue)
+            bool hasValue = FromPayment.SelectedDate.HasValue;
+            Details.IsEnabled = hasValue;
+            if (hasValue)
                 ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeek);
         }
 

@@ -56,7 +56,7 @@
                 <TextBox Grid.Row="0" x:Name="ReimbursementsText" HorizontalAlignment="Left" Height="23" Margin="186,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" LostFocus="Deductions_LostFocus"/>
             </Grid>
         </GroupBox>
-        <DataGrid x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded" SelectedCellsChanged="Details_SelectedCellsChanged">
+        <DataGrid IsEnabled="False" x:Name="Details" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Details_Loaded" SelectedCellsChanged="Details_SelectedCellsChanged">
             <DataGrid.Resources>
                 <CollectionViewSource x:Key="OilCompanies"/>
             </DataGrid.Resources>
