@@ -1,5 +1,6 @@
 ﻿namespace sydtrucking_payroll_front
 {
+    using sydtrucking_payroll_front.Properties;
     using System.Windows;
 
     /// <summary>
@@ -74,7 +75,8 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Welcome.Content = "Welcome, " + Ticket.Instance.Authenticate.Fullname;
+            Welcome.Content = "Welcome, " + Ticket.Instance.Authenticate.Fullname + ". V " + Settings.Default.Version;
+            this.Title += ". V " + Settings.Default.Version;
 
             Security.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Administrator);
             Param.IsEnabled = Ticket.Instance.Authenticate.IsInRole(enums.Role.Basic1) ||
