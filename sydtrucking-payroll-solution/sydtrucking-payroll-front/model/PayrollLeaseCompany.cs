@@ -5,6 +5,7 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
     public class PayrollLeaseCompany : ModelBase
     {
@@ -32,15 +33,18 @@
                 ICollection<RateDetail> rates = new List<RateDetail>();
                 if (Payrolls.Count > 0)
                 {
-                    rates = Payrolls.GroupBy(x => x.Rate)
-                        .Select(y => new RateDetail()
-                        {
-                            Rate = y.Key,
-                            Hours = y.Sum(h => h.Details.Sum(r => r.Hours)),
-                            Companies = y.Select(p => String.Join(",", p.Details.Select(c => c.OilCompany.Name).ToArray())).FirstOrDefault()
-                        })
-                        .ToList();
-                    
+                    IList<PayrollDetail> details = new List<PayrollDetail>();
+                    Payrolls.Select(x => x.Details).ToList().ForEach(x => x.ToList().ForEach(y=>details.Add(y)));
+                    details.Select(y => y.OilCompany)
+                                                    .GroupBy(z => z.Rate)
+                                                    .Select(m => new RateDetail()
+                                                    {
+                                                        Rate = m.Key,
+                                                        Hours = m.Sum(h => details.Sum(r => r.Hours)),
+                                                        Companies = m.Select(p => string.Join(",", m.Select(c => c.Name))).FirstOrDefault()
+                                                    })
+                    .ToList()
+                    .ForEach(g => rates.Add(g));
                 }
                 return rates;
             }
