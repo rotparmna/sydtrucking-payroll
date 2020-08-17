@@ -65,5 +65,16 @@
 
             return context.OilCompanies.Find(filter).FirstOrDefault();
         }
+
+        public long CountWithoutCurrent(string name, string currentId)
+        {
+            var builder = Builders<model.OilCompany>.Filter;
+            FilterDefinition<model.OilCompany> filter = builder.Eq(x => x.Name, name);
+
+            if (!string.IsNullOrEmpty(currentId))
+                filter &= !builder.Eq(x => x.Id, currentId);
+
+            return context.OilCompanies.Find(filter).CountDocuments();
+        }
     }
 }

@@ -1,17 +1,16 @@
 ﻿namespace sydtrucking_payroll_front.view
 {
     using System.Windows;
-    using sydtrucking_payroll_front.model;
     using System.Collections.Generic;
     using System.Windows.Controls;
 
     /// <summary>
     /// Lógica de interacción para Roles.xaml
     /// </summary>
-    public partial class OilCompanies : Window, IView<OilCompany>, IValidation
+    public partial class OilCompanies : Window, IView<model.OilCompany>, IValidation
     {
-        private List<OilCompany> _companiesModel;
-        private business.IBusiness<OilCompany> _companyBusiness;
+        private List<model.OilCompany> _companiesModel;
+        private business.IBusiness<model.OilCompany> _companyBusiness;
         private string _idCompanySelected;
 
         public string ValidationMessage { get; set; }
@@ -20,7 +19,7 @@
         {
             InitializeComponent();
             _idCompanySelected = string.Empty;
-            _companiesModel = new List<OilCompany>();
+            _companiesModel = new List<model.OilCompany>();
             _companyBusiness = new business.OilCompany();
         }
 
@@ -37,9 +36,9 @@
 
         private void ListCompanies_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(OilCompany))
+            if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(model.OilCompany))
             {
-                LoadDataBySelectedRow((OilCompany)e.AddedItems[0]);
+                LoadDataBySelectedRow((model.OilCompany)e.AddedItems[0]);
             }
         }
 
@@ -72,7 +71,7 @@
             {
                 ChangeControlsEnabled(false);
 
-                OilCompany role = new OilCompany()
+                model.OilCompany role = new model.OilCompany()
                 {
                     Id = _idCompanySelected,
                     Name = Name.Text,
@@ -102,7 +101,7 @@
             ChangeControlsEnabled(true);
         }
 
-        public void LoadDataBySelectedRow(OilCompany company)
+        public void LoadDataBySelectedRow(model.OilCompany company)
         {
             _idCompanySelected = company.Id;
             Name.Text = company.Name;
@@ -119,9 +118,11 @@
         public bool IsViewValid()
         {
             ValidationMessage = string.Empty;
+            var validateName = ValidateIfNameExists();
 
             if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Name");
             if (string.IsNullOrEmpty(Rate.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Rate");
+            if (!string.IsNullOrEmpty(validateName)) ValidationMessage += validateName;
 
             return string.IsNullOrEmpty(ValidationMessage);
         }
@@ -133,7 +134,7 @@
             DeleteView(company);
         }
 
-        public void DeleteView(OilCompany data)
+        public void DeleteView(model.OilCompany data)
         {
             if (MessageBox.Show("Are you sure delete oil company?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -142,6 +143,27 @@
 
                 FillGrid();
             }
+        }
+
+        private void Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var validate = ValidateIfNameExists();
+
+            if (!string.IsNullOrEmpty(validate))
+            {
+                MessageBox.Show(validate, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private string ValidateIfNameExists()
+        {
+            var count = ((business.OilCompany)_companyBusiness).CountWithoutCurrent(Name.Text, _idCompanySelected);
+            var message = string.Empty;
+
+            if (count > 0)
+                message = "The written name is already registered";
+
+            return message;
         }
     }
 }

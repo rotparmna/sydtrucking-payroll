@@ -17,7 +17,7 @@
         <GroupBox Header="General" Name="General" IsEnabled="False" HorizontalAlignment="Left" Height="101" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
             <Grid>
                 <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
-                <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+                <TextBox Grid.Row="0" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240" LostFocus="Name_LostFocus"/>
                 <Label Content="Rate" Grid.Row="0" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
                 <TextBox Grid.Row="0" x:Name="Rate" HorizontalAlignment="Left" Height="23" Margin="61,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
             </Grid>
