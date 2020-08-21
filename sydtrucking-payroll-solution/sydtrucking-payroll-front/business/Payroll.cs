@@ -219,5 +219,18 @@
 
             return context.Payrolls.Find(filter).CountDocuments() > 0;
         }
+
+        public long CountPayrollByDateWithoutCurrent(DateTime from, DateTime to, model.Driver driver, string currentId)
+        {
+            var builder = Builders<model.Payroll>.Filter;
+            FilterDefinition<model.Payroll> filter = builder.Eq(x => x.From, from) &
+                                                        builder.Eq(x => x.To, to) &
+                                                        builder.Eq(x => x.Driver.Id, driver.Id);
+
+            if (!string.IsNullOrEmpty(currentId))
+                filter &= !builder.Eq(x => x.Id, currentId);
+
+            return context.Payrolls.Find(filter).CountDocuments();
+        }
     }
 }

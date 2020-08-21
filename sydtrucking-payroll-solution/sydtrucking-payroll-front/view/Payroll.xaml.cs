@@ -267,11 +267,13 @@
         private string Validations()
         {
             string message = string.Empty;
+            string validateDates = ValidateIfDatesExists();
 
             if (Drivers.SelectedItem == null) message += "No driver selected.\n";
             if (!FromPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (!ToPayment.SelectedDate.HasValue) message += "Date not selected.\n";
             if (_details.Count <= 0) message += "No detail records.\n";
+            if (!string.IsNullOrEmpty(validateDates)) message += validateDates;
             message += ValidationsDetails(false);
 
             return message;
@@ -283,6 +285,10 @@
             Details.IsEnabled = hasValue;
             if (hasValue)
                 ToPayment.SelectedDate = FromPayment.SelectedDate.Value.AddDays(business.Constant.Payroll.DaysWeek);
+
+            string validateDates = ValidateIfDatesExists();
+            if (!string.IsNullOrEmpty(validateDates))
+                MessageBox.Show(validateDates, "Validations", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public void LoadPayroll(string id)
@@ -347,6 +353,17 @@
             {
                 TicketDate = FromPayment.SelectedDate.Value
             };
+        }
+
+        private string ValidateIfDatesExists()
+        {
+            var count = ((business.Payroll)_payrollBusiness).CountPayrollByDateWithoutCurrent(FromPayment.SelectedDate.Value, ToPayment.SelectedDate.Value, (Driver)Drivers.SelectedItem, _payroll.Id);
+            var message = string.Empty;
+
+            if (count > 0)
+                message = "The selected dates are already registered for the driver.";
+
+            return message;
         }
     }
 }
