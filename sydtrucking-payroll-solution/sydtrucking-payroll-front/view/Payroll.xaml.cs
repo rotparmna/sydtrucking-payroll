@@ -357,12 +357,15 @@
 
         private string ValidateIfDatesExists()
         {
-            var count = ((business.Payroll)_payrollBusiness).CountPayrollByDateWithoutCurrent(FromPayment.SelectedDate.Value, ToPayment.SelectedDate.Value, (Driver)Drivers.SelectedItem, _payroll.Id);
             var message = string.Empty;
 
-            if (count > 0)
-                message = "The selected dates are already registered for the driver.";
+            if (Drivers.SelectedItem != null)
+            {
+                var count = ((business.Payroll)_payrollBusiness).CountPayrollByDateWithoutCurrent(FromPayment.SelectedDate.Value, ToPayment.SelectedDate.Value, (Driver)Drivers.SelectedItem, _payroll.Id);
 
+                if (count > 0)
+                    message = "The selected dates are already registered for the driver.";
+            }
             return message;
         }
     }
