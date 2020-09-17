@@ -36,6 +36,7 @@
             double lastItemY = PrintPayrolls();
             lastItemY = PrintDetails(lastItemY);
             lastItemY = PrintDeductions(lastItemY);
+            lastItemY = PrintReinmburstments(lastItemY);
             _initialYTotals = lastItemY;
             PrintTotals();
 
@@ -87,7 +88,7 @@
         {
             double text1X = 100;
             double text2X = 290;
-            double y = 250;
+            double y = 220;
 
             foreach (var item in Payroll.Rates)
             {
@@ -99,7 +100,7 @@
                 _toPdf.DrawString(item.Rate.ToString("C"), FormatText.Regular, text2X, y + 15, 50, 200, XStringFormats.TopRight);
                 _toPdf.DrawString(item.Subtotal.ToString("C"), FormatText.BoldItalic, text2X, y + 30, 50, 200, XStringFormats.TopRight);
 
-                y += 80;
+                y += 60;
             }
 
             return y;
@@ -126,11 +127,34 @@
         {
             double text1X = 100;
             double text2X = 290;
-            double y = initialY;
+            double y = initialY + 40;
+
+            _toPdf.DrawString("Deductions", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+            y += 15;
 
             foreach (var item in Payroll.Deductions)
             {
-                _toPdf.DrawString(item.Item, FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+                _toPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
+                _toPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
+
+                y += 15;
+            }
+
+            return y;
+        }
+
+        private double PrintReinmburstments(double initialY)
+        {
+            double text1X = 100;
+            double text2X = 290;
+            double y = initialY + 40;
+            
+            _toPdf.DrawString("Reinmburstments", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+            y += 15;
+
+            foreach (var item in Payroll.Reimbursements)
+            {
+                _toPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
                 _toPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
 
                 y += 15;
