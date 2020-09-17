@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>resources\app_icon_32.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\packages\DnsClient.1.2.0\lib\net471\DnsClient.dll</HintPath>
@@ -327,6 +330,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\app_icon_128.ico" />
+    <Resource Include="resources\app_icon_16.ico" />
+    <Resource Include="resources\app_icon_32.ico" />
     <Content Include="resources\images\logo-sdt.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
