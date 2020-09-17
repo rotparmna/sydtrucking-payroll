@@ -145,6 +145,7 @@
 
             if (message == string.Empty)
             {
+                CalculateTotal();
                 _payrollLeaseCompany.From = FromPayment.SelectedDate.Value;
                 _payrollLeaseCompany.To = ToPayment.SelectedDate.Value;
                 _payrollLeaseCompany.Date = Date.SelectedDate.Value;
