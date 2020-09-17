@@ -79,6 +79,14 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
+            <TabItem Header="Reimbursements">
+                <DataGrid Grid.Column="0" x:Name="Reimbursements" Grid.Row="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Loaded="Reimbursements_Loaded">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}"/>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value, StringFormat=\{0:C\}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

@@ -26,6 +26,7 @@
         public ICollection<Payroll> Payrolls { get; set; }
         public ICollection<GenericCollection> Details { get; set; }
         public ICollection<GenericCollection> Deductions { get; set; }
+        public ICollection<GenericCollection> Reimbursements { get; set; }
         public ICollection<RateDetail> Rates
         {
             get
@@ -53,7 +54,7 @@
         {
             get
             {
-                return Payrolls.Sum(x => x.TotalPayment);
+                return Payrolls.Sum(x => x.Payment);
             }
         }
         public double Total { get; set; }
@@ -69,6 +70,13 @@
             get
             {
                 return Deductions.Sum(x => x.Value);
+            }
+        }
+        public double TotalReimbursements
+        {
+            get
+            {
+                return Reimbursements.Sum(x => x.Value);
             }
         }
     }

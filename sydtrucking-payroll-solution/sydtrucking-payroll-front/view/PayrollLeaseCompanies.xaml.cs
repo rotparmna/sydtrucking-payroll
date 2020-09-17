@@ -18,6 +18,7 @@
         business.IBusiness<LeaseCompany> _leaseCompanyBusiness;
         ObservableCollection<PayrollLeaseCompanyDetails> _details;
         ObservableCollection<GenericCollection> _deductions;
+        ObservableCollection<GenericCollection> _reimbursements;
         ObservableCollection<RateDetail> _rates;
         PayrollLeaseCompany _payrollLeaseCompany;
 
@@ -29,6 +30,7 @@
             _payrollLeaseCompany = new PayrollLeaseCompany();
             _details = new ObservableCollection<PayrollLeaseCompanyDetails>();
             _deductions = new ObservableCollection<GenericCollection>();
+            _reimbursements = new ObservableCollection<GenericCollection>();
             _rates = new ObservableCollection<RateDetail>();
 
             InitializeComponent();
@@ -44,6 +46,7 @@
 
             Details.ItemsSource = _details;
             Deductions.ItemsSource = _deductions;
+            Reimbursements.ItemsSource = _reimbursements;
             Rates.ItemsSource = _rates;
 
             DateTime nextFriday = DateTime.Now.NextFriday();
@@ -114,7 +117,8 @@
             var totalRates = _rates.ToList().Sum(x => x.Rate * x.Hours);
             var totalDetails = _details.ToList().Sum(x => x.Value);
             var totalDeductions = _deductions.ToList().Sum(x => x.Value);
-            var total = totalRates - totalDetails - totalDeductions;
+            var totalReimbursements = _reimbursements.ToList().Sum(x => x.Value);
+            var total = totalRates - totalDetails - totalDeductions + totalReimbursements;
 
             Total.Text = total.ToString("C");
         }
@@ -145,6 +149,7 @@
                 _payrollLeaseCompany.To = ToPayment.SelectedDate.Value;
                 _payrollLeaseCompany.Date = Date.SelectedDate.Value;
                 _payrollLeaseCompany.Deductions = _deductions;
+                _payrollLeaseCompany.Reimbursements = _reimbursements;
                 _payrollLeaseCompany.LeaseCompany = (LeaseCompanies.SelectedItem as LeaseCompany);
                 _payrollLeaseCompany.Total = double.Parse(Total.Text.Replace("$", string.Empty));
                 _payrollLeaseCompany.Truck = (Trucks.SelectedItem as Truck);
@@ -180,6 +185,7 @@
             _payrollLeaseCompany = new PayrollLeaseCompany();
             _details = new ObservableCollection<PayrollLeaseCompanyDetails>();
             _deductions = new ObservableCollection<GenericCollection>();
+            _reimbursements = new ObservableCollection<GenericCollection>();
             _rates = new ObservableCollection<RateDetail>();
             LoadDetails();
 
@@ -188,6 +194,7 @@
             Total.Text = "$ 0";
             Details.ItemsSource = _details;
             Deductions.ItemsSource = _deductions;
+            Reimbursements.ItemsSource = _reimbursements;
             Rates.ItemsSource = _rates;
         }
 
@@ -254,15 +261,16 @@
             ToPayment.SelectedDate = _payrollLeaseCompany.To;
             Total.Text = _payrollLeaseCompany.Total.ToString("C");
 
-            foreach (var rate in _payrollLeaseCompany.Rates)
-            {
-                _rates.Add(new RateDetail()
+            if (_rates.Count == 0)
+                foreach (var rate in _payrollLeaseCompany.Rates)
                 {
-                    Companies = rate.Companies,
-                    Hours = rate.Hours,
-                    Rate = rate.Rate
-                });
-            }
+                    _rates.Add(new RateDetail()
+                    {
+                        Companies = rate.Companies,
+                        Hours = rate.Hours,
+                        Rate = rate.Rate
+                    });
+                }
 
             _details.Clear();
             foreach (var detail in _payrollLeaseCompany.Details)
@@ -283,11 +291,26 @@
                     Value = deduction.Value
                 });
             }
+
+            foreach (var reimbursements in _payrollLeaseCompany.Reimbursements)
+            {
+                _reimbursements.Add(new GenericCollection()
+                {
+                    Item = reimbursements.Item,
+                    Value = reimbursements.Value
+                });
+            }
         }
 
         private void Details_SelectedCellsChanged(object sender, System.Windows.Controls.SelectedCellsChangedEventArgs e)
         {
             CalculateTotal();
+        }
+
+        private void Reimbursements_Loaded(object sender, RoutedEventArgs e)
+        {
+            var sourceCollectionReimbursements = Reimbursements.ItemsSource as ObservableCollection<GenericCollection>;
+            sourceCollectionReimbursements.CollectionChanged += SourceCollection_CollectionChanged;
         }
     }
 }
