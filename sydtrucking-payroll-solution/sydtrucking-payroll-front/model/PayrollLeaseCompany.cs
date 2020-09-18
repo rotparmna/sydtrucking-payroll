@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
+    using System.Windows.Input;
 
     public class PayrollLeaseCompany : ModelBase
     {
@@ -41,8 +42,8 @@
                                                     .Select(m => new RateDetail()
                                                     {
                                                         Rate = m.Key,
-                                                        Hours = m.Sum(h => details.Sum(r => r.Hours)),
-                                                        Companies = m.Select(p => string.Join(",", m.Select(c => c.Name))).FirstOrDefault()
+                                                        Hours = details.Where(x=>x.OilCompany.Rate == m.Key).Sum(r => r.Hours),
+                                                        Companies = string.Join(",", m.Select(c => c.Name).Distinct())
                                                     })
                     .ToList()
                     .ForEach(g => rates.Add(g));
