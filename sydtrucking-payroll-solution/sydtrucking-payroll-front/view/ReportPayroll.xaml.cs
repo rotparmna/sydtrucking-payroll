@@ -69,7 +69,7 @@
 
         public void SearchPayrolls()
         {
-            _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Drivers.SelectedItem as model.Driver);
+            _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate, To.SelectedDate, Drivers.SelectedItem as model.Driver);
             Details.ItemsSource = _printView;
             if (_printView.Count == 0)
             {

@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using MongoDB.Driver;
-    using sydtrucking_payroll_front.model;
 
     public class Configuration : BusinessBase, IBusiness<model.Configuration>
     {

@@ -88,7 +88,7 @@
 
         public void SearchPayrolls()
         {
-            _printView = ((IPayroll<PrintPayrollLeaseCompanyView, model.LeaseCompany>)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, LeaseCompanies.SelectedItem as model.LeaseCompany);
+            _printView = ((IPayroll<PrintPayrollLeaseCompanyView, model.LeaseCompany>)_payrollLeaseCompanyBusiness).GetListPayroll(From.SelectedDate, To.SelectedDate, LeaseCompanies.SelectedItem as model.LeaseCompany);
             Details.ItemsSource = _printView;
             if (_printView.Count == 0)
             {

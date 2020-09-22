@@ -5,7 +5,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using sydtrucking_payroll_front.model;
 
     public class Payroll : BusinessBase, 
         IBusiness<model.Payroll>,
@@ -169,23 +168,21 @@
             trashBusiness.Update(trash);
         }
 
-        public List<model.PrintPayrollView> GetListPayroll(DateTime from, DateTime to, model.Driver driver)
+        public List<model.PrintPayrollView> GetListPayroll(DateTime? from, DateTime? to, model.Driver driver)
         {
             var printPayrollsView = new List<model.PrintPayrollView>();
 
             var builder = Builders<model.Payroll>.Filter;
-            FilterDefinition<model.Payroll> filter;
-            if (driver is null)
-            {
-                filter = builder.Gte("Details.Ticket.Date", from) &
-                            builder.Lte("Details.Ticket.Date", to);
-            }
-            else
-            {
-                filter = builder.Gte("Details.Ticket.Date", from) &
-                                builder.Lte("Details.Ticket.Date", to) &
-                                builder.Eq("Driver.SocialSecurity", driver.SocialSecurity);
-            }
+            FilterDefinition<model.Payroll> filter = FilterDefinition<model.Payroll>.Empty;
+            
+            if (from.HasValue)
+                filter &= builder.Gte("Details.Ticket.Date", from);
+
+            if (to.HasValue)
+                filter &= builder.Lte("Details.Ticket.Date", to);
+
+            if (driver != null)
+                filter &= builder.Eq("Driver.SocialSecurity", driver.SocialSecurity);
 
             List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
 

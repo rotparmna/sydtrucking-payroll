@@ -61,7 +61,7 @@
 
         public void SearchPayrolls()
         {
-            _printView = ((IPayroll<PrintPayrollEmployeeView, model.Employee>)_payrollBusiness).GetListPayroll(From.SelectedDate.Value.Date, To.SelectedDate.Value.Date, Employees.SelectedItem as model.Employee);
+            _printView = ((IPayroll<PrintPayrollEmployeeView, model.Employee>)_payrollBusiness).GetListPayroll(From.SelectedDate, To.SelectedDate, Employees.SelectedItem as model.Employee);
             Details.ItemsSource = _printView;
             if (_printView.Count == 0)
             {

@@ -25,14 +25,21 @@
             return context.PayrollEmployees.Find(FilterDefinition<model.PayrollEmployee>.Empty).ToList();
         }
 
-        public List<PrintPayrollEmployeeView> GetListPayroll(DateTime from, DateTime to, model.Employee entity)
+        public List<PrintPayrollEmployeeView> GetListPayroll(DateTime? from, DateTime? to, model.Employee entity)
         {
             var printPayrollsView = new List<model.PrintPayrollEmployeeView>();
 
             var builder = Builders<model.PayrollEmployee>.Filter;
-            var filter = builder.Gte("From", from) &
-                            builder.Lte("To", to) &
-                            builder.Eq("Employee.SocialSecurity", entity.SocialSecurity);
+            FilterDefinition<model.PayrollEmployee> filter = FilterDefinition<model.PayrollEmployee>.Empty;
+
+            if (from.HasValue)
+                filter &= builder.Gte("From", from);
+
+            if (to.HasValue)
+                filter &= builder.Lte("To", to);
+
+            if (entity != null)
+                filter &= builder.Eq("Employee.SocialSecurity", entity.SocialSecurity);
 
             List<model.PayrollEmployee> payrolls = context.PayrollEmployees.Find(filter).ToList();
 

@@ -4,21 +4,26 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    using sydtrucking_payroll_front.model;
-    using sydtrucking_payroll_front.notification;
 
     public class PayrollLeaseCompany : BusinessBase,
         IBusiness<model.PayrollLeaseCompany>,
         IPayroll<model.PrintPayrollLeaseCompanyView, model.LeaseCompany>
     {
-        public List<model.PrintPayrollLeaseCompanyView> GetListPayroll(DateTime from, DateTime to, model.LeaseCompany leaseCompany)
+        public List<model.PrintPayrollLeaseCompanyView> GetListPayroll(DateTime? from, DateTime? to, model.LeaseCompany leaseCompany)
         {
             var printPayrollsView = new List<model.PrintPayrollLeaseCompanyView>();
 
             var builder = Builders<model.PayrollLeaseCompany>.Filter;
-            var filter = builder.Gte("Date", from) &
-                            builder.Lte("Date", to) &
-                            builder.Eq("LeaseCompany.Id", leaseCompany.Id);
+            FilterDefinition<model.PayrollLeaseCompany> filter = FilterDefinition<model.PayrollLeaseCompany>.Empty;
+
+            if (from.HasValue)
+                filter &= builder.Gte("Date", from);
+
+            if (to.HasValue)
+                filter &= builder.Lte("Date", to);
+
+            if (leaseCompany != null)
+                filter &= builder.Eq("LeaseCompany.Id", leaseCompany.Id);
 
             List<model.PayrollLeaseCompany> payrollLeaseCompanies = context.PayrollLeaseCompanies.Find(filter).ToList();
 

@@ -5,6 +5,6 @@
 
     public interface IPayroll<T, K>
     {
-        List<T> GetListPayroll(DateTime from, DateTime to, K entity);
+        List<T> GetListPayroll(DateTime? from, DateTime? to, K entity);
     }
 }
