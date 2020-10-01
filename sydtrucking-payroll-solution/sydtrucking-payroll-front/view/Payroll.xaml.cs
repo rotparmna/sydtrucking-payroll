@@ -99,10 +99,30 @@
             return message;
         }
 
+        private string ValidateOilCompanyIsNotNull(bool showMessage)
+        {
+            var isOilCompanyIsNull = false;
+            var message = string.Empty;
+
+            isOilCompanyIsNull = _details.Count > 0 && _details.Where(x => x.OilCompany == null && x.Hours>0).Count() > 0;
+
+            if (isOilCompanyIsNull)
+                message = "Check the rows that you do not have a selected company.\n";
+
+            if (isOilCompanyIsNull && showMessage)
+                MessageBox.Show(message,
+                                    "Company",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+
+            return message;
+        }
+
         private string ValidationsDetails(bool showMessage)
         {
             string message = ValidateTicketNumber(showMessage);
             message += ValidateTicketDateInRange(showMessage);
+            message += ValidateOilCompanyIsNotNull(showMessage);
             return message;
         }
 
