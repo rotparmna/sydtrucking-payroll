@@ -132,7 +132,7 @@
                 var workerComp = 0.0;
 
                 leaseFee = totalRates * business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
-                workerComp = totalRates * business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
+                workerComp = _payrollLeaseCompany.DriverPaycheck * business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
 
                 _details.Where(x => x.Item.Contains("Lease Fee")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = leaseFee;
                 _details.Where(x => x.Item.Contains("Worker's Comp")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = workerComp;
