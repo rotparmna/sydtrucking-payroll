@@ -1,6 +1,7 @@
 ﻿namespace sydtrucking_payroll_front
 {
     using sydtrucking_payroll_front.Properties;
+    using System.Linq;
     using System.Windows;
 
     /// <summary>
@@ -109,6 +110,20 @@
         {
             view.Reports reports = new view.Reports();
             reports.Show();
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Application.Current.Windows.Count>2)
+            {
+                MessageBox.Show("There are open windows. Close the windows first to be able to exit the application.", string.Empty, MessageBoxButton.OK, MessageBoxImage.Warning);
+                e.Cancel = true;
+            }
         }
     }
 }
