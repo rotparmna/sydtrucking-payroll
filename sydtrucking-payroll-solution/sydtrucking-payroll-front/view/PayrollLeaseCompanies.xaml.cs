@@ -7,6 +7,7 @@
     using System.Linq;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     /// Lógica de interacción para Payroll.xaml
@@ -21,6 +22,8 @@
         ObservableCollection<GenericCollection> _reimbursements;
         ObservableCollection<RateDetail> _rates;
         PayrollLeaseCompany _payrollLeaseCompany;
+        double _percentLeaseFeeValue = 0.0;
+        double _percentWorkerCompValue = 0.0;
 
         public PayrollLeaseCompanies()
         {
@@ -56,6 +59,12 @@
             Date.SelectedDate = nextFriday;
             ToPayment.SelectedDate = toPayment;
             FromPayment.SelectedDate = fromPayment;
+
+            _percentLeaseFeeValue = business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
+            _percentWorkerCompValue = business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
+
+            PercentLeaseFeeValue.Text = _percentLeaseFeeValue.ToString();
+            PercentWorkerCompValue.Text = _percentWorkerCompValue.ToString();
         }
 
         private void LoadDetails()
@@ -70,7 +79,7 @@
             _details.Add(new PayrollLeaseCompanyDetails()
             {
                 IsEnabled = false,
-                Item = "Lease Fee " + (business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue * 100) + "%",
+                Item = "Lease Fee",
                 Value = 0,
             });
 
@@ -84,7 +93,7 @@
             _details.Add(new PayrollLeaseCompanyDetails()
             {
                 IsEnabled = false,
-                Item = "Worker's Comp " + (business.Constant.PayrollLeaseCompany.PercentWorkerCompValue * 100) + "%",
+                Item = "Worker's Comp",
                 Value = 0,
             });
         }
@@ -131,8 +140,8 @@
                 var leaseFee = 0.0;
                 var workerComp = 0.0;
 
-                leaseFee = totalRates * business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
-                workerComp = _payrollLeaseCompany.DriverPaycheck * business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
+                leaseFee = totalRates * _percentLeaseFeeValue;
+                workerComp = _payrollLeaseCompany.DriverPaycheck * _percentWorkerCompValue;
 
                 _details.Where(x => x.Item.Contains("Lease Fee")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = leaseFee;
                 _details.Where(x => x.Item.Contains("Worker's Comp")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = workerComp;
@@ -149,6 +158,8 @@
                 _payrollLeaseCompany.From = FromPayment.SelectedDate.Value;
                 _payrollLeaseCompany.To = ToPayment.SelectedDate.Value;
                 _payrollLeaseCompany.Date = Date.SelectedDate.Value;
+                _payrollLeaseCompany.PercentLeaseFeeValue = _percentLeaseFeeValue;
+                _payrollLeaseCompany.PercentWorkerCompValue = _percentWorkerCompValue;
                 _payrollLeaseCompany.Deductions = _deductions;
                 _payrollLeaseCompany.Reimbursements = _reimbursements;
                 _payrollLeaseCompany.LeaseCompany = (LeaseCompanies.SelectedItem as LeaseCompany);
@@ -188,6 +199,10 @@
             _deductions = new ObservableCollection<GenericCollection>();
             _reimbursements = new ObservableCollection<GenericCollection>();
             _rates = new ObservableCollection<RateDetail>();
+
+            _percentLeaseFeeValue = business.Constant.PayrollLeaseCompany.PercentLeaseFeeValue;
+            _percentWorkerCompValue = business.Constant.PayrollLeaseCompany.PercentWorkerCompValue;
+
             LoadDetails();
 
             LeaseCompanies.SelectedItem = null;
@@ -254,12 +269,17 @@
         public void LoadPayroll(string id)
         {
             _payrollLeaseCompany = _payrollLeaseCompanyBusiness.Get(id);
+            
+            _percentLeaseFeeValue = _payrollLeaseCompany.PercentLeaseFeeValue;
+            _percentWorkerCompValue = _payrollLeaseCompany.PercentWorkerCompValue;
 
             LeaseCompanies.SelectedValue = _payrollLeaseCompany.LeaseCompany.Id;
             Trucks.SelectedValue = _payrollLeaseCompany.Truck.Id;
             Date.SelectedDate = _payrollLeaseCompany.Date;
             FromPayment.SelectedDate = _payrollLeaseCompany.From;
             ToPayment.SelectedDate = _payrollLeaseCompany.To;
+            PercentLeaseFeeValue.Text = _percentLeaseFeeValue.ToString();
+            PercentWorkerCompValue.Text = _percentWorkerCompValue.ToString();
             Total.Text = _payrollLeaseCompany.Total.ToString("C");
 
             if (_rates.Count == 0)
@@ -312,6 +332,50 @@
         {
             var sourceCollectionReimbursements = Reimbursements.ItemsSource as ObservableCollection<GenericCollection>;
             sourceCollectionReimbursements.CollectionChanged += SourceCollection_CollectionChanged;
+        }
+
+        private void PercentLeaseFeeValue_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateLeaseFeeAndWorkerComp();
+        }
+
+        private void PercentWorkerCompValue_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateLeaseFeeAndWorkerComp();
+        }
+
+        private void ValidateLeaseFeeAndWorkerComp()
+        {
+            bool refreshCalculate = false;
+
+            bool leaseFeeConvert = double.TryParse(PercentLeaseFeeValue.Text, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out double leaseFeeValue);
+            if (leaseFeeConvert)
+            {
+                refreshCalculate = true;
+                _percentLeaseFeeValue = leaseFeeValue;
+                PercentLeaseFeeValue.Text = leaseFeeValue.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Value % Lease Fee bad format.", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                PercentLeaseFeeValue.Text = _percentLeaseFeeValue.ToString();
+            }
+
+            bool workerCompConverter = double.TryParse(PercentWorkerCompValue.Text, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out double workerCompValue);
+            if (workerCompConverter)
+            {
+                refreshCalculate = true;
+                _percentWorkerCompValue = workerCompValue;
+                PercentWorkerCompValue.Text = workerCompValue.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Value % Worker Comp bad format.", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                PercentWorkerCompValue.Text = _percentWorkerCompValue.ToString();
+            }
+
+            if (refreshCalculate)
+                CalculateLeaseFeeAndWorkerComp();
         }
     }
 }

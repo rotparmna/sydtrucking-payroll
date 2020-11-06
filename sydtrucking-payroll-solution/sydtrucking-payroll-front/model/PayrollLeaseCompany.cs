@@ -24,6 +24,8 @@
         public DateTime Date { get; set; }
         public DateTime To { get; set; }
         public DateTime From { get; set; }
+        public double PercentLeaseFeeValue { get; set; }
+        public double PercentWorkerCompValue { get; set; }
         public ICollection<Payroll> Payrolls { get; set; }
         public ICollection<GenericCollection> Details { get; set; }
         public ICollection<GenericCollection> Deductions { get; set; }
