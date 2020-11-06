@@ -115,10 +115,15 @@
             sourceCollectionDetails.CollectionChanged += SourceCollection_CollectionChanged;
         }
 
-        private void SourceCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void Calculate()
         {
             CalculateLeaseFeeAndWorkerComp();
             CalculateTotal();
+        }
+
+        private void SourceCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Calculate();
         }
 
         private void CalculateTotal()
@@ -145,6 +150,8 @@
 
                 _details.Where(x => x.Item.Contains("Lease Fee")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = leaseFee;
                 _details.Where(x => x.Item.Contains("Worker's Comp")).DefaultIfEmpty(new PayrollLeaseCompanyDetails()).FirstOrDefault().Value = workerComp;
+
+                Details.Items.Refresh();
             }
         }
 
@@ -219,8 +226,7 @@
             if (e.AddedItems.Count > 0 && e.AddedItems[0].GetType() == typeof(Truck))
             {
                 LoadDetails((Truck)e.AddedItems[0]);
-                CalculateLeaseFeeAndWorkerComp();
-                CalculateTotal();
+                Calculate();
             }
         }
 
@@ -255,15 +261,13 @@
         private void FromPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             LoadDetails(Trucks.SelectedItem as Truck);
-            CalculateLeaseFeeAndWorkerComp();
-            CalculateTotal();
+            Calculate();
         }
 
         private void ToPayment_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             LoadDetails(Trucks.SelectedItem as Truck);
-            CalculateLeaseFeeAndWorkerComp();
-            CalculateTotal();
+            Calculate();
         }
 
         public void LoadPayroll(string id)
@@ -375,7 +379,9 @@
             }
 
             if (refreshCalculate)
-                CalculateLeaseFeeAndWorkerComp();
+            {
+                Calculate();
+            }
         }
     }
 }
