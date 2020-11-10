@@ -41,9 +41,16 @@
         </member>
         <member name="P:MongoDB.Bson.BsonDefaults.GuidRepresentation">
             <summary>
-            Gets or sets the default representation to be used in serialization of 
-            Guids to the database. 
-            <seealso cref="T:MongoDB.Bson.GuidRepresentation"/> 
+            Gets or sets the default representation to be used in serialization of
+            Guids to the database.
+            <seealso cref="T:MongoDB.Bson.GuidRepresentation"/>
+            </summary>
+        </member>
+        <member name="P:MongoDB.Bson.BsonDefaults.GuidRepresentationMode">
+            <summary>
+            Gets or sets the default representation to be used in serialization of
+            Guids to the database.
+            <seealso cref="T:MongoDB.Bson.GuidRepresentation"/>
             </summary>
         </member>
         <member name="P:MongoDB.Bson.BsonDefaults.MaxDocumentSize">
@@ -432,6 +439,11 @@
             <value>
             The BSON stream.
             </value>
+        </member>
+        <member name="P:MongoDB.Bson.IO.BsonBinaryReader.Settings">
+            <summary>
+            Gets the settings of the writer.
+            </summary>
         </member>
         <member name="M:MongoDB.Bson.IO.BsonBinaryReader.Close">
             <summary>
@@ -1506,6 +1518,12 @@
             <returns>
             Whether this reader is at end of file.
             </returns>
+        </member>
+        <member name="M:MongoDB.Bson.IO.BsonReader.PopSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:MongoDB.Bson.IO.BsonReader.PushSettings(System.Action{MongoDB.Bson.IO.BsonReaderSettings})">
+            <inheritdoc/>
         </member>
         <member name="M:MongoDB.Bson.IO.BsonReader.ReadBinaryData">
             <summary>
@@ -2843,6 +2861,9 @@
         <member name="P:MongoDB.Bson.IO.ByteBufferStream.Position">
             <inheritdoc/>
         </member>
+        <member name="M:MongoDB.Bson.IO.ByteBufferStream.EfficientCopyTo(System.IO.Stream)">
+            <inheritdoc/>
+        </member>
         <member name="M:MongoDB.Bson.IO.ByteBufferStream.Flush">
             <inheritdoc/>
         </member>
@@ -3042,6 +3063,17 @@
             <returns>
             Whether this reader is at end of file.
             </returns>
+        </member>
+        <member name="M:MongoDB.Bson.IO.IBsonReader.PopSettings">
+            <summary>
+            Pops the settings.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Bson.IO.IBsonReader.PushSettings(System.Action{MongoDB.Bson.IO.BsonReaderSettings})">
+            <summary>
+            Pushes new settings for the reader.
+            </summary>
+            <param name="configurator">The settings configurator.</param>
         </member>
         <member name="M:MongoDB.Bson.IO.IBsonReader.ReadBinaryData">
             <summary>
@@ -3243,6 +3275,13 @@
             </summary>
             <param name="reader">The reader.</param>
             <param name="name">The name of the element.</param>
+            <returns>A BsonBinaryData.</returns>
+        </member>
+        <member name="M:MongoDB.Bson.IO.IBsonReaderExtensions.ReadBinaryDataWithGuidRepresentationUnspecified(MongoDB.Bson.IO.IBsonReader)">
+            <summary>
+            Reads a BSON binary data element from the reader temporarily setting the GuidRepresentation to Unspecified.
+            </summary>
+            <param name="reader">The reader.</param>
             <returns>A BsonBinaryData.</returns>
         </member>
         <member name="M:MongoDB.Bson.IO.IBsonReaderExtensions.ReadBoolean(MongoDB.Bson.IO.IBsonReader,System.String)">
@@ -4003,6 +4042,17 @@
         <member name="M:MongoDB.Bson.IO.InputBufferChunkSource.GetChunk(System.Int32)">
             <inheritdoc/>
         </member>
+        <member name="T:MongoDB.Bson.IO.IStreamEfficientCopyTo">
+            <summary>
+            Represents the effective CopyTo method.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Bson.IO.IStreamEfficientCopyTo.EfficientCopyTo(System.IO.Stream)">
+            <summary>
+            Copy the current stream to the destination without making unnecessary copies of the bytes.
+            </summary>
+            <param name="destination">The destination stream.</param>
+        </member>
         <member name="T:MongoDB.Bson.IO.JsonBuffer">
             <summary>
             Represents a wrapper around a TextReader to provide some buffering functionality.
@@ -4254,12 +4304,22 @@
         </member>
         <member name="F:MongoDB.Bson.IO.JsonOutputMode.Strict">
             <summary>
-            Output strict JSON.
+            Output strict JSON (an obsolete output mode that is similar to canonical extended JSON).
             </summary>
         </member>
         <member name="F:MongoDB.Bson.IO.JsonOutputMode.Shell">
             <summary>
             Use a format that can be pasted in to the MongoDB shell.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Bson.IO.JsonOutputMode.CanonicalExtendedJson">
+            <summary>
+            Output canonical extended JSON.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Bson.IO.JsonOutputMode.RelaxedExtendedJson">
+            <summary>
+            Output relaxed extended JSON.
             </summary>
         </member>
         <member name="F:MongoDB.Bson.IO.JsonOutputMode.JavaScript">
@@ -6076,6 +6136,11 @@
         <member name="F:MongoDB.Bson.BsonBinarySubType.MD5">
             <summary>
             An MD5 hash.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Bson.BsonBinarySubType.Encrypted">
+            <summary>
+            Encrypted binary data.
             </summary>
         </member>
         <member name="F:MongoDB.Bson.BsonBinarySubType.UserDefined">
@@ -10691,6 +10756,13 @@
             <param name="representation">The representation of the Guid in the byte array.</param>
             <returns>A Guid.</returns>
         </member>
+        <member name="M:MongoDB.Bson.GuidConverter.GetSubType(MongoDB.Bson.GuidRepresentation)">
+            <summary>
+            Gets the sub type that corresponds to the guidRepresentation.
+            </summary>
+            <param name="guidRepresentation">The Guid representation.</param>
+            <returns>The sub type.</returns>
+        </member>
         <member name="M:MongoDB.Bson.GuidConverter.ToBytes(System.Guid,MongoDB.Bson.GuidRepresentation)">
             <summary>
             Converts a Guid to a byte array.
@@ -10727,6 +10799,22 @@
         <member name="F:MongoDB.Bson.GuidRepresentation.PythonLegacy">
             <summary>
             Use the representation used by older versions of the Python driver.
+            </summary>
+        </member>
+        <member name="T:MongoDB.Bson.GuidRepresentationMode">
+            <summary>
+            Whether to handle GuidRepresentation using the v2.x mode of the v3.x mode.
+            See the reference documentation for details.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Bson.GuidRepresentationMode.V2">
+            <summary>
+            Handle GuidRepresentation using the v2.x mode.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Bson.GuidRepresentationMode.V3">
+            <summary>
+            Handle GuidRepresentation using the v3.x mode.
             </summary>
         </member>
         <member name="T:MongoDB.Bson.IConvertibleToBsonDocument">
@@ -12747,6 +12835,25 @@
             </summary>
             <param name="creatorMap">The creator map.</param>
         </member>
+        <member name="T:MongoDB.Bson.Serialization.Attributes.BsonGuidRepresentationAttribute">
+            <summary>
+            Specifies the Guid representation to use with the GuidSerializer for this member.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Bson.Serialization.Attributes.BsonGuidRepresentationAttribute.#ctor(MongoDB.Bson.GuidRepresentation)">
+            <summary>
+            Initializes a new instance of the BsonGuidRepresentationAttribute class.
+            </summary>
+            <param name="guidRepresentation">The Guid representation.</param>
+        </member>
+        <member name="P:MongoDB.Bson.Serialization.Attributes.BsonGuidRepresentationAttribute.GuidRepresentation">
+            <summary>
+            Gets the Guid representation.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Bson.Serialization.Attributes.BsonGuidRepresentationAttribute.Apply(MongoDB.Bson.Serialization.BsonMemberMap)">
+            <inheritdoc/>
+        </member>
         <member name="T:MongoDB.Bson.Serialization.Attributes.BsonIdAttribute">
             <summary>
             Specifies that this is the Id field or property.
@@ -14541,7 +14648,7 @@
             <summary>
             Gets the serializer for the specified <typeparamref name="T" />.
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">The value type of the serializer.</typeparam>
             <returns>
             The serializer.
             </returns>
@@ -15322,6 +15429,16 @@
             <param name="actualType">The actual type.</param>
             <returns>The discriminator value.</returns>
         </member>
+        <member name="T:MongoDB.Bson.Serialization.Conventions.StringIdStoredAsObjectIdConvention">
+            <summary>
+            A convention that sets the representation of a string id class member to ObjectId in BSON with a StringObjectIdGenerator.
+            This convention is only responsible for setting the serializer and idGenerator. It is assumed that this convention runs after
+            other conventions that identify which member is the _id and that the _id has already been added to the class map.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Bson.Serialization.Conventions.StringIdStoredAsObjectIdConvention.Apply(MongoDB.Bson.Serialization.BsonMemberMap)">
+            <inheritdoc/>
+        </member>
         <member name="T:MongoDB.Bson.Serialization.Conventions.StringObjectIdIdGeneratorConvention">
             <summary>
             A convention that sets the id generator for a string member with a BSON representation of ObjectId.
@@ -15798,7 +15915,7 @@
             <summary>
             Gets the serializer for the specified <typeparamref name="T"/>.
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">The value type of the serializer.</typeparam>
             <returns>The serializer.</returns>
         </member>
         <member name="T:MongoDB.Bson.Serialization.IChildSerializerConfigurable">
@@ -15913,6 +16030,11 @@
         <member name="P:MongoDB.Bson.Serialization.IdGenerators.BsonBinaryDataGuidGenerator.UnspecifedInstance">
             <summary>
             Gets an instance of BsonBinaryDataGuidGenerator for Unspecifed GuidRepresentation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Bson.Serialization.IdGenerators.BsonBinaryDataGuidGenerator.GuidRepresentation">
+            <summary>
+            Gets the Guid representation.
             </summary>
         </member>
         <member name="M:MongoDB.Bson.Serialization.IdGenerators.BsonBinaryDataGuidGenerator.GetInstance(MongoDB.Bson.GuidRepresentation)">
@@ -18901,7 +19023,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:MongoDB.Bson.Serialization.Serializers.EnumerableInterfaceImplementerSerializer`1" /> class.
             </summary>
-            <param name="serializerRegistry"></param>
+            <param name="serializerRegistry">The serializer registry.</param>
         </member>
         <member name="M:MongoDB.Bson.Serialization.Serializers.EnumerableInterfaceImplementerSerializer`1.WithItemSerializer(MongoDB.Bson.Serialization.IBsonSerializer)">
             <summary>
@@ -19332,6 +19454,17 @@
             </summary>
             <param name="representation">The representation.</param>
         </member>
+        <member name="M:MongoDB.Bson.Serialization.Serializers.GuidSerializer.#ctor(MongoDB.Bson.GuidRepresentation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Bson.Serialization.Serializers.GuidSerializer"/> class.
+            </summary>
+            <param name="guidRepresentation">The Guid representation.</param>
+        </member>
+        <member name="P:MongoDB.Bson.Serialization.Serializers.GuidSerializer.GuidRepresentation">
+            <summary>
+            Gets the Guid representation.
+            </summary>
+        </member>
         <member name="P:MongoDB.Bson.Serialization.Serializers.GuidSerializer.Representation">
             <summary>
             Gets the representation.
@@ -19355,6 +19488,13 @@
             <param name="context">The serialization context.</param>
             <param name="args">The serialization args.</param>
             <param name="value">The object.</param>
+        </member>
+        <member name="M:MongoDB.Bson.Serialization.Serializers.GuidSerializer.WithGuidRepresentation(MongoDB.Bson.GuidRepresentation)">
+            <summary>
+            Returns a serializer that has been reconfigured with the specified Guid representation.
+            </summary>
+            <param name="guidRepresentation">The GuidRepresentation.</param>
+            <returns>The reconfigured serializer.</returns>
         </member>
         <member name="M:MongoDB.Bson.Serialization.Serializers.GuidSerializer.WithRepresentation(MongoDB.Bson.BsonType)">
             <summary>
@@ -19966,6 +20106,13 @@
             <param name="discriminatorConvention">The discriminator convention.</param>
             <exception cref="T:System.ArgumentNullException">discriminatorConvention</exception>
         </member>
+        <member name="M:MongoDB.Bson.Serialization.Serializers.ObjectSerializer.#ctor(MongoDB.Bson.Serialization.Conventions.IDiscriminatorConvention,MongoDB.Bson.GuidRepresentation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Bson.Serialization.Serializers.ObjectSerializer"/> class.
+            </summary>
+            <param name="discriminatorConvention">The discriminator convention.</param>
+            <param name="guidRepresentation">The Guid representation.</param>
+        </member>
         <member name="P:MongoDB.Bson.Serialization.Serializers.ObjectSerializer.Instance">
             <summary>
             Gets the standard instance.
@@ -20047,7 +20194,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:MongoDB.Bson.Serialization.Serializers.QueueSerializer" /> class.
             </summary>
-            <param name="serializerRegistry"></param>
+            <param name="serializerRegistry">The serializer registry.</param>
         </member>
         <member name="M:MongoDB.Bson.Serialization.Serializers.QueueSerializer.WithItemSerializer(MongoDB.Bson.Serialization.IBsonSerializer)">
             <summary>
@@ -20259,7 +20406,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:MongoDB.Bson.Serialization.Serializers.ReadOnlyCollectionSubclassSerializer`2"/> class.
             </summary>
-            <param name="itemSerializer"></param>
+            <param name="itemSerializer">The item serializer.</param>
         </member>
         <member name="M:MongoDB.Bson.Serialization.Serializers.ReadOnlyCollectionSubclassSerializer`2.#ctor(MongoDB.Bson.Serialization.IBsonSerializerRegistry)">
             <summary>

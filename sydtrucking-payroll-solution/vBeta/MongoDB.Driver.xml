@@ -503,10 +503,22 @@
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.Match(MongoDB.Driver.FilterDefinition{`0})">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.Merge``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.MergeStageOptions{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.MergeAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.MergeStageOptions{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.OfType``1(MongoDB.Bson.Serialization.IBsonSerializer{``0})">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.Out(MongoDB.Driver.IMongoCollection{`0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.Out(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.OutAsync(MongoDB.Driver.IMongoCollection{`0},System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.OutAsync(System.String,System.Threading.CancellationToken)">
@@ -516,6 +528,9 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.ReplaceRoot``1(MongoDB.Driver.AggregateExpressionDefinition{`0,``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.ReplaceWith``1(MongoDB.Driver.AggregateExpressionDefinition{`0,``0})">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.Skip(System.Int32)">
@@ -530,10 +545,19 @@
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.ThenBy(MongoDB.Driver.SortDefinition{`0})">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.UnionWith``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.PipelineDefinition{``0,`0})">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.Unwind``1(MongoDB.Driver.FieldDefinition{`0},MongoDB.Bson.Serialization.IBsonSerializer{``0})">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.Unwind``1(MongoDB.Driver.FieldDefinition{`0},MongoDB.Driver.AggregateUnwindOptions{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.ToCollection(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.AggregateFluentBase`1.ToCollectionAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.AggregateFluentBase`1.ToCursor(System.Threading.CancellationToken)">
@@ -1051,6 +1075,12 @@
             Gets the index.
             </summary>
         </member>
+        <member name="M:MongoDB.Driver.BulkWriteUpsert.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.BulkWriteUpsert.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:MongoDB.Driver.ChangeStreamOptions">
             <summary>
             Options for a change stream operation.
@@ -1096,6 +1126,14 @@
             The resume after.
             </value>
         </member>
+        <member name="P:MongoDB.Driver.ChangeStreamOptions.StartAfter">
+            <summary>
+            Gets or sets the start after.
+            </summary>
+            <value>
+            The start after.
+            </value>
+        </member>
         <member name="P:MongoDB.Driver.ChangeStreamOptions.StartAtOperationTime">
             <summary>
             Gets or sets the start at operation time.
@@ -1131,6 +1169,14 @@
             </summary>
             <value>
             The resume after.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.ChangeStreamStageOptions.StartAfter">
+            <summary>
+            Get or sets the start after.
+            </summary>
+            <value>
+            The start after.
             </value>
         </member>
         <member name="P:MongoDB.Driver.ChangeStreamStageOptions.StartAtOperationTime">
@@ -1204,6 +1250,12 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.ClientSessionHandle.StartTransaction(MongoDB.Driver.TransactionOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.ClientSessionHandle.WithTransaction``1(System.Func{MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken,``0},MongoDB.Driver.TransactionOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.ClientSessionHandle.WithTransactionAsync``1(System.Func{MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},MongoDB.Driver.TransactionOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="T:MongoDB.Driver.ClientSessionOptions">
@@ -1660,10 +1712,21 @@
             Gets or sets the partial filter expression.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.CreateIndexOptions`1.WildcardProjection">
+            <summary>
+            Gets or sets the wildcard projection.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.CreateManyIndexesOptions">
             <summary>
             Options for creating multiple indexes.
             </summary>
+        </member>
+        <member name="P:MongoDB.Driver.CreateManyIndexesOptions.CommitQuorum">
+            <summary>
+            Gets or sets the commit quorum.
+            </summary>
+            <value>The commit quorum.</value>
         </member>
         <member name="P:MongoDB.Driver.CreateManyIndexesOptions.MaxTime">
             <summary>
@@ -1675,6 +1738,12 @@
             <summary>
             Options for creating a single index.
             </summary>
+        </member>
+        <member name="P:MongoDB.Driver.CreateOneIndexOptions.CommitQuorum">
+            <summary>
+            Gets or sets the commit quorum.
+            </summary>
+            <value>The commit quorum.</value>
         </member>
         <member name="P:MongoDB.Driver.CreateOneIndexOptions.MaxTime">
             <summary>
@@ -1754,6 +1823,11 @@
             Gets the filter.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.DeleteManyModel`1.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.DeleteManyModel`1.ModelType">
             <summary>
             Gets the type of the model.
@@ -1781,6 +1855,11 @@
             Gets the filter.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.DeleteOneModel`1.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.DeleteOneModel`1.ModelType">
             <summary>
             Gets the type of the model.
@@ -1794,6 +1873,11 @@
         <member name="P:MongoDB.Driver.DeleteOptions.Collation">
             <summary>
             Gets or sets the collation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.DeleteOptions.Hint">
+            <summary>
+            Gets or sets the hint.
             </summary>
         </member>
         <member name="T:MongoDB.Driver.DeleteResult">
@@ -1874,6 +1958,296 @@
             Gets or sets the maximum time.
             </summary>
             <value>The maximum time.</value>
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.AutoEncryptionOptions">
+            <summary>
+            Auto encryption options.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.AutoEncryptionOptions.#ctor(MongoDB.Driver.CollectionNamespace,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}},MongoDB.Driver.Optional{System.Boolean},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}},MongoDB.Driver.Optional{MongoDB.Driver.IMongoClient},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,MongoDB.Bson.BsonDocument}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.AutoEncryptionOptions"/> class.
+            </summary>
+            <param name="keyVaultNamespace">The keyVault namespace.</param>
+            <param name="kmsProviders">The kms providers.</param>
+            <param name="bypassAutoEncryption">The bypass auto encryption flag.</param>
+            <param name="extraOptions">The extra options.</param>
+            <param name="keyVaultClient">The keyVault client.</param>
+            <param name="schemaMap">The schema map.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.BypassAutoEncryption">
+            <summary>
+            Gets a value indicating whether to bypass automatic encryption.
+            </summary>
+            <value>
+              <c>true</c> if automatic encryption should be bypasssed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.ExtraOptions">
+            <summary>
+            Gets the extra options.
+            </summary>
+            <value>
+            The extra options.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.KeyVaultClient">
+            <summary>
+            Gets the key vault client.
+            </summary>
+            <value>
+            The key vault client.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.KeyVaultNamespace">
+            <summary>
+            Gets the key vault namespace.
+            </summary>
+            <value>
+            The key vault namespace.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.KmsProviders">
+            <summary>
+            Gets the KMS providers.
+            </summary>
+            <value>
+            The KMS providers.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.AutoEncryptionOptions.SchemaMap">
+            <summary>
+            Gets the schema map.
+            </summary>
+            <value>
+            The schema map.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.AutoEncryptionOptions.With(MongoDB.Driver.Optional{MongoDB.Driver.CollectionNamespace},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}}},MongoDB.Driver.Optional{System.Boolean},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}},MongoDB.Driver.Optional{MongoDB.Driver.IMongoClient},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,MongoDB.Bson.BsonDocument}})">
+            <summary>
+            Returns a new instance of the <see cref="T:MongoDB.Driver.Encryption.AutoEncryptionOptions"/> class.
+            </summary>
+            <param name="keyVaultNamespace">The keyVault namespace.</param>
+            <param name="kmsProviders">The kms providers.</param>
+            <param name="bypassAutoEncryption">The bypass auto encryption flag.</param>
+            <param name="extraOptions">The extra options.</param>
+            <param name="keyVaultClient">The keyVault client.</param>
+            <param name="schemaMap">The schema map.</param>
+            <returns>A new instance of <see cref="T:MongoDB.Driver.Encryption.AutoEncryptionOptions"/>.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.AutoEncryptionOptions.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.AutoEncryptionOptions.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.AutoEncryptionOptions.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.ClientEncryption">
+            <summary>
+            Explicit client encryption.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.#ctor(MongoDB.Driver.Encryption.ClientEncryptionOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.ClientEncryption"/> class.
+            </summary>
+            <param name="clientEncryptionOptions">The client encryption options.</param>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.CreateDataKey(System.String,MongoDB.Driver.Encryption.DataKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates a data key.
+            </summary>
+            <param name="kmsProvider">The kms provider.</param>
+            <param name="dataKeyOptions">The data key options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A data key.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.CreateDataKeyAsync(System.String,MongoDB.Driver.Encryption.DataKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates a data key.
+            </summary>
+            <param name="kmsProvider">The kms provider.</param>
+            <param name="dataKeyOptions">The data key options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A data key.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.Decrypt(MongoDB.Bson.BsonBinaryData,System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decrypted value.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.DecryptAsync(MongoDB.Bson.BsonBinaryData,System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decrypted value.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.Encrypt(MongoDB.Bson.BsonValue,MongoDB.Driver.Encryption.EncryptOptions,System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="encryptOptions">The encrypt options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encrypted value.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryption.EncryptAsync(MongoDB.Bson.BsonValue,MongoDB.Driver.Encryption.EncryptOptions,System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="encryptOptions">The encrypt options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encrypted value.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.ClientEncryptionOptions">
+            <summary>
+            Client encryption options.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryptionOptions.#ctor(MongoDB.Driver.IMongoClient,MongoDB.Driver.CollectionNamespace,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.ClientEncryptionOptions"/> class.
+            </summary>
+            <param name="keyVaultClient">The key vault client.</param>
+            <param name="keyVaultNamespace">The key vault namespace.</param>
+            <param name="kmsProviders">The KMS providers.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.ClientEncryptionOptions.KeyVaultClient">
+            <summary>
+            Gets the key vault client.
+            </summary>
+            <value>
+            The key vault client.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.ClientEncryptionOptions.KeyVaultNamespace">
+            <summary>
+            Gets the key vault namespace.
+            </summary>
+            <value>
+            The key vault namespace.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.ClientEncryptionOptions.KmsProviders">
+            <summary>
+            Gets the KMS providers.
+            </summary>
+            <value>
+            The KMS providers.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.ClientEncryptionOptions.With(MongoDB.Driver.Optional{MongoDB.Driver.IMongoClient},MongoDB.Driver.Optional{MongoDB.Driver.CollectionNamespace},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}}})">
+            <summary>
+            Returns a new ClientEncryptionOptions instance with some settings changed.
+            </summary>
+            <param name="keyVaultClient">The key vault client.</param>
+            <param name="keyVaultNamespace">The key vault namespace.</param>
+            <param name="kmsProviders">The KMS providers.</param>
+            <returns>A new ClientEncryptionOptions instance.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.DataKeyOptions">
+            <summary>
+            Options for creating a data key.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.DataKeyOptions.#ctor(MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyList{System.String}},MongoDB.Driver.Optional{MongoDB.Bson.BsonDocument})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.DataKeyOptions"/> class.
+            </summary>
+            <param name="alternateKeyNames">The alternate key names.</param>
+            <param name="masterKey">The master key.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.DataKeyOptions.AlternateKeyNames">
+            <summary>
+            Gets the alternate key names.
+            </summary>
+            <value>
+            The alternate key names.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.DataKeyOptions.MasterKey">
+            <summary>
+            Gets the master key.
+            </summary>
+            <value>
+            The master key.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.DataKeyOptions.With(MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyList{System.String}},MongoDB.Driver.Optional{MongoDB.Bson.BsonDocument})">
+            <summary>
+            Returns a new DataKeyOptions instance with some settings changed.
+            </summary>
+            <param name="alternateKeyNames">The alternate key names.</param>
+            <param name="masterKey">The master key.</param>
+            <returns>A new DataKeyOptions instance.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.EncryptOptions">
+            <summary>
+            Encryption options for explicit encryption.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.EncryptOptions.#ctor(System.String,MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.Nullable{System.Guid}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.EncryptOptions"/> class.
+            </summary>
+            <param name="algorithm">The encryption algorithm.</param>
+            <param name="alternateKeyName">The alternate key name.</param>
+            <param name="keyId">The key Id.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.EncryptOptions.Algorithm">
+            <summary>
+            Gets the algorithm.
+            </summary>
+            <value>
+            The algorithm.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.EncryptOptions.AlternateKeyName">
+            <summary>
+            Gets the alternate key name.
+            </summary>
+            <value>
+            The alternate key name.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Encryption.EncryptOptions.KeyId">
+            <summary>
+            Gets the key identifier.
+            </summary>
+            <value>
+            The key identifier.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.EncryptOptions.With(MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.Nullable{System.Guid}})">
+            <summary>
+            Returns a new EncryptOptions instance with some settings changed.
+            </summary>
+            <param name="algorithm">The encryption algorithm.</param>
+            <param name="alternateKeyName">The alternate key name.</param>
+            <param name="keyId">The keyId.</param>
+            <returns>A new EncryptOptions instance.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.Encryption.MongoEncryptionException">
+            <summary>
+            Represents an encryption exception.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Encryption.MongoEncryptionException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Encryption.MongoEncryptionException"/> class.
+            </summary>
+            <param name="innerException">The inner exception.</param>
         </member>
         <member name="T:MongoDB.Driver.EstimatedDocumentCountOptions">
             <summary>
@@ -3373,6 +3747,11 @@
             Gets or sets the collation.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.FindOneAndDeleteOptions`2.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.FindOneAndDeleteOptions`2.MaxTime">
             <summary>
             Gets or sets the maximum time.
@@ -3406,14 +3785,19 @@
             Initializes a new instance of the <see cref="T:MongoDB.Driver.FindOneAndReplaceOptions`2"/> class.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.FindOneAndReplaceOptions`2.BypassDocumentValidation">
+            <summary>
+            Gets or sets a value indicating whether to bypass document validation.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.FindOneAndReplaceOptions`2.Collation">
             <summary>
             Gets or sets the collation.
             </summary>
         </member>
-        <member name="P:MongoDB.Driver.FindOneAndReplaceOptions`2.BypassDocumentValidation">
+        <member name="P:MongoDB.Driver.FindOneAndReplaceOptions`2.Hint">
             <summary>
-            Gets or sets a value indicating whether to bypass document validation.
+            Gets or sets the hint.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.FindOneAndReplaceOptions`2.IsUpsert">
@@ -3477,6 +3861,11 @@
             Gets or sets the collation.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.FindOneAndUpdateOptions`2.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.FindOneAndUpdateOptions`2.IsUpsert">
             <summary>
             Gets or sets a value indicating whether to insert the document if it doesn't already exist.
@@ -3518,6 +3907,11 @@
             Initializes a new instance of the <see cref="T:MongoDB.Driver.FindOptionsBase"/> class.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.AllowDiskUse">
+            <summary>
+            Gets or sets a value indicating whether the server is allowed to write to disk while executing the Find operation.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.FindOptionsBase.AllowPartialResults">
             <summary>
             Gets or sets a value indicating whether to allow partial results when some shards are unavailable.
@@ -3543,6 +3937,16 @@
             Gets or sets the type of the cursor.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.Max">
+            <summary>
+            Gets or sets the max key value.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.FindOptionsBase.MaxAwaitTime">
             <summary>
             Gets or sets the maximum await time for TailableAwait cursors.
@@ -3551,6 +3955,11 @@
         <member name="P:MongoDB.Driver.FindOptionsBase.MaxTime">
             <summary>
             Gets or sets the maximum time.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.Min">
+            <summary>
+            Gets or sets the min key value.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.FindOptionsBase.Modifiers">
@@ -3566,6 +3975,16 @@
         <member name="P:MongoDB.Driver.FindOptionsBase.OplogReplay">
             <summary>
             Gets or sets whether the OplogReplay bit will be set.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.ReturnKey">
+            <summary>
+            Gets or sets returnKey. If true, returns only the index keys in the resulting documents.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.FindOptionsBase.ShowRecordId">
+            <summary>
+            Gets or sets whether the record Id should be added to the result document.
             </summary>
         </member>
         <member name="T:MongoDB.Driver.FindOptions">
@@ -5546,6 +5965,26 @@
             <param name="filter">The filter.</param>
             <returns>The fluent aggregate interface.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.Merge``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.MergeStageOptions{``0},System.Threading.CancellationToken)">
+            <summary>
+            Appends a merge stage to the pipeline and executes it, and then returns a cursor to read the contents of the output collection.
+            </summary>
+            <typeparam name="TOutput">The type of output documents.</typeparam>
+            <param name="outputCollection">The output collection.</param>
+            <param name="mergeOptions">The merge options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A cursor.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.MergeAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.MergeStageOptions{``0},System.Threading.CancellationToken)">
+            <summary>
+            Appends a merge stage to the pipeline and executes it, and then returns a cursor to read the contents of the output collection.
+            </summary>
+            <typeparam name="TOutput">The type of output documents.</typeparam>
+            <param name="outputCollection">The output collection.</param>
+            <param name="mergeOptions">The merge options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A cursor.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IAggregateFluent`1.OfType``1(MongoDB.Bson.Serialization.IBsonSerializer{``0})">
             <summary>
             Appends a match stage to the pipeline that matches derived documents and changes the result type to the derived type.
@@ -5554,6 +5993,14 @@
             <param name="newResultSerializer">The new result serializer.</param>
             <returns>The fluent aggregate interface.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.Out(MongoDB.Driver.IMongoCollection{`0},System.Threading.CancellationToken)">
+            <summary>
+            Appends an out stage to the pipeline and executes it, and then returns a cursor to read the contents of the output collection.
+            </summary>
+            <param name="outputCollection">The output collection.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A cursor.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IAggregateFluent`1.Out(System.String,System.Threading.CancellationToken)">
             <summary>
             Appends an out stage to the pipeline and executes it, and then returns a cursor to read the contents of the output collection.
@@ -5561,6 +6008,14 @@
             <param name="collectionName">Name of the collection.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>A cursor.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.OutAsync(MongoDB.Driver.IMongoCollection{`0},System.Threading.CancellationToken)">
+            <summary>
+            Appends an out stage to the pipeline and executes it, and then returns a cursor to read the contents of the output collection.
+            </summary>
+            <param name="outputCollection">The output collection.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a cursor.</returns>
         </member>
         <member name="M:MongoDB.Driver.IAggregateFluent`1.OutAsync(System.String,System.Threading.CancellationToken)">
             <summary>
@@ -5588,6 +6043,14 @@
             <param name="newRoot">The new root.</param>
             <returns>The fluent aggregate interface.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.ReplaceWith``1(MongoDB.Driver.AggregateExpressionDefinition{`0,``0})">
+            <summary>
+            Appends a $replaceWith stage to the pipeline.
+            </summary>
+            <typeparam name="TNewResult">The type of the new result.</typeparam>
+            <param name="newRoot">The new root.</param>
+            <returns>The fluent aggregate interface.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IAggregateFluent`1.Skip(System.Int32)">
             <summary>
             Appends a skip stage to the pipeline.
@@ -5608,6 +6071,28 @@
             </summary>
             <typeparam name="TId">The type of the identifier.</typeparam>
             <param name="id">The identifier.</param>
+            <returns>The fluent aggregate interface.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.ToCollection(System.Threading.CancellationToken)">
+            <summary>
+            Executes an aggregation pipeline that writes the results to a collection.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.ToCollectionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Executes an aggregation pipeline that writes the results to a collection.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IAggregateFluent`1.UnionWith``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.PipelineDefinition{``0,`0})">
+            <summary>
+            Appends an $unionWith stage to the pipeline.
+            </summary>
+            <typeparam name="TWith">The type of the with collection documents.</typeparam>
+            <param name="withCollection">The with collection.</param>
+            <param name="withPipeline">The with pipeline.</param>
             <returns>The fluent aggregate interface.</returns>
         </member>
         <member name="M:MongoDB.Driver.IAggregateFluent`1.Unwind``1(MongoDB.Driver.FieldDefinition{`0},MongoDB.Bson.Serialization.IBsonSerializer{``0})">
@@ -5934,6 +6419,18 @@
             The fluent aggregate interface.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.IAggregateFluentExtensions.ReplaceWith``2(MongoDB.Driver.IAggregateFluent{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Appends a $replaceWith stage to the pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <typeparam name="TNewResult">The type of the new result.</typeparam>
+            <param name="aggregate">The aggregate.</param>
+            <param name="newRoot">The new root.</param>
+            <returns>
+            The fluent aggregate interface.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.IAggregateFluentExtensions.SortBy``1(MongoDB.Driver.IAggregateFluent{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
             <summary>
             Appends an ascending sort stage to the pipeline.
@@ -6238,6 +6735,26 @@
             Starts a transaction.
             </summary>
             <param name="transactionOptions">The transaction options.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IClientSession.WithTransaction``1(System.Func{MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken,``0},MongoDB.Driver.TransactionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Executes a callback within a transaction, with retries if needed.
+            </summary>
+            <param name="callback">The user defined callback.</param>
+            <param name="transactionOptions">The transaction options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="TResult">The type of callback result.</typeparam>
+            <returns>The callback result.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IClientSession.WithTransactionAsync``1(System.Func{MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},MongoDB.Driver.TransactionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Executes a callback within a transaction, with retries if needed.
+            </summary>
+            <param name="callbackAsync">The user defined callback.</param>
+            <param name="transactionOptions">The transaction options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="TResult">The type of callback result.</typeparam>
+            <returns>The callback result.</returns>
         </member>
         <member name="T:MongoDB.Driver.IClientSessionHandle">
             <summary>
@@ -6602,11 +7119,28 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The database names.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNames(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <summary>
+            Returns the names of the databases on the server.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="options">The options.</param>
+            <returns>The database names.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
             <summary>
             Returns the names of the databases on the server.
             </summary>
             <param name="session">The session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The database names.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <summary>
+            Returns the names of the databases on the server.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="options">The options.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The database names.</returns>
         </member>
@@ -6617,11 +7151,28 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The database names.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNamesAsync(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <summary>
+            Returns the names of the databases on the server.
+            </summary>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The database names.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
             <summary>
             Returns the names of the databases on the server.
             </summary>
             <param name="session">The session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The database names.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoClient.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <summary>
+            Returns the names of the databases on the server.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="options">The options.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The database names.</returns>
         </member>
@@ -6920,6 +7471,46 @@
             A Task whose result is a cursor.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.AggregateToCollection``1(MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline whose results are written to a collection.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.AggregateToCollection``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline whose results are written to a collection.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.AggregateToCollectionAsync``1(MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline whose results are written to a collection.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.AggregateToCollectionAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline whose results are written to a collection.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollection`1.BulkWrite(System.Collections.Generic.IEnumerable{MongoDB.Driver.WriteModel{`0}},MongoDB.Driver.BulkWriteOptions,System.Threading.CancellationToken)">
             <summary>
             Performs multiple write operations.
@@ -7011,6 +7602,7 @@
         <member name="M:MongoDB.Driver.IMongoCollection`1.CountDocuments(MongoDB.Driver.FilterDefinition{`0},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCount(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <remarks>
             Note: when migrating from Count to CountDocuments the following query operations must be replaced:
@@ -7037,6 +7629,7 @@
         <member name="M:MongoDB.Driver.IMongoCollection`1.CountDocuments(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCount(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <remarks>
             Note: when migrating from Count to CountDocuments the following query operations must be replaced:
@@ -7064,6 +7657,7 @@
         <member name="M:MongoDB.Driver.IMongoCollection`1.CountDocumentsAsync(MongoDB.Driver.FilterDefinition{`0},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <seea cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCountAsync(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <remarks>
             Note: when migrating from CountAsync to CountDocumentsAsync the following query operations must be replaced:
@@ -7090,6 +7684,7 @@
         <member name="M:MongoDB.Driver.IMongoCollection`1.CountDocumentsAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCountAsync(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <remarks>
             Note: when migrating from CountAsync to CountDocumentsAsync the following query operations must be replaced:
@@ -7668,10 +8263,35 @@
             <typeparam name="TDerivedDocument">The type of the derived document.</typeparam>
             <returns>A filtered collection.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOne(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOne(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
             <summary>
             Replaces a single document.
             </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOne(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <param name="session">The session.</param>
             <param name="filter">The filter.</param>
             <param name="replacement">The replacement.</param>
             <param name="options">The options.</param>
@@ -7693,10 +8313,35 @@
             The result of the replacement.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOneAsync(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOneAsync(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
             <summary>
             Replaces a single document.
             </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollection`1.ReplaceOneAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <param name="session">The session.</param>
             <param name="filter">The filter.</param>
             <param name="replacement">The replacement.</param>
             <param name="options">The options.</param>
@@ -7926,6 +8571,16 @@
             <param name="aggregateOptions">The aggregate options</param>
             <returns>A queryable source of documents.</returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollectionExtensions.AsQueryable``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.AggregateOptions)">
+            <summary>
+            Creates a queryable source of documents.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="session">The session.</param>
+            <param name="aggregateOptions">The aggregate options</param>
+            <returns>A queryable source of documents.</returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.Count``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
@@ -7983,6 +8638,7 @@
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.CountDocuments``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCount(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="collection">The collection.</param>
@@ -7996,6 +8652,7 @@
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.CountDocuments``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.IClientSessionHandle,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCount(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="session">The session.</param>
@@ -8010,6 +8667,7 @@
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.CountDocumentsAsync``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCountAsync(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="collection">The collection.</param>
@@ -8023,6 +8681,7 @@
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.CountDocumentsAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.IClientSessionHandle,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},MongoDB.Driver.CountOptions,System.Threading.CancellationToken)">
             <summary>
             Counts the number of documents in the collection.
+            For a fast estimate of the total documents in a collection see <see cref="M:MongoDB.Driver.IMongoCollection`1.EstimatedDocumentCountAsync(MongoDB.Driver.EstimatedDocumentCountOptions,System.Threading.CancellationToken)"/>.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="collection">The collection.</param>
@@ -9048,12 +9707,41 @@
             The returned document.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOne``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOne``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
             <summary>
             Replaces a single document.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="collection">The collection.</param>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOne``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.IClientSessionHandle,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="session">The session.</param>
             <param name="filter">The filter.</param>
             <param name="replacement">The replacement.</param>
             <param name="options">The options.</param>
@@ -9077,12 +9765,41 @@
             The result of the replacement.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOneAsync``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOneAsync``1(MongoDB.Driver.IMongoCollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
             <summary>
             Replaces a single document.
             </summary>
             <typeparam name="TDocument">The type of the document.</typeparam>
             <param name="collection">The collection.</param>
+            <param name="filter">The filter.</param>
+            <param name="replacement">The replacement.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The result of the replacement.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoCollectionExtensions.ReplaceOneAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.IClientSessionHandle,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},``0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <summary>
+            Replaces a single document.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="session">The session.</param>
             <param name="filter">The filter.</param>
             <param name="replacement">The replacement.</param>
             <param name="options">The options.</param>
@@ -9295,6 +10012,92 @@
             <summary>
             Gets the settings.
             </summary>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.Aggregate``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A cursor.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.Aggregate``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            A cursor.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateAsync``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a cursor.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            A Task whose result is a cursor.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateToCollection``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateToCollection``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateToCollectionAsync``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabase.AggregateToCollectionAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Runs an aggregation pipeline.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="session">The session.</param>
+            <param name="pipeline">The pipeline.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
         </member>
         <member name="M:MongoDB.Driver.IMongoDatabase.CreateCollection(System.String,MongoDB.Driver.CreateCollectionOptions,System.Threading.CancellationToken)">
             <summary>
@@ -9670,6 +10473,27 @@
             <summary>
             Extension methods on IMongoDatabase.
             </summary>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabaseExtensions.Aggregate(MongoDB.Driver.IMongoDatabase,MongoDB.Driver.AggregateOptions)">
+            <summary>
+            Begins a fluent aggregation interface.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="options">The options.</param>
+            <returns>
+            A fluent aggregate interface.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.IMongoDatabaseExtensions.Aggregate(MongoDB.Driver.IMongoDatabase,MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.AggregateOptions)">
+            <summary>
+            Begins a fluent aggregation interface.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="session">The session.</param>
+            <param name="options">The options.</param>
+            <returns>
+            A fluent aggregate interface.
+            </returns>
         </member>
         <member name="M:MongoDB.Driver.IMongoDatabaseExtensions.Watch(MongoDB.Driver.IMongoDatabase,MongoDB.Driver.ChangeStreamOptions,System.Threading.CancellationToken)">
             <summary>
@@ -10450,6 +11274,20 @@
             </summary>
             <param name="field">The field.</param>
             <returns>A text index key definition.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IndexKeysDefinitionBuilder`1.Wildcard(MongoDB.Driver.FieldDefinition{`0})">
+            <summary>
+            Creates a wildcard index key definition. The method doesn't expect to specify a wildcard key explicitly.
+            </summary>
+            <param name="field">The wildcard key name. If the wildcard name is empty, the generated key will be `All field paths`, otherwise `A single field path`.</param>
+            <returns>A wildcard index key definition.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.IndexKeysDefinitionBuilder`1.Wildcard(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Creates a wildcard index key definition.
+            </summary>
+            <param name="field">The field expression representing the wildcard key name.</param>
+            <returns>A wildcard index key definition.</returns>
         </member>
         <member name="T:MongoDB.Driver.IndexOptionDefaults">
             <summary>
@@ -12887,9 +13725,29 @@
             Gets or sets the filter.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.ListDatabaseNamesOptions">
+            <summary>
+            Options for a list database names operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ListDatabaseNamesOptions.AuthorizedDatabases">
+            <summary>
+            Gets or sets the AuthorizedDatabases flag.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ListDatabaseNamesOptions.Filter">
+            <summary>
+            Gets or sets the filter.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.ListDatabasesOptions">
             <summary>
             Options for a list databases operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ListDatabasesOptions.AuthorizedDatabases">
+            <summary>
+            Gets or sets the AuthorizedDatabases flag.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.ListDatabasesOptions.Filter">
@@ -12989,6 +13847,14 @@
             <param name="nonAtomic">Whether the server should not lock the database for the duration of the merge.</param>
             <returns>A merge map-reduce output options.</returns>
         </member>
+        <member name="M:MongoDB.Driver.MapReduceOutputOptions.Merge(System.String,System.String)">
+            <summary>
+            A merge map-reduce output options.
+            </summary>
+            <param name="collectionName">The name of the collection.</param>
+            <param name="databaseName">The name of the database.</param>
+            <returns>A merge map-reduce output options.</returns>
+        </member>
         <member name="M:MongoDB.Driver.MapReduceOutputOptions.Reduce(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
             <summary>
             A reduce map-reduce output options.
@@ -12999,6 +13865,14 @@
             <param name="nonAtomic">Whether the server should not lock the database for the duration of the reduce.</param>
             <returns>A reduce map-reduce output options.</returns>
         </member>
+        <member name="M:MongoDB.Driver.MapReduceOutputOptions.Reduce(System.String,System.String)">
+            <summary>
+            A reduce map-reduce output options.
+            </summary>
+            <param name="collectionName">The name of the collection.</param>
+            <param name="databaseName">The name of the database.</param>
+            <returns>A reduce map-reduce output options.</returns>
+        </member>
         <member name="M:MongoDB.Driver.MapReduceOutputOptions.Replace(System.String,System.String,System.Nullable{System.Boolean})">
             <summary>
             A replace map-reduce output options.
@@ -13007,6 +13881,104 @@
             <param name="databaseName">Name of the database.</param>
             <param name="sharded">Whether the output collection should be sharded.</param>
             <returns>A replace map-reduce output options.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.MapReduceOutputOptions.Replace(System.String,System.String)">
+            <summary>
+            A replace map-reduce output options.
+            </summary>
+            <param name="collectionName">The name of the collection.</param>
+            <param name="databaseName">Name of the database.</param>
+            <returns>A replace map-reduce output options.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.MergeStageWhenMatched">
+            <summary>
+            The behavior of $merge is a result document and an existing document in the collection
+            have the same value for the specified on field(s).
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenMatched.Replace">
+            <summary>
+            Replace the existing document in the output collection with the matching results document.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenMatched.KeepExisting">
+            <summary>
+            Keep the existing document in the output collection.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenMatched.Merge">
+            <summary>
+            Merge the matching documents (similar to the $mergeObjects operator).
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenMatched.Fail">
+            <summary>
+            Stop and fail the aggregation. Any changes to the output collection from previous documents are not reverted.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenMatched.Pipeline">
+            <summary>
+            Use an aggregation pipeline to update the document in the collection.
+            </summary>
+        </member>
+        <member name="T:MongoDB.Driver.MergeStageWhenNotMatched">
+            <summary>
+            The behavior of $merge if a result document does not match an existing document in the output collection.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenNotMatched.Insert">
+            <summary>
+            Insert the document into the output collection.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenNotMatched.Discard">
+            <summary>
+            Discard the document; i.e. $merge does not insert the document into the output collection.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.MergeStageWhenNotMatched.Fail">
+            <summary>
+            Stop and fail the aggregation operation. Any changes to the output collection from previous documents are not reverted.
+            </summary>
+        </member>
+        <member name="T:MongoDB.Driver.MergeStageOptions`1">
+            <summary>
+            Options for the $merge aggregation pipeline stage.
+            </summary>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.LetVariables">
+            <summary>
+            Specifies variables accessible for use in the WhenMatchedPipeline.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.OnFieldNames">
+            <summary>
+            Field or fields that act as a unique identifier for a document. The identifier determines if a results
+            document matches an already existing document in the output collection.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.OutputSerializer">
+            <summary>
+            The output serializer.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.WhenMatched">
+            <summary>
+            The behavior of $merge if a result document and an existing document in the collectoin have the
+            same value for the specified on field(s).
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.WhenMatchedPipeline">
+            <summary>
+            An aggregation pipeline to update the document in the collection.
+            Used when WhenMatched is Pipeline.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MergeStageOptions`1.WhenNotMatched">
+            <summary>
+            The behavior of $merge if a result document does not match an existing document in the output collection.
+            </summary>
         </member>
         <member name="T:MongoDB.Driver.MongoBulkWriteException">
             <summary>
@@ -13149,13 +14121,25 @@
         <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNames(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNames(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNamesAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNamesAsync(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoClient.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoClient.ListDatabases(System.Threading.CancellationToken)">
@@ -13250,13 +14234,25 @@
         <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNames(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNames(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNames(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNamesAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNamesAsync(MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoClientBase.ListDatabaseNamesAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.ListDatabaseNamesOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoClientBase.ListDatabases(System.Threading.CancellationToken)">
@@ -13320,9 +14316,25 @@
             Creates a new instance of MongoClientSettings. Usually you would use a connection string instead.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.AllowInsecureTls">
+            <summary>
+            Gets or sets whether to relax TLS constraints as much as possible.
+            Setting this variable to true will also set SslSettings.CheckCertificateRevocation to false.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoClientSettings.ApplicationName">
             <summary>
             Gets or sets the application name.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.AutoEncryptionOptions">
+            <summary>
+            Gets or sets the auto encryption options.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.Compressors">
+            <summary>
+            Gets or sets the compressors.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoClientSettings.ClusterConfigurator">
@@ -13420,9 +14432,22 @@
             Gets or sets the name of the replica set.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.RetryReads">
+            <summary>
+            Gets or sets whether to retry reads.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoClientSettings.RetryWrites">
             <summary>
             Gets or sets whether to retry writes.
+            </summary>
+            <value>
+            The default value is <c>true</c>.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.Scheme">
+            <summary>
+            Gets or sets the connection string scheme.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoClientSettings.SdamLogFilename">
@@ -13458,6 +14483,11 @@
         <member name="P:MongoDB.Driver.MongoClientSettings.UseSsl">
             <summary>
             Gets or sets a value indicating whether to use SSL.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoClientSettings.UseTls">
+            <summary>
+            Gets or sets a value indicating whether to use TLS.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoClientSettings.VerifySslCertificate">
@@ -13598,6 +14628,18 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.AggregateAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.AggregateToCollection``1(MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.AggregateToCollection``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.AggregateToCollectionAsync``1(MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.AggregateToCollectionAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{`0,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.BulkWrite(System.Collections.Generic.IEnumerable{MongoDB.Driver.WriteModel{`0}},MongoDB.Driver.BulkWriteOptions,System.Threading.CancellationToken)">
@@ -13780,13 +14822,25 @@
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.OfType``1">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOne(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOne(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOne(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOne(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.FilterDefinition{`0},`0,MongoDB.Driver.UpdateOptions,System.Threading.CancellationToken)">
@@ -14184,10 +15238,7 @@
             </returns>
         </member>
         <member name="M:MongoDB.Driver.MongoCredentialStore.GetEnumerator">
-            <summary>
-            Gets the enumerator.
-            </summary>
-            <returns></returns>
+            <inheritdoc/>
         </member>
         <member name="M:MongoDB.Driver.MongoCredentialStore.GetHashCode">
             <summary>
@@ -14221,6 +15272,30 @@
             <inheritdoc />
         </member>
         <member name="P:MongoDB.Driver.MongoDatabaseBase.Settings">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.Aggregate``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.Aggregate``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateAsync``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateToCollection``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateToCollection``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateToCollectionAsync``1(MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.MongoDatabaseBase.AggregateToCollectionAsync``1(MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.PipelineDefinition{MongoDB.Driver.NoPipelineInput,``0},MongoDB.Driver.AggregateOptions,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.MongoDatabaseBase.CreateCollection(System.String,MongoDB.Driver.CreateCollectionOptions,System.Threading.CancellationToken)">
@@ -14659,6 +15734,16 @@
             Gets or sets the Write Encoding.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.MongoExternalAwsIdentity">
+            <summary>
+            Represents an identity defined by AWS external credentials.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.MongoExternalAwsIdentity.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.MongoExternalAwsIdentity" /> class.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.MongoExternalIdentity">
             <summary>
             Represents an identity defined outside of mongodb.
@@ -15016,6 +16101,11 @@
             </summary>
             <param name="url">The URL containing the settings.</param>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrl.AllowInsecureTls">
+            <summary>
+            Gets whether to relax TLS constraints as much as possible.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrl.ApplicationName">
             <summary>
             Gets the application name.
@@ -15034,6 +16124,11 @@
         <member name="P:MongoDB.Driver.MongoUrl.AuthenticationSource">
             <summary>
             Gets the authentication source.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoUrl.Compressors">
+            <summary>
+            Gets the compressors.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrl.ComputedWaitQueueSize">
@@ -15086,6 +16181,11 @@
             Gets a value indicating whether to use IPv6.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrl.IsResolved">
+            <summary>
+            Gets a value indicating whether a connection string with scheme MongoDBPlusSrv has been resolved.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrl.Journal">
             <summary>
             Gets the Journal component of the write concern.
@@ -15136,6 +16236,11 @@
             Gets the name of the replica set.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrl.RetryReads">
+            <summary>
+            Gets whether reads will be retried.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrl.RetryWrites">
             <summary>
             Gets whether writes will be retried.
@@ -15143,7 +16248,7 @@
         </member>
         <member name="P:MongoDB.Driver.MongoUrl.Scheme">
             <summary>
-            Gets the scheme.
+            Gets the connection string scheme.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrl.Server">
@@ -15166,6 +16271,11 @@
             Gets the socket timeout.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrl.TlsDisableCertificateRevocationCheck">
+            <summary>
+            Gets whether or not to disable checking certificate revocation status during the TLS handshake.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrl.Url">
             <summary>
             Gets the URL (in canonical form).
@@ -15179,6 +16289,11 @@
         <member name="P:MongoDB.Driver.MongoUrl.UseSsl">
             <summary>
             Gets a value indicating whether to use SSL.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoUrl.UseTls">
+            <summary>
+            Gets a value indicating whether to use TLS.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrl.VerifySslCertificate">
@@ -15273,11 +16388,21 @@
             <param name="enabledDefault">The default enabled value.</param>
             <returns>A WriteConcern.</returns>
         </member>
-        <member name="M:MongoDB.Driver.MongoUrl.Resolve">
+        <member name="M:MongoDB.Driver.MongoUrl.Resolve(System.Threading.CancellationToken)">
             <summary>
             Resolves a connection string. If the connection string indicates more information is available
             in the DNS system, it will acquire that information as well.
             </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A resolved MongoURL.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.MongoUrl.Resolve(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Resolves a connection string. If the connection string indicates more information is available
+            in the DNS system, it will acquire that information as well.
+            </summary>
+            <param name="resolveHosts">Whether to resolve hosts.</param>
+            <param name="cancellationToken">The cancellation token.</param>
             <returns>A resolved MongoURL.</returns>
         </member>
         <member name="M:MongoDB.Driver.MongoUrl.ResolveAsync(System.Threading.CancellationToken)">
@@ -15285,6 +16410,15 @@
             Resolves a connection string. If the connection string indicates more information is available
             in the DNS system, it will acquire that information as well.
             </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A resolved MongoURL.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.MongoUrl.ResolveAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Resolves a connection string. If the connection string indicates more information is available
+            in the DNS system, it will acquire that information as well.
+            </summary>
+            <param name="resolveHosts">Whether to resolve hosts.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>A resolved MongoURL.</returns>
         </member>
@@ -15310,6 +16444,11 @@
             </summary>
             <param name="url">The initial settings.</param>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrlBuilder.AllowInsecureTls">
+            <summary>
+            Gets or sets whether to relax TLS constraints as much as possible.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.ApplicationName">
             <summary>
             Gets or sets the application name.
@@ -15328,6 +16467,11 @@
         <member name="P:MongoDB.Driver.MongoUrlBuilder.AuthenticationSource">
             <summary>
             Gets or sets the authentication source.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoUrlBuilder.Compressors">
+            <summary>
+            Gets or sets the compressors.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.ComputedWaitQueueSize">
@@ -15425,6 +16569,11 @@
             Gets or sets the name of the replica set.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrlBuilder.RetryReads">
+            <summary>
+            Gets or sets whether to retry reads.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.RetryWrites">
             <summary>
             Gets or sets whether to retry writes.
@@ -15432,7 +16581,7 @@
         </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.Scheme">
             <summary>
-            The scheme used to connect with mongodb.
+            The connection string scheme.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.Server">
@@ -15455,6 +16604,11 @@
             Gets or sets the socket timeout.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.MongoUrlBuilder.TlsDisableCertificateRevocationCheck">
+            <summary>
+            Gets or sets whether to disable certificate revocation checking during the TLS handshake.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.Username">
             <summary>
             Gets or sets the username.
@@ -15463,6 +16617,11 @@
         <member name="P:MongoDB.Driver.MongoUrlBuilder.UseSsl">
             <summary>
             Gets or sets a value indicating whether to use SSL.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.MongoUrlBuilder.UseTls">
+            <summary>
+            Gets or sets a value indicating whether to use TLS.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.MongoUrlBuilder.VerifySslCertificate">
@@ -15546,14 +16705,6 @@
             <param name="value">The string to camel case.</param>
             <returns>The camel cased string.</returns>
         </member>
-        <member name="M:MongoDB.Driver.MongoUtils.ToInsecureString(System.Security.SecureString)">
-            <summary>
-            Should only be used when the safety of the data cannot be guaranteed.  For instance,
-            when the secure string is a password used in a plain text protocol.
-            </summary>
-            <param name="secureString">The secure string.</param>
-            <returns>The CLR string.</returns>
-        </member>
         <member name="T:MongoDB.Driver.MongoWriteException">
             <summary>
             Represents a write exception.
@@ -15602,6 +16753,31 @@
             Initializes a new instance of the <see cref="T:MongoDB.Driver.MongoExternalIdentity" /> class.
             </summary>
             <param name="username">The username.</param>
+        </member>
+        <member name="T:MongoDB.Driver.NoPipelineInput">
+            <summary>
+            Represents the void input data type to a pipeline with no input, such as a database aggregation. No actual instances of this type can be created.
+            </summary>
+        </member>
+        <member name="T:MongoDB.Driver.NoPipelineInputSerializer">
+            <summary>
+            The serializer for NoPipelineInput.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.NoPipelineInputSerializer.Instance">
+            <summary>
+             Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="P:MongoDB.Driver.NoPipelineInputSerializer.ValueType">
+            <inheritdoc/>
+        </member>
+        <member name="M:MongoDB.Driver.NoPipelineInputSerializer.Deserialize(MongoDB.Bson.Serialization.BsonDeserializationContext,MongoDB.Bson.Serialization.BsonDeserializationArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MongoDB.Driver.NoPipelineInputSerializer.Serialize(MongoDB.Bson.Serialization.BsonSerializationContext,MongoDB.Bson.Serialization.BsonSerializationArgs,MongoDB.Driver.NoPipelineInput)">
+            <inheritdoc/>
         </member>
         <member name="T:MongoDB.Driver.PasswordEvidence">
             <summary>
@@ -16370,6 +17546,21 @@
             </returns>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
+        <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.Merge``3(MongoDB.Driver.PipelineDefinition{``0,``1},MongoDB.Driver.IMongoCollection{``2},MongoDB.Driver.MergeStageOptions{``2})">
+            <summary>
+            Appends a $merge stage to the pipeline.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TIntermediate">The type of the intermediate documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="outputCollection">The output collection.</param>
+            <param name="mergeOptions">The merge options.</param>
+            <returns>
+            A new pipeline with an additional stage.
+            </returns>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
         <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.Out``2(MongoDB.Driver.PipelineDefinition{``0,``1},MongoDB.Driver.IMongoCollection{``1})">
             <summary>
             Appends a $out stage to the pipeline.
@@ -16450,6 +17641,33 @@
             The fluent aggregate interface.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.ReplaceWith``3(MongoDB.Driver.PipelineDefinition{``0,``1},MongoDB.Driver.AggregateExpressionDefinition{``1,``2})">
+            <summary>
+            Appends a $replaceWith stage to the pipeline.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TIntermediate">The type of the intermediate documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="newRoot">The new root.</param>
+            <returns>
+            A new pipeline with an additional stage.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.ReplaceWith``3(MongoDB.Driver.PipelineDefinition{``0,``1},System.Linq.Expressions.Expression{System.Func{``1,``2}},MongoDB.Driver.ExpressionTranslationOptions)">
+            <summary>
+            Appends a $replaceWith stage to the pipeline.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TIntermediate">The type of the intermediate documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="newRoot">The new root.</param>
+            <param name="translationOptions">The translation options.</param>
+            <returns>
+            The fluent aggregate interface.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.Skip``2(MongoDB.Driver.PipelineDefinition{``0,``1},System.Int32)">
             <summary>
             Appends a $skip stage to the pipeline.
@@ -16500,6 +17718,18 @@
             <returns>
             The fluent aggregate interface.
             </returns>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.UnionWith``3(MongoDB.Driver.PipelineDefinition{``0,``2},MongoDB.Driver.IMongoCollection{``1},MongoDB.Driver.PipelineDefinition{``1,``2})">
+            <summary>
+            Appends a $unionWith stage to the pipeline.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TWith">The type of the with collection documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="pipeline">The pipeline.</param>
+            <param name="withCollection">The with collection.</param>
+            <param name="withPipeline">The with pipeline.</param>
+            <returns>The stage.</returns>
         </member>
         <member name="M:MongoDB.Driver.PipelineDefinitionBuilder.Unwind``3(MongoDB.Driver.PipelineDefinition{``0,``1},MongoDB.Driver.FieldDefinition{``1},MongoDB.Driver.AggregateUnwindOptions{``2})">
             <summary>
@@ -17219,6 +18449,16 @@
             <param name="filter">The filter.</param>
             <returns>The stage.</returns>
         </member>
+        <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.Merge``2(MongoDB.Driver.IMongoCollection{``1},MongoDB.Driver.MergeStageOptions{``1})">
+            <summary>
+            Creates a $merge stage.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="outputCollection">The output collection.</param>
+            <param name="mergeOptions">The merge options.</param>
+            <returns>The stage.</returns>
+        </member>
         <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.OfType``2(MongoDB.Bson.Serialization.IBsonSerializer{``1})">
             <summary>
             Create a $match stage that select documents of a sub type.
@@ -17282,6 +18522,25 @@
             <param name="translationOptions">The translation options.</param>
             <returns>The stage.</returns>
         </member>
+        <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.ReplaceWith``2(MongoDB.Driver.AggregateExpressionDefinition{``0,``1})">
+            <summary>
+            Creates a $replaceWith stage.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="newRoot">The new root.</param>
+            <returns>The stage.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.ReplaceWith``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},MongoDB.Driver.ExpressionTranslationOptions)">
+            <summary>
+            Creates a $replaceWith stage.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TOutput">The type of the output documents.</typeparam>
+            <param name="newRoot">The new root.</param>
+            <param name="translationOptions">The translation options.</param>
+            <returns>The stage.</returns>
+        </member>
         <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.Skip``1(System.Int32)">
             <summary>
             Creates a $skip stage.
@@ -17315,6 +18574,16 @@
             <typeparam name="TValue">The type of the values.</typeparam>
             <param name="value">The value.</param>
             <param name="translationOptions">The translation options.</param>
+            <returns>The stage.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.UnionWith``2(MongoDB.Driver.IMongoCollection{``1},MongoDB.Driver.PipelineDefinition{``1,``0})">
+            <summary>
+            Creates a $unionWith stage.
+            </summary>
+            <typeparam name="TInput">The type of the input documents.</typeparam>
+            <typeparam name="TWith">The type of the with collection documents.</typeparam>
+            <param name="withCollection">The with collection.</param>
+            <param name="withPipeline">The with pipeline.</param>
             <returns>The stage.</returns>
         </member>
         <member name="M:MongoDB.Driver.PipelineStageDefinitionBuilder.Unwind``2(MongoDB.Driver.FieldDefinition{``0},MongoDB.Driver.AggregateUnwindOptions{``1})">
@@ -17726,6 +18995,18 @@
             A combined projection.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.ProjectionDefinitionExtensions.Meta``1(MongoDB.Driver.ProjectionDefinition{``0},System.String,System.String)">
+            <summary>
+            Combines an existing projection with a meta projection.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+            <param name="projection">The projection.</param>
+            <param name="field">The field.</param>
+            <param name="metaFieldName">The meta field name.</param>
+            <returns>
+            A combined projection.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.ProjectionDefinitionExtensions.MetaTextScore``1(MongoDB.Driver.ProjectionDefinition{``0},System.String)">
             <summary>
             Combines an existing projection with a text score projection.
@@ -17874,6 +19155,16 @@
             An inclusion projection.
             </returns>
         </member>
+        <member name="M:MongoDB.Driver.ProjectionDefinitionBuilder`1.Meta(System.String,System.String)">
+            <summary>
+            Creates a meta projection.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="metaFieldName">The meta field name.</param>
+            <returns>
+            A text score projection.
+            </returns>
+        </member>
         <member name="M:MongoDB.Driver.ProjectionDefinitionBuilder`1.MetaTextScore(System.String)">
             <summary>
             Creates a text score projection.
@@ -17936,6 +19227,11 @@
         <member name="P:MongoDB.Driver.ReplaceOneModel`1.Filter">
             <summary>
             Gets the filter.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ReplaceOneModel`1.Hint">
+            <summary>
+            Gets or sets the hint.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.ReplaceOneModel`1.IsUpsert">
@@ -18043,6 +19339,38 @@
         </member>
         <member name="P:MongoDB.Driver.ReplaceOneResult.Unacknowledged.UpsertedId">
             <inheritdoc/>
+        </member>
+        <member name="T:MongoDB.Driver.ReplaceOptions">
+            <summary>
+            Options for replacing a single document.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.ReplaceOptions.From(MongoDB.Driver.UpdateOptions)">
+            <summary>
+            Creates a new ReplaceOptions from an UpdateOptions.
+            </summary>
+            <param name="updateOptions">The update options.</param>
+            <returns>A ReplaceOptions.</returns>
+        </member>
+        <member name="P:MongoDB.Driver.ReplaceOptions.BypassDocumentValidation">
+            <summary>
+            Gets or sets a value indicating whether to bypass document validation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ReplaceOptions.Collation">
+            <summary>
+            Gets or sets the collation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ReplaceOptions.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.ReplaceOptions.IsUpsert">
+            <summary>
+            Gets or sets a value indicating whether to insert the document if it doesn't already exist.
+            </summary>
         </member>
         <member name="T:MongoDB.Driver.ReturnDocument">
             <summary>
@@ -18453,11 +19781,11 @@
         </member>
         <member name="M:MongoDB.Driver.UpdateDefinition`1.Render(MongoDB.Bson.Serialization.IBsonSerializer{`0},MongoDB.Bson.Serialization.IBsonSerializerRegistry)">
             <summary>
-            Renders the update to a <see cref="T:MongoDB.Bson.BsonDocument"/>.
+            Renders the update to a <see cref="T:MongoDB.Bson.BsonValue"/>.
             </summary>
             <param name="documentSerializer">The document serializer.</param>
             <param name="serializerRegistry">The serializer registry.</param>
-            <returns>A <see cref="T:MongoDB.Bson.BsonDocument"/>.</returns>
+            <returns>A <see cref="T:MongoDB.Bson.BsonValue"/>.</returns>
         </member>
         <member name="M:MongoDB.Driver.UpdateDefinition`1.op_Implicit(MongoDB.Bson.BsonDocument)~MongoDB.Driver.UpdateDefinition{`0}">
             <summary>
@@ -18475,6 +19803,48 @@
             <param name="json">The JSON string.</param>
             <returns>
             The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.UpdateDefinition`1.op_Implicit(MongoDB.Driver.PipelineDefinition{`0,`0})~MongoDB.Driver.UpdateDefinition{`0}">
+            <summary>
+            Performs an implicit conversion from <see cref="T:MongoDB.Driver.PipelineDefinition`2"/> to <see cref="T:MongoDB.Driver.UpdateDefinition`1"/>.
+            </summary>
+            <param name="pipeline">The pipeline.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="T:MongoDB.Driver.PipelineUpdateDefinition`1">
+            <summary>
+            A <see cref="T:MongoDB.Driver.PipelineDefinition`2"/> based update definition.
+            </summary>
+            <typeparam name="TDocument">The type of the document.</typeparam>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineUpdateDefinition`1.#ctor(MongoDB.Driver.PipelineDefinition{`0,`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.PipelineUpdateDefinition`1"/> class.
+            </summary>
+            <param name="pipeline">The pipeline.</param>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineUpdateDefinition`1.Render(MongoDB.Bson.Serialization.IBsonSerializer{`0},MongoDB.Bson.Serialization.IBsonSerializerRegistry)">
+            <summary>
+            Renders the update to a <see cref="T:MongoDB.Bson.BsonValue"/> that represents <see cref="T:MongoDB.Bson.BsonArray"/>.
+            </summary>
+            <param name="documentSerializer">The document serializer.</param>
+            <param name="serializerRegistry">The serializer registry.</param>
+            <returns>A <see cref="T:MongoDB.Bson.BsonValue"/>.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.PipelineUpdateDefinition`1.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.PipelineUpdateDefinition`1.ToString(MongoDB.Bson.Serialization.IBsonSerializer{`0},MongoDB.Bson.Serialization.IBsonSerializerRegistry)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="inputSerializer">The input serializer.</param>
+            <param name="serializerRegistry">The serializer registry.</param>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
             </returns>
         </member>
         <member name="T:MongoDB.Driver.BsonDocumentUpdateDefinition`1">
@@ -19304,6 +20674,13 @@
             <param name="value">The value.</param>
             <returns>A multiply operator.</returns>
         </member>
+        <member name="M:MongoDB.Driver.UpdateDefinitionBuilder`1.Pipeline(MongoDB.Driver.PipelineDefinition{`0,`0})">
+            <summary>
+            Creates an update pipeline.
+            </summary>
+            <param name="pipeline">The pipeline.</param>
+            <returns>An update pipeline.</returns>
+        </member>
         <member name="M:MongoDB.Driver.UpdateDefinitionBuilder`1.PopFirst(MongoDB.Driver.FieldDefinition{`0})">
             <summary>
             Creates a pop operator.
@@ -19534,6 +20911,11 @@
             Gets the filter.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.UpdateManyModel`1.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.UpdateManyModel`1.IsUpsert">
             <summary>
             Gets or sets a value indicating whether to insert the document if it doesn't already exist.
@@ -19546,6 +20928,9 @@
         </member>
         <member name="P:MongoDB.Driver.UpdateManyModel`1.ModelType">
             <inheritdoc/>
+        </member>
+        <member name="M:MongoDB.Driver.UpdateManyModel`1.ThrowIfNotValid">
+            <inheritdoc />
         </member>
         <member name="T:MongoDB.Driver.UpdateOneModel`1">
             <summary>
@@ -19578,6 +20963,11 @@
             Gets the filter.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.UpdateOneModel`1.Hint">
+            <summary>
+            Gets or sets the hint.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.UpdateOneModel`1.IsUpsert">
             <summary>
             Gets or sets a value indicating whether to insert the document if it doesn't already exist.
@@ -19590,6 +20980,9 @@
         </member>
         <member name="P:MongoDB.Driver.UpdateOneModel`1.ModelType">
             <inheritdoc/>
+        </member>
+        <member name="M:MongoDB.Driver.UpdateOneModel`1.ThrowIfNotValid">
+            <inheritdoc />
         </member>
         <member name="T:MongoDB.Driver.UpdateOptions">
             <summary>
@@ -19612,6 +21005,11 @@
         <member name="P:MongoDB.Driver.UpdateOptions.Collation">
             <summary>
             Gets or sets the collation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.UpdateOptions.Hint">
+            <summary>
+            Gets or sets the hint.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.UpdateOptions.IsUpsert">
@@ -19774,6 +21172,11 @@
             Gets the type of the model.
             </summary>
         </member>
+        <member name="M:MongoDB.Driver.WriteModel`1.ThrowIfNotValid">
+            <summary>
+            Validate model.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.WriteModelType">
             <summary>
             The type of a write model.
@@ -19808,6 +21211,23 @@
             <summary>
             A model to update many documents.
             </summary>
+        </member>
+        <member name="M:MongoDB.Shared.SecureStringHelper.ToInsecureString(System.Security.SecureString)">
+            <summary>
+            Should only be used when the safety of the data cannot be guaranteed.
+            For instance, when the secure string is a password used in a plain text protocol.
+            </summary>
+            <param name="secureString">The secure string.</param>
+            <returns>The CLR string.</returns>
+        </member>
+        <member name="M:MongoDB.Shared.SecureStringHelper.ToSecureString(System.String)">
+            <summary>
+            Converts <see cref="T:System.String"/> to <see cref="T:System.Security.SecureString"/>.
+            </summary>
+            <param name="value">The string value.</param>
+            <returns>
+            The secure string.
+            </returns>
         </member>
     </members>
 </doc>

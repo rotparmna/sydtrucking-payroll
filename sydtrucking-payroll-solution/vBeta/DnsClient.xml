@@ -9,13 +9,6 @@
             As defined in https://tools.ietf.org/html/rfc1035#section-5.1 except '()' or '@' or '.'
             </summary>
         </member>
-        <member name="M:DnsClient.DnsDatagramReader.ReadIPAddress">
-            <summary>
-            Reads an IP address from the next 4 bytes.
-            </summary>
-            <returns>The <see cref="T:System.Net.IPAddress"/>.</returns>
-            <exception cref="T:System.IndexOutOfRangeException">If there are no 4 bytes to read.</exception>
-        </member>
         <member name="T:DnsClient.Protocol.DnsHeaderFlag">
             <summary>
             The flags of the header's second 16bit value
@@ -23,7 +16,7 @@
         </member>
         <member name="T:DnsClient.Protocol.AaaaRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending an IPv6 <see cref="T:System.Net.IPAddress"/>.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing an IPv6 <see cref="T:System.Net.IPAddress"/>.
             <para>
             A 128 bit IPv6 address is encoded in the data portion of an AAAA
             resource record in network byte order(high-order byte first).
@@ -110,7 +103,7 @@
         </member>
         <member name="T:DnsClient.Protocol.ARecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending an IPv4 <see cref="T:System.Net.IPAddress"/>.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing an IPv4 <see cref="T:System.Net.IPAddress"/>.
             Hosts that have multiple Internet addresses will have multiple A records.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
@@ -166,7 +159,7 @@
         </member>
         <member name="T:DnsClient.Protocol.CNameRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> repesenting the canonical name for an alias.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing the canonical name for an alias.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.1">RFC 1035</seealso>
         </member>
@@ -206,7 +199,7 @@
             <summary>
             Same as <c>ToString</c> but offsets the <see cref="P:DnsClient.Protocol.ResourceRecordInfo.DomainName"/>
             by <paramref name="offset"/>.
-            Set the offset to -32 for example to make it print nicely in consols.
+            Set the offset to -32 for example to make it print nicely in consoles.
             </summary>
             <param name="offset">The offset.</param>
             <returns>A string representing this instance.</returns>
@@ -277,7 +270,7 @@
         </member>
         <member name="T:DnsClient.Protocol.EmptyRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> not representing any specifc resource record.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> not representing any specific resource record.
             Used if unsupported <see cref="T:DnsClient.Protocol.ResourceRecordType"/>s are found in the result.
             </summary>
             <seealso cref="T:DnsClient.Protocol.DnsResourceRecord" />
@@ -301,7 +294,7 @@
             Gets a <c>string</c> which specifies the CPU type.
             </summary>
             <value>
-            The cpu.
+            The CPU.
             </value>
         </member>
         <member name="P:DnsClient.Protocol.HInfoRecord.OS">
@@ -309,7 +302,7 @@
             Gets a <c>string</c> which specifies the operating system type.
             </summary>
             <value>
-            The os.
+            The OS.
             </value>
         </member>
         <member name="M:DnsClient.Protocol.HInfoRecord.#ctor(DnsClient.Protocol.ResourceRecordInfo,System.String,System.String)">
@@ -317,13 +310,13 @@
             Initializes a new instance of the <see cref="T:DnsClient.Protocol.HInfoRecord"/> class.
             </summary>
             <param name="info">The information.</param>
-            <param name="cpu">The cpu.</param>
-            <param name="os">The os.</param>
+            <param name="cpu">The CPU.</param>
+            <param name="os">The OS.</param>
             <exception cref="T:System.ArgumentNullException">If <paramref name="info"/> is null.</exception>
         </member>
         <member name="T:DnsClient.Protocol.MbRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a domain name which specifies a host which has the specified mailbox.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a domain name which specifies a host which has the specified mailbox.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.3">RFC 1035</seealso>
         </member>
@@ -345,13 +338,13 @@
         </member>
         <member name="T:DnsClient.Protocol.MgRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a domain name which specifies a mailbox which is a member of the mail group specified by the domain name.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a domain name which specifies a mailbox which is a member of the mail group specified by the domain name.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.6">RFC 1035</seealso>
         </member>
         <member name="P:DnsClient.Protocol.MgRecord.MgName">
             <summary>
-            Gets a domain name which specifies a mailbox which is a member of the mail group specified by the domain nam.
+            Gets a domain name which specifies a mailbox which is a member of the mail group specified by the domain name.
             </summary>
             <value>
             The domain name.
@@ -367,7 +360,7 @@
         </member>
         <member name="T:DnsClient.Protocol.MInfoRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending mailbox or mail list information.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing mailbox or mail list information.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.11">RFC 1035</seealso>
         </member>
@@ -398,7 +391,7 @@
         </member>
         <member name="T:DnsClient.Protocol.MrRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a mailbox rename domain name.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a mailbox rename domain name.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.8">RFC 1035</seealso>
         </member>
@@ -420,7 +413,7 @@
         </member>
         <member name="T:DnsClient.Protocol.MxRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a mail exchange.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a mail exchange.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.9">RFC 1035</seealso>
             <seealso href="https://tools.ietf.org/html/rfc974">RFC 974</seealso>
@@ -448,7 +441,7 @@
         </member>
         <member name="T:DnsClient.Protocol.NsRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending an authoritative name server.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing an authoritative name server.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.11">RFC 1035</seealso>
         </member>
@@ -497,13 +490,12 @@
         </member>
         <member name="T:DnsClient.Protocol.Options.OptRecord">
             <summary>
-            A DNS resource record represending an IP address.
-            Hosts that have multiple Internet addresses will have multiple A records.
+            A options resource record.
             </summary>
         </member>
         <member name="T:DnsClient.Protocol.PtrRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a pointer. These RRs are used
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a pointer. These RRs are used
             in special domains to point to some other location in the domain space.
             </summary>
             <seealso cref="T:DnsClient.Protocol.DnsResourceRecord" />
@@ -712,7 +704,7 @@
         </member>
         <member name="T:DnsClient.Protocol.RpRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a responsible person.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a responsible person.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1183#section-2.2">RFC 1183</seealso>
         </member>
@@ -745,7 +737,7 @@
         </member>
         <member name="T:DnsClient.Protocol.SoaRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a SOA (Start Of Authority) record.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a SOA (Start Of Authority) record.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.13">RFC 1035</seealso>
         </member>
@@ -773,7 +765,7 @@
             Gets the domain name of the name server that was the original or primary source of data for this zone.
             </summary>
             <value>
-            The doman name.
+            The domain name.
             </value>
         </member>
         <member name="P:DnsClient.Protocol.SoaRecord.Refresh">
@@ -827,7 +819,7 @@
         </member>
         <member name="T:DnsClient.Protocol.SrvRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a location of the server(s) for a specific protocol and domain.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a location of the server(s) for a specific protocol and domain.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc2782">RFC 2782</seealso>
         </member>
@@ -869,14 +861,14 @@
             </summary>
             <param name="info">The information.</param>
             <param name="priority">The priority.</param>
-            <param name="weigth">The weigth.</param>
+            <param name="weight">The weight.</param>
             <param name="port">The port.</param>
             <param name="target">The target.</param>
             <exception cref="T:System.ArgumentNullException">If <paramref name="info"/> or <paramref name="target"/> is null.</exception>
         </member>
         <member name="T:DnsClient.Protocol.SshfpRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending an SSH fingerprint
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing an SSH fingerprint
             <para>
             SSHFP RRs are used to hold SSH fingerprints. Upon connecting to a
             host an SSH client may choose to query for this to check the fingerprint(s)
@@ -932,7 +924,7 @@
         </member>
         <member name="F:DnsClient.Protocol.SshfpAlgorithm.ECDSA">
             <summary>
-            Eliptic Curve DSA
+            Elliptic Curve DSA
             </summary>
         </member>
         <member name="F:DnsClient.Protocol.SshfpAlgorithm.Ed25519">
@@ -962,7 +954,7 @@
         </member>
         <member name="T:DnsClient.Protocol.TxtRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a text resource.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a text resource.
             <para>
             TXT RRs are used to hold descriptive text. The semantics of the text
             depends on the domain where it is found.
@@ -995,9 +987,31 @@
             If <paramref name="info"/> or <paramref name="utf8Values"/> or <paramref name="values"/> is null.
             </exception>
         </member>
+        <member name="T:DnsClient.Protocol.UnknownRecord">
+            <summary>
+            Experimental RR, not sure if the implementation is actually correct either (not tested).
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035#section-3.3.10">RFC 1035</seealso>
+        </member>
+        <member name="P:DnsClient.Protocol.UnknownRecord.Data">
+            <summary>
+            Gets any data stored in this record.
+            </summary>
+            <value>
+            The byte array.
+            </value>
+        </member>
+        <member name="M:DnsClient.Protocol.UnknownRecord.#ctor(DnsClient.Protocol.ResourceRecordInfo,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DnsClient.Protocol.NullRecord" /> class.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="data">The raw data.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="info"/> or <paramref name="data"/> is null.</exception>
+        </member>
         <member name="T:DnsClient.Protocol.UriRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a Uniform Resource Identifier (URI) resource.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a Uniform Resource Identifier (URI) resource.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc7553">RFC 7553</seealso>
         </member>
@@ -1017,12 +1031,12 @@
             The priority.
             </value>
         </member>
-        <member name="P:DnsClient.Protocol.UriRecord.Weigth">
+        <member name="P:DnsClient.Protocol.UriRecord.Weight">
             <summary>
-            Gets or sets the weigth.
+            Gets or sets the weight.
             </summary>
             <value>
-            The weigth.
+            The weight.
             </value>
         </member>
         <member name="M:DnsClient.Protocol.UriRecord.#ctor(DnsClient.Protocol.ResourceRecordInfo,System.UInt16,System.UInt16,System.String)">
@@ -1037,7 +1051,7 @@
         </member>
         <member name="T:DnsClient.Protocol.WksRecord">
             <summary>
-            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> represending a Well Known Service description.
+            A <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> representing a Well Known Service description.
             </summary>
             <remarks>
             Instead of describing the supported protocols in RFCs, the list is now published on http://www.iana.org/.
@@ -1243,10 +1257,10 @@
             <returns>
             An <see cref="T:System.Net.IPHostEntry"/> instance that contains address information about the host specified in <paramref name="hostNameOrAddress"/>.
             In case the <paramref name="hostNameOrAddress"/> could not be resolved to a domain name, this method returns <c>null</c>,
-            unless <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
+            unless <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="hostNameOrAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.GetHostEntryAsync(DnsClient.IDnsQuery,System.String)">
             <summary>
@@ -1302,10 +1316,10 @@
             <returns>
             An <see cref="T:System.Net.IPHostEntry"/> instance that contains address information about the host specified in <paramref name="hostNameOrAddress"/>.
             In case the <paramref name="hostNameOrAddress"/> could not be resolved to a domain name, this method returns <c>null</c>,
-            unless <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
+            unless <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="hostNameOrAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.GetHostEntry(DnsClient.IDnsQuery,System.Net.IPAddress)">
             <summary>
@@ -1361,10 +1375,10 @@
             <returns>
             An <see cref="T:System.Net.IPHostEntry"/> instance that contains address information about the host specified in <paramref name="address"/>.
             In case the <paramref name="address"/> could not be resolved to a domain name, this method returns <c>null</c>,
-            unless <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
+            unless <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="address"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.GetHostEntryAsync(DnsClient.IDnsQuery,System.Net.IPAddress)">
             <summary>
@@ -1420,10 +1434,10 @@
             <returns>
             An <see cref="T:System.Net.IPHostEntry"/> instance that contains address information about the host specified in <paramref name="address"/>.
             In case the <paramref name="address"/> could not be resolved to a domain name, this method returns <c>null</c>,
-            unless <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
+            unless <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true, then it might throw a <see cref="T:DnsClient.DnsResponseException"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="address"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">In case <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to true and a DNS error occurs.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.GetHostName(DnsClient.IDnsQuery,System.Net.IPAddress)">
             <summary>
@@ -1433,10 +1447,10 @@
             <param name="address">The <see cref="T:System.Net.IPAddress"/> to resolve.</param>
             <returns>
             The hostname if the reverse lookup was successful or <c>null</c>, in case the host was not found.
-            If <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to <c>true</c>, this method will throw an <see cref="T:DnsClient.DnsResponseException"/> instead of returning <c>null</c>!
+            If <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to <c>true</c>, this method will throw an <see cref="T:DnsClient.DnsResponseException"/> instead of returning <c>null</c>!
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="address"/>is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">If no host has been found and <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is <c>true</c>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">If no host has been found and <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is <c>true</c>.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.GetHostNameAsync(DnsClient.IDnsQuery,System.Net.IPAddress)">
             <summary>
@@ -1446,10 +1460,10 @@
             <param name="address">The <see cref="T:System.Net.IPAddress"/> to resolve.</param>
             <returns>
             The hostname if the reverse lookup was successful or <c>null</c>, in case the host was not found.
-            If <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is set to <c>true</c>, this method will throw an <see cref="T:DnsClient.DnsResponseException"/> instead of returning <c>null</c>!
+            If <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is set to <c>true</c>, this method will throw an <see cref="T:DnsClient.DnsResponseException"/> instead of returning <c>null</c>!
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="address"/>is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">If no host has been found and <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is <c>true</c>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">If no host has been found and <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is <c>true</c>.</exception>
         </member>
         <member name="M:DnsClient.DnsQueryExtensions.ResolveService(DnsClient.IDnsQuery,System.String,System.String,System.Net.Sockets.ProtocolType)">
             <summary>
@@ -1548,8 +1562,569 @@
             Gets or sets the port.
             </summary>
             <value>
-            The port.
+            The port of this entry.
             </value>
+        </member>
+        <member name="P:DnsClient.ServiceHostEntry.Priority">
+            <summary>
+            Gets or sets priority of the original <see cref="F:DnsClient.Protocol.ResourceRecordType.SRV"/> record.
+            Might be zero if not provided.
+            </summary>
+            <value>
+            The priority of this entry.
+            </value>
+        </member>
+        <member name="P:DnsClient.ServiceHostEntry.Weight">
+            <summary>
+            Gets or sets weight of the original <see cref="F:DnsClient.Protocol.ResourceRecordType.SRV"/> record.
+            Might be zero if not provided.
+            </summary>
+            <value>
+            The weight of this entry.
+            </value>
+        </member>
+        <member name="T:DnsClient.DnsQueryOptions">
+            <summary>
+            The options used to override the defaults of <see cref="T:DnsClient.LookupClient"/> per query.
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsQueryOptions.MinimumBufferSize">
+            <summary>
+            The minimum payload size. Anything equal or less than that will default back to this value and might disable EDNS.
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsQueryOptions.MaximumBufferSize">
+            <summary>
+            The maximum reasonable payload size.
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.EnableAuditTrail">
+            <summary>
+            Gets or sets a flag indicating whether each <see cref="T:DnsClient.IDnsQueryResponse"/> will contain a full documentation of the response(s).
+            Default is <c>False</c>.
+            </summary>
+            <seealso cref="P:DnsClient.IDnsQueryResponse.AuditTrail"/>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.UseCache">
+            <summary>
+            Gets or sets a flag indicating whether DNS queries should use response caching or not.
+            The cache duration is calculated by the resource record of the response. Usually, the lowest TTL is used.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            In case the DNS Server returns records with a TTL of zero. The response cannot be cached.
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.Recursion">
+            <summary>
+            Gets or sets a flag indicating whether DNS queries should instruct the DNS server to do recursive lookups, or not.
+            Default is <c>True</c>.
+            </summary>
+            <value>The flag indicating if recursion should be used or not.</value>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.Retries">
+            <summary>
+            Gets or sets the number of tries to get a response from one name server before trying the next one.
+            Only transient errors, like network or connection errors will be retried.
+            Default is <c>2</c> which will be three tries total.
+            <para>
+            If all configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/> error out after retries, an exception will be thrown at the end.
+            </para>
+            </summary>
+            <value>The number of retries.</value>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.ThrowDnsErrors">
+            <summary>
+            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> should throw a <see cref="T:DnsClient.DnsResponseException"/>
+            in case the query result has a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            Default is <c>False</c>.
+            </summary>
+            <remarks>
+            <para>
+            If set to <c>False</c>, the query will return a result with an <see cref="P:DnsClient.IDnsQueryResponse.ErrorMessage"/>
+            which contains more information.
+            </para>
+            <para>
+            If set to <c>True</c>, any query method of <see cref="T:DnsClient.IDnsQuery"/> will throw an <see cref="T:DnsClient.DnsResponseException"/> if
+            the response header indicates an error.
+            </para>
+            <para>
+            If both, <see cref="P:DnsClient.DnsQueryOptions.ContinueOnDnsError"/> and <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> are set to <c>True</c>,
+            <see cref="T:DnsClient.ILookupClient"/> will continue to query all configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/>.
+            If none of the servers yield a valid response, a <see cref="T:DnsClient.DnsResponseException"/> will be thrown
+            with the error of the last response.
+            </para>
+            </remarks>
+            <seealso cref="T:DnsClient.DnsResponseCode"/>
+            <seealso cref="P:DnsClient.DnsQueryOptions.ContinueOnDnsError"/>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.UseRandomNameServer">
+            <summary>
+            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> can cycle through all
+            configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/> on each consecutive request, basically using a random server, or not.
+            Default is <c>True</c>.
+            If only one <see cref="T:DnsClient.NameServer"/> is configured, this setting is not used.
+            </summary>
+            <remarks>
+            <para>
+            If <c>False</c>, configured endpoint will be used in random order.
+            If <c>True</c>, the order will be preserved.
+            </para>
+            <para>
+            Even if <see cref="P:DnsClient.DnsQueryOptions.UseRandomNameServer"/> is set to <c>True</c>, the endpoint might still get
+            disabled and might not being used for some time if it errors out, e.g. no connection can be established.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.ContinueOnDnsError">
+            <summary>
+            Gets or sets a flag indicating whether to query the next configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/> in case the response of the last query
+            returned a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            If <c>True</c>, lookup client will continue until a server returns a valid result, or,
+            if no <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/> yield a valid result, the last response with the error will be returned.
+            In case no server yields a valid result and <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is also enabled, an exception
+            will be thrown containing the error of the last response.
+            <para>
+            If  <c>True</c> and <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled, the exception will be thrown on first encounter without trying any other servers.
+            </para>
+            </remarks>
+            <seealso cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.ContinueOnEmptyResponse">
+            <summary>
+            Gets or sets a flag indicating whether to query the next configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/>
+            if the response does not have an error <see cref="T:DnsClient.DnsResponseCode"/> but the query was not answered by the response.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            The query is answered if there is at least one <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> in the answers section
+            matching the <see cref="T:DnsClient.DnsQuestion"/>'s <see cref="T:DnsClient.QueryType"/>.
+            <para>
+            If there are zero answers in the response, the query is not answered, independent of the <see cref="T:DnsClient.QueryType"/>.
+            If there are answers in the response, the <see cref="T:DnsClient.QueryType"/> is used to find a matching record,
+            query types <see cref="F:DnsClient.QueryType.ANY"/> and <see cref="F:DnsClient.QueryType.AXFR"/> will be ignored by this check.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.Timeout">
+            <summary>
+            Gets or sets the request timeout in milliseconds. <see cref="P:DnsClient.DnsQueryOptions.Timeout"/> is used for limiting the connection and request time for one operation.
+            Timeout must be greater than zero and less than <see cref="F:System.Int32.MaxValue"/>.
+            If <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> (or -1) is used, no timeout will be applied.
+            Default is 5 seconds.
+            </summary>
+            <remarks>
+            If a very short timeout is configured, queries will more likely result in <see cref="T:System.TimeoutException"/>s.
+            <para>
+            Important to note, <see cref="T:System.TimeoutException"/>s will be retried, if <see cref="P:DnsClient.DnsQueryOptions.Retries"/> are not disabled (set to <c>0</c>).
+            This should help in case one or more configured DNS servers are not reachable or under load for example.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.UseTcpFallback">
+            <summary>
+            Gets or sets a flag indicating whether TCP should be used in case a UDP response is truncated.
+            Default is <c>True</c>.
+            <para>
+            If <c>False</c>, truncated results will potentially yield no or incomplete answers.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.UseTcpOnly">
+            <summary>
+            Gets or sets a flag indicating whether UDP should not be used at all.
+            Default is <c>False</c>.
+            <para>
+            Enable this only if UDP cannot be used because of your firewall rules for example.
+            Also, zone transfers (see <see cref="F:DnsClient.QueryType.AXFR"/>) must use TCP only.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.ExtendedDnsBufferSize">
+            <summary>
+            Gets or sets the maximum buffer used for UDP requests.
+            Defaults to <c>4096</c>.
+            <para>
+            If this value is less or equal to <c>512</c> bytes, EDNS might be disabled.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQueryOptions.RequestDnsSecRecords">
+            <summary>
+            Gets or sets a flag indicating whether EDNS should be enabled and the <c>DO</c> flag should be set.
+            Defaults to <c>False</c>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryOptions.op_Implicit(DnsClient.DnsQueryOptions)~DnsClient.DnsQuerySettings">
+            <summary>
+            Converts the query options into readonly settings.
+            </summary>
+            <param name="fromOptions">The options.</param>
+        </member>
+        <member name="T:DnsClient.DnsQueryAndServerOptions">
+            <summary>
+            The options used to override the defaults of <see cref="T:DnsClient.LookupClient"/> per query.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerOptions.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerOptions"/> without name servers.
+            If no nameservers are configured, a query will fallback to the nameservers already configured on the <see cref="T:DnsClient.LookupClient"/> instance.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerOptions.#ctor(DnsClient.NameServer[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerOptions.#ctor(System.Net.IPEndPoint[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerOptions.#ctor(System.Net.IPAddress[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="P:DnsClient.DnsQueryAndServerOptions.NameServers">
+            <summary>
+            Gets a list of name servers which should be used to query.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerOptions.op_Implicit(DnsClient.DnsQueryAndServerOptions)~DnsClient.DnsQueryAndServerSettings">
+            <summary>
+            Converts the query options into readonly settings.
+            </summary>
+            <param name="fromOptions">The options.</param>
+        </member>
+        <member name="T:DnsClient.LookupClientOptions">
+            <summary>
+            The options used to configure defaults in <see cref="T:DnsClient.LookupClient"/> and to optionally use specific settings per query.
+            </summary>
+        </member>
+        <member name="M:DnsClient.LookupClientOptions.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClientOptions"/> with default settings.
+            </summary>
+        </member>
+        <member name="M:DnsClient.LookupClientOptions.#ctor(DnsClient.NameServer[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClientOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="M:DnsClient.LookupClientOptions.#ctor(System.Net.IPEndPoint[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClientOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="M:DnsClient.LookupClientOptions.#ctor(System.Net.IPAddress[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClientOptions"/>.
+            </summary>
+            <param name="nameServers">A collection of name servers.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/> is null.</exception>
+        </member>
+        <member name="P:DnsClient.LookupClientOptions.AutoResolveNameServers">
+            <summary>
+            Gets or sets a flag indicating whether the name server collection should be automatically resolved.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            If name servers are configured manually via the constructor, this flag is set to false.
+            If you want both, your manually configured servers and auto resolved name servers,
+            you can use both (ctor or) <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/> and <see cref="P:DnsClient.LookupClientOptions.AutoResolveNameServers"/> set to <c>True</c>.
+            </remarks>
+        </member>
+        <member name="P:DnsClient.LookupClientOptions.MinimumCacheTimeout">
+            <summary>
+            Gets or sets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
+            TTL of the record is lower than this minimum value.
+            Default is <c>Null</c>.
+            <para>
+            This is useful in case the server returns records with zero TTL.
+            </para>
+            </summary>
+            <remarks>
+            This setting gets ignored in case <see cref="P:DnsClient.DnsQueryOptions.UseCache"/> is set to <c>False</c>,
+            or the value is set to <c>Null</c> or <see cref="F:System.TimeSpan.Zero"/>.
+            The maximum value is 24 days or <see cref="F:System.Threading.Timeout.Infinite"/> (choose a wise setting).
+            </remarks>
+        </member>
+        <member name="P:DnsClient.LookupClientOptions.MaximumCacheTimeout">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
+            TTL of the record is higher than this maximum value.
+            Default is <c>Null</c>.
+            </summary>
+            <remarks>
+            This setting gets ignored in case <see cref="P:DnsClient.DnsQueryOptions.UseCache"/> is set to <c>False</c>,
+            or the value is set to <c>Null</c>, <see cref="F:System.Threading.Timeout.Infinite"/> or <see cref="F:System.TimeSpan.Zero"/>.
+            The maximum value is 24 days (which shouldn't be used).
+            </remarks>
+        </member>
+        <member name="T:DnsClient.DnsQuerySettings">
+            <summary>
+            The options used to override the defaults of <see cref="T:DnsClient.LookupClient"/> per query.
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.EnableAuditTrail">
+            <summary>
+            Gets a flag indicating whether each <see cref="T:DnsClient.IDnsQueryResponse"/> will contain a full documentation of the response(s).
+            Default is <c>False</c>.
+            </summary>
+            <seealso cref="P:DnsClient.IDnsQueryResponse.AuditTrail"/>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.UseCache">
+            <summary>
+            Gets a flag indicating whether DNS queries should use response caching or not.
+            The cache duration is calculated by the resource record of the response. Usually, the lowest TTL is used.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            In case the DNS Server returns records with a TTL of zero. The response cannot be cached.
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.Recursion">
+            <summary>
+            Gets a flag indicating whether DNS queries should instruct the DNS server to do recursive lookups, or not.
+            Default is <c>True</c>.
+            </summary>
+            <value>The flag indicating if recursion should be used or not.</value>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.Retries">
+            <summary>
+            Gets the number of tries to get a response from one name server before trying the next one.
+            Only transient errors, like network or connection errors will be retried.
+            Default is <c>5</c>.
+            <para>
+            If all configured <see cref="P:DnsClient.DnsQueryAndServerSettings.NameServers"/> error out after retries, an exception will be thrown at the end.
+            </para>
+            </summary>
+            <value>The number of retries.</value>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.ThrowDnsErrors">
+            <summary>
+            Gets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> should throw a <see cref="T:DnsClient.DnsResponseException"/>
+            in case the query result has a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            Default is <c>False</c>.
+            </summary>
+            <remarks>
+            <para>
+            If set to <c>False</c>, the query will return a result with an <see cref="P:DnsClient.IDnsQueryResponse.ErrorMessage"/>
+            which contains more information.
+            </para>
+            <para>
+            If set to <c>True</c>, any query method of <see cref="T:DnsClient.IDnsQuery"/> will throw an <see cref="T:DnsClient.DnsResponseException"/> if
+            the response header indicates an error.
+            </para>
+            <para>
+            If both, <see cref="P:DnsClient.DnsQuerySettings.ContinueOnDnsError"/> and <see cref="P:DnsClient.DnsQuerySettings.ThrowDnsErrors"/> are set to <c>True</c>,
+            <see cref="T:DnsClient.ILookupClient"/> will continue to query all configured <see cref="P:DnsClient.DnsQueryAndServerSettings.NameServers"/>.
+            If none of the servers yield a valid response, a <see cref="T:DnsClient.DnsResponseException"/> will be thrown
+            with the error of the last response.
+            </para>
+            </remarks>
+            <seealso cref="T:DnsClient.DnsResponseCode"/>
+            <seealso cref="P:DnsClient.DnsQuerySettings.ContinueOnDnsError"/>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.UseRandomNameServer">
+            <summary>
+            Gets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> can cycle through all
+            configured <see cref="P:DnsClient.DnsQueryAndServerSettings.NameServers"/> on each consecutive request, basically using a random server, or not.
+            Default is <c>True</c>.
+            If only one <see cref="T:DnsClient.NameServer"/> is configured, this setting is not used.
+            </summary>
+            <remarks>
+            <para>
+            If <c>False</c>, configured endpoint will be used in random order.
+            If <c>True</c>, the order will be preserved.
+            </para>
+            <para>
+            Even if <see cref="P:DnsClient.DnsQuerySettings.UseRandomNameServer"/> is set to <c>True</c>, the endpoint might still get
+            disabled and might not being used for some time if it errors out, e.g. no connection can be established.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.ContinueOnDnsError">
+            <summary>
+            Gets a flag indicating whether to query the next configured <see cref="P:DnsClient.DnsQueryAndServerSettings.NameServers"/> in case the response of the last query
+            returned a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            If <c>True</c>, lookup client will continue until a server returns a valid result, or,
+            if no <see cref="P:DnsClient.DnsQueryAndServerSettings.NameServers"/> yield a valid result, the last response with the error will be returned.
+            In case no server yields a valid result and <see cref="P:DnsClient.DnsQuerySettings.ThrowDnsErrors"/> is also enabled, an exception
+            will be thrown containing the error of the last response.
+            <para>
+            If  <c>True</c> and <see cref="P:DnsClient.DnsQuerySettings.ThrowDnsErrors"/> is enabled, the exception will be thrown on first encounter without trying any other servers.
+            </para>
+            </remarks>
+            <seealso cref="P:DnsClient.DnsQuerySettings.ThrowDnsErrors"/>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.ContinueOnEmptyResponse">
+            <summary>
+            Gets or sets a flag indicating whether to query the next configured <see cref="P:DnsClient.DnsQueryAndServerOptions.NameServers"/>
+            if the response does not have an error <see cref="T:DnsClient.DnsResponseCode"/> but the query was not answered by the response.
+            Default is <c>True</c>.
+            </summary>
+            <remarks>
+            The query is answered if there is at least one <see cref="T:DnsClient.Protocol.DnsResourceRecord"/> in the answers section
+            matching the <see cref="T:DnsClient.DnsQuestion"/>'s <see cref="T:DnsClient.QueryType"/>.
+            <para>
+            If there are zero answers in the response, the query is not answered, independent of the <see cref="T:DnsClient.QueryType"/>.
+            If there are answers in the response, the <see cref="T:DnsClient.QueryType"/> is used to find a matching record,
+            query types <see cref="F:DnsClient.QueryType.ANY"/> and <see cref="F:DnsClient.QueryType.AXFR"/> will be ignored by this check.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.Timeout">
+            <summary>
+            Gets the request timeout in milliseconds. <see cref="P:DnsClient.DnsQuerySettings.Timeout"/> is used for limiting the connection and request time for one operation.
+            Timeout must be greater than zero and less than <see cref="F:System.Int32.MaxValue"/>.
+            If <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> (or -1) is used, no timeout will be applied.
+            Default is 5 seconds.
+            </summary>
+            <remarks>
+            If a very short timeout is configured, queries will more likely result in <see cref="T:System.TimeoutException"/>s.
+            <para>
+            Important to note, <see cref="T:System.TimeoutException"/>s will be retried, if <see cref="P:DnsClient.DnsQuerySettings.Retries"/> are not disabled (set to <c>0</c>).
+            This should help in case one or more configured DNS servers are not reachable or under load for example.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.UseTcpFallback">
+            <summary>
+            Gets a flag indicating whether TCP should be used in case a UDP response is truncated.
+            Default is <c>True</c>.
+            <para>
+            If <c>False</c>, truncated results will potentially yield no or incomplete answers.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.UseTcpOnly">
+            <summary>
+            Gets a flag indicating whether UDP should not be used at all.
+            Default is <c>False</c>.
+            <para>
+            Enable this only if UDP cannot be used because of your firewall rules for example.
+            Also, zone transfers (see <see cref="F:DnsClient.QueryType.AXFR"/>) must use TCP only.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.UseExtendedDns">
+            <summary>
+            Gets a flag indicating whether EDNS is enabled based on the values
+            of <see cref="P:DnsClient.DnsQuerySettings.ExtendedDnsBufferSize"/> and <see cref="P:DnsClient.DnsQuerySettings.RequestDnsSecRecords"/>.
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.ExtendedDnsBufferSize">
+            <summary>
+            Gets the maximum buffer used for UDP requests.
+            Defaults to <c>4096</c>.
+            <para>
+            If this value is less or equal to <c>512</c> bytes, EDNS might be disabled.
+            </para>
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQuerySettings.RequestDnsSecRecords">
+            <summary>
+            Gets a flag indicating whether EDNS should be enabled and the <c>DO</c> flag should be set.
+            Defaults to <c>False</c>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQuerySettings.#ctor(DnsClient.DnsQueryOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerSettings"/>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQuerySettings.Equals(System.Object)">
+            <inheritdocs />
+        </member>
+        <member name="M:DnsClient.DnsQuerySettings.Equals(DnsClient.DnsQuerySettings)">
+            <inheritdocs />
+        </member>
+        <member name="T:DnsClient.DnsQueryAndServerSettings">
+            <summary>
+            The readonly version of <see cref="T:DnsClient.DnsQueryOptions"/> used to customize settings per query.
+            </summary>
+        </member>
+        <member name="P:DnsClient.DnsQueryAndServerSettings.NameServers">
+            <summary>
+            Gets a collection of name servers which should be used to query.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerSettings.#ctor(DnsClient.DnsQueryAndServerOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerSettings"/>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerSettings.#ctor(DnsClient.DnsQueryAndServerOptions,System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer})">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.DnsQueryAndServerSettings"/>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerSettings.Equals(System.Object)">
+            <inheritdocs />
+        </member>
+        <member name="M:DnsClient.DnsQueryAndServerSettings.Equals(DnsClient.DnsQueryAndServerSettings)">
+            <inheritdocs />
+        </member>
+        <member name="T:DnsClient.LookupClientSettings">
+            <summary>
+            The readonly version of <see cref="T:DnsClient.LookupClientOptions"/> used as default settings in <see cref="T:DnsClient.LookupClient"/>.
+            </summary>
+        </member>
+        <member name="M:DnsClient.LookupClientSettings.#ctor(DnsClient.LookupClientOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClientSettings"/>.
+            </summary>
+        </member>
+        <member name="P:DnsClient.LookupClientSettings.MinimumCacheTimeout">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
+            TTL of the record is lower than this minimum value.
+            Default is <c>Null</c>.
+            <para>
+            This is useful in cases where the server returns records with zero TTL.
+            </para>
+            </summary>
+            <remarks>
+            This setting gets ignored in case <see cref="P:DnsClient.DnsQueryOptions.UseCache"/> is set to <c>False</c>.
+            The maximum value is 24 days or <see cref="F:System.Threading.Timeout.Infinite"/>.
+            </remarks>
+        </member>
+        <member name="P:DnsClient.LookupClientSettings.MaximumCacheTimeout">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
+            TTL of the record is higher than this maximum value.
+            Default is <c>Null</c>.
+            </summary>
+            <remarks>
+            This setting gets ignored in case <see cref="P:DnsClient.DnsQueryOptions.UseCache"/> is set to <c>False</c>.
+            The maximum value is 24 days.
+            Setting it to <see cref="F:System.Threading.Timeout.Infinite"/> would be equal to not providing a value.
+            </remarks>
+        </member>
+        <member name="M:DnsClient.LookupClientSettings.Equals(System.Object)">
+            <inheritdocs />
+        </member>
+        <member name="M:DnsClient.LookupClientSettings.Equals(DnsClient.LookupClientSettings)">
+            <inheritdocs />
         </member>
         <member name="T:DnsClient.DnsQueryResponse">
             <summary>
@@ -1573,12 +2148,12 @@
         </member>
         <member name="P:DnsClient.DnsQueryResponse.AllRecords">
             <summary>
-            Gets a list of all answers, addtional and authority records.
+            Gets a list of all answers, additional and authority records.
             </summary>
         </member>
         <member name="P:DnsClient.DnsQueryResponse.AuditTrail">
             <summary>
-            Gets the audit trail if <see cref="P:DnsClient.ILookupClient.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
+            Gets the audit trail if <see cref="P:DnsClient.DnsQueryOptions.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
             </summary>
             <value>
             The audit trail.
@@ -1596,13 +2171,13 @@
         </member>
         <member name="P:DnsClient.DnsQueryResponse.ErrorMessage">
             <summary>
-            Returns a string value representing the error response code in case an error occured,
+            Returns a string value representing the error response code in case an error occurred,
             otherwise '<see cref="F:DnsClient.DnsResponseCode.NoError"/>'.
             </summary>
         </member>
         <member name="P:DnsClient.DnsQueryResponse.HasError">
             <summary>
-            A flag indicating if the header contains a response codde other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            A flag indicating if the header contains a response code other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
             </summary>
         </member>
         <member name="P:DnsClient.DnsQueryResponse.Header">
@@ -1623,6 +2198,11 @@
             The size of the message.
             </value>
         </member>
+        <member name="P:DnsClient.DnsQueryResponse.Settings">
+            <summary>
+            Gets the settings used to produce this response.
+            </summary>
+        </member>
         <member name="M:DnsClient.DnsQueryResponse.Equals(System.Object)">
             <inheritdoc />
         </member>
@@ -1639,7 +2219,7 @@
         </member>
         <member name="P:DnsClient.DnsQuestion.QueryName">
             <summary>
-            Gets the domain name the lookup was runnig for.
+            Gets the domain name the lookup was running for.
             </summary>
             <value>
             The name of the query.
@@ -1694,9 +2274,110 @@
             Represents a simple request message which can be send through <see cref="T:DnsClient.DnsMessageHandler"/>.
             </summary>
         </member>
+        <member name="T:DnsClient.DnsHeaderResponseCode">
+            <summary>
+            4 bit response codes of the <see cref="T:DnsClient.IDnsQueryResponse"/>'s header.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc6895#section-2.3">RFC 6895</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.NoError">
+            <summary>
+            No error condition
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.FormatError">
+            <summary>
+            Format error. The name server was unable to interpret the query.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.ServerFailure">
+            <summary>
+            Server failure. The name server was unable to process this query due to a problem with the name server.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.NotExistentDomain">
+            <summary>
+            Name Error. Meaningful only for responses from an authoritative name server,
+            this code signifies that the domain name referenced in the query does not exist.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.NotImplemented">
+            <summary>
+            Not Implemented. The name server does not support the requested kind of query.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Refused">
+            <summary>
+            Refused. The name server refuses to perform the specified operation for policy reasons.
+            For example, a name server may not wish to provide the information to the particular requester,
+            or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc1035">RFC 1035</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.ExistingDomain">
+            <summary>
+            Name Exists when it should not.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.ExistingResourceRecordSet">
+            <summary>
+            Resource record set exists when it should not.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.MissingResourceRecordSet">
+            <summary>
+            Resource record set that should exist but does not.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.NotAuthorized">
+            <summary>
+            Server Not Authoritative for zone / Not Authorized.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+            <seealso href="https://tools.ietf.org/html/rfc2845">RFC 2845</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.NotZone">
+            <summary>
+            Name not contained in zone.
+            </summary>
+            <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Unassinged11">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Unassinged12">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Unassinged13">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Unassinged14">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsHeaderResponseCode.Unassinged15">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
         <member name="T:DnsClient.DnsResponseCode">
             <summary>
-            Response codes of the <see cref="T:DnsClient.IDnsQueryResponse"/>.
+            Extended response codes of the <see cref="T:DnsClient.IDnsQueryResponse"/> with OPT.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc6895#section-2.3">RFC 6895</seealso>
         </member>
@@ -1769,6 +2450,31 @@
             Name not contained in zone.
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc2136">RFC 2136</seealso>
+        </member>
+        <member name="F:DnsClient.DnsResponseCode.Unassinged11">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsResponseCode.Unassinged12">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsResponseCode.Unassinged13">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsResponseCode.Unassinged14">
+            <summary>
+            Unassigned value
+            </summary>
+        </member>
+        <member name="F:DnsClient.DnsResponseCode.Unassinged15">
+            <summary>
+            Unassigned value
+            </summary>
         </member>
         <member name="F:DnsClient.DnsResponseCode.BadVersionOrBadSignature">
             <summary>
@@ -1845,7 +2551,7 @@
         </member>
         <member name="P:DnsClient.DnsResponseException.AuditTrail">
             <summary>
-            Gets the audit trail if <see cref="P:DnsClient.ILookupClient.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
+            Gets the audit trail if <see cref="P:DnsClient.DnsQueryOptions.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
             </summary>
             <value>
             The audit trail.
@@ -1861,39 +2567,39 @@
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with <see cref="P:DnsClient.DnsResponseException.Code"/> set to <see cref="F:DnsClient.DnsResponseCode.Unassigned"/>.
             </summary>
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with <see cref="P:DnsClient.DnsResponseException.Code"/> set to <see cref="F:DnsClient.DnsResponseCode.Unassigned"/>
             and a custom <paramref name="message"/>.
             </summary>
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor(DnsClient.DnsResponseCode)">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with the standard error text for the given <paramref name="code"/>.
             </summary>
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor(System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with <see cref="P:DnsClient.DnsResponseException.Code"/> set to <see cref="F:DnsClient.DnsResponseCode.Unassigned"/>
             and a custom <paramref name="message"/> and inner <see cref="T:System.Exception"/>.
             </summary>
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor(DnsClient.DnsResponseCode,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with a custom <paramref name="message"/> and the given <paramref name="code"/>.
             </summary>
         </member>
         <member name="M:DnsClient.DnsResponseException.#ctor(DnsClient.DnsResponseCode,System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class 
+            Initializes a new instance of the <see cref="T:DnsClient.DnsResponseException"/> class
             with a custom <paramref name="message"/> and the given <paramref name="code"/>.
             </summary>
         </member>
@@ -2041,7 +2747,7 @@
             A <see cref="T:System.String" /> that represents this instance.
             </returns>
         </member>
-        <member name="M:DnsClient.DnsResponseMessage.AsQueryResponse(DnsClient.NameServer)">
+        <member name="M:DnsClient.DnsResponseMessage.AsQueryResponse(DnsClient.NameServer,DnsClient.DnsQuerySettings)">
             <summary>
             Gets the readonly representation of this message which can be returned.
             </summary>
@@ -2053,17 +2759,17 @@
         </member>
         <member name="F:DnsClient.DnsString.ACEPrefix">
             <summary>
-            The ACE prefix indicates that the domain name label contains not normally supported characters and that the label has been endoded.
+            The ACE prefix indicates that the domain name label contains not normally supported characters and that the label has been encoded.
             </summary>
         </member>
         <member name="F:DnsClient.DnsString.LabelMaxLength">
             <summary>
-            The maximum lenght in bytes for one label.
+            The maximum length in bytes for one label.
             </summary>
         </member>
         <member name="F:DnsClient.DnsString.QueryMaxLength">
             <summary>
-            The maximum supported total length in bytes for a domain nanme. The calculation of the actual
+            The maximum supported total length in bytes for a domain name. The calculation of the actual
             bytes this <see cref="T:DnsClient.DnsString"/> consumes includes all bytes used for to encode it as octet string.
             </summary>
         </member>
@@ -2074,7 +2780,7 @@
         </member>
         <member name="P:DnsClient.DnsString.Original">
             <summary>
-            Gets the orginal value.
+            Gets the original value.
             </summary>
         </member>
         <member name="P:DnsClient.DnsString.Value">
@@ -2100,11 +2806,6 @@
         <member name="M:DnsClient.DnsString.Equals(System.Object)">
             <inheritdoc />
         </member>
-        <member name="P:DnsClient.DnsString.Labels">
-            <summary>
-            Returns labels representation of the <see cref="P:DnsClient.DnsString.Value"/>.
-            </summary>
-        </member>
         <member name="M:DnsClient.DnsString.Parse(System.String)">
             <summary>
             Parses the given <paramref name="query"/> and validates all labels.
@@ -2118,7 +2819,7 @@
         </member>
         <member name="M:DnsClient.DnsString.FromResponseQueryString(System.String)">
             <summary>
-            Transforms names with the <see cref="F:DnsClient.DnsString.ACEPrefix"/> to the unicode variant and adds a trailing '.' at the end if not present.
+            Transforms names with the <see cref="F:DnsClient.DnsString.ACEPrefix"/> to the Unicode variant and adds a trailing '.' at the end if not present.
             The original value will be kept in this instance in case it is needed.
             </summary>
             <remarks>
@@ -2134,7 +2835,7 @@
         </member>
         <member name="M:DnsClient.IDnsQuery.Query(System.String,DnsClient.QueryType,DnsClient.QueryClass)">
             <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
+            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />.
             </summary>
             <param name="query">The domain name query.</param>
             <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
@@ -2143,7 +2844,30 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.Query(DnsClient.DnsQuestion)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />.
+            </summary>
+            <param name="question">The domain name query.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="question"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.Query(DnsClient.DnsQuestion,DnsClient.DnsQueryAndServerOptions)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />.
+            </summary>
+            <param name="question">The domain name query.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="question"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryAsync(System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
             <summary>
@@ -2158,7 +2882,32 @@
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryAsync(DnsClient.DnsQuestion,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />.
+            </summary>
+            <param name="question">The domain name query.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="question"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryAsync(DnsClient.DnsQuestion,DnsClient.DnsQueryAndServerOptions,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />.
+            </summary>
+            <param name="question">The domain name query.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="question"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryReverse(System.Net.IPAddress)">
             <summary>
@@ -2169,7 +2918,19 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryReverse(System.Net.IPAddress,DnsClient.DnsQueryAndServerOptions)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress"/>.
+            </summary>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/>.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryReverseAsync(System.Net.IPAddress,System.Threading.CancellationToken)">
             <summary>
@@ -2182,12 +2943,26 @@
             </returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
-        <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
+        <member name="M:DnsClient.IDnsQuery.QueryReverseAsync(System.Net.IPAddress,DnsClient.DnsQueryAndServerOptions,System.Threading.CancellationToken)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress" />.
+            </summary>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
             <summary>
             Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
+            using only the passed in <paramref name="servers"/>.
             </summary>
             <remarks>
             To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
@@ -2202,7 +2977,44 @@
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="question">The domain name query.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="question"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,DnsClient.DnsQueryOptions)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="question">The domain name query.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/>, <paramref name="question"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
             <summary>
@@ -2222,12 +3034,32 @@
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
-        <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
+        <member name="M:DnsClient.IDnsQuery.QueryServer(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
             <summary>
             Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="query">The domain name query.</param>
+            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
+            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
+            using only the passed in <paramref name="servers"/>.
             </summary>
             <remarks>
             To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
@@ -2244,7 +3076,68 @@
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="question">The domain name query.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="question"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,DnsClient.DnsQueryOptions,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="question" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="question">The domain name query.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/>, <paramref name="question"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
+            <summary>
+            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <remarks>
+            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
+            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
+            </remarks>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="query">The domain name query.</param>
+            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
+            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
+            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
             <summary>
@@ -2266,12 +3159,12 @@
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
             <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress)">
             <summary>
             Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
+            using only the passed in <paramref name="servers"/>.
             </summary>
             <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
             <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
@@ -2279,8 +3172,8 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress)">
             <summary>
@@ -2293,13 +3186,42 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,DnsClient.DnsQueryOptions)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/>, <paramref name="ipAddress"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress,System.Threading.CancellationToken)">
             <summary>
             Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
+            using only the passed in <paramref name="servers"/>.
             </summary>
             <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
             <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
@@ -2308,9 +3230,9 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="M:DnsClient.IDnsQuery.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress,System.Threading.CancellationToken)">
             <summary>
@@ -2324,9 +3246,42 @@
             The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
             <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,System.Threading.CancellationToken)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/> or <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        </member>
+        <member name="M:DnsClient.IDnsQuery.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,DnsClient.DnsQueryOptions,System.Threading.CancellationToken)">
+            <summary>
+            Does a reverse lookup for the <paramref name="ipAddress" />
+            using only the passed in <paramref name="servers"/>.
+            </summary>
+            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
+            <param name="queryOptions">Query options to be used instead of <see cref="T:DnsClient.LookupClient"/>'s settings.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="servers"/>, <paramref name="ipAddress"/> or <paramref name="queryOptions"/> is null.</exception>
+            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
+            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.DnsQueryOptions.ThrowDnsErrors"/> is enabled) returned error results.</exception>
         </member>
         <member name="T:DnsClient.IDnsQueryResponse">
             <summary>
@@ -2347,7 +3302,7 @@
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.AllRecords">
             <summary>
-            Gets a list of all answers, addtional and authority records.
+            Gets a list of all answers, additional and authority records.
             </summary>
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.Answers">
@@ -2362,7 +3317,7 @@
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.AuditTrail">
             <summary>
-            Gets the audit trail if <see cref="P:DnsClient.ILookupClient.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
+            Gets the audit trail if <see cref="P:DnsClient.DnsQueryOptions.EnableAuditTrail"/>. as set to <c>true</c>, <c>null</c> otherwise.
             </summary>
             <value>
             The audit trail.
@@ -2370,13 +3325,13 @@
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.ErrorMessage">
             <summary>
-            Returns a string value representing the error response code in case an error occured,
+            Returns a string value representing the error response code in case an error occurred,
             otherwise '<see cref="F:DnsClient.DnsResponseCode.NoError"/>'.
             </summary>
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.HasError">
             <summary>
-            A flag indicating if the header contains a response codde other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
+            A flag indicating if the header contains a response code other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
             </summary>
         </member>
         <member name="P:DnsClient.IDnsQueryResponse.Header">
@@ -2400,156 +3355,28 @@
             The name server.
             </value>
         </member>
+        <member name="P:DnsClient.IDnsQueryResponse.Settings">
+            <summary>
+            Gets the settings used to produce this response.
+            </summary>
+        </member>
         <member name="T:DnsClient.ILookupClient">
             <summary>
-            The contract for the LookupClient including all the options.
+            The contract for the LookupClient.
             <para>
             The interfaces for the query methods and the lookup client properties are separated so that one can
             inject or expose only the <see cref="T:DnsClient.IDnsQuery"/> without exposing the configuration options.
             </para>
             </summary>
         </member>
-        <member name="P:DnsClient.ILookupClient.EnableAuditTrail">
-            <summary>
-            If enabled, each <see cref="T:DnsClient.IDnsQueryResponse"/> will contain a full documentation of the response(s).
-            Default is <c>False</c>.
-            </summary>
-            <seealso cref="P:DnsClient.IDnsQueryResponse.AuditTrail"/>
-        </member>
-        <member name="P:DnsClient.ILookupClient.UseCache">
-            <summary>
-            Gets or sets a flag indicating if the <see cref="T:DnsClient.LookupClient"/> should use response caching or not.
-            The cache duration is calculated by the resource record of the response. Usually, the lowest TTL is used.
-            Default is <c>True</c>.
-            </summary>
-            <remarks>
-            In case the DNS Server returns records with a TTL of zero. The response cannot be cached.
-            Setting <see cref="P:DnsClient.ILookupClient.MinimumCacheTimeout"/> can overwrite this behavior and cache those responses anyways for at least the given duration.
-            </remarks>
-        </member>
-        <member name="P:DnsClient.ILookupClient.MinimumCacheTimeout">
-            <summary>
-            Gets or sets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
-            TTL of the record is lower than this minimum value.
-            Default is <c>Null</c>.
-            <para>
-            This is useful in cases where the server retruns records with zero TTL.
-            </para>
-            </summary>
-            <remarks>
-            This setting gets igonred in case <see cref="P:DnsClient.ILookupClient.UseCache"/> is set to <c>False</c>.
-            </remarks>
-        </member>
         <member name="P:DnsClient.ILookupClient.NameServers">
             <summary>
-            Gets the list of configured name servers.
+            Gets the list of configured or resolved name servers of the <see cref="T:DnsClient.ILookupClient"/> instance.
             </summary>
         </member>
-        <member name="P:DnsClient.ILookupClient.Recursion">
+        <member name="P:DnsClient.ILookupClient.Settings">
             <summary>
-            Gets or sets a flag indicating whether DNS queries should instruct the DNS server to do recursive lookups, or not.
-            Default is <c>True</c>.
-            </summary>
-            <value>The flag indicating if recursion should be used or not.</value>
-        </member>
-        <member name="P:DnsClient.ILookupClient.Retries">
-            <summary>
-            Gets or sets the number of tries to get a response from one name server before trying the next one.
-            Only transient errors, like network or connection errors will be retried.
-            Default is <c>5</c>.
-            <para>
-            If all configured <see cref="P:DnsClient.ILookupClient.NameServers"/> error out after retries, an exception will be thrown at the end.
-            </para>
-            </summary>
-            <value>The number of retries.</value>
-        </member>
-        <member name="P:DnsClient.ILookupClient.ThrowDnsErrors">
-            <summary>
-            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> should throw a <see cref="T:DnsClient.DnsResponseException"/>
-            in case the query result has a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
-            Default is <c>False</c>.
-            </summary>
-            <remarks>
-            <para>
-            If set to <c>False</c>, the query will return a result with an <see cref="P:DnsClient.IDnsQueryResponse.ErrorMessage"/>
-            which contains more information.
-            </para>
-            <para>
-            If set to <c>True</c>, any query method of <see cref="T:DnsClient.IDnsQuery"/> will throw an <see cref="T:DnsClient.DnsResponseException"/> if
-            the response header indicates an error.
-            </para>
-            <para>
-            If both, <see cref="P:DnsClient.ILookupClient.ContinueOnDnsError"/> and <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> are set to <c>True</c>,
-            <see cref="T:DnsClient.ILookupClient"/> will continue to query all configured <see cref="P:DnsClient.ILookupClient.NameServers"/>.
-            If none of the servers yield a valid response, a <see cref="T:DnsClient.DnsResponseException"/> will be thrown
-            with the error of the last response.
-            </para>
-            </remarks>
-            <seealso cref="T:DnsClient.DnsResponseCode"/>
-            <seealso cref="P:DnsClient.ILookupClient.ContinueOnDnsError"/>
-        </member>
-        <member name="P:DnsClient.ILookupClient.UseRandomNameServer">
-            <summary>
-            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> can cycle through all
-            configured <see cref="P:DnsClient.ILookupClient.NameServers"/> on each consecutive request, basically using a random server, or not.
-            Default is <c>True</c>.
-            If only one <see cref="T:DnsClient.NameServer"/> is configured, this setting is not used.
-            </summary>
-            <remarks>
-            <para>
-            If <c>False</c>, configured endpoint will be used in random order.
-            If <c>True</c>, the order will be preserved.
-            </para>
-            <para>
-            Even if <see cref="P:DnsClient.ILookupClient.UseRandomNameServer"/> is set to <c>True</c>, the endpoint might still get
-            disabled and might not being used for some time if it errors out, e.g. no connection can be established.
-            </para>
-            </remarks>
-        </member>
-        <member name="P:DnsClient.ILookupClient.ContinueOnDnsError">
-            <summary>
-            Gets or sets a flag indicating whether to query the next configured <see cref="P:DnsClient.ILookupClient.NameServers"/> in case the response of the last query
-            returned a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
-            Default is <c>True</c>.
-            </summary>
-            <remarks>
-            If <c>True</c>, lookup client will continue until a server returns a valid result, or,
-            if no <see cref="P:DnsClient.ILookupClient.NameServers"/> yield a valid result, the last response with the error will be returned.
-            In case no server yields a valid result and <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is also enabled, an exception
-            will be thrown containing the error of the last response.
-            </remarks>
-            <seealso cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/>
-        </member>
-        <member name="P:DnsClient.ILookupClient.Timeout">
-            <summary>
-            Gets or sets the request timeout in milliseconds. <see cref="P:DnsClient.ILookupClient.Timeout"/> is used for limiting the connection and request time for one operation.
-            Timeout must be greater than zero and less than <see cref="F:System.Int32.MaxValue"/>.
-            If <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> (or -1) is used, no timeout will be applied.
-            </summary>
-            <remarks>
-            If a very short timeout is configured, queries will more likely result in <see cref="T:System.TimeoutException"/>s.
-            <para>
-            Important to note, <see cref="T:System.TimeoutException"/>s will be retried, if <see cref="P:DnsClient.ILookupClient.Retries"/> are not disabled (set to <c>0</c>).
-            This should help in case one or more configured DNS servers are not reachable or under load for example.
-            </para>
-            </remarks>
-        </member>
-        <member name="P:DnsClient.ILookupClient.UseTcpFallback">
-            <summary>
-            Gets or sets a flag indicating whether Tcp should be used in case a Udp response is truncated.
-            Default is <c>True</c>.
-            <para>
-            If <c>False</c>, truncated results will potentially yield no answers.
-            </para>
-            </summary>
-        </member>
-        <member name="P:DnsClient.ILookupClient.UseTcpOnly">
-            <summary>
-            Gets or sets a flag indicating whether Udp should not be used at all.
-            Default is <c>False</c>.
-            <para>
-            Enable this only if Udp cannot be used because of your firewall rules for example.
-            </para>
+            Gets the configured settings of the <see cref="T:DnsClient.ILookupClient"/> instance.
             </summary>
         </member>
         <member name="T:DnsClient.LookupClient">
@@ -2563,7 +3390,7 @@
              <seealso cref="T:DnsClient.IDnsQuery"/>
              <seealso cref="T:DnsClient.ILookupClient"/>
              <example>
-             A basic example wihtout specifying any DNS server, which will use the DNS server configured by your local network.
+             A basic example without specifying any DNS server, which will use the DNS server configured by your local network.
              <code>
              <![CDATA[
              var client = new LookupClient();
@@ -2577,155 +3404,16 @@
              </code>
              </example>
         </member>
-        <member name="P:DnsClient.LookupClient.UseTcpFallback">
-            <summary>
-            Gets or sets a flag indicating whether Tcp should be used in case a Udp response is truncated.
-            Default is <c>True</c>.
-            <para>
-            If <c>False</c>, truncated results will potentially yield no answers.
-            </para>
-            </summary>
-        </member>
-        <member name="P:DnsClient.LookupClient.UseTcpOnly">
-            <summary>
-            Gets or sets a flag indicating whether Udp should not be used at all.
-            Default is <c>False</c>.
-            <para>
-            Enable this only if Udp cannot be used because of your firewall rules for example.
-            </para>
-            </summary>
-        </member>
         <member name="P:DnsClient.LookupClient.NameServers">
-            <summary>
-            Gets the list of configured name servers.
-            </summary>
+            <inheritdoc/>
         </member>
-        <member name="P:DnsClient.LookupClient.EnableAuditTrail">
-            <summary>
-            If enabled, each <see cref="T:DnsClient.IDnsQueryResponse"/> will contain a full documentation of the response(s).
-            Default is <c>False</c>.
-            </summary>
-            <seealso cref="P:DnsClient.IDnsQueryResponse.AuditTrail"/>
-        </member>
-        <member name="P:DnsClient.LookupClient.Recursion">
-            <summary>
-            Gets or sets a flag indicating whether DNS queries should instruct the DNS server to do recursive lookups, or not.
-            Default is <c>True</c>.
-            </summary>
-            <value>The flag indicating if recursion should be used or not.</value>
-        </member>
-        <member name="P:DnsClient.LookupClient.Retries">
-            <summary>
-            Gets or sets the number of tries to get a response from one name server before trying the next one.
-            Only transient errors, like network or connection errors will be retried.
-            Default is <c>5</c>.
-            <para>
-            If all configured <see cref="P:DnsClient.LookupClient.NameServers"/> error out after retries, an exception will be thrown at the end.
-            </para>
-            </summary>
-            <value>The number of retries.</value>
-        </member>
-        <member name="P:DnsClient.LookupClient.ThrowDnsErrors">
-            <summary>
-            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> should throw a <see cref="T:DnsClient.DnsResponseException"/>
-            in case the query result has a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
-            Default is <c>False</c>.
-            </summary>
-            <remarks>
-            <para>
-            If set to <c>False</c>, the query will return a result with an <see cref="P:DnsClient.IDnsQueryResponse.ErrorMessage"/>
-            which contains more information.
-            </para>
-            <para>
-            If set to <c>True</c>, any query method of <see cref="T:DnsClient.IDnsQuery"/> will throw an <see cref="T:DnsClient.DnsResponseException"/> if
-            the response header indicates an error.
-            </para>
-            <para>
-            If both, <see cref="P:DnsClient.LookupClient.ContinueOnDnsError"/> and <see cref="P:DnsClient.LookupClient.ThrowDnsErrors"/> are set to <c>True</c>,
-            <see cref="T:DnsClient.ILookupClient"/> will continue to query all configured <see cref="P:DnsClient.LookupClient.NameServers"/>.
-            If none of the servers yield a valid response, a <see cref="T:DnsClient.DnsResponseException"/> will be thrown
-            with the error of the last response.
-            </para>
-            </remarks>
-            <seealso cref="T:DnsClient.DnsResponseCode"/>
-            <seealso cref="P:DnsClient.LookupClient.ContinueOnDnsError"/>
-        </member>
-        <member name="P:DnsClient.LookupClient.Timeout">
-            <summary>
-            Gets or sets the request timeout in milliseconds. <see cref="P:DnsClient.LookupClient.Timeout"/> is used for limiting the connection and request time for one operation.
-            Timeout must be greater than zero and less than <see cref="F:System.Int32.MaxValue"/>.
-            If <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> (or -1) is used, no timeout will be applied.
-            Default is 5 seconds.
-            </summary>
-            <remarks>
-            If a very short timeout is configured, queries will more likely result in <see cref="T:System.TimeoutException"/>s.
-            <para>
-            Important to note, <see cref="T:System.TimeoutException"/>s will be retried, if <see cref="P:DnsClient.LookupClient.Retries"/> are not disabled (set to <c>0</c>).
-            This should help in case one or more configured DNS servers are not reachable or under load for example.
-            </para>
-            </remarks>
-        </member>
-        <member name="P:DnsClient.LookupClient.UseCache">
-            <summary>
-            Gets or sets a flag indicating if the <see cref="T:DnsClient.LookupClient"/> should use response caching or not.
-            The cache duration is calculated by the resource record of the response. Usually, the lowest TTL is used.
-            Default is <c>True</c>.
-            </summary>
-            <remarks>
-            In case the DNS Server returns records with a TTL of zero. The response cannot be cached.
-            Setting <see cref="P:DnsClient.LookupClient.MinimumCacheTimeout"/> can overwrite this behavior and cache those responses anyways for at least the given duration.
-            </remarks>
-        </member>
-        <member name="P:DnsClient.LookupClient.MinimumCacheTimeout">
-            <summary>
-            Gets or sets a <see cref="T:System.TimeSpan"/> which can override the TTL of a resource record in case the
-            TTL of the record is lower than this minimum value.
-            Default is <c>Null</c>.
-            <para>
-            This is useful in cases where the server retruns records with zero TTL.
-            </para>
-            </summary>
-            <remarks>
-            This setting gets igonred in case <see cref="P:DnsClient.LookupClient.UseCache"/> is set to <c>False</c>.
-            The maximum value is 24 days or <see cref="F:System.Threading.Timeout.Infinite"/>.
-            </remarks>
-        </member>
-        <member name="P:DnsClient.LookupClient.UseRandomNameServer">
-            <summary>
-            Gets or sets a flag indicating whether the <see cref="T:DnsClient.ILookupClient"/> can cycle through all
-            configured <see cref="P:DnsClient.LookupClient.NameServers"/> on each consecutive request, basically using a random server, or not.
-            Default is <c>True</c>.
-            If only one <see cref="T:DnsClient.NameServer"/> is configured, this setting is not used.
-            </summary>
-            <remarks>
-            <para>
-            If <c>False</c>, configured endpoint will be used in random order.
-            If <c>True</c>, the order will be preserved.
-            </para>
-            <para>
-            Even if <see cref="P:DnsClient.LookupClient.UseRandomNameServer"/> is set to <c>True</c>, the endpoint might still get
-            disabled and might not being used for some time if it errors out, e.g. no connection can be established.
-            </para>
-            </remarks>
-        </member>
-        <member name="P:DnsClient.LookupClient.ContinueOnDnsError">
-            <summary>
-            Gets or sets a flag indicating whether to query the next configured <see cref="P:DnsClient.LookupClient.NameServers"/> in case the response of the last query
-            returned a <see cref="T:DnsClient.DnsResponseCode"/> other than <see cref="F:DnsClient.DnsResponseCode.NoError"/>.
-            Default is <c>True</c>.
-            </summary>
-            <remarks>
-            If <c>True</c>, lookup client will continue until a server returns a valid result, or,
-            if no <see cref="P:DnsClient.LookupClient.NameServers"/> yield a valid result, the last response with the error will be returned.
-            In case no server yields a valid result and <see cref="P:DnsClient.LookupClient.ThrowDnsErrors"/> is also enabled, an exception
-            will be thrown containing the error of the last response.
-            </remarks>
-            <seealso cref="P:DnsClient.LookupClient.ThrowDnsErrors"/>
+        <member name="P:DnsClient.LookupClient.Settings">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.#ctor">
              <summary>
              Creates a new instance of <see cref="T:DnsClient.LookupClient"/> without specifying any name server.
-             This will implicitly use the name server(s) configured by the local network adapter.
+             This will implicitly use the name server(s) configured by the local network adapter(s).
              </summary>
              <remarks>
              This uses <see cref="M:DnsClient.NameServer.ResolveNameServers(System.Boolean,System.Boolean)"/>.
@@ -2749,12 +3437,12 @@
         </member>
         <member name="M:DnsClient.LookupClient.#ctor(System.Net.IPAddress[])">
             <summary>
-            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with one or more DNS servers identified by their <see cref="T:System.Net.IPAddress"/>.
+            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with default settings and one or more DNS servers identified by their <see cref="T:System.Net.IPAddress"/>.
             The default port <c>53</c> will be used for all <see cref="T:System.Net.IPAddress"/>s provided.
             </summary>
             <param name="nameServers">The <see cref="T:System.Net.IPAddress"/>(s) to be used by this <see cref="T:DnsClient.LookupClient"/> instance.</param>
             <example>
-            To connect to one or more DNS server using the default port, we can use this overload:
+            Connecting to one or more DNS server using the default port:
             <code>
             <![CDATA[
             // configuring the client to use google's public IPv4 DNS servers.
@@ -2762,39 +3450,39 @@
             ]]>
             </code>
             </example>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/>is <c>null</c>.</exception>
         </member>
         <member name="M:DnsClient.LookupClient.#ctor(System.Net.IPAddress,System.Int32)">
             <summary>
-            Create a new instance of <see cref="T:DnsClient.LookupClient"/> with one DNS server defined by <paramref name="address"/> and <paramref name="port"/>.
+            Create a new instance of <see cref="T:DnsClient.LookupClient"/> with default settings and one DNS server defined by <paramref name="address"/> and <paramref name="port"/>.
             </summary>
             <param name="address">The <see cref="T:System.Net.IPAddress"/> of the DNS server.</param>
             <param name="port">The port of the DNS server.</param>
             <example>
-            In case you want to connect to one specific DNS server which does not run on the default port <c>53</c>, you can do so like in the following example:
+            Connecting to one specific DNS server which does not run on the default port <c>53</c>:
             <code>
             <![CDATA[
             var client = new LookupClient(IPAddress.Parse("127.0.0.1"), 8600);
             ]]>
             </code>
             </example>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="address"/>is <c>null</c>.</exception>
         </member>
         <member name="M:DnsClient.LookupClient.#ctor(System.Net.IPEndPoint[])">
             <summary>
-            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with one or more <see cref="T:System.Net.IPAddress"/> and port combination
-            stored in <see cref="T:System.Net.IPEndPoint"/>(s).
+            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with default settings and the given name servers.
             </summary>
             <param name="nameServers">The <see cref="T:System.Net.IPEndPoint"/>(s) to be used by this <see cref="T:DnsClient.LookupClient"/> instance.</param>
             <example>
-            In this example, we instantiate a new <see cref="T:System.Net.IPEndPoint"/> using an <see cref="T:System.Net.IPAddress"/> and custom port which is different than the default port <c>53</c>.
+            Connecting to one specific DNS server which does not run on the default port <c>53</c>:
             <code>
             <![CDATA[
-            // Using localhost and port 8600 to connect to a Consul agent.
             var endpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8600);
             var client = new LookupClient(endpoint);
             ]]>
             </code>
             <para>
-            The <see cref="T:DnsClient.NameServer"/> class also contains pre defined <see cref="T:System.Net.IPEndPoint"/>s for the public google DNS servers, which can be used as follows:
+            The <see cref="T:DnsClient.NameServer"/> class also contains predefined <see cref="T:System.Net.IPEndPoint"/>s for the public Google DNS servers, which can be used as follows:
             <code>
             <![CDATA[
             var client = new LookupClient(NameServer.GooglePublicDns, NameServer.GooglePublicDnsIPv6);
@@ -2802,210 +3490,112 @@
             </code>
             </para>
             </example>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/>is <c>null</c>.</exception>
+        </member>
+        <member name="M:DnsClient.LookupClient.#ctor(DnsClient.NameServer[])">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with default settings and the given name servers.
+            </summary>
+            <param name="nameServers">The <see cref="T:DnsClient.NameServer"/>(s) to be used by this <see cref="T:DnsClient.LookupClient"/> instance.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameServers"/>is <c>null</c>.</exception>
+        </member>
+        <member name="M:DnsClient.LookupClient.#ctor(DnsClient.LookupClientOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:DnsClient.LookupClient"/> with custom settings.
+            </summary>
+            <param name="options">The options to use with this <see cref="T:DnsClient.LookupClient"/> instance.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="options"/>is <c>null</c>.</exception>
         </member>
         <member name="M:DnsClient.LookupClient.QueryReverse(System.Net.IPAddress)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress"/>.
-            </summary>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/>.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryReverse(System.Net.IPAddress,DnsClient.DnsQueryAndServerOptions)">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryReverseAsync(System.Net.IPAddress,System.Threading.CancellationToken)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress" />.
-            </summary>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <inheritdoc/>
         </member>
-        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
-            </summary>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
-        </member>
-        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/>.
-            </summary>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
-        </member>
-        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress,System.Threading.CancellationToken)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
-            </summary>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
-        </member>
-        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress,System.Threading.CancellationToken)">
-            <summary>
-            Does a reverse lookup for the <paramref name="ipAddress" />
-            using only the passed in <paramref name="servers"/>.
-            </summary>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="ipAddress">The <see cref="T:System.Net.IPAddress" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which might contain the <see cref="T:DnsClient.Protocol.PtrRecord" /> for the <paramref name="ipAddress"/>.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="ipAddress"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+        <member name="M:DnsClient.LookupClient.QueryReverseAsync(System.Net.IPAddress,DnsClient.DnsQueryAndServerOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.Query(System.String,DnsClient.QueryType,DnsClient.QueryClass)">
-            <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            </summary>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass"/>.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
-            <remarks>
-            The behavior of the query can be controlled by the properties of this <see cref="T:DnsClient.LookupClient"/> instance.
-            <see cref="P:DnsClient.LookupClient.Recursion"/> for example can be disabled and would instruct the DNS server to return no additional records.
-            </remarks>
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.Query(DnsClient.DnsQuestion)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.Query(DnsClient.DnsQuestion,DnsClient.DnsQueryAndServerOptions)">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryAsync(System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
-            <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            </summary>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
-            <remarks>
-            The behavior of the query can be controlled by the properties of this <see cref="T:DnsClient.LookupClient"/> instance.
-            <see cref="P:DnsClient.LookupClient.Recursion"/> for example can be disabled and would instruct the DNS server to return no additional records.
-            </remarks>
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryAsync(DnsClient.DnsQuestion,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryAsync(DnsClient.DnsQuestion,DnsClient.DnsQueryAndServerOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryServer(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
-            <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
-            </summary>
-            <remarks>
-            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
-            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
-            </remarks>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryServer(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
-            <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/>.
-            </summary>
-            <remarks>
-            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
-            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
-            </remarks>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.String,DnsClient.QueryType,DnsClient.QueryClass)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServer(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,DnsClient.DnsQueryOptions)">
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
-            <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/> with the <see cref="F:DnsClient.NameServer.DefaultPort"/>.
-            </summary>
-            <remarks>
-            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
-            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
-            </remarks>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <inheritdoc/>
         </member>
         <member name="M:DnsClient.LookupClient.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.String,DnsClient.QueryType,DnsClient.QueryClass,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},DnsClient.DnsQuestion,DnsClient.DnsQueryOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverse(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,DnsClient.DnsQueryOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPAddress},System.Net.IPAddress,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{System.Net.IPEndPoint},System.Net.IPAddress,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.QueryServerReverseAsync(System.Collections.Generic.IReadOnlyCollection{DnsClient.NameServer},System.Net.IPAddress,DnsClient.DnsQueryOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DnsClient.LookupClient.GetReverseQuestion(System.Net.IPAddress)">
             <summary>
-            Performs a DNS lookup for the given <paramref name="query" />, <paramref name="queryType" /> and <paramref name="queryClass" />
-            using only the passed in <paramref name="servers"/>.
+            Gets a reverse lookup question for an <see cref="T:System.Net.IPAddress"/>.
             </summary>
-            <remarks>
-            To query specific servers can be useful in cases where you have to use a different DNS server than initially configured
-            (without creating a new instance of <see cref="T:DnsClient.ILookupClient"/> for example).
-            </remarks>
-            <param name="servers">The list of one or more server(s) which should be used for the lookup.</param>
-            <param name="query">The domain name query.</param>
-            <param name="queryType">The <see cref="T:DnsClient.QueryType" />.</param>
-            <param name="queryClass">The <see cref="T:DnsClient.QueryClass" />.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>
-            The <see cref="T:DnsClient.IDnsQueryResponse" /> which contains the response headers and lists of resource records.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">If the <paramref name="servers"/> collection doesn't contain any elements.</exception>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="query"/> is null.</exception>
-            <exception cref="T:System.OperationCanceledException">If cancellation has been requested for the passed in <paramref name="cancellationToken"/>.</exception>
-            <exception cref="T:DnsClient.DnsResponseException">After retries and fallbacks, if none of the servers were accessible, timed out or (if <see cref="P:DnsClient.ILookupClient.ThrowDnsErrors"/> is enabled) returned error results.</exception>
+            <param name="ipAddress">The address.</param>
+            <returns>A <see cref="T:DnsClient.DnsQuestion"/> with the proper arpa domain query for the given address.</returns>
         </member>
         <member name="T:DnsClient.NameServer">
             <summary>
@@ -3020,55 +3610,92 @@
         </member>
         <member name="F:DnsClient.NameServer.GooglePublicDns">
             <summary>
-            The public google DNS IPv4 endpoint.
+            The public Google DNS IPv4 endpoint.
             </summary>
         </member>
         <member name="F:DnsClient.NameServer.GooglePublicDns2">
             <summary>
-            The second public google DNS IPv6 endpoint.
+            The second public Google DNS IPv6 endpoint.
             </summary>
         </member>
         <member name="F:DnsClient.NameServer.GooglePublicDnsIPv6">
             <summary>
-            The public google DNS IPv6 endpoint.
+            The public Google DNS IPv6 endpoint.
             </summary>
         </member>
         <member name="F:DnsClient.NameServer.GooglePublicDns2IPv6">
             <summary>
-            The second public google DNS IPv6 endpoint.
+            The second public Google DNS IPv6 endpoint.
+            </summary>
+        </member>
+        <member name="F:DnsClient.NameServer.Cloudflare">
+            <summary>
+            A public Cloudflare DNS endpoint.
+            </summary>
+        </member>
+        <member name="F:DnsClient.NameServer.Cloudflare2">
+            <summary>
+            A public Cloudflare DNS endpoint.
+            </summary>
+        </member>
+        <member name="F:DnsClient.NameServer.CloudflareIPv6">
+            <summary>
+            A public Cloudflare DNS IPv6 endpoint.
+            </summary>
+        </member>
+        <member name="F:DnsClient.NameServer.Cloudflare2IPv6">
+            <summary>
+            A public Cloudflare DNS IPv6 endpoint.
             </summary>
         </member>
         <member name="M:DnsClient.NameServer.#ctor(System.Net.IPAddress)">
             <summary>
             Initializes a new instance of the <see cref="T:DnsClient.NameServer"/> class.
             </summary>
-            <param name="endpoint">The endpoint.</param>
+            <param name="endPoint">The name server endpoint.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="endPoint"/>is <c>null</c>.</exception>
+        </member>
+        <member name="M:DnsClient.NameServer.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DnsClient.NameServer"/> class.
+            </summary>
+            <param name="endPoint">The name server endpoint.</param>
+            <param name="port">The name server port.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="endPoint"/>is <c>null</c>.</exception>
         </member>
         <member name="M:DnsClient.NameServer.#ctor(System.Net.IPEndPoint)">
             <summary>
             Initializes a new instance of the <see cref="T:DnsClient.NameServer"/> class.
             </summary>
-            <param name="endpoint">The endpoint.</param>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="endpoint"/> is null.</exception>
+            <param name="endPoint">The name server endpoint.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="endPoint"/>is <c>null</c>.</exception>
         </member>
-        <member name="P:DnsClient.NameServer.Enabled">
+        <member name="M:DnsClient.NameServer.op_Implicit(System.Net.IPEndPoint)~DnsClient.NameServer">
             <summary>
-            Gets a value indicating whether this <see cref="T:DnsClient.NameServer"/> is enabled.
-            <para>
-            The instance might get disabled if <see cref="T:DnsClient.ILookupClient"/> encounters problems to connect to it.
-            </para>
+            Initializes a new instance of the <see cref="T:DnsClient.NameServer"/> class from a <see cref="P:DnsClient.NameServer.IPEndPoint"/>.
             </summary>
-            <value>
-              <c>true</c> if enabled; otherwise, <c>false</c>.
-            </value>
+            <param name="endPoint">The endpoint.</param>
         </member>
-        <member name="P:DnsClient.NameServer.Endpoint">
+        <member name="M:DnsClient.NameServer.op_Implicit(System.Net.IPAddress)~DnsClient.NameServer">
             <summary>
-            Gets the endpoint of this instance.
+            Initializes a new instance of the <see cref="T:DnsClient.NameServer"/> class from a <see cref="T:System.Net.IPAddress"/>.
             </summary>
-            <value>
-            The endpoint.
-            </value>
+            <param name="address">The address.</param>
+        </member>
+        <member name="P:DnsClient.NameServer.Address">
+            <summary>
+            Gets the string representation of the configured <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+        </member>
+        <member name="P:DnsClient.NameServer.Port">
+            <summary>
+            Gets the port.
+            </summary>
+        </member>
+        <member name="P:DnsClient.NameServer.AddressFamily">
+            <summary>
+            Gets the address family.
+            </summary>
         </member>
         <member name="P:DnsClient.NameServer.SupportedUdpPayloadSize">
             <summary>
@@ -3089,15 +3716,24 @@
             A <see cref="T:System.String" /> that represents this instance.
             </returns>
         </member>
+        <member name="M:DnsClient.NameServer.Equals(System.Object)">
+            <inheritdocs />
+        </member>
+        <member name="M:DnsClient.NameServer.Equals(DnsClient.NameServer)">
+            <inheritdocs />
+        </member>
+        <member name="M:DnsClient.NameServer.GetHashCode">
+            <inheritdocs />
+        </member>
         <member name="M:DnsClient.NameServer.ResolveNameServers(System.Boolean,System.Boolean)">
             <summary>
             Gets a list of name servers by iterating over the available network interfaces.
             <para>
-            If <paramref name="fallbackToGooglePublicDns" /> is enabled, this method will return the google public dns endpoints if no
+            If <paramref name="fallbackToGooglePublicDns" /> is enabled, this method will return the Google public DNS endpoints if no
             local DNS server was found.
             </para>
             </summary>
-            <param name="skipIPv6SiteLocal">If set to <c>true</c> local IPv6 sites are skiped.</param>
+            <param name="skipIPv6SiteLocal">If set to <c>true</c> local IPv6 sites are skipped.</param>
             <param name="fallbackToGooglePublicDns">If set to <c>true</c> the public Google DNS servers are returned if no other servers could be found.</param>
             <returns>
             The list of name servers.
@@ -3298,7 +3934,7 @@
         <member name="F:DnsClient.QueryType.AXFR">
             <summary>
             DNS zone transfer request.
-            This can be used only if <see cref="P:DnsClient.ILookupClient.UseTcpOnly"/> is set to true as <c>AXFR</c> is only supported via TCP.
+            This can be used only if <see cref="P:DnsClient.DnsQuerySettings.UseTcpOnly"/> is set to true as <c>AXFR</c> is only supported via TCP.
             <para>
             The DNS Server might only return results for the request if the client connection/IP is allowed to do so.
             </para>
@@ -3329,6 +3965,12 @@
             </summary>
             <seealso href="https://tools.ietf.org/html/rfc4255">RFC 4255</seealso>
             <seealso cref="T:DnsClient.Protocol.SshfpRecord"/>
+        </member>
+        <member name="P:DnsClient.Logging.LoggerFactory">
+            <summary>
+            Gets or sets the <see cref="T:DnsClient.Internal.ILoggerFactory"/> DnsClient should use.
+            Per default it will log to <see cref="P:DnsClient.Tracing.Source"/>.
+            </summary>
         </member>
         <member name="T:System.IO.RowConfigReader">
             <summary>
@@ -3401,6 +4043,13 @@
             <summary>
             Extension methods for <see cref="T:System.Collections.Generic.IEnumerable`1"/> where <c>T</c> is <see cref="T:DnsClient.Protocol.DnsResourceRecord"/>.
             </summary>
+        </member>
+        <member name="M:System.Linq.RecordCollectionExtension.AddressRecords(System.Collections.Generic.IEnumerable{DnsClient.Protocol.DnsResourceRecord})">
+            <summary>
+            Filters the elements of an <see cref="T:System.Collections.Generic.IEnumerable`1"/> to return <see cref="T:DnsClient.Protocol.ARecord"/>s only.
+            </summary>
+            <param name="records">The records.</param>
+            <returns>The list of <see cref="T:DnsClient.Protocol.ARecord"/>.</returns>
         </member>
         <member name="M:System.Linq.RecordCollectionExtension.ARecords(System.Collections.Generic.IEnumerable{DnsClient.Protocol.DnsResourceRecord})">
             <summary>
