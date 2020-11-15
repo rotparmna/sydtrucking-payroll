@@ -47,6 +47,7 @@
             else
             {
                 var upd = Builders<model.LeaseCompany>.Update.Set(u => u.Name, company.Name)
+                                                         .Set(u => u.Email, company.Email)
                                                          .Set(u => u.Trucks, company.Trucks);
 
                 context.LeaseCompanies.UpdateOne(f => f.Id == company.Id, upd, new UpdateOptions() { IsUpsert = false });

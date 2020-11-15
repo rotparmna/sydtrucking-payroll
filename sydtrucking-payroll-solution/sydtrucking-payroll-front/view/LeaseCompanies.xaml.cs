@@ -54,6 +54,7 @@
             TrucksGroup.IsEnabled = false;
             Save.IsEnabled = false;
             Name.Text = string.Empty;
+            Email.Text = string.Empty;
             Trucks.ItemsSource = null;
         }
 
@@ -73,7 +74,8 @@
                 LeaseCompany company = new LeaseCompany()
                 {
                     Id = _idCompanySelected,
-                    Name = Name.Text
+                    Name = Name.Text,
+                    Email = Email.Text
                 };
 
                 _trucksView.Where(x => x.IsActive)
@@ -138,6 +140,7 @@
         {
             _idCompanySelected = company.Id;
             Name.Text = company.Name;
+            Email.Text = company.Email;
 
             List<Truck> trucks = _truckBusiness.GetAll();
             _trucksView.Clear();
@@ -166,6 +169,7 @@
             ValidationMessage = string.Empty;
 
             if (string.IsNullOrEmpty(Name.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Name");
+            if (string.IsNullOrEmpty(Email.Text)) ValidationMessage += string.Format(business.Constant.Message.ValidationRequiredFieldMessage, "Email");
             if (_trucksView.Where(x => x.IsActive).Count() <= 0) ValidationMessage += business.Constant.Message.AtLeastOneTruckMustBeSelected;
 
             return string.IsNullOrEmpty(ValidationMessage);
