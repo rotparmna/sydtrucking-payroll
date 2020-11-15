@@ -7,8 +7,6 @@
 
     public class PrintPayrollLeaseCompany : PrintPayrollBase
     {
-        PrintToPdf _toPdf;
-        IFile _pdfFile;
         double _initialYTotals;
 
         public PayrollLeaseCompany Payroll { get; set; }
@@ -17,8 +15,8 @@
         {
             Payroll = payroll;
             Fullname = CreateFullname();
-            _toPdf = new PrintToPdf(Fullname);
-            _pdfFile = new Pdf(Fullname);
+            ToPdf = new PrintToPdf(Fullname);
+            PdfFile = new Pdf(Fullname);
         }
 
         protected override string CreateFullname()
@@ -29,7 +27,7 @@
 
         public new void Print(bool isOpen)
         {
-            _toPdf.AddPage(PdfSharp.PageSize.Letter);
+            ToPdf.AddPage(PdfSharp.PageSize.Letter);
 
             PrintHeader();
             PrintInfo();
@@ -40,29 +38,29 @@
             _initialYTotals = lastItemY;
             PrintTotals();
 
-            _toPdf.Print();
+            ToPdf.Print();
 
             if (isOpen)
-                _pdfFile.Open();
+                PdfFile.Open();
         }
 
         protected override void PrintHeader()
         {
             double logoX = 40;
             double logoY = 70;
-            _toPdf.DrawImage("resources\\images\\logo-sdt.JPG", logoX, logoY, 0.2);
+            ToPdf.DrawImage("resources\\images\\logo-sdt.JPG", logoX, logoY, 0.2);
 
             double y = 70;
 
             double textX = 200;
             double titleY = y;
-            _toPdf.DrawString("S & D TRUCKING LLC", FormatText.Title, textX, titleY, 50, 200, XStringFormats.Center);
+            ToPdf.DrawString("S & D TRUCKING LLC", FormatText.Title, textX, titleY, 50, 200, XStringFormats.Center);
 
             double dir1Y = y + 15;
-            _toPdf.DrawString("2620 Charway Rd", FormatText.Regular, textX, dir1Y, 50, 200, XStringFormats.Center);
+            ToPdf.DrawString("2620 Charway Rd", FormatText.Regular, textX, dir1Y, 50, 200, XStringFormats.Center);
 
             double dir2Y = y + 25;
-            _toPdf.DrawString("Odessa, Tx 79766", FormatText.Regular, textX, dir2Y, 50, 200, XStringFormats.Center);
+            ToPdf.DrawString("Odessa, Tx 79766", FormatText.Regular, textX, dir2Y, 50, 200, XStringFormats.Center);
         }
 
         protected override void PrintInfo()
@@ -71,17 +69,17 @@
             double y = 150;
 
             double payToY = y;
-            _toPdf.DrawString("Pay To: " + Payroll.LeaseCompany.Name, FormatText.Bold, text1X, payToY, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString("Pay To: " + Payroll.LeaseCompany.Name, FormatText.Bold, text1X, payToY, 50, 200, XStringFormats.TopLeft);
 
             double truckY = y + 15;
-            _toPdf.DrawString("TRUCK No. " + Payroll.Truck.Number, FormatText.Bold, text1X, truckY, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString("TRUCK No. " + Payroll.Truck.Number, FormatText.Bold, text1X, truckY, 50, 200, XStringFormats.TopLeft);
 
             double paymentWeekY = y + 30;
-            _toPdf.DrawString("FROM: " + Payroll.From.Date.ToShortDateString() + " TO " + Payroll.To.Date.ToShortDateString(), FormatText.Bold, text1X, paymentWeekY, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString("FROM: " + Payroll.From.Date.ToShortDateString() + " TO " + Payroll.To.Date.ToShortDateString(), FormatText.Bold, text1X, paymentWeekY, 50, 200, XStringFormats.TopLeft);
 
             double paymentDateX = 290;
             double paymentDateY = y + 30;
-            _toPdf.DrawString("Date: " + Payroll.Date.ToShortDateString(), FormatText.Regular, paymentDateX, paymentDateY, 50, 200, XStringFormats.TopRight);
+            ToPdf.DrawString("Date: " + Payroll.Date.ToShortDateString(), FormatText.Regular, paymentDateX, paymentDateY, 50, 200, XStringFormats.TopRight);
         }
 
         private double PrintPayrolls()
@@ -92,13 +90,13 @@
 
             foreach (var item in Payroll.Rates)
             {
-                _toPdf.DrawString(item.Companies, FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
-                _toPdf.DrawString("Rate", FormatText.Regular, text1X, y + 15, 50, 200, XStringFormats.TopLeft);
-                _toPdf.DrawString("Sub-Total", FormatText.Regular, text1X, y + 30, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString(item.Companies, FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString("Rate", FormatText.Regular, text1X, y + 15, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString("Sub-Total", FormatText.Regular, text1X, y + 30, 50, 200, XStringFormats.TopLeft);
 
-                _toPdf.DrawString(item.Hours.ToString(), FormatText.Italic, text2X, y, 50, 200, XStringFormats.TopRight);
-                _toPdf.DrawString(item.Rate.ToString("C"), FormatText.Regular, text2X, y + 15, 50, 200, XStringFormats.TopRight);
-                _toPdf.DrawString(item.Subtotal.ToString("C"), FormatText.BoldItalic, text2X, y + 30, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Hours.ToString(), FormatText.Italic, text2X, y, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Rate.ToString("C"), FormatText.Regular, text2X, y + 15, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Subtotal.ToString("C"), FormatText.BoldItalic, text2X, y + 30, 50, 200, XStringFormats.TopRight);
 
                 y += 60;
             }
@@ -114,8 +112,8 @@
 
             foreach (var item in Payroll.Details)
             {
-                _toPdf.DrawString(item.Item, FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
-                _toPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Item, FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
 
                 y += 15;
             }
@@ -129,13 +127,13 @@
             double text2X = 290;
             double y = initialY + 40;
 
-            _toPdf.DrawString("Deductions", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString("Deductions", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
             y += 15;
 
             foreach (var item in Payroll.Deductions)
             {
-                _toPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
-                _toPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
 
                 y += 15;
             }
@@ -149,13 +147,13 @@
             double text2X = 290;
             double y = initialY + 40;
             
-            _toPdf.DrawString("Reinmburstments", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString("Reinmburstments", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
             y += 15;
 
             foreach (var item in Payroll.Reimbursements)
             {
-                _toPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
-                _toPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
+                ToPdf.DrawString(item.Item, FormatText.Regular, text1X, y, 50, 200, XStringFormats.TopLeft);
+                ToPdf.DrawString(item.Value.ToString("C"), FormatText.Regular, text2X, y, 50, 200, XStringFormats.TopRight);
 
                 y += 15;
             }
@@ -169,8 +167,8 @@
             double text2X = 290;
             double y = _initialYTotals + 50;
 
-            _toPdf.DrawString("Total Payment", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
-            _toPdf.DrawString(Payroll.Total.ToString("C"), FormatText.Bold, text2X, y, 50, 200, XStringFormats.TopRight);
+            ToPdf.DrawString("Total Payment", FormatText.Bold, text1X, y, 50, 200, XStringFormats.TopLeft);
+            ToPdf.DrawString(Payroll.Total.ToString("C"), FormatText.Bold, text2X, y, 50, 200, XStringFormats.TopRight);
         }
 
         protected override void PrintDetails()

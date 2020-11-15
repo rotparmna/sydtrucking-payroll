@@ -56,7 +56,7 @@
                 <DataGridTemplateColumn CanUserResize="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Visibility="Hidden" Name="EmailReport" Click="EmailReport_Click">
+                            <Button Name="EmailReport" Click="EmailReport_Click">
                                 <Image Source="/sydtrucking-payroll-front;component/resources/images/email24.png" Width="24px" />
                             </Button>
                         </DataTemplate>

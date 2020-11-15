@@ -4,10 +4,12 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
+    using sydtrucking_payroll_front.notification;
 
     public class PayrollLeaseCompany : BusinessBase,
         IBusiness<model.PayrollLeaseCompany>,
-        IPayroll<model.PrintPayrollLeaseCompanyView, model.LeaseCompany>
+        IPayroll<model.PrintPayrollLeaseCompanyView, model.LeaseCompany>,
+        IEmail<model.PayrollLeaseCompany>
     {
         public List<model.PrintPayrollLeaseCompanyView> GetListPayroll(DateTime? from, DateTime? to, model.LeaseCompany leaseCompany)
         {
@@ -105,6 +107,12 @@
         private void Add(model.PayrollLeaseCompany payroll)
         {
             context.PayrollLeaseCompanies.InsertOne(payroll);
+        }
+
+        public void SendEmail(INotification notification, model.PayrollLeaseCompany payroll)
+        {
+            notification.To = payroll.LeaseCompany.Email;
+            notification.Send("Pay Stub");
         }
     }
 }

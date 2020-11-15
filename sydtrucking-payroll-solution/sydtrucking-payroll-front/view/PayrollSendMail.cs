@@ -12,7 +12,14 @@
         public static void Send<T>(PrintPayrollBase printPayrollBase, IEmail<T> email, T payroll)
         {
             bool error = false;
-            printPayrollBase.Print(false);
+            if (payroll is model.PayrollLeaseCompany)
+            {
+                ((PrintPayrollLeaseCompany)printPayrollBase).Print(false);
+            }
+            else
+            {
+                printPayrollBase.Print(false);
+            }
 
             INotification notification = new Email("Pay Stub");
             ((Email)notification).File = new Attachment(File.Open(printPayrollBase.Fullname, FileMode.Open), printPayrollBase.Filename);

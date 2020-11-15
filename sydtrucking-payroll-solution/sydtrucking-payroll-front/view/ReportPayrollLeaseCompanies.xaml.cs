@@ -61,24 +61,24 @@
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-            //_printView.ForEach(x =>
-            //{
-            //    var payroll = _payrollLeaseCompanyBusiness.Get(x.Id);
-            //    SendEmail(payroll);
-            //});
+            _printView.ForEach(x =>
+            {
+                var payroll = _payrollLeaseCompanyBusiness.Get(x.Id);
+                SendEmail(payroll);
+            });
         }
 
         private void EmailReport_Click(object sender, RoutedEventArgs e)
         {
-            //var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollView;
-            //var payroll = _payrollLeaseCompanyBusiness.Get(rowData.Id);
+            var rowData = ((FrameworkElement)sender).DataContext as PrintPayrollLeaseCompanyView;
+            var payroll = _payrollLeaseCompanyBusiness.Get(rowData.Id);
 
-            //SendEmail(payroll);
+            SendEmail(payroll);
         }
 
         private void SendEmail(model.PayrollLeaseCompany payroll)
         {
-            //PayrollMail.Send(new PrintPayrollLeaseCompany(payroll), (IEmail<model.PayrollLeaseCompany>)_payrollLeaseCompanyBusiness, payroll);
+            PayrollMail.Send(new PrintPayrollLeaseCompany(payroll), (IEmail<model.PayrollLeaseCompany>)_payrollLeaseCompanyBusiness, payroll);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
