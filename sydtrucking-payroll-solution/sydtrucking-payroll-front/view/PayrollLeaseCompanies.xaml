@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="S &amp; D TRUCKING LLC - Payroll Lease Companies" Height="651.632" Width="458.912" Loaded="Window_Loaded">
+        Title="S &amp; D TRUCKING LLC - Lease Companies Payments" Height="651.632" Width="458.912" Loaded="Window_Loaded">
     <Window.Resources>
     </Window.Resources>
     <Grid>
