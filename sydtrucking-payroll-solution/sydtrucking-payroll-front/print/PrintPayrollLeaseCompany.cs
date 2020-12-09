@@ -21,7 +21,7 @@
 
         protected override string CreateFullname()
         {
-            Filename = Payroll.LeaseCompany.Name.Trim() + "-" + Payroll.Truck.Number.ToString() + "-" + DateTime.Now.Ticks.ToString() + ".pdf";
+            Filename = Payroll.LeaseCompany.Name.Replace(" ","").Trim() + Payroll.Date.ToString("ddMMyy") + ".pdf";
             return business.Constant.PathReportPayrollLeaseCompany + "\\" + Filename;
         }
 
