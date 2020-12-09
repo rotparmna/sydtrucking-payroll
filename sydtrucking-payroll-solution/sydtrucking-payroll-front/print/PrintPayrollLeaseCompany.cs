@@ -33,9 +33,11 @@
             PrintInfo();
             double lastItemY = PrintPayrolls();
             lastItemY = PrintDetails(lastItemY);
-            lastItemY = PrintDeductions(lastItemY);
+            if (Payroll.Deductions.Count > 0)
+                lastItemY = PrintDeductions(lastItemY);
             lastItemY = PrintReinmburstments(lastItemY);
-            _initialYTotals = lastItemY;
+            if (Payroll.Reimbursements.Count > 0)
+                _initialYTotals = lastItemY;
             PrintTotals();
 
             ToPdf.Print();
