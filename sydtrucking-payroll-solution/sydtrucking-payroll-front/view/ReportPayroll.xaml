@@ -24,6 +24,12 @@
                 <Label Grid.Row="0" Content="Driver" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+        <GroupBox Header="Ticket" HorizontalAlignment="Left" Height="70" Margin="10,130,0,0" VerticalAlignment="Top" Width="323" Grid.Row="0">
+            <Grid>
+                <Label Content="Number" Grid.Row="0" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+                <TextBox x:Name="TicketNumber" HorizontalAlignment="Left" Margin="65,8,0,0" VerticalAlignment="Top" Width="236" Height="24"/>
+            </Grid>
+        </GroupBox>
         <DataGrid x:Name="Details" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn CanUserResize="False">

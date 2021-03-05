@@ -9,7 +9,8 @@
     public class Payroll : BusinessBase, 
         IBusiness<model.Payroll>,
         IEmail<model.Payroll>,
-        IPayroll<model.PrintPayrollView, model.Driver>
+        IPayroll<model.PrintPayrollView, model.Driver>,
+        IPayroll<model.PrintPayrollView, model.Ticket>
     {
         public Payroll() : base() { }
 
@@ -228,6 +229,40 @@
                 filter &= !builder.Eq(x => x.Id, currentId);
 
             return context.Payrolls.Find(filter).CountDocuments();
+        }
+
+        public List<model.PrintPayrollView> GetListPayroll(DateTime? from, DateTime? to, model.Ticket ticket)
+        {
+            var printPayrollsView = new List<model.PrintPayrollView>();
+
+            var builder = Builders<model.Payroll>.Filter;
+            FilterDefinition<model.Payroll> filter = FilterDefinition<model.Payroll>.Empty;
+
+            if (from.HasValue)
+                filter &= builder.Gte("Details.Ticket.Date", from);
+
+            if (to.HasValue)
+                filter &= builder.Lte("Details.Ticket.Date", to);
+
+            if (ticket != null)
+                filter &= builder.Eq("Details.Ticket.Number", ticket.Number);
+
+            List<model.Payroll> payrolls = context.Payrolls.Find(filter).ToList();
+
+            payrolls.ForEach(x =>
+            {
+                printPayrollsView.Add(new model.PrintPayrollView()
+                {
+                    Id = x.Id,
+                    Driver = x.Driver.Fullname,
+                    PaymentWeek = x.From.Date.ToShortDateString() + "-" + x.To.Date.ToShortDateString(),
+                    Rate = x.Rate.ToString("C"),
+                    TotalHours = x.TotalHours.ToString(),
+                    TotalPayment = x.TotalPayment.ToString("C")
+                });
+            });
+
+            return printPayrollsView;
         }
     }
 }

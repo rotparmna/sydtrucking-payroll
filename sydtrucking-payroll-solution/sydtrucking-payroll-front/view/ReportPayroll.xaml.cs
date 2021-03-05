@@ -69,7 +69,15 @@
 
         public void SearchPayrolls()
         {
-            _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate, To.SelectedDate, Drivers.SelectedItem as model.Driver);
+            bool searchByTicket = !string.IsNullOrEmpty(TicketNumber.Text);
+            if (searchByTicket)
+            {
+                _printView = ((IPayroll<PrintPayrollView, Ticket>)_payrollBusiness).GetListPayroll(null, null, new Ticket { Number = int.Parse(TicketNumber.Text) });
+            }
+            else
+            {
+                _printView = ((IPayroll<PrintPayrollView, model.Driver>)_payrollBusiness).GetListPayroll(From.SelectedDate, To.SelectedDate, Drivers.SelectedItem as model.Driver);
+            }
             Details.ItemsSource = _printView;
             if (_printView.Count == 0)
             {
