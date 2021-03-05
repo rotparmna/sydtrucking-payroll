@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="sydtrucking_payroll_front.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb://localhost:27017</Value>
-    </Setting>
     <Setting Name="Database" Type="System.String" Scope="Application">
       <Value Profile="(Default)">payroll</Value>
     </Setting>
@@ -17,8 +14,11 @@
     <Setting Name="PathReportPayrollEmployee" Type="System.String" Scope="Application">
       <Value Profile="(Default)">files\\reportpayrollemployee\\</Value>
     </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mongodb://127.0.0.1:27017/payroll</Value>
+    </Setting>
     <Setting Name="Version" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Beta 047</Value>
+      <Value Profile="(Default)">V1.0.0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

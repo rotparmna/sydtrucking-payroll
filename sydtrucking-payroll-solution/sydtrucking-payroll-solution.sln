@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sydtrucking-payroll-front", "sydtrucking-payroll-front\sydtrucking-payroll-front.csproj", "{5E0C5B33-10DB-4FA2-B722-CB958E47828A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "sydtrucking-payroll-install", "sydtrucking-payroll-install\sydtrucking-payroll-install.vdproj", "{2367300C-E53B-4A7B-9FF4-1BEDA03A9F43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{5E0C5B33-10DB-4FA2-B722-CB958E47828A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E0C5B33-10DB-4FA2-B722-CB958E47828A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0C5B33-10DB-4FA2-B722-CB958E47828A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2367300C-E53B-4A7B-9FF4-1BEDA03A9F43}.Debug|Any CPU.ActiveCfg = Debug
+		{2367300C-E53B-4A7B-9FF4-1BEDA03A9F43}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
